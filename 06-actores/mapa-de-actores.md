@@ -6,7 +6,7 @@ creado: 2026-10-01
 actualizado: 2026-10-01
 autor: "Claude (IA)"
 revisado_por: []
-fuentes: [F-001, F-003, F-009, F-011, F-018, F-019, F-020, F-021, F-022, F-023, F-024, F-025, F-027, F-031, F-032, F-036, F-038, F-039]
+fuentes: [F-001, F-003, F-009, F-011, F-018, F-019, F-020, F-021, F-022, F-023, F-024, F-025, F-027, F-031, F-032, F-036, F-038, F-039, F-040, F-041, F-042, F-043, F-044, F-045, F-046, F-047, F-048, F-049, F-050]
 tags: [femeci, actores, fase-2]
 aliases: ["Mapa de actores"]
 ---
@@ -20,18 +20,23 @@ Primera versión, construida en la Fase 2. Los actores del ecosistema de semicon
 | Actor | Tipo | Papel | Posible aporte al proyecto | Fuente |
 |---|---|---|---|---|
 | SECIHTI Puebla (CGICH, DME) | Gobierno estatal | Organiza FEMECI-Puebla; política estatal de CTI | Resolver dudas de la convocatoria; cartera de requerimientos tecnológicos (Q-029) | F-001, F-009 |
-| Yankuilotl | Empresa estatal (paraestatal sectorizada a SECIHTI) | Ensamble de tarjetas electrónicas, diseño con Kutsari, fábrica de software, bicicleta pública | Acceso a un proceso de manufactura electrónica real; validación de problemas (Q-028) | F-018, F-019, F-020 |
+| Yankuilotl | Empresa estatal (paraestatal sectorizada a SECIHTI) | Ensamble de tarjetas electrónicas (SMT y through-hole, desde ≈ abril 2026), diseño con Kutsari, fábrica de software, bicicleta pública; fabricación de PCB anunciada para 2027. Personas con cargo público: director general Lagtzú López Miro Castorena; director de Tecnología Daniel Antonio Gutiérrez; Laboratorio de Electrónica y Prototipos a cargo de Argel Vega Alonzo | Acceso a un proceso de manufactura electrónica real; validación de problemas (Q-028, Q-034 a Q-038). Perfil: [[yankuilotl]] | F-018 a F-020, F-040 a F-043 |
 | Secretaría de Desarrollo Económico y Trabajo (SEDETRA) | Gobierno estatal | Política industrial y de talento con el sector automotriz | Evidencia sobre necesidades de la industria | F-031 |
 | SECIHTI federal | Gobierno federal | Proyectos estratégicos Kutsari, Olinia, Coatlicue | Contexto de política nacional | F-021, F-022 |
 | INNOVA Bienestar de México | Organismo federal | Socio de los laboratorios Kutsari de caracterización y validación | Por investigar (Fase 3) | F-011 |
 | CONAGUA | Gobierno federal | Vigilancia de descargas al Atoyac | Evidencia sobre P-001 | F-032 |
 | REDNACECYT | Red de consejos estatales | Organiza la FEMECI nacional | Normatividad nacional | F-003 |
+| CANIETI | Cámara de la industria electrónica y de telecomunicaciones | Plan Maestro de semiconductores 2024–2030 | Contexto de metas nacionales (relocalizar PCB, ATP) | F-048 |
+| OCDE | Organismo internacional | Informe sobre el ecosistema de semiconductores de México (feb 2026) | Diagnóstico nacional | F-046 |
 
 ## Universidades y centros de investigación
 
 | Actor | Papel | Posible aporte | Fuente |
 |---|---|---|---|
-| INAOE (Tonantzintla) | Sede Puebla de Kutsari; laboratorio LIMEMS y cuarto limpio; CMOS y MEMS | Asesoría científica externa en semiconductores (§3.6) | F-021, F-022 |
+| INAOE (Tonantzintla) | Sede Puebla de Kutsari; laboratorio LIMEMS y cuarto limpio; CMOS y MEMS; Laboratorio de Microelectrónica desde 1974; Semana de Semiconductores 2026 | Asesoría científica externa en semiconductores (§3.6). Perfil: [[kutsari-inaoe-buap]] | F-021, F-022, F-049, F-050 |
+| Laboratorios Kutsari de caracterización y validación | Inaugurados el 11 may 2026 en San Andrés Cholula, con INNOVA Bienestar de México | Posible necesidad de software o datos (Q-030) | F-011, F-044, F-045 |
+| Universidad Rosario Castellanos | Mencionada como vinculada a Yankuilotl | Por investigar | F-043 |
+| Arizona State University (con TecNM) | Programas de talento en semiconductores en México | Contexto de formación | F-047 |
 | BUAP — Centro de Investigaciones en Dispositivos Semiconductores (ICUAP) | 18 investigadores; posgrado en dispositivos semiconductores | Asesoría científica externa; literatura local | F-038 |
 | UPAEP | Sede de la jornada FEMECI (Centro de Vinculación); coorganizó la edición 2025; desarrolló el nanosatélite Gxiba-1 | Contexto del certamen | F-025, F-036 |
 | UDLAP | Obtuvo 2.º lugar nacional en FEMECI 2026 (nivel superior) | Referente de nivel de competencia | F-027 |

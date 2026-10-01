@@ -11,7 +11,17 @@ tags: [femeci, semiconductores, fase-3]
 
 # Semiconductores en Puebla — índice
 
-**Estado:** pendiente (Fase 3). **Naturaleza:** `#hipotesis` inicial del equipo — Puebla impulsa iniciativas de semiconductores — que debe contrastarse con evidencia, no aceptarse de antemano.
+**Estado:** Fase 3 completada el 2026-10-01 (pendiente de revisión del equipo). **Naturaleza:** `#hipotesis` inicial del equipo — Puebla impulsa iniciativas de semiconductores — que debe contrastarse con evidencia, no aceptarse de antemano.
+
+## Notas de la Fase 3
+
+- [[sintesis-fase-3]] — **empezar aquí**: respuestas a las preguntas del documento maestro, contradicciones y siguientes acciones.
+- [[ecosistema-por-eslabon]] — qué hay en México y en Puebla en cada eslabón (diseño, obleas, ATP, PCB, ensamble), talento y política.
+- [[yankuilotl]] — perfil de la empresa estatal y de su planta de ensamble.
+- [[kutsari-inaoe-buap]] — diseño e investigación: Kutsari, INAOE y BUAP.
+- [[estudios-existentes]] — informes, literatura de inspección, datasets públicos y normas.
+- [[problemas-y-oportunidades]] — problemas documentados y oportunidades preliminares OP-01 a OP-06 (hipótesis).
+- Para la entrevista: [[guia-contacto-yankuilotl]].
 
 ## Qué va aquí
 

@@ -57,6 +57,25 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | F-037 | Ficha "Apoyos a través del Programa Fomento e Innovación en Tecnología" | Ventanilla Digital, Gobierno de Puebla | Primaria oficial | 2026 | 2026-10-01 | Automatizada |
 | F-038 | Centro de Investigaciones en Dispositivos Semiconductores | BUAP (ICUAP) | Primaria institucional | s. f. | 2026-10-01 | Automatizada |
 | F-039 | "SECIHTI fortalece alianzas científicas y académicas en Puebla" | SECIHTI Puebla | Primaria oficial | 2026-06-02 | 2026-10-01 | Automatizada |
+| F-040 | Comunicado AA 693/2026: "Yankuilotl posiciona a Puebla a la vanguardia de la soberanía tecnológica en México" | Gobierno de Puebla | Primaria oficial | 2026-07-13 | 2026-10-01 | Automatizada |
+| F-041 | "Yankuilotl coloca a Puebla como referente de soberanía tecnológica e innovación" | Sitio del gobernador Alejandro Armenta | Primaria (sitio personal del gobernador) | 2026-07-08 | 2026-10-01 | Automatizada |
+| F-042 | "Yankuilotl impulsa la estrategia tecnológica de Puebla con semiconductores, software y movilidad digital" | Cluster Industrial | Secundaria | 2026-07-09 | 2026-10-01 | Automatizada |
+| F-043 | "Puebla también fabricará tarjetas electrónicas PCB, anuncia Armenta" | El Universal Puebla | Secundaria | 2026-09-28 | 2026-10-01 | Automatizada |
+| F-044 | "Inauguran laboratorios de Kutsari en Puebla… 15 meses después del anuncio" | e-consulta | Secundaria | 2026-05-11 | 2026-10-01 | Automatizada |
+| F-045 | "Puebla impulsa la industria de semiconductores con nuevos laboratorios del proyecto Kutsari" | Cluster Industrial | Secundaria | 2026-05-12 | 2026-10-01 | Automatizada |
+| F-046 | *Promoting the Development of the Semiconductor Ecosystem in Mexico* (evaluación y recomendaciones) | OCDE | Primaria (organismo internacional) | 2026-02 | 2026-10-01 | Automatizada (parcial; PDF bloqueado) |
+| F-047 | "Arizona State University Participated in the Launch of the OECD Report on Mexico's Semiconductor Ecosystem" | Arizona State University | Secundaria | 2026-02-27 | 2026-10-01 | Automatizada |
+| F-048 | *Plan Maestro para el Desarrollo de la Industria de Semiconductores 2024–2030* (PDF) | CANIETI | Primaria (cámara industrial) | 2024 | 2026-10-01 | Automatizada |
+| F-049 | "Laboratorio de Microelectrónica del INAOE: semillero de proyectos de frontera" | Diario sin Secretos | Secundaria | 2021-11-18 | 2026-10-01 | Automatizada |
+| F-050 | "COVEICYDET fortalece talento veracruzano; diez estudiantes se especializan en semiconductores en el INAOE" | COVEICYDET (Gobierno de Veracruz) | Primaria oficial | 2026-04 | 2026-10-01 | Automatizada |
+| F-051 | *Smarter false call reduction for electronics* (libro blanco) | Siemens Digital Industries Software | Proveedor | 2023-04 | 2026-10-01 | Automatizada |
+| F-052 | Ong, Tan, Teoh y Haron (2025). Review of solder joint vision inspection for industrial applications. *Int J Adv Manuf Technol*, 137(7), 3257–3272 | Académica | Académica | 2025 | 2026-10-01 | Automatizada (resumen y estructura) |
+| F-053 | Klco et al. (2023). Quality inspection of specific electronic boards by deep neural networks. *Scientific Reports*, 13, 20657 | Académica | Académica | 2023 | 2026-10-01 | Automatizada |
+| F-054 | Jaswanth et al. (2026). Edge-Based Deep Learning System for Automated PCB Component Inspection. *EPJ Web of Conferences*, 363, 01006 | Académica | Académica | 2026 | 2026-10-01 | Automatizada (resumen) |
+| F-055 | Lv et al. (2024). A dataset for deep learning based detection of printed circuit board surface defect (DsPCBSD+). *Scientific Data*, 11, 811 | Académica | Académica / dataset | 2024 | 2026-10-01 | Automatizada |
+| F-056 | Tang et al. (2019). Online PCB Defect Detector On a New PCB Defect Dataset (DeepPCB). arXiv:1902.06197 | Académica | Académica / dataset | 2019 | 2026-10-01 | Automatizada |
+| F-057 | *Optimal inspection of THT assemblies* | GÖPEL electronic | Proveedor | s. f. | 2026-10-01 | Automatizada |
+| F-058 | SolDef_AI: PCB dataset for defect detection (Kaggle) | Comunidad Kaggle | Dataset | 2024 | 2026-10-01 | Automatizada (solo metadatos) |
 
 ## F-001
 
@@ -213,6 +232,67 @@ https://icuap.buap.mx/content/centro-de-investigaciones-en-dispositivos-semicond
 ### F-039
 https://secihti.puebla.gob.mx/noticias/secihti-fortalece-alianzas-cientificas-y-academicas-en-puebla · Encuentro Estatal del Sistema de CTI (jun 2026) · Red académica estatal.
 
+## Fuentes de la Fase 3 (F-040 a F-058)
+
+Formato compacto: URL · qué aporta · implicación. Análisis en las notas de `05-semiconductores/`. Lectura automatizada: verificar antes de citar.
+
+### F-040
+https://puebla.gob.mx/index.php/noticias/item/24376-yankuilotl-posiciona-a-puebla-a-la-vanguardia-de-la-soberania-tecnologica-en-mexico · Director general, cuarto limpio clase 1000, operación desde ≈ abril 2026, fábrica de software (20 de 30 especialistas contratados), bicicleta pública · Perfil de Yankuilotl.
+
+### F-041
+https://alejandroarmenta.com.mx/2026/07/08/yankuilotl-coloca-a-puebla-como-referente-de-soberania-tecnologica-e-innovacion/ · Proceso de ensamble (diseño, distribución, validación, empastado, colocación y soldadura), capacidad SMT y through-hole, productos, ubicaciones · Proceso físico observable.
+
+### F-042
+https://clusterindustrial.com.mx/yankuilotl-impulsa-la-estrategia-tecnologica-de-puebla-con-semiconductores-software-y-movilidad-digital/ · Programación específica por proyecto; personas del área técnica; relación con Kutsari; universidades · Indicio de producción de alta mezcla.
+
+### F-043
+https://www.eluniversalpuebla.com.mx/estado/puebla-tambien-fabricara-tarjetas-electronicas-pcb-anuncia-armenta/ · Fabricación de PCB en 2027; "ya están saturados por la demanda" · Planta con presión de capacidad.
+
+### F-044
+https://historico.e-consulta.com/nota/2026-05-11/gobierno/inauguran-laboratorios-de-kutsari-en-puebla-15-meses-despues-del-anuncio · Laboratorios Kutsari en San Andrés Cholula; retraso y falta de equipo e internet en 2025 · Problema de infraestructura documentado.
+
+### F-045
+https://clusterindustrial.com.mx/puebla-impulsa-la-industria-de-semiconductores-con-nuevos-laboratorios-del-proyecto-kutsari/ · Laboratorios de caracterización y validación con INNOVA Bienestar · Contexto Kutsari.
+
+### F-046
+https://www.oecd.org/en/publications/promoting-the-development-of-the-semiconductor-ecosystem-in-mexico_02c81dec-en/full-report/assessment-and-recommendations_a54f7797.html · Posición de México (ATP y diseño), fortalezas y cinco temas de mejora · Diagnóstico nacional; leer el PDF completo en el navegador.
+
+### F-047
+https://goee.asu.edu/about/in-the-news/arizona-state-university-participated-launch-oecd-report-mexicos-semiconductor · Coordinación política–industria–educación; programas de talento con TecNM · Contexto de formación.
+
+### F-048
+https://canieti.org/storage/PageBuilderFiles/Mdbs9xohDrXx8BFTwgQPVUFsgSa1qz-metaUExBTiBNQUVTVFJPLUVTUEHDkU9MLnBkZg==-.pdf · Metas 2030 (incluye relocalizar PCB y ATP), formación ATP deficitaria; no menciona Puebla · Contexto nacional.
+
+### F-049
+https://diariosinsecretos.com/laboratorio-de-microelectronica-del-inaoe-semillero-de-proyectos-de-frontera/ · Historia y capacidades del Laboratorio de Microelectrónica del INAOE (nota de 2021) · Actualizar con fuente reciente.
+
+### F-050
+https://ciencia.covecyt.gob.mx/coveicydet-fortalece-talento-veracruzano-diez-estudiantes-se-especializan-en-semiconductores-en-el-inaoe/ · Semana de Semiconductores 2026 en el INAOE · Formación de talento.
+
+### F-051
+https://static.sw.cdn.siemens.com/siemens-disw-assets/public/1Ms1MRN5y1CWR4Q5aWqUCU/en-US/Siemens-SW-AOI-FCR-White-Paper.pdf · Tasas de alarma y falsas alarmas en AOI; errores de la revisión manual · Problema general de la industria (fuente de proveedor).
+
+### F-052
+https://link.springer.com/article/10.1007/s00170-025-15383-4 · Revisión de inspección de uniones de soldadura; retos abiertos · Estado del arte (B1).
+
+### F-053
+https://www.nature.com/articles/s41598-023-47958-0 · Caso industrial real con YOLOv8 y limitaciones de iluminación · Referencia metodológica.
+
+### F-054
+https://www.epj-conferences.org/articles/epjconf/abs/2026/19/epjconf_icldms2026_01006/epjconf_icldms2026_01006.html · Raspberry Pi 5 + YOLOv11 para componentes faltantes, sin métricas de precisión · Muestra que la tecnología base no es original.
+
+### F-055
+https://www.nature.com/articles/s41597-024-03656-8 · Dataset DsPCBSD+ de tarjeta desnuda (CC BY 4.0; descarga en https://doi.org/10.6084/m9.figshare.24970329) · Datos abiertos disponibles.
+
+### F-056
+https://ar5iv.labs.arxiv.org/html/1902.06197 · Dataset DeepPCB (https://github.com/tangsanli5201/DeepPCB) · Licencia por verificar.
+
+### F-057
+https://www.goepel.com/fileadmin/fachartikel/aoi/en/Optimal_Inspection_of_THT_Assemblies.pdf · Dificultades de inspección through-hole · Fuente de proveedor.
+
+### F-058
+https://www.kaggle.com/datasets/mauriziocalabrese/soldef-ai-pcb-dataset-for-defect-detection · Dataset de defectos de soldadura en tarjeta ensamblada · Detalles por verificar.
+
 ## Fuentes identificadas, pendientes de revisar
 
 | Fuente | URL | Por qué | Estado |
@@ -226,6 +306,10 @@ https://secihti.puebla.gob.mx/noticias/secihti-fortalece-alianzas-cientificas-y-
 | "Multan con 56 mdp a industrias de Puebla y Tlaxcala por descargas en el Atoyac" (El Popular, 17 jul 2026) | https://elpopular.mx/comunidad/medio-ambiente/2026/07/17/multan-con-56-mdp-a-industrias-de-puebla-y-tlaxcala-por-descargas-en-el-atoyac | Ampliar P-001 | Pendiente |
 | "Puebla se proyecta en semiconductores e IA con inversiones millonarias en Polo de Desarrollo" (Mexico Industry) | https://mexicoindustry.com/noticia/puebla-se-proyecta-en-semiconductores-e-ia-con-inversiones-millonarias-en-polo-de-desarrollo | Fase 3 | Pendiente |
 | "Puebla crea la empresa estatal Yankuilotl" (Intolerancia, 18 jul 2025) | https://intoleranciadiario.com/articles/gobierno/2025/07/18/1040637-puebla-crea-la-empresa-estatal-yankuilotl.html | Fase 3; localizar decreto en el Periódico Oficial | Pendiente |
-| Sitio de Kutsari (INNOVA Bienestar) | https://kutsari.innovabienestar.mx/ | Fase 3 | Pendiente |
+| Sitio de Kutsari (INNOVA Bienestar) | https://kutsari.innovabienestar.mx/ | Fase 3 | No accesible para la herramienta el 2026-10-01 (abrir en el navegador) |
 | "Puebla impulsa ciencia de alto impacto con semiconductores…" (Primera Plana) | https://primeraplanapuebla.com/gobierno/puebla-impulsa-ciencia-de-alto-impacto-con-semiconductores-innovacion-tecnologica-y-educacion/ | Fase 3 | No accesible el 2026-10-01 |
 | Ganadores poblanos de FEMECI 2024 (CONCYTEP) | https://concytep.gob.mx/participacion-concyt/proyectos-poblanos-ganadores-de-la-feria-mexicana-de-ciencias-e-ingenierias-femeci-2024-de-la-rednacecyt-y-el-concytep | Antecedentes FEMECI | Dominio fuera de servicio el 2026-10-01 |
+| Estudios técnicos de inspección pendientes de leer | Ver la tabla final de [[estudios-existentes]] | Estado del arte | Pendiente |
+| "Yankuilotl amplía su planta y podrá ensamblar 200 mil componentes electrónicos por hora" (Diario Cambio, 2026) | https://www.diariocambio.com.mx/2026/puebla/empresa-publica-paraestatal-yankuilotl-ensamble-electronico-armenta/ | Fase 3 | Pendiente |
+| "Puebla fabricará tarjetas electrónicas PCB a partir de 2027, anuncia Armenta" (Sucesos Puebla) | https://sucesospuebla.com/puebla-fabricara-tarjetas-electronicas-pcb-a-partir-de-2027-anuncia-armenta/ | Fase 3 | Pendiente |
+| Especialidad en Tecnologías de Semiconductores (INAOE) | https://posgrados.inaoep.mx/oferta-academica/especialidad-en-tecnologias-de-semiconductores/ | Formación de talento | Error de certificado del sitio |

@@ -41,6 +41,7 @@ En tablas, la etiqueta puede ir en una columna "Tipo" o en el encabezado de la c
 | `Q-###` | Pregunta abierta | [[preguntas-abiertas-convocatoria]] y guías en `09-entrevistas/` |
 | `R-##` | Riesgo | [[analisis-estrategico-convocatoria]], [[calendario-y-plazos]] |
 | `P-###` | Problema identificado | `08-problemas/` |
+| `OP-##` | Oportunidad preliminar (hipótesis aún sin problema confirmado) | Notas de investigación (p. ej., `05-semiconductores/`) |
 | `IC-##` | Hipótesis de proyecto candidata | `10-ideas-candidatas/` |
 | `EXP-###` | Experimento | `15-experimentos/` |
 | `DS-##` | Conjunto de datos | `14-dataset/` |

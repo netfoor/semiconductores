@@ -34,7 +34,7 @@ Las letras remiten a "Tu primera ejecución" del documento maestro.
 |---|---|---|
 | 1 | Análisis integral de la convocatoria (A, B) | ✅ Completada — pendiente de revisión del equipo |
 | 2 | Investigación estratégica: SECIHTI y prioridades de Puebla (C) | ✅ Completada el 1 oct — pendiente de revisión del equipo → [[sintesis-fase-2]] |
-| 3 | Ecosistema de semiconductores en Puebla, actores y problemas documentados (D, E) — hipótesis inicial, no aceptada de antemano | ⏳ Pendiente |
+| 3 | Ecosistema de semiconductores en Puebla, actores y problemas documentados (D, E), con estudios existentes — hipótesis inicial, no aceptada de antemano | ✅ Completada el 1 oct — pendiente de revisión → [[sintesis-fase-3]] |
 | 4 | Análisis del proyecto de referencia 2024 (F) | ⏳ Pendiente |
 | 5 | Información faltante, preguntas para la industria y mapa de oportunidades (G, H) | ⏳ Pendiente |
 | 6 | Decisión, protocolo, prototipo, experimentos y defensa | ⏳ Pendiente |
@@ -67,6 +67,13 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 - [[sintesis-fase-2]] — resumen, contrastación inicial de la hipótesis de semiconductores y familias de oportunidad.
 - [[secihti-puebla]] · [[femeci-antecedentes]] · [[planes-y-prioridades-cti]] · [[sectores-estrategicos]]
 - [[registro-de-problemas]] · [[mapa-de-actores]] · [[preguntas-pendientes]]
+- Carpeta dedicada: [[indice-inundaciones-sierra-norte]] (inundaciones de la Sierra Norte, útil con o sin FEMECI).
+
+## Notas clave de la Fase 3
+
+- [[sintesis-fase-3]] — respuestas a las preguntas del documento maestro sobre semiconductores.
+- [[ecosistema-por-eslabon]] · [[yankuilotl]] · [[kutsari-inaoe-buap]] · [[estudios-existentes]] · [[problemas-y-oportunidades]]
+- Para contactar a Yankuilotl: [[guia-contacto-yankuilotl]].
 
 ## Mapa de la bóveda
 
@@ -92,8 +99,8 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 
 ## Próximas acciones
 
-1. ✅ Líder (D-007), asesor (D-008) y versionado con git (D-004) decididos el 1 oct. Pendientes: política de IA (D-003) y bitácora manuscrita (D-002).
+1. ✅ Líder (D-007), asesor (D-008), git (D-004), uso de IA (D-003) y bitácora digital como fuente de verdad (D-002) decididos el 1 oct.
 2. ✅ Cuenta creada en la plataforma. Pendiente: descargar plantilla y formatos → [[checklist-expediente]].
 3. Iniciar el trámite de la carta institucional con la directora de división de la UTP.
 4. Enviar las preguntas P1/P2 a la DME → [[preguntas-abiertas-convocatoria]].
-5. ✅ Fase 2 completada. Siguiente: Fase 3 (ecosistema de semiconductores y electrónica, separando eslabones) y preguntar en la UTP por el vínculo con Yankuilotl (Q-028 en [[preguntas-pendientes]]).
+5. ✅ Fases 2 y 3 completadas. Ahora: contactar a Yankuilotl con [[guia-contacto-yankuilotl]] (la entrevista decide si la familia de semiconductores es viable) y seguir con la Fase 4 (presentación de 2024).

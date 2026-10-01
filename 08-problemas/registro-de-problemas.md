@@ -6,7 +6,7 @@ creado: 2026-10-01
 actualizado: 2026-10-01
 autor: "Claude (IA)"
 revisado_por: []
-fuentes: [F-011, F-014, F-019, F-020, F-031, F-032, F-033, F-034, F-035, F-036]
+fuentes: [F-011, F-014, F-019, F-020, F-031, F-032, F-033, F-034, F-035, F-036, F-040, F-041, F-042, F-043, F-044, F-051, F-052]
 tags: [femeci, problemas, fase-2]
 aliases: ["Problemas documentados"]
 ---
@@ -25,7 +25,8 @@ Problemas de Puebla con evidencia pública encontrados en la Fase 2. **Esto no e
 | P-002 | Inundaciones y deslaves en la Sierra Norte; compromiso de fortalecer pronóstico y alertamiento | Riesgo / Ciencias Ambientales | Alta (daño) · Media (alertamiento) | oct 2025 |
 | P-003 | Riesgo por cenizas del Popocatépetl y necesidad de monitoreo | Riesgo / Ciencias Ambientales | Media | 2026 |
 | P-004 | Brecha de talento en manufactura 4.0, calidad, automatización y software en la cadena automotriz | Industria / Ingenierías o Sistemas | Media-alta | 2025 |
-| P-005 | Construcción de capacidades en electrónica y semiconductores: validación, pruebas y calidad en procesos nuevos | Industria emergente / Sistemas o Ingenierías | Baja (problema técnico no descrito aún) | 2026 |
+| P-005 | Construcción de capacidades en electrónica y semiconductores: validación, pruebas y calidad en procesos nuevos | Industria emergente / Sistemas o Ingenierías | Baja-media (proceso descrito; falla técnica aún no documentada) | 2026 |
+| P-008 | Falsas alarmas e inspección manual poco confiable en ensamble electrónico | Industria electrónica / Sistemas | Media en la industria; **no verificado en Puebla** | 2023–2025 |
 | P-006 | Informalidad alta y baja digitalización de MIPyMES | Economía / Ciencias Sociales o Sistemas | Media | 2024–2025 |
 | P-007 | Capacidades técnicas agrícolas limitadas y residuos agroindustriales (bagazo de mezcal) | Agro / Agroindustria o Ambientales | Media | 2025–2026 |
 
@@ -66,6 +67,14 @@ Problemas de Puebla con evidencia pública encontrados en la Fase 2. **Esto no e
 - `#hecho` El objetivo declarado incluye retener talento especializado y "evitar la fuga de cerebros" [F-020].
 - **Qué falta saber (Fase 3):** qué problemas técnicos tienen hoy estas operaciones (defectos, inspección, pruebas, trazabilidad, rendimiento), cómo se resuelven y qué datos existen.
 - **Implicación (`#inferencia`):** alta alineación con la política del organizador, pero **todavía no hay un problema técnico documentado**: la hipótesis de semiconductores sigue abierta.
+- **Actualización Fase 3 (1 oct):** la planta de Yankuilotl opera desde ≈ abril de 2026 con SMT y through-hole, cuarto limpio clase 1000, programación específica de máquinas por proyecto y validación previa a la producción en serie; el gobernador dice que está "saturada por la demanda" y anunció fabricación de tarjetas PCB en 2027 [F-040 a F-043]. Los laboratorios Kutsari abrieron en mayo de 2026 tras 15 meses de retraso por falta de equipo e internet [F-044]. Sigue sin documentarse una falla técnica concreta: depende de la entrevista con Yankuilotl ([[guia-contacto-yankuilotl]]). Detalle en [[problemas-y-oportunidades]].
+
+## P-008 · Falsas alarmas e inspección manual en ensamble electrónico
+
+- `#hecho` Un documento de proveedor reporta que las máquinas AOI alarman en "5 to 70 percent of the passing throughput", que "up to 95 percent of those are false calls" y que la revisión manual tiene "30 percent chance of an operator missing a real error"; el problema empeora en líneas que producen muchos modelos [F-051].
+- `#hecho` Una revisión académica de 2025 señala como retos abiertos la escasez de datos, la generalización entre tarjetas distintas y el costo del hardware para pymes [F-052].
+- **Qué falta saber:** si algo de esto ocurre en Yankuilotl u otra planta poblana (Q-034 a Q-036).
+- **Implicación (`#inferencia`):** es un problema documentado en la industria, pero sin evidencia local todavía no sirve como problema de Puebla para el criterio A2.
 
 ## P-006 · Informalidad y digitalización de MIPyMES
 

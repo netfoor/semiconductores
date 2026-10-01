@@ -27,7 +27,7 @@ La convocatoria exige una "Bitácora de Investigación: registro cronológico de
 
 | Fecha | Fase | Resumen |
 |---|---|---|
-| [[2026-10-01]] | 1 y 2 | Sesión 1: inicio de la bitácora; lectura íntegra de la convocatoria; especificación, rúbrica, calendario, expediente, riesgos y estructura de la bóveda. Sesión 2: decisiones del equipo (líder, asesor, git), repositorio git e investigación estratégica sobre Puebla (Fase 2) |
+| [[2026-10-01]] | 1 y 2 | Sesión 1: inicio de la bitácora; lectura íntegra de la convocatoria; especificación, rúbrica, calendario, expediente, riesgos y estructura de la bóveda. Sesión 2: decisiones del equipo (líder, asesor, git), repositorio git e investigación estratégica sobre Puebla (Fase 2). Sesión 3: decisiones sobre IA y bitácora, carpeta de inundaciones de la Sierra Norte, guía de contacto con Yankuilotl y ecosistema de semiconductores con estudios existentes (Fase 3) |
 
 ## Antecedentes previos a la bitácora (por completar por el equipo)
 
