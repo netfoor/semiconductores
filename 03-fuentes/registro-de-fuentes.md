@@ -104,6 +104,12 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 - **Qué aporta:** resumen divulgativo de las reglas ISEF sobre participantes humanos.
 - **Implicación:** solo como apoyo; las afirmaciones se basan en F-005.
 
+## Registros de carpetas dedicadas
+
+| Prefijo | Tema | Registro |
+|---|---|---|
+| `SN-` | Inundaciones de la Sierra Norte | [[fuentes-inundaciones]] |
+
 ## Fuentes de la Fase 2 (F-007 a F-039)
 
 Formato compacto: URL · qué aporta · implicación. El análisis completo está en las notas de `04-investigacion-puebla/`, [[registro-de-problemas]] y [[mapa-de-actores]]. Todas se leyeron con una herramienta automatizada: antes de citar un dato en un entregable, verificarlo en la fuente original.

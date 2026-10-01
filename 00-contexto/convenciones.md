@@ -48,6 +48,8 @@ En tablas, la etiqueta puede ir en una columna "Tipo" o en el encabezado de la c
 
 Los IDs no se reutilizan. Lo descartado se marca como `descartado` con su razón; no se borra.
 
+Las carpetas temáticas dedicadas pueden llevar su propio registro de fuentes con prefijo propio (por ejemplo, `SN-##` para inundaciones de la Sierra Norte); el registro general las enlaza.
+
 ## 3. Citas
 
 - En el texto: `[F-001 §6.1]` (fuente + sección o página). Para la convocatoria basta `[§6.1]`.

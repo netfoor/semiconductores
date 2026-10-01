@@ -40,6 +40,9 @@ Problemas de Puebla con evidencia pública encontrados en la Fase 2. **Esto no e
 
 ## P-002 · Inundaciones y deslaves en la Sierra Norte
 
+> [!info] Carpeta dedicada
+> Todo lo encontrado sobre este tema (evento, alertamiento, trabajos en curso, estudios y fuentes) está en [[indice-inundaciones-sierra-norte]].
+
 - `#hecho` Cifras oficiales al 28 oct 2025: 22 personas fallecidas, más de 64 mil afectadas, 11 mil viviendas censadas [F-033].
 - `#hecho` Al 20 oct 2025, el gobernador reportó 23 municipios afectados, 404 deslaves, 11 puentes destruidos y 134.8 km de caminos dañados, y enumeró entre los ejes de respuesta el "fortalecimiento del sistema de pronóstico y alertamiento para prevenir futuros riesgos" [F-034, cita del gobernador en prensa].
 - **Qué falta saber:** qué sistema de pronóstico y alertamiento existe, qué se planea fortalecer y quién lo opera.

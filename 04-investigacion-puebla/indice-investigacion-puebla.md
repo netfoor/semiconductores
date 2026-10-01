@@ -22,6 +22,10 @@ tags: [femeci, puebla, fase-2]
 - [[sectores-estrategicos]] — automotriz, autopartes, textil, alimentos y sectores emergentes.
 - Relacionadas: [[registro-de-problemas]] · [[mapa-de-actores]] · [[preguntas-pendientes]].
 
+## Carpetas temáticas dedicadas
+
+- `inundaciones-sierra-norte/` → [[indice-inundaciones-sierra-norte]]: evento de octubre de 2025, alertamiento, trabajos en curso, estudios y fuentes (registro propio `SN-`).
+
 ## Qué va aquí
 
 Notas sobre la SECIHTI Puebla, el organizador de FEMECI-PUEBLA, planes y programas estatales de ciencia, tecnología e innovación, sectores estratégicos y problemas tecnológicos documentados del estado. Preguntas guía: documento maestro, "Segunda tarea".
