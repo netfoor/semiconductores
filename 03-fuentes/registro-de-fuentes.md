@@ -76,6 +76,24 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | F-056 | Tang et al. (2019). Online PCB Defect Detector On a New PCB Defect Dataset (DeepPCB). arXiv:1902.06197 | Académica | Académica / dataset | 2019 | 2026-10-01 | Automatizada |
 | F-057 | *Optimal inspection of THT assemblies* | GÖPEL electronic | Proveedor | s. f. | 2026-10-01 | Automatizada |
 | F-058 | SolDef_AI: PCB dataset for defect detection (Kaggle) | Comunidad Kaggle | Dataset | 2024 | 2026-10-01 | Automatizada (solo metadatos) |
+| F-059 | Presentación *Industrial Semiconductor Inspection System with cloud-Based Inventory Control* (Canva; 11 diapositivas y 4 videos; marcada "Confidential") | Autores no identificados; Mirai Innovation, 2024 | Primaria (proyecto de referencia) | 2024 (videos del 2024-11-28 y 2024-12-02) | 2026-10-01 | Directa (texto extraído y revisión visual; videos cuadro por cuadro, sin audio) |
+| F-060 | See, J. E. (2015). Visual Inspection Reliability for Precision Manufactured Parts. *Human Factors*, 57(8), 1427–1442 | Académica (Sandia National Laboratories) | Académica | 2015 | 2026-10-01 | Automatizada (resumen) |
+| F-061 | Guía "Raspberry Pi" de Ultralytics: benchmarks de YOLO26 en Raspberry Pi 5 | Ultralytics | Primaria (documentación técnica) | 2026 (Ultralytics 8.4.108) | 2026-10-01 | Automatizada |
+| F-062 | Documentación de Ultralytics YOLO26 | Ultralytics | Primaria (documentación técnica) | 2026-01 (lanzamiento) | 2026-10-01 | Automatizada |
+| F-063 | "Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5" | Raspberry Pi Ltd | Primaria (fabricante) | 2026-01-15 | 2026-10-01 | Automatizada |
+| F-064 | "Raspberry Pi AI HAT+ features Hailo-8L or Hailo-8 AI accelerator with up to 26 TOPS of performance" | CNX Software | Secundaria | 2024-10-24 | 2026-10-01 | Automatizada |
+| F-065 | "Sony Semiconductor Solutions and Raspberry Pi Launch the Raspberry Pi AI Camera" | Sony Semiconductor Solutions | Primaria (fabricante) | 2024-09-30 | 2026-10-01 | Automatizada |
+| F-066 | "NVIDIA Jetson Orin Nano Developer Kit Gets a 'Super' Boost" | NVIDIA | Primaria (fabricante) | 2024-12-17 | 2026-10-01 | Automatizada |
+| F-067 | "Raspberry Pi 5 price increases drastically as AI shortage bites, 16GB version now $205…" | Tom's Hardware | Secundaria | 2026-02-02 | 2026-10-01 | Automatizada |
+| F-068 | "A new 3GB Raspberry Pi 4 for $83.75, and more memory-driven price increases" | Raspberry Pi Ltd | Primaria (fabricante) | 2026-04-01 | 2026-10-01 | Automatizada |
+| F-069 | Página de producto de la Raspberry Pi 5 | Raspberry Pi Ltd | Primaria (fabricante) | s. f. (vigente) | 2026-10-01 | Automatizada |
+| F-070 | "AWS Launches Infrastructure Region in Mexico" | Amazon Web Services (vía Business Wire) | Primaria (empresa) | 2025-01-14 | 2026-10-01 | Automatizada |
+| F-071 | "Microsoft anuncia el inicio de operaciones de la primera región de centros de datos de nube a hiper escala en México" | Microsoft | Primaria (empresa) | 2024-05-07 | 2026-10-01 | Automatizada |
+| F-072 | "Google launches Mexican cloud region in Querétaro" | DatacenterDynamics | Secundaria | 2024-12-07 | 2026-10-01 | Automatizada |
+| F-073 | Andriulo, Fiore, Mongiello, Traversa y Zizzo (2024). Edge Computing and Cloud Computing for Internet of Things: A Review. *Informatics*, 11(4), 71 | Académica | Académica | 2024 | 2026-10-01 | Automatizada |
+| F-074 | NIST SP 800-82 Rev. 3, *Guide to Operational Technology (OT) Security* | NIST | Primaria (organismo de normalización) | 2023-09-28 | 2026-10-01 | Automatizada (resumen y estructura) |
+| F-075 | MIRI — Mirai Innovation Research Internship Program | Mirai Innovation Research Institute | Primaria institucional | s. f. | 2026-10-01 | Automatizada |
+| F-076 | Heckler-Kram, Neudeck, Scheler, König y Steger (2025). The MVTec AD 2 Dataset: Advanced Scenarios for Unsupervised Anomaly Detection. arXiv:2503.21622 | Académica (MVTec) | Académica / dataset | 2025-03-27 | 2026-10-01 | Automatizada (resumen) |
 
 ## F-001
 
@@ -293,6 +311,69 @@ https://www.goepel.com/fileadmin/fachartikel/aoi/en/Optimal_Inspection_of_THT_As
 ### F-058
 https://www.kaggle.com/datasets/mauriziocalabrese/soldef-ai-pcb-dataset-for-defect-detection · Dataset de defectos de soldadura en tarjeta ensamblada · Detalles por verificar.
 
+## Fuentes de la Fase 4 (F-059 a F-076)
+
+Formato compacto: URL · qué aporta · implicación. Análisis en las notas de `07-proyecto-2024/`. Salvo F-059, lectura automatizada: verificar antes de citar.
+
+### F-059
+https://canva.link/lbqz7r56ctu1vdz (redirige al modo de vista de Canva) · Presentación del proyecto de referencia 2024.
+- **Cómo se leyó:** el 2026-10-01 en el navegador integrado, sin iniciar sesión, sin descargar y sin aceptar cookies. Texto extraído de la página, revisión visual de cada diapositiva y cuatro grabaciones de pantalla revisadas cuadro por cuadro, sin audio.
+- **Qué contiene:** arquitectura de tres capas, demostración con tarjeta PCB educativa y brazo robótico, plan de negocio y referencias ajenas al tema (prótesis).
+- **Cuidados:** marcada "Confidential" y sin autores; parafrasear y no reproducir.
+- **Afirmaciones sin fuente:** "20-30 %" (ver F-060) y "$2 billion" (una búsqueda web del 2026-10-01 no encontró fuente).
+- **Notas:** [[contenido-presentacion-2024]] y [[analisis-proyecto-2024]].
+
+### F-060
+https://journals.sagepub.com/doi/10.1177/0018720815602389 · "For most inspection tasks, missed defects typically range from 20% to 30%"; en el estudio, los inspectores rechazaron correctamente 85 % de los defectuosos y rechazaron por error 35 % de los aceptables · Dato correcto detrás del "20-30 %" mal formulado de F-059; útil si el problema involucra inspección visual humana.
+
+### F-061
+https://docs.ultralytics.com/guides/raspberry-pi/ · YOLO26n en Raspberry Pi 5: NCNN 67 ms por imagen (640 px, FP32); OpenVINO 105 ms; ONNX 126 ms; PyTorch 299 ms · Referencia de latencia para inferencia local en CPU.
+
+### F-062
+https://docs.ultralytics.com/models/yolo26 · Lanzado en enero de 2026; sin NMS; hasta 43 % más rápido en CPU que YOLO11n; licencias AGPL-3.0 o empresarial · Modelos más ligeros; revisar la licencia si se publica código.
+
+### F-063
+https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/ · AI HAT+ 2: 130 USD, Hailo-10H, 40 TOPS (INT4), 8 GB de RAM; en visión, "broadly equivalent" al AI HAT+ de 26 TOPS · Opción de acelerador.
+
+### F-064
+https://www.cnx-software.com/2024/10/24/raspberry-pi-ai-hat-plus-features-hailo-8l-or-hailo-8-ai-accelerator-with-up-to-26-tops-of-performance/ · AI HAT+ de 13 TOPS (70 USD) y 26 TOPS (110 USD), PCIe Gen3 · Opción de acelerador.
+
+### F-065
+https://sony.mediaroom.com/2024-09-30-Sony-Semiconductor-Solutions-and-Raspberry-Pi-Launch-the-Raspberry-Pi-AI-Camera · AI Camera: 70 USD, IMX500 de 12.3 MP con inferencia dentro del sensor; 4056×3040 a 10 fps o 2028×1520 a 40 fps · Opción de inferencia en el sensor.
+
+### F-066
+https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/ · Jetson Orin Nano Super: 249 USD, 67 TOPS (dispersos) o 33 (densos), 7–25 W · Opción de mayor capacidad.
+
+### F-067
+https://www.tomshardware.com/raspberry-pi/raspberry-pi-5-price-increases-drastically-as-ai-shortage-bites-16gb-version-now-usd205-second-price-increase-in-three-months-over-70-percent-more-expensive-than-original-msrp · Raspberry Pi 5 en febrero de 2026: 4 GB 85 USD, 8 GB 125 USD, 16 GB 205 USD (originales: 60, 80 y 120) · Base para estimar precios actuales.
+
+### F-068
+https://www.raspberrypi.com/news/a-new-3gb-raspberry-pi-4-for-83-75-and-more-memory-driven-price-increases/ · Aumentos del 1 abr 2026: +25 (4 GB), +50 (8 GB), +100 (16 GB); la memoria LPDDR4 subió siete veces en un año · El hardware local se encareció.
+
+### F-069
+https://www.raspberrypi.com/products/raspberry-pi-5/ · Raspberry Pi 5 de 16 GB a 305 USD (consulta del 2026-10-01); CPU Cortex-A76 de cuatro núcleos a 2.4 GHz · Precio vigente de lista.
+
+### F-070
+https://www.businesswire.com/news/home/20250114697961/en/AWS-Launches-Infrastructure-Region-in-Mexico · Región AWS México (Central) en Querétaro, 3 zonas de disponibilidad, 14 ene 2025 · Nube con datos dentro del país.
+
+### F-071
+https://news.microsoft.com/es-xl/microsoft-anuncia-el-inicio-de-operaciones-de-la-primera-region-de-centros-de-datos-de-nube-a-hiper-escala-en-mexico/ · Región Azure México Central (área metropolitana de Querétaro), 7 may 2024 · Nube con datos dentro del país.
+
+### F-072
+https://www.datacenterdynamics.com/en/news/google-launches-mexican-cloud-region-in-queretaro/ · Región de Google Cloud en Querétaro, 7 dic 2024 · Nube con datos dentro del país.
+
+### F-073
+https://www.mdpi.com/2227-9709/11/4/71 (DOI 10.3390/informatics11040071) · Ventajas y desventajas de edge y nube (latencia, red, privacidad, capacidad, escalado, costo); los esquemas híbridos atienden las limitaciones de ambos · Marco para la comparación.
+
+### F-074
+https://csrc.nist.gov/pubs/sp/800/82/r3/final · Guía de seguridad para tecnología operacional; la sección 5 trata la segmentación y separación de redes de planta (resumen consultado en https://csf.tools/reference/nist-sp-800-82/r3/) · Argumento sobre conectar estaciones de planta a internet.
+
+### F-075
+https://www.mirai-innovation.jp/miri/ · Estancias de investigación de 4, 8 o 12 semanas en Osaka (IA y visión, robótica, realidad virtual y aumentada, neurotecnología), con presentación final · Contexto del proyecto 2024.
+
+### F-076
+https://arxiv.org/abs/2503.21622 · MVTec AD 2: 8 escenarios y más de 8,000 imágenes de alta resolución; los mejores métodos quedan por debajo de 60 % de AU-PRO · La detección de anomalías sin ejemplos de defectos no está resuelta en escenarios difíciles.
+
 ## Fuentes identificadas, pendientes de revisar
 
 | Fuente | URL | Por qué | Estado |
@@ -313,3 +394,5 @@ https://www.kaggle.com/datasets/mauriziocalabrese/soldef-ai-pcb-dataset-for-defe
 | "Yankuilotl amplía su planta y podrá ensamblar 200 mil componentes electrónicos por hora" (Diario Cambio, 2026) | https://www.diariocambio.com.mx/2026/puebla/empresa-publica-paraestatal-yankuilotl-ensamble-electronico-armenta/ | Fase 3 | Pendiente |
 | "Puebla fabricará tarjetas electrónicas PCB a partir de 2027, anuncia Armenta" (Sucesos Puebla) | https://sucesospuebla.com/puebla-fabricara-tarjetas-electronicas-pcb-a-partir-de-2027-anuncia-armenta/ | Fase 3 | Pendiente |
 | Especialidad en Tecnologías de Semiconductores (INAOE) | https://posgrados.inaoep.mx/oferta-academica/especialidad-en-tecnologias-de-semiconductores/ | Formación de talento | Error de certificado del sitio |
+| *Visual Inspection: A Review of the Literature* (Sandia, SAND2012-8590) | https://www.osti.gov/biblio/1055636 | Revisión original sobre la confiabilidad de la inspección visual humana (complementa F-060) | Bloqueado para la herramienta el 2026-10-01; leer en el navegador |
+| Precios de nube para inferencia (cómputo, almacenamiento y transferencia) en las regiones de Querétaro | Calculadoras oficiales de cada proveedor | Costo recurrente de la opción A en [[comparacion-nube-vs-edge]] | Consultar el día en que se decida (los precios cambian) |

@@ -26,6 +26,7 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-006 | Categoría temática | Pendiente (G1) | — | Equipo |
 | D-007 | Líder de Proyecto | **Adoptada: Fortino Romero Mantilla** | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-008 | Asesor institucional y posible asesor científico externo | **Adoptada (asesor institucional): Prof. José Francisco Espinosa Garita**; asesor externo pendiente | 2026-10-01 | Equipo (comunicado por Fortino) |
+| D-009 | Ubicación del procesamiento (nube, local o híbrido) | Pendiente: se decide con un experimento después de elegir el problema | — | Equipo, con datos del experimento |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -81,3 +82,11 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 - **Decisión (2026-10-01):** asesor institucional: **Prof. José Francisco Espinosa Garita** (UTP) [§3.5].
 - **Pendiente:** justificar la congruencia de su perfil con la temática cuando se defina el problema; confirmar su disponibilidad para revisar el protocolo (14 oct) y firmar F-02 (15–16 oct) (Q-019).
 - **Asesor científico externo** (universidad, centro de investigación o industria, opcional y recomendado para temas especializados [§3.6]): pendiente; se evaluará con los contactos del sector (Q-024).
+
+## D-009 · Ubicación del procesamiento: nube, local o híbrido (pendiente)
+
+- **Contexto:** el proyecto de referencia 2024 planteaba parte del procesamiento en la nube. El documento maestro pide compararlo técnicamente con la inferencia local (por ejemplo, en Raspberry Pi) **sin decidir todavía**.
+- **Opciones:** A nube · B local en CPU · C local con acelerador · D híbrida · E local sin internet · F teléfono. Detalle en [[comparacion-nube-vs-edge]] §3.
+- **Cómo se decidirá:** con el experimento de [[comparacion-nube-vs-edge]] §8. La regla de decisión se fija antes de medir: la opción más simple que cumpla latencia, exactitud, operación sin internet o confidencialidad si aplican, y costo.
+- **Depende de:** el problema elegido (G1), el tiempo de ciclo (Q-044), la conectividad y la política de datos del usuario (Q-043, Q-037) y el internet en la mesa de exhibición (Q-014).
+- **Registro:** 2026-10-01, Fase 4, por Claude (IA). Queda pendiente por instrucción del documento maestro.

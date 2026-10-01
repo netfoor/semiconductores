@@ -6,20 +6,36 @@ creado: 2026-10-01
 actualizado: 2026-10-01
 autor: "Claude (IA)"
 revisado_por: []
+fuentes: [F-001, F-004, F-059]
 tags: [femeci, proyecto-2024, fase-4]
 ---
 
 # Proyecto de referencia 2024 — índice
 
-**Estado:** pendiente (Fase 4). **Material:** presentación en Canva indicada en el documento maestro (https://canva.link/lbqz7r56ctu1vdz); si no se puede abrir, el equipo proporcionará el PDF.
+**Estado:** Fase 4 completada el 2026-10-01; pendiente de revisión del equipo.
 
-## Qué va aquí
+**Material:** presentación en Canva indicada en el documento maestro (https://canva.link/lbqz7r56ctu1vdz) [F-059]. Se leyeron las 11 diapositivas y los 4 videos de la diapositiva 7 en el navegador. No hizo falta el PDF.
 
-Análisis del problema que atacaba, arquitectura, tecnologías, supuestos, limitaciones, qué sigue vigente en 2026, qué cambió, qué podría reutilizarse conceptualmente y qué haríamos diferente (preguntas del documento maestro).
+## Notas
+
+| Nota | Qué contiene |
+|---|---|
+| [[contenido-presentacion-2024]] | Registro fiel: diapositiva por diapositiva, videos, datos visibles y cronología (octubre a diciembre de 2024) |
+| [[analisis-proyecto-2024]] | Las nueve preguntas del documento maestro: problema, arquitectura, tecnologías, supuestos, limitaciones, vigencia, cambios, qué reutilizar, qué haríamos diferente; además, originalidad y autoría |
+| [[comparacion-nube-vs-edge]] | Comparación técnica nube / local / híbrido, con datos de referencia, cálculos y el experimento que decidiría. **Sin decisión** (D-009 pendiente) |
+
+## Conclusiones en una línea
+
+- `#inferencia` Fue un demostrador de integración (visión, web, inventario y brazo robótico) probado con una tarjeta educativa y defectos simulados, sin métricas ni fuentes pertinentes. Sirve como **lección**, no como base para reconstruir.
+- `#inferencia` Lo reutilizable son conceptos: humano en el ciclo, modos manual y automático para tener línea base, trazabilidad y reportes.
+- `#inferencia` En la decisión nube/edge pesan el tiempo de ciclo, la conectividad y la política de datos del usuario, que aún no conocemos.
 
 ## Reglas de originalidad que aplican desde ya
 
 - `#hecho` La convocatoria descalifica por plagio total **o parcial** y por suplantación de autoría [F-001 §9.1], y exige la declaración F-04.
-- `#hecho` Existe el formato FE-07 para proyectos de continuidad [F-001 §5.1]; en otro capítulo estatal, omitir la declaración de continuidad causa descalificación [F-004].
-- `#pregunta` ¿Quiénes son los autores del proyecto 2024 y participó alguno de nosotros? (Q-023) ¿Qué cuenta como continuidad para la DME? (Q-011)
-- Mientras tanto: no copiar texto, figuras ni diagramas de la presentación a ningún entregable; si se usa como referencia conceptual, citarla y explicar en qué nos diferenciamos.
+- `#hecho` Existe el formato FE-07 para proyectos de continuidad [F-001 §5.1]. En otro capítulo estatal, omitir la declaración de continuidad causa descalificación [F-004].
+- `#hecho` La presentación lleva "Confidential" en todas las diapositivas y no nombra autores. La tarjeta inspeccionada lleva el logotipo de MIRAI [F-059].
+- `#pregunta` ¿Quiénes son los autores del proyecto 2024 y participó alguno de nosotros? (Q-023). ¿Qué cuenta como continuidad para la DME? (Q-011). ¿Se puede citar o mostrar algo de la presentación? (Q-042)
+- **Mientras tanto:**
+  - no copiar texto, figuras, diagramas, capturas ni código de la presentación a ningún entregable;
+  - si se usa como referencia conceptual, citarla y explicar en qué nos diferenciamos. Escenarios en [[analisis-proyecto-2024]] §12.

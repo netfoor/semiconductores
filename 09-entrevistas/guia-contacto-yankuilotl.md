@@ -47,6 +47,11 @@ Pregunta clave para tus contactos: ¿hay convenio o colaboración entre la UTP y
 10. ¿Qué perfiles técnicos les cuesta más conseguir?
 11. ¿Alguien de su equipo podría orientarnos como asesor externo del proyecto?
 
+*Agregadas el 1 oct (Fase 4). Deciden si el procesamiento puede ir a la nube o debe quedarse en la planta; ver [[comparacion-nube-vs-edge]]:*
+
+12. ¿Las estaciones de la línea tienen red o internet? ¿Pueden salir imágenes o datos de la planta hacia servicios en la nube, o todo debe quedarse en su red? ¿Qué equipos se permite conectar? (Q-043)
+13. En la etapa donde podríamos ayudar, ¿cuánto tiempo hay por tarjeta? ¿Cuántos modelos de tarjeta distintos pasan por día o por semana? (Q-044)
+
 ## 4. Lo que podemos ofrecer
 
 - Dedicar el proyecto a **un problema que a ellos les sirva**, sin costo, con resultados y documentación que podrán usar.

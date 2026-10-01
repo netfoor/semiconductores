@@ -46,7 +46,7 @@ Prioridad: **P1** bloquea el registro · **P2** afecta el diseño del proyecto �
 | Q-020 | ¿Qué autoridad de la UTP emite la carta de postulación y cuánto tarda el trámite? | REQ-DOC-03 | Parcial (1 oct): la gestiona la directora de división; falta conocer el tiempo del trámite |
 | Q-021 | ¿Ambos tienen INE vigente y matrícula 2026-2027? | REQ-ELG-01 | Abierta |
 | Q-022 | ¿Ambos pueden asistir el viernes 30 oct y, si se acredita el proyecto, viajar en marzo 2027 (considerando estadías, prácticas o empleo)? | REQ-ELG-04 | Abierta |
-| Q-023 | ¿Quiénes son los autores del proyecto de referencia 2024? ¿Participó alguno de nosotros? ¿Se presentó en algún certamen? | REQ-DER-10, FE-07 | Abierta |
+| Q-023 | ¿Quiénes son los autores del proyecto de referencia 2024? ¿Participó alguno de nosotros? ¿Se presentó en algún certamen? | REQ-DER-10, FE-07 | Abierta. Nuevos indicios (1 oct, Fase 4): la presentación no nombra autores, lleva "Confidential" y apunta a una estancia en Mirai Innovation entre octubre y diciembre de 2024; el documento maestro dice que Fortino e Israel estuvieron en Japón mediante MIRAI. Escenarios en [[analisis-proyecto-2024]] §12 |
 | Q-024 | ¿Qué contactos del sector están disponibles para entrevistas entre el 5 y el 9 oct? ¿Alguno podría ser asesor científico externo? | EV-02, §3.6 | Abierta |
 | Q-025 | ¿Llevaremos además una bitácora manuscrita? | D-002 | ✅ Resuelta (1 oct): no; la bitácora digital es la fuente de verdad, salvo que la DME exija manuscrita (Q-006) |
 | Q-026 | ¿Versionamos la bóveda con git para tener sellos de tiempo verificables? | D-004, C3 | ✅ Resuelta (1 oct): sí; repositorio inicializado |

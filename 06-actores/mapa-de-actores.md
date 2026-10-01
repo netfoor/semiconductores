@@ -6,7 +6,7 @@ creado: 2026-10-01
 actualizado: 2026-10-01
 autor: "Claude (IA)"
 revisado_por: []
-fuentes: [F-001, F-003, F-009, F-011, F-018, F-019, F-020, F-021, F-022, F-023, F-024, F-025, F-027, F-031, F-032, F-036, F-038, F-039, F-040, F-041, F-042, F-043, F-044, F-045, F-046, F-047, F-048, F-049, F-050]
+fuentes: [F-001, F-003, F-009, F-011, F-018, F-019, F-020, F-021, F-022, F-023, F-024, F-025, F-027, F-031, F-032, F-036, F-038, F-039, F-040, F-041, F-042, F-043, F-044, F-045, F-046, F-047, F-048, F-049, F-050, F-059, F-075]
 tags: [femeci, actores, fase-2]
 aliases: ["Mapa de actores"]
 ---
@@ -44,6 +44,7 @@ Primera versión, construida en la Fase 2. Los actores del ecosistema de semicon
 | Instituto Tecnológico de Puebla (TecNM) | Centro Olinia de electromovilidad | Referente en electromovilidad | F-024, F-009 |
 | Tecnológico de Monterrey (Puebla) | Mencionado como participante en Yankuilotl | Por investigar | F-019 |
 | El Colegio de Puebla | Anfitrión del Encuentro Estatal del Sistema de CTI (jun 2026) | Red académica estatal | F-039 |
+| Mirai Innovation Research Institute (Osaka, Japón; fuera de Puebla) | Estancias de investigación de 4 a 12 semanas en IA y visión por computadora, robótica, realidad virtual y aumentada, y neurotecnología; contexto probable del proyecto de referencia 2024 | Antecedente del equipo (Q-023); a quién preguntar si se puede citar o mostrar la presentación (Q-042). Ver [[analisis-proyecto-2024]] | F-059, F-075 |
 
 ## Industria
 

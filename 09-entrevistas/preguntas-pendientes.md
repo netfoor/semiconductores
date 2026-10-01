@@ -12,7 +12,7 @@ aliases: ["Preguntas pendientes"]
 
 # Preguntas pendientes para contactos externos
 
-Preguntas que no se pueden responder con fuentes públicas. Las dudas sobre la convocatoria están en [[preguntas-abiertas-convocatoria]] (Q-001 a Q-027). Guía lista para Yankuilotl: [[guia-contacto-yankuilotl]]. Las demás guías se prepararán en la Fase 5. Pautas éticas: [[indice-entrevistas]].
+Preguntas que no se pueden responder con fuentes públicas. Las dudas sobre la convocatoria están en [[preguntas-abiertas-convocatoria]] (Q-001 a Q-027). Guía lista para Yankuilotl: [[guia-contacto-yankuilotl]]. Las preguntas Q-040 a Q-044 salen de la Fase 4 ([[analisis-proyecto-2024]], [[comparacion-nube-vs-edge]]). Las demás guías se prepararán en la Fase 5. Pautas éticas: [[indice-entrevistas]].
 
 | ID | Pregunta | A quién | Por qué importa | Origen | Estado |
 |---|---|---|---|---|---|
@@ -28,3 +28,8 @@ Preguntas que no se pueden responder con fuentes públicas. Las dudas sobre la c
 | Q-037 | ¿Qué datos guardan, se pueden usar y mostrar? ¿Es posible visitar la línea o fotografiar tarjetas (incluidas defectuosas)? | Yankuilotl | Datos propios y permisos (B3, REQ-ETI-05) | — | Abierta |
 | Q-038 | ¿Por qué usan cuarto limpio clase 1000 para ensamble de tarjetas? | Yankuilotl | Entender sus requisitos de calidad | F-040 | Abierta |
 | Q-039 | ¿Tenemos acceso a las normas IPC-A-610 e IPC J-STD-001? | Biblioteca de la UTP; Yankuilotl | Clases de defectos alineadas con normas (A4, A5) | — | Abierta |
+| Q-040 | Proyecto 2024: ¿qué técnica de visión se usó (procesamiento clásico con OpenCV o un modelo entrenado)? ¿Se probaron defectos reales? ¿Hubo métricas? | Autores del proyecto 2024 (vía Fortino) | Saber qué se aprendió técnicamente y no repetirlo como novedad | F-059 | Abierta |
+| Q-041 | Proyecto 2024: ¿dónde corría cada componente (controlador central, backend, base de datos): en la red local o en la nube? | Autores del proyecto 2024 (vía Fortino) | Punto de partida real de la comparación nube/edge ([[comparacion-nube-vs-edge]]) | F-059 | Abierta |
+| Q-042 | Proyecto 2024: ¿la leyenda "Confidential" es una restricción real de Mirai o de los autores? ¿Se puede citar o mostrar algo de la presentación? | Autores o Mirai Innovation (vía Fortino) | Originalidad y manejo ético de la información (§9.1, F-04, B3) | F-059, F-075 | Abierta |
+| Q-043 | ¿Las estaciones tienen red o internet? ¿Pueden salir imágenes o datos de la planta hacia servicios en la nube, o todo debe quedarse en su red? ¿Qué equipos se permite conectar en la línea? | Yankuilotl (o la planta o laboratorio que se elija) | Decide si la opción en la nube es viable | F-074 | Abierta |
+| Q-044 | En la etapa donde podríamos ayudar, ¿cuánto tiempo hay por tarjeta? ¿Cuántos modelos de tarjeta pasan por día o por semana? | Yankuilotl (o la planta o laboratorio que se elija) | Presupuesto de latencia y necesidad de gestión central de modelos | F-042 | Abierta |

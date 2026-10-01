@@ -35,7 +35,7 @@ Las letras remiten a "Tu primera ejecución" del documento maestro.
 | 1 | Análisis integral de la convocatoria (A, B) | ✅ Completada — pendiente de revisión del equipo |
 | 2 | Investigación estratégica: SECIHTI y prioridades de Puebla (C) | ✅ Completada el 1 oct — pendiente de revisión del equipo → [[sintesis-fase-2]] |
 | 3 | Ecosistema de semiconductores en Puebla, actores y problemas documentados (D, E), con estudios existentes — hipótesis inicial, no aceptada de antemano | ✅ Completada el 1 oct — pendiente de revisión → [[sintesis-fase-3]] |
-| 4 | Análisis del proyecto de referencia 2024 (F) | ⏳ Pendiente |
+| 4 | Análisis del proyecto de referencia 2024 (F), con comparación técnica nube/edge | ✅ Completada el 1 oct — pendiente de revisión → [[analisis-proyecto-2024]] |
 | 5 | Información faltante, preguntas para la industria y mapa de oportunidades (G, H) | ⏳ Pendiente |
 | 6 | Decisión, protocolo, prototipo, experimentos y defensa | ⏳ Pendiente |
 
@@ -75,6 +75,13 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 - [[ecosistema-por-eslabon]] · [[yankuilotl]] · [[kutsari-inaoe-buap]] · [[estudios-existentes]] · [[problemas-y-oportunidades]]
 - Para contactar a Yankuilotl: [[guia-contacto-yankuilotl]].
 
+## Notas clave de la Fase 4
+
+- [[analisis-proyecto-2024]]: qué resolvía el proyecto 2024, supuestos, limitaciones, qué sigue vigente, qué cambió, qué reutilizar, qué haríamos diferente, y autoría y originalidad.
+- [[contenido-presentacion-2024]]: registro diapositiva por diapositiva y de los videos.
+- [[comparacion-nube-vs-edge]]: nube, local o híbrido, con datos de referencia y el experimento que decidiría (D-009, pendiente).
+- Índice: [[indice-proyecto-2024]].
+
 ## Mapa de la bóveda
 
 | Carpeta | Contenido |
@@ -103,4 +110,6 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 2. ✅ Cuenta creada en la plataforma. Pendiente: descargar plantilla y formatos → [[checklist-expediente]].
 3. Iniciar el trámite de la carta institucional con la directora de división de la UTP.
 4. Enviar las preguntas P1/P2 a la DME → [[preguntas-abiertas-convocatoria]].
-5. ✅ Fases 2 y 3 completadas. Ahora: contactar a Yankuilotl con [[guia-contacto-yankuilotl]] (la entrevista decide si la familia de semiconductores es viable) y seguir con la Fase 4 (presentación de 2024).
+5. ✅ Fases 2, 3 y 4 completadas. Ahora: contactar a Yankuilotl con [[guia-contacto-yankuilotl]] (la entrevista decide si la familia de semiconductores es viable; se agregaron dos preguntas sobre conectividad y tiempo de ciclo).
+6. Responder si Fortino o Israel son autores del proyecto 2024 (Q-023): define si aplica FE-07 y cómo citarlo.
+7. Fase 5 (5–6 oct): información faltante, guías de entrevista y mapa de oportunidades con matriz de comparación.
