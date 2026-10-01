@@ -1,0 +1,16 @@
+# Configuración local de Obsidian (si esta carpeta se abre como bóveda independiente)
+.obsidian/workspace*.json
+.obsidian/cache
+.trash/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+.venv/
+
+# Nota: los datos crudos pesados (imágenes, videos) se decidirán al definir el dataset
+# (posible Git LFS o almacenamiento externo con hash registrado en 14-dataset/).

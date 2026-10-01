@@ -1,0 +1,23 @@
+---
+titulo: "Ideas candidatas — índice"
+tipo: indice
+estado: borrador
+creado: 2026-10-01
+actualizado: 2026-10-01
+autor: "Claude (IA)"
+revisado_por: []
+tags: [femeci, ideas]
+---
+
+# Ideas candidatas — índice
+
+**Estado:** pendiente (Fase 5). Aquí se construyen **varias** hipótesis de proyecto (IC-##) y se comparan antes de elegir; ninguna se elige sin evidencia.
+
+## Criterios de comparación
+
+1. **Del documento maestro:** problema real demostrado; relevancia para Puebla; evidencia disponible; alineación con FEMECI; rigor metodológico demostrable; originalidad; impacto potencial; viabilidad en el tiempo; hardware disponible; datos disponibles o creables; prototipo funcional; experimentos cuantitativos; facilidad para demostrar resultados; riesgos y dependencias externas.
+2. **Impuestos por la convocatoria:** ver [[analisis-estrategico-convocatoria]] §7 (evidencia a tiempo, medible en 29 días, piloto antes del 14 oct, cumplimiento ético sencillo, demo segura y autónoma, explicable en 8–10 min, datos con derechos claros, defendible por ambos, congruencia con el asesor).
+
+## Ficha de idea candidata (plantilla)
+
+`IC-##-nombre-corto.md`: problema vinculado (P-###) · pregunta o meta · qué se mediría · datos necesarios · prototipo mínimo · experimento piloto posible antes del 14 oct · modalidad y categoría probables · formatos FE que activaría · riesgos · evidencia a favor y en contra · puntaje en la matriz.
