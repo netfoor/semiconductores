@@ -35,7 +35,11 @@ tags: [femeci, proyecto-2024, fase-4]
 - `#hecho` La convocatoria descalifica por plagio total **o parcial** y por suplantación de autoría [F-001 §9.1], y exige la declaración F-04.
 - `#hecho` Existe el formato FE-07 para proyectos de continuidad [F-001 §5.1]. En otro capítulo estatal, omitir la declaración de continuidad causa descalificación [F-004].
 - `#hecho` La presentación lleva "Confidential" en todas las diapositivas y no nombra autores. La tarjeta inspeccionada lleva el logotipo de MIRAI [F-059].
-- `#pregunta` ¿Quiénes son los autores del proyecto 2024 y participó alguno de nosotros? (Q-023). ¿Qué cuenta como continuidad para la DME? (Q-011). ¿Se puede citar o mostrar algo de la presentación? (Q-042)
+- `#hecho` (dicho por Fortino, 1 oct) Fortino e Israel participaron en el proyecto durante su estancia en Mirai; el autor principal fue Mirai (Q-023 resuelta).
+- **Tratamiento propuesto (D-010):**
+  - proyecto 2026 propio, con el de 2024 declarado como antecedente;
+  - no se presenta como continuidad: no suma puntos y obligaría a documentar un trabajo ajeno.
+- `#pregunta` ¿La DME lo considera continuidad (Q-011)? ¿Se puede citar o mostrar algo de la presentación (Q-042)?
 - **Mientras tanto:**
   - no copiar texto, figuras, diagramas, capturas ni código de la presentación a ningún entregable;
   - si se usa como referencia conceptual, citarla y explicar en qué nos diferenciamos. Escenarios en [[analisis-proyecto-2024]] §12.

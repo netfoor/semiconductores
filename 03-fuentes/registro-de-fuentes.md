@@ -94,6 +94,8 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | F-074 | NIST SP 800-82 Rev. 3, *Guide to Operational Technology (OT) Security* | NIST | Primaria (organismo de normalización) | 2023-09-28 | 2026-10-01 | Automatizada (resumen y estructura) |
 | F-075 | MIRI — Mirai Innovation Research Internship Program | Mirai Innovation Research Institute | Primaria institucional | s. f. | 2026-10-01 | Automatizada |
 | F-076 | Heckler-Kram, Neudeck, Scheler, König y Steger (2025). The MVTec AD 2 Dataset: Advanced Scenarios for Unsupervised Anomaly Detection. arXiv:2503.21622 | Académica (MVTec) | Académica / dataset | 2025-03-27 | 2026-10-01 | Automatizada (resumen) |
+| F-077 | ISEF International Rules: "Rules for All Projects" (sección de proyectos de continuidad) | Society for Science | Primaria oficial (reglamento internacional; referencia) | s. f. (ciclo 2026–2027) | 2026-10-01 | Automatizada (citas textuales obtenidas con la herramienta; verificar) |
+| F-078 | *Continuation/Research Progression Projects Form (7)*, versión 2022–2023 (copia publicada por una feria regional) | Society for Science | Primaria oficial (formulario; referencia) | 2022 | 2026-10-01 | Automatizada |
 
 ## F-001
 
@@ -373,6 +375,19 @@ https://www.mirai-innovation.jp/miri/ · Estancias de investigación de 4, 8 o 1
 
 ### F-076
 https://arxiv.org/abs/2503.21622 · MVTec AD 2: 8 escenarios y más de 8,000 imágenes de alta resolución; los mejores métodos quedan por debajo de 60 % de AU-PRO · La detección de anomalías sin ejemplos de defectos no está resuelta en escenarios difíciles.
+
+### F-077
+https://www.societyforscience.org/isef/international-rules/rules-for-all-projects/ · Continuidad:
+- "research projects typically build on work performed previously";
+- "Repetition of previous experimentation with the same methodology and research question, even with an increased sample size, is an example of an unacceptable continuation";
+- se juzga solo el trabajo de un periodo de 12 meses;
+- "The display board and abstract must reflect the current year's work only";
+- el Form 7 debe documentar que la investigación adicional "is new and different".
+
+Implicación: en la lógica de los formatos FE (`#inferencia`), la continuidad no suma puntos; obliga a demostrar qué es nuevo. Ver D-010.
+
+### F-078
+https://www.dpo.uab.edu/carsef/images/7-Continuation.pdf · "Required for projects that are a continuation/progression in the same field of study as a previous project"; se acompaña del resumen y del plan del proyecto anterior; el estudiante certifica que su resumen y su cartel reflejan solo el trabajo del año en curso · Referencia para interpretar FE-07 mientras responde la DME (Q-011).
 
 ## Fuentes identificadas, pendientes de revisar
 

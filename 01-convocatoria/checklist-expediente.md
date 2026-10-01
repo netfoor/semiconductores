@@ -53,7 +53,7 @@ Se decide en G1, cuando el proyecto esté definido. Los formatos FE coinciden en
 | FE-04 | Hay participantes humanos (encuestas, cuestionarios, pruebas con personas) | Posible si validamos con usuarios u operadores o hacemos encuestas. Consultar a expertos **antes** de experimentar no se considera investigación con participantes humanos según ISEF [F-005]; confirmar el criterio de la DME (Q-008) | Diseñar pruebas sin participantes externos o tramitar FE-04 + consentimiento informado (formato PI nacional [F-003]) |
 | FE-05A/5B | Animales vertebrados | No previsto | — |
 | FE-06A/6B | Agentes biológicos peligrosos o tejidos | No previsto | — |
-| FE-07 | Proyecto de continuidad | Depende de la autoría del proyecto de referencia 2024 (Q-011, Q-023) | Si es continuación de trabajo propio, declararlo; si es de otros autores, citarlo y diferenciarlo |
+| FE-07 | Proyecto de continuidad | Probablemente **no aplica** si el proyecto 2026 es nuevo: el proyecto 2024 fue de Mirai y el equipo solo participó (Q-023 resuelta; D-010 propuesta). Sí aplicaría si se retoma un proyecto propio previo | Declarar el antecedente de 2024 en el protocolo y en la bitácora; no reutilizar material de Mirai; confirmar con la DME (Q-011) |
 
 ## 4. Control de calidad antes de enviar (G3)
 

@@ -111,5 +111,5 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 3. Iniciar el trámite de la carta institucional con la directora de división de la UTP.
 4. Enviar las preguntas P1/P2 a la DME → [[preguntas-abiertas-convocatoria]].
 5. ✅ Fases 2, 3 y 4 completadas. Ahora: contactar a Yankuilotl con [[guia-contacto-yankuilotl]] (la entrevista decide si la familia de semiconductores es viable; se agregaron dos preguntas sobre conectividad y tiempo de ciclo).
-6. Responder si Fortino o Israel son autores del proyecto 2024 (Q-023): define si aplica FE-07 y cómo citarlo.
+6. ✅ Autoría del proyecto 2024 aclarada (Q-023): participaron, pero el autor principal fue Mirai. Propuesta D-010: proyecto propio, con antecedente declarado y sin FE-07. Pendiente: incluir la pregunta 11 (continuidad) en el correo a la DME (Q-011).
 7. Fase 5 (5–6 oct): información faltante, guías de entrevista y mapa de oportunidades con matriz de comparación.

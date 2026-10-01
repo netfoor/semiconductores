@@ -6,7 +6,7 @@ creado: 2026-10-01
 actualizado: 2026-10-01
 autor: "Claude (IA)"
 revisado_por: []
-fuentes: [F-001, F-040, F-044, F-051, F-052, F-054, F-055, F-059, F-060, F-061, F-062, F-063, F-064, F-065, F-066, F-067, F-068, F-069, F-070, F-071, F-072, F-074, F-075, F-076]
+fuentes: [F-001, F-040, F-044, F-051, F-052, F-054, F-055, F-059, F-060, F-061, F-062, F-063, F-064, F-065, F-066, F-067, F-068, F-069, F-070, F-071, F-072, F-074, F-075, F-076, F-077, F-078]
 tags: [femeci, proyecto-2024, analisis, fase-4]
 aliases: ["Análisis proyecto 2024", "Síntesis Fase 4"]
 ---
@@ -32,7 +32,9 @@ Fase 4 (letra F del documento maestro). Responde las nueve preguntas del documen
    - `#hecho` La combinación "Raspberry Pi + YOLO" para inspeccionar tarjetas ya está publicada [F-054].
    - `#hecho` El hardware local mejoró, pero se encareció. Por ejemplo, la Raspberry Pi 5 de 8 GB pasó de 80 a ≈ 175 USD [F-067, F-068].
    - `#hecho` Ya hay regiones de nube en Querétaro [F-070 a F-072].
-7. `#pregunta` **La autoría decide cómo citarlo.** La tarjeta con el logotipo de MIRAI y las fechas de los videos (octubre a diciembre de 2024) apuntan a una estancia en Mirai Innovation [F-075]. El documento maestro dice que Fortino e Israel estuvieron en Japón mediante MIRAI. Falta saber si son autores (Q-023): de eso depende el formato FE-07 (§12).
+7. **Autoría aclarada el 1 oct (Q-023).** Fortino e Israel participaron en el proyecto durante su estancia en Mirai Innovation [F-075], pero el autor principal fue Mirai.
+   - `#inferencia` La continuidad no suma puntos y no es obligatoria si el proyecto 2026 es nuevo.
+   - Tratamiento propuesto: proyecto propio, declarando el antecedente (D-010). Falta la confirmación de la DME (Q-011). Detalle en §12.
 
 ## 1. Qué problema intentaba resolver
 
@@ -164,7 +166,7 @@ Esta tabla sirve como **lista de control** para nuestras propias ideas candidata
 - el planteamiento "semiconductores" para un prototipo de tarjetas;
 - las cifras de la justificación, las referencias y el plan de negocio;
 - el brazo robótico, salvo que el problema lo exija;
-- textos, figuras o código, mientras no se aclare la autoría (§12).
+- textos, figuras, código ni datos de Mirai, que es el autor principal (§12).
 
 ## 11. Qué haríamos diferente
 
@@ -203,6 +205,27 @@ En todos los casos:
 - no mostrar la presentación en el certamen sin permiso (por la leyenda "Confidential");
 - mantener esta comparación en la bitácora como evidencia de que el proyecto 2026 se construyó de forma independiente.
 
+### Respuesta del equipo (1 oct, 16:07) y tratamiento propuesto
+
+- `#hecho` (dicho por Fortino) Fortino e Israel estuvieron en Mirai Innovation en 2024; ahí conocieron el proyecto y participaron en él. **El autor principal fue Mirai.** Fortino no lo considera un proyecto de continuidad; si fuera necesario, lo vería como una evolución.
+- **El caso real no está en la tabla de escenarios:** participación en un proyecto institucional ajeno. No es "proyecto propio previo" ni simple trabajo de terceros leído en internet.
+
+Qué dicen las reglas:
+- `#hecho` FE-07 está entre los "Formularios Especiales **Aplicables**" [F-001 §5.1]. Se entrega solo si el proyecto es de continuidad.
+- `#hecho` La rúbrica no da puntos por continuidad [F-001 §6.1]. B1 evalúa "creatividad, originalidad del abordaje y mérito innovador".
+- `#hecho` La convocatoria descalifica por plagio total o parcial y por suplantación de autoría [F-001 §9.1]. Además, los derechos morales y patrimoniales corresponden a "las y los autores e instituciones participantes" [F-001 §9.2]; aquí, Mirai.
+- `#hecho` En el reglamento internacional del que derivan los formatos FE:
+  - el formato de continuidad se exige para proyectos que son continuación "in the same field of study as a previous project" y debe acompañarse del resumen y plan del proyecto anterior [F-078];
+  - solo se juzga el trabajo del periodo actual;
+  - repetir la misma pregunta y metodología es una continuación inaceptable [F-077].
+
+Lectura (`#inferencia`):
+1. **Continuidad no suma puntos.** Obligaría a documentar el proyecto anterior, que es de Mirai y está marcado como confidencial. Haría que los jueces evaluaran solo la diferencia. Y expondría al equipo a preguntas de autoría (§9.1).
+2. **Presentarlo como proyecto propio desde el inicio es correcto si de verdad es nuevo:** problema poblano verificado, datos, código y método propios, sin reutilizar material de Mirai. La bitácora ya empieza el 2026-10-01 y documenta ese inicio.
+3. **No hay que ocultar el antecedente:** se menciona en "Antecedentes" del protocolo (participación en un proyecto institucional de Mirai Innovation en 2024 que motivó el interés) y en la bitácora. Si se usa alguna idea, se cita. Así el antecedente se vuelve un argumento de experiencia, no un riesgo, y sirve para responder bien si un juez pregunta (C2).
+4. **Llamarlo "evolución" equivale, en la práctica, a declarar continuidad.** Solo convendría si el proyecto 2026 reutilizara el prototipo de 2024, lo cual no está previsto.
+5. **La DME tiene la última palabra:** se le pregunta en el correo (Q-011, pregunta 11). Decisión propuesta: D-010.
+
 ## 13. Cómo le iría con la rúbrica de 2026 (`#inferencia`)
 
 Sirve para no repetir errores, no para juzgar a sus autores. El proyecto se hizo en otro contexto: una estancia corta, sin la rúbrica de la FEMECI.
@@ -221,7 +244,7 @@ Sirve para no repetir errores, no para juzgar a sus autores. El proyecto se hizo
 
 | ID | Pregunta | A quién |
 |---|---|---|
-| Q-023 | ¿Fortino o Israel son autores o coautores del proyecto 2024? ¿Quién más participó? ¿Se presentó en algún certamen? | Equipo |
+| Q-023 | ¿Fortino o Israel son autores o coautores del proyecto 2024? ¿Quién más participó? ¿Se presentó en algún certamen? | Equipo — ✅ resuelta el 1 oct: participaron; el autor principal fue Mirai (§12) |
 | Q-040 | ¿Qué técnica de visión se usó (procesamiento clásico con OpenCV o un modelo entrenado)? ¿Hubo defectos reales y métricas? | Autores (vía Fortino) |
 | Q-041 | ¿Dónde corría cada componente (controlador, backend, base de datos): en la red local o en la nube? | Autores (vía Fortino) |
 | Q-042 | ¿La leyenda "Confidential" es una restricción real de Mirai o de los autores? ¿Se puede citar o mostrar algo de la presentación? | Autores o Mirai (vía Fortino) |

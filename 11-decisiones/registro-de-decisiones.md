@@ -27,6 +27,7 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-007 | Líder de Proyecto | **Adoptada: Fortino Romero Mantilla** | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-008 | Asesor institucional y posible asesor científico externo | **Adoptada (asesor institucional): Prof. José Francisco Espinosa Garita**; asesor externo pendiente | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-009 | Ubicación del procesamiento (nube, local o híbrido) | Pendiente: se decide con un experimento después de elegir el problema | — | Equipo, con datos del experimento |
+| D-010 | Tratamiento del proyecto 2024 de Mirai: ¿continuidad o antecedente? | **Propuesta:** proyecto propio, con el proyecto 2024 declarado como antecedente; no se presenta como continuidad. Sujeta a la respuesta de la DME (Q-011) | 2026-10-01 | Equipo (inclinación expresada por Fortino) |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -90,3 +91,29 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 - **Cómo se decidirá:** con el experimento de [[comparacion-nube-vs-edge]] §8. La regla de decisión se fija antes de medir: la opción más simple que cumpla latencia, exactitud, operación sin internet o confidencialidad si aplican, y costo.
 - **Depende de:** el problema elegido (G1), el tiempo de ciclo (Q-044), la conectividad y la política de datos del usuario (Q-043, Q-037) y el internet en la mesa de exhibición (Q-014).
 - **Registro:** 2026-10-01, Fase 4, por Claude (IA). Queda pendiente por instrucción del documento maestro.
+
+## D-010 · Tratamiento del proyecto 2024 de Mirai (propuesta)
+
+- **Contexto:** Fortino e Israel participaron en 2024, durante su estancia en Mirai Innovation, en el proyecto *Industrial Semiconductor Inspection System with cloud-Based Inventory Control*. El autor principal fue Mirai (Q-023, respondida por Fortino el 1 oct, 16:07). Fortino pregunta si conviene o es obligatorio presentar el proyecto 2026 como continuidad.
+- **Lo que dicen las reglas:**
+  - FE-07 es un formulario "aplicable", que solo se entrega si hay continuidad [F-001 §5.1];
+  - la rúbrica no da puntos por continuidad [F-001 §6.1];
+  - el plagio parcial y la suplantación de autoría descalifican [F-001 §9.1];
+  - los derechos son de autores e instituciones participantes [F-001 §9.2];
+  - en el reglamento del que derivan los formatos, la continuidad se refiere a un proyecto previo del estudiante en el mismo campo, exige anexar el resumen y el plan anteriores, y solo se juzga el trabajo nuevo [F-077, F-078].
+- **Opciones:**
+  - (a) presentarlo como continuidad o "evolución" (FE-07);
+  - (b) proyecto propio, declarando el antecedente de 2024 en el protocolo y la bitácora;
+  - (c) proyecto propio sin mencionar el antecedente.
+- **Propuesta:** (b).
+- **Razones:**
+  - la continuidad no suma puntos y obligaría a documentar un trabajo ajeno marcado como confidencial;
+  - (c) arriesga preguntas de autoría y de originalidad;
+  - (b) es transparente y convierte el antecedente en argumento de experiencia.
+- **Condiciones:**
+  - el proyecto 2026 debe ser realmente nuevo: problema, datos, código y método propios;
+  - no reutilizar material de Mirai;
+  - citar cualquier idea que se tome de él.
+
+  Si el proyecto 2026 terminara reutilizando el prototipo de 2024, se reconsidera (a).
+- **Confirmación pendiente:** pregunta 11 del correo a la DME (Q-011). Detalle en [[analisis-proyecto-2024]] §12.
