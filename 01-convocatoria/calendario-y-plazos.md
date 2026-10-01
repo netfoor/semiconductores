@@ -39,10 +39,11 @@ aliases: ["Calendario FEMECI", "Plan inverso"]
 
 | Tarea | Depende de | Responsable | Fecha límite sugerida | Estado |
 |---|---|---|---|---|
-| Designar Líder de Proyecto (D-007) | Equipo | Equipo | jue 1 – vie 2 oct | Pendiente |
-| Crear cuenta en la plataforma y descargar formatos y plantilla | Líder | Líder | vie 2 oct | Pendiente |
-| Confirmar asesor (UTP) y su disponibilidad para revisar y firmar (Q-019) | Asesor | Equipo | vie 2 oct | Pendiente |
-| Solicitar carta de postulación a la autoridad de la UTP (Q-012, Q-020) | Saber quién firma | Líder | vie 2 – lun 5 oct | Pendiente |
+| Designar Líder de Proyecto (D-007) | Equipo | Equipo | jue 1 – vie 2 oct | ✅ Fortino Romero Mantilla (1 oct) |
+| Crear cuenta en la plataforma | Líder | Líder | vie 2 oct | ✅ Hecho (1 oct) |
+| Descargar plantilla y formatos de la plataforma | Cuenta | Líder | vie 2 oct | Pendiente |
+| Confirmar asesor (UTP) y su disponibilidad para revisar y firmar (Q-019) | Asesor | Equipo | vie 2 oct | ✅ Prof. José Francisco Espinosa Garita (1 oct); disponibilidad por confirmar |
+| Solicitar carta de postulación a la autoridad de la UTP (Q-012, Q-020) | Directora de división | Líder | vie 2 – lun 5 oct | Por iniciar (la directora de división apoya el trámite) |
 | Enviar preguntas a la DME ([[preguntas-abiertas-convocatoria]]) | — | Líder | vie 2 oct | Pendiente |
 | Reunir INE de ambos (PDF ambos lados) | — | Cada integrante | vie 9 oct | Pendiente |
 | Carta de postulación firmada y sellada | Trámite UTP | Líder | mié 14 oct | Pendiente |

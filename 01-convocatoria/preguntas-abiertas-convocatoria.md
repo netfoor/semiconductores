@@ -41,15 +41,15 @@ Prioridad: **P1** bloquea el registro · **P2** afecta el diseño del proyecto �
 
 | ID | Pregunta | Relacionada con | Estado |
 |---|---|---|---|
-| Q-018 | ¿Quién será el Líder de Proyecto? | D-007, §3.3 | Abierta |
-| Q-019 | Nombre, adscripción a la UTP y perfil del asesor; ¿puede revisar el protocolo el 14 oct y firmar F-02 a más tardar el 15–16 oct? | D-008, §3.5 | Abierta |
-| Q-020 | ¿Qué autoridad de la UTP emite la carta de postulación y cuánto tarda el trámite? | REQ-DOC-03 | Abierta |
+| Q-018 | ¿Quién será el Líder de Proyecto? | D-007, §3.3 | ✅ Resuelta (1 oct): Fortino Romero Mantilla |
+| Q-019 | Nombre, adscripción a la UTP y perfil del asesor; ¿puede revisar el protocolo el 14 oct y firmar F-02 a más tardar el 15–16 oct? | D-008, §3.5 | Parcial (1 oct): Prof. José Francisco Espinosa Garita; falta confirmar disponibilidad |
+| Q-020 | ¿Qué autoridad de la UTP emite la carta de postulación y cuánto tarda el trámite? | REQ-DOC-03 | Parcial (1 oct): la gestiona la directora de división; falta conocer el tiempo del trámite |
 | Q-021 | ¿Ambos tienen INE vigente y matrícula 2026-2027? | REQ-ELG-01 | Abierta |
 | Q-022 | ¿Ambos pueden asistir el viernes 30 oct y, si se acredita el proyecto, viajar en marzo 2027 (considerando estadías, prácticas o empleo)? | REQ-ELG-04 | Abierta |
 | Q-023 | ¿Quiénes son los autores del proyecto de referencia 2024? ¿Participó alguno de nosotros? ¿Se presentó en algún certamen? | REQ-DER-10, FE-07 | Abierta |
 | Q-024 | ¿Qué contactos del sector están disponibles para entrevistas entre el 5 y el 9 oct? ¿Alguno podría ser asesor científico externo? | EV-02, §3.6 | Abierta |
 | Q-025 | ¿Llevaremos además una bitácora manuscrita? | D-002 | Abierta |
-| Q-026 | ¿Versionamos la bóveda con git para tener sellos de tiempo verificables? | D-004, C3 | Abierta |
+| Q-026 | ¿Versionamos la bóveda con git para tener sellos de tiempo verificables? | D-004, C3 | ✅ Resuelta (1 oct): sí; repositorio inicializado |
 | Q-027 | ¿Aprobamos la política de uso de IA propuesta? | D-003 | Abierta |
 
 ## 3. Borrador de correo para la DME
@@ -76,6 +76,6 @@ Prioridad: **P1** bloquea el registro · **P2** afecta el diseño del proyecto �
 > Agradecemos de antemano su atención.
 >
 > Atentamente,
-> [Nombre del Líder de Proyecto]
-> En representación del equipo [nombres], Universidad Tecnológica de Puebla
+> Fortino Romero Mantilla, Líder de Proyecto
+> En representación del equipo integrado por Fortino Romero Mantilla e Israel Jesus Garcia Osorio (asesor: Prof. José Francisco Espinosa Garita), Universidad Tecnológica de Puebla
 > [Correo y teléfono]

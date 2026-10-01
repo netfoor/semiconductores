@@ -15,6 +15,17 @@ aliases: ["Inicio", "Mapa del proyecto"]
 > [!abstract] Propósito
 > Construir, con evidencia verificable, un proyecto científico o de ingeniería competitivo para la Feria Mexicana de Ciencias e Ingenierías, Capítulo Puebla 2026 (SECIHTI Puebla). Documento maestro de esta etapa: [[INSTRUCCIONES_PROYECTO]]. Forma de trabajo: [[convenciones]].
 
+## Equipo
+
+| Rol | Persona |
+|---|---|
+| Líder de Proyecto (registro, canal oficial, resguardo de la bitácora) | Fortino Romero Mantilla |
+| Integrante | Israel Jesus Garcia Osorio |
+| Asesor institucional (UTP) | Prof. José Francisco Espinosa Garita |
+| Asesor científico externo (opcional) | Por definir |
+
+Decisiones: D-007 y D-008 en [[registro-de-decisiones]]. La bóveda se versiona con git (D-004).
+
 ## Estado (al 2026-10-01)
 
 Las letras remiten a "Tu primera ejecución" del documento maestro.
@@ -22,7 +33,7 @@ Las letras remiten a "Tu primera ejecución" del documento maestro.
 | Fase | Descripción | Estado |
 |---|---|---|
 | 1 | Análisis integral de la convocatoria (A, B) | ✅ Completada — pendiente de revisión del equipo |
-| 2 | Investigación estratégica: SECIHTI y prioridades de Puebla (C) | ⏳ Siguiente |
+| 2 | Investigación estratégica: SECIHTI y prioridades de Puebla (C) | 🔄 En curso (desde 1 oct, 09:08) |
 | 3 | Ecosistema de semiconductores en Puebla, actores y problemas documentados (D, E) — hipótesis inicial, no aceptada de antemano | ⏳ Pendiente |
 | 4 | Análisis del proyecto de referencia 2024 (F) | ⏳ Pendiente |
 | 5 | Información faltante, preguntas para la industria y mapa de oportunidades (G, H) | ⏳ Pendiente |
@@ -75,8 +86,8 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 
 ## Próximas acciones
 
-1. Revisar la Fase 1 y tomar las decisiones pendientes del equipo: líder (D-007), asesor (D-008), política de IA (D-003), formato de bitácora (D-002), versionado (D-004).
-2. Crear cuenta en la plataforma y descargar plantilla y formatos → [[checklist-expediente]].
-3. Iniciar el trámite de la carta institucional en la UTP.
+1. ✅ Líder (D-007), asesor (D-008) y versionado con git (D-004) decididos el 1 oct. Pendientes: política de IA (D-003) y bitácora manuscrita (D-002).
+2. ✅ Cuenta creada en la plataforma. Pendiente: descargar plantilla y formatos → [[checklist-expediente]].
+3. Iniciar el trámite de la carta institucional con la directora de división de la UTP.
 4. Enviar las preguntas P1/P2 a la DME → [[preguntas-abiertas-convocatoria]].
-5. Iniciar la Fase 2 con tiempo acotado → [[calendario-y-plazos]].
+5. Fase 2 en curso, con tiempo acotado → [[calendario-y-plazos]].

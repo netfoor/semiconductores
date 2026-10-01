@@ -24,11 +24,11 @@ aliases: ["Especificación FEMECI", "Requisitos de la convocatoria"]
 | ID | Requisito | Origen | Tipo | Verificación / evidencia | Estado |
 |---|---|---|---|---|---|
 | REQ-ELG-01 | Cada integrante tiene matrícula oficial vigente en el ciclo 2026-2027 en una institución de educación superior con sede en Puebla | §3.1 | Obligatorio | Credencial vigente / constancia de estudios de cada integrante (Q-015, Q-021) | Por confirmar |
-| REQ-ELG-02 | Equipo de 2 a 3 estudiantes | §3.2 | Obligatorio | Registro con Fortino e Israel (2 integrantes) | Cumple (preliminar) |
-| REQ-ELG-03 | Designar Líder de Proyecto: registro formal, comunicación oficial y resguardo de la bitácora | §3.3 | Obligatorio | Decisión D-007 | Pendiente |
+| REQ-ELG-02 | Equipo de 2 a 3 estudiantes | §3.2 | Obligatorio | Fortino Romero Mantilla e Israel Jesus Garcia Osorio (2 integrantes) | Cumple (preliminar) |
+| REQ-ELG-03 | Designar Líder de Proyecto: registro formal, comunicación oficial y resguardo de la bitácora | §3.3 | Obligatorio | D-007: Fortino Romero Mantilla | Cumple |
 | REQ-ELG-04 | Los integrantes registrados son irremplazables: ambos deben estar disponibles para la jornada (30 oct) y, si se acredita, para la fase nacional (marzo 2027) | §3.3, §8.2 | Obligatorio | Confirmación de disponibilidad (Q-022) | Por confirmar |
 | REQ-ELG-05 | Cada estudiante participa en un solo proyecto de esta convocatoria | §3.4 | Obligatorio | Confirmación de ambos integrantes | Por confirmar |
-| REQ-ELG-06 | Asesor(a) institucional obligatorio: docente o investigador(a) de la UTP, con perfil congruente con la temática | §3.5 | Obligatorio | Nombre, adscripción y justificación de congruencia (Q-019, D-008) | Por confirmar |
+| REQ-ELG-06 | Asesor(a) institucional obligatorio: docente o investigador(a) de la UTP, con perfil congruente con la temática | §3.5 | Obligatorio | D-008: Prof. José Francisco Espinosa Garita (UTP); falta justificar congruencia con el tema elegido (Q-019) | Cumple (preliminar) |
 | REQ-ELG-07 | Asesoría científica externa para temas especializados (universidad, centro de investigación o industria) | §3.6 | Recomendado | Evaluar al definir el problema; posible FE-02 (Q-009, Q-013, Q-024) | Pendiente |
 | REQ-ELG-08 | Participar en el nivel educativo "Superior" | Preámbulo, §1.3, §8.1 | Obligatorio | Registro en el nivel correcto | Cumple (preliminar) |
 
@@ -36,7 +36,7 @@ aliases: ["Especificación FEMECI", "Requisitos de la convocatoria"]
 
 | ID | Requisito | Origen | Tipo | Verificación / evidencia | Estado |
 |---|---|---|---|---|---|
-| REQ-PRC-01 | Registrar proyecto y expediente en https://secihti-pue-dme.org/ entre el 17 sep y el 18 oct 2026 (gratuito) | §4, §5 (3.7) | Obligatorio | Comprobante/captura de envío en la plataforma | Pendiente |
+| REQ-PRC-01 | Registrar proyecto y expediente en https://secihti-pue-dme.org/ entre el 17 sep y el 18 oct 2026 (gratuito) | §4, §5 (3.7) | Obligatorio | Comprobante/captura de envío en la plataforma | En curso (cuenta creada el 1 oct) |
 | REQ-PRC-02 | Inscribir el proyecto en una modalidad (Ciencias o Ingenierías) | §2.1 | Obligatorio | Decisión D-005 | Pendiente |
 | REQ-PRC-03 | Enmarcar el proyecto en una de las 8 categorías temáticas | §2.2 | Obligatorio | Decisión D-006 | Pendiente |
 | REQ-PRC-04 | Superar la revisión técnica del CRC (19–23 oct) y aparecer como finalista (26 oct) | §4, §7.1 | Obligatorio | Correo de notificación / lista publicada | Pendiente |

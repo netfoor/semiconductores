@@ -17,24 +17,25 @@ Fecha límite oficial: **domingo 18 oct 2026** (hora por confirmar, Q-003). Meta
 
 ## 1. Antes de todo
 
-- [ ] Designar Líder de Proyecto (D-007): hará el registro, será el canal oficial y resguardará la bitácora [§3.3]
-- [ ] Crear cuenta en https://secihti-pue-dme.org/registro (pide nombre, correo, contraseña; teléfono e institución opcionales [F-002])
+- [x] Designar Líder de Proyecto (D-007): **Fortino Romero Mantilla** — registro, canal oficial y resguardo de la bitácora [§3.3] ✅ 2026-10-01
+- [x] Crear cuenta en https://secihti-pue-dme.org/registro ✅ 2026-10-01 (la creó el líder)
 - [ ] Descargar dentro de la plataforma: plantilla del protocolo (Ciencias/Ingenierías), F-01 a F-05 y FE; guardarlos sin modificar en `01-convocatoria/documentos-oficiales/`
 - [ ] Registrar en la bitácora la fecha de descarga y la versión de cada formato
 - [ ] Confirmar que ninguno de los dos está inscrito en otro proyecto de esta convocatoria [§3.4]
-- [ ] Confirmar asesor de la UTP y su disponibilidad para revisar (14 oct) y firmar (15 oct) (Q-019)
-- [ ] Preguntar en la UTP qué autoridad firma la carta de postulación y cuánto tarda (Q-020)
+- [x] Confirmar asesor de la UTP: **Prof. José Francisco Espinosa Garita** ✅ 2026-10-01 — falta confirmar su disponibilidad para revisar (14 oct) y firmar (15 oct) (Q-019)
+- [ ] Carta de postulación: la gestiona la directora de división de la UTP; el líder inicia el trámite lo antes posible (Q-020)
+- [ ] Verificar que los nombres de integrantes y asesor se escriban igual que en sus identificaciones oficiales en todos los documentos
 
 ## 2. Documentos obligatorios [F-001 §5 (3.8)]
 
 | # | Documento | Prepara | Firma | Plantilla | Fecha objetivo | Estado | Notas |
 |---|---|---|---|---|---|---|---|
-| 1 | INE o pasaporte de Fortino (ambos lados, PDF) | Fortino | — | — | 9 oct | Pendiente | Vigente |
-| 2 | INE o pasaporte de Israel (ambos lados, PDF) | Israel | — | — | 9 oct | Pendiente | Vigente |
-| 3 | Carta de Postulación y Respaldo Institucional | Líder (gestión) | Autoridad de la UTP (membrete + firma/sello) | ¿Formato oficial? (Q-012) | 14 oct | Pendiente | Trámite con tiempo de espera |
+| 1 | INE o pasaporte de Fortino Romero Mantilla (ambos lados, PDF) | Fortino | — | — | 9 oct | Pendiente | Vigente |
+| 2 | INE o pasaporte de Israel Jesus Garcia Osorio (ambos lados, PDF) | Israel | — | — | 9 oct | Pendiente | Vigente |
+| 3 | Carta de Postulación y Respaldo Institucional | Líder (gestión) con la directora de división de la UTP | Autoridad de la UTP (membrete + firma/sello) | ¿Formato oficial? (Q-012) | 14 oct | Por iniciar | La directora de división apoya el trámite |
 | 4 | Protocolo y Plan de Investigación (≤ 20 cuartillas) | Fortino e Israel (redacción propia) | — | Plantilla oficial (Q-001) | v1: 14 oct · final: 16 oct | Pendiente | Ver `12-protocolo/` |
 | 5 | F-01 Ficha de inscripción y resumen ejecutivo | Líder | ¿Integrantes? | Plataforma | 15 oct | Pendiente | Debe coincidir con el protocolo |
-| 6 | F-02 Revisión y validación del asesor | Asesor | Asesor | Plataforma | 15 oct | Pendiente | Requiere protocolo v1 |
+| 6 | F-02 Revisión y validación del asesor | Prof. José Francisco Espinosa Garita | Asesor | Plataforma | 15 oct | Pendiente | Requiere protocolo v1 |
 | 7 | F-03 Declaratoria y aprobación del estudiante | Cada integrante | Cada integrante | Plataforma | 15 oct | Pendiente | Probablemente uno por integrante |
 | 8 | F-04 Declaración de originalidad y no plagio | Integrantes | Integrantes | Plataforma | 15 oct | Pendiente | Respaldar con [[registro-de-fuentes]] |
 | 9 | F-05 Uso de imagen y tratamiento de datos personales | Cada integrante | Cada integrante | Plataforma | 15 oct | Pendiente | — |
