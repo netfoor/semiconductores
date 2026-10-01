@@ -33,7 +33,7 @@ Las letras remiten a "Tu primera ejecución" del documento maestro.
 | Fase | Descripción | Estado |
 |---|---|---|
 | 1 | Análisis integral de la convocatoria (A, B) | ✅ Completada — pendiente de revisión del equipo |
-| 2 | Investigación estratégica: SECIHTI y prioridades de Puebla (C) | 🔄 En curso (desde 1 oct, 09:08) |
+| 2 | Investigación estratégica: SECIHTI y prioridades de Puebla (C) | ✅ Completada el 1 oct — pendiente de revisión del equipo → [[sintesis-fase-2]] |
 | 3 | Ecosistema de semiconductores en Puebla, actores y problemas documentados (D, E) — hipótesis inicial, no aceptada de antemano | ⏳ Pendiente |
 | 4 | Análisis del proyecto de referencia 2024 (F) | ⏳ Pendiente |
 | 5 | Información faltante, preguntas para la industria y mapa de oportunidades (G, H) | ⏳ Pendiente |
@@ -61,6 +61,12 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 - [[preguntas-abiertas-convocatoria]] — dudas para la DME y para el equipo (incluye borrador de correo).
 - [[marco-normativo-nacional]] — referencias nacionales (FEMECI) e internacionales (ISEF).
 - [[registro-de-fuentes]] · [[registro-de-decisiones]] · [[bitacora-indice]]
+
+## Notas clave de la Fase 2
+
+- [[sintesis-fase-2]] — resumen, contrastación inicial de la hipótesis de semiconductores y familias de oportunidad.
+- [[secihti-puebla]] · [[femeci-antecedentes]] · [[planes-y-prioridades-cti]] · [[sectores-estrategicos]]
+- [[registro-de-problemas]] · [[mapa-de-actores]] · [[preguntas-pendientes]]
 
 ## Mapa de la bóveda
 
@@ -90,4 +96,4 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 2. ✅ Cuenta creada en la plataforma. Pendiente: descargar plantilla y formatos → [[checklist-expediente]].
 3. Iniciar el trámite de la carta institucional con la directora de división de la UTP.
 4. Enviar las preguntas P1/P2 a la DME → [[preguntas-abiertas-convocatoria]].
-5. Fase 2 en curso, con tiempo acotado → [[calendario-y-plazos]].
+5. ✅ Fase 2 completada. Siguiente: Fase 3 (ecosistema de semiconductores y electrónica, separando eslabones) y preguntar en la UTP por el vínculo con Yankuilotl (Q-028 en [[preguntas-pendientes]]).

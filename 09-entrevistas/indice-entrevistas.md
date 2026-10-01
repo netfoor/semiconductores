@@ -12,7 +12,7 @@ tags: [femeci, entrevistas]
 
 # Entrevistas y preguntas pendientes — índice
 
-**Estado:** preguntas para la DME listas en [[preguntas-abiertas-convocatoria]]; guías para la industria pendientes (Fase 5). **Alimenta:** A1, A2 y B2 → EV-02.
+**Estado:** preguntas para la DME listas en [[preguntas-abiertas-convocatoria]]; preguntas para contactos externos surgidas en la Fase 2 en [[preguntas-pendientes]]; guías para la industria pendientes (Fase 5). **Alimenta:** A1, A2 y B2 → EV-02.
 
 ## Pautas para entrevistas con especialistas
 

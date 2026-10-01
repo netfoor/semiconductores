@@ -11,7 +11,7 @@ tags: [femeci, actores, fase-3]
 
 # Empresas y actores — índice
 
-**Estado:** pendiente (Fases 2–3).
+**Estado:** primera versión en [[mapa-de-actores]] (Fase 2); profundización del ecosistema de semiconductores en la Fase 3.
 
 ## Qué va aquí
 

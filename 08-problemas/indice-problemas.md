@@ -11,7 +11,7 @@ tags: [femeci, problemas]
 
 # Problemas identificados — índice
 
-**Estado:** pendiente (Fases 2–5). **Alimenta:** A1 y A2 → EV-01, EV-03 ([[rubrica-y-evidencias]]).
+**Estado:** inventario inicial de la Fase 2 en [[registro-de-problemas]] (P-001 a P-007); fichas detalladas en la Fase 5. **Alimenta:** A1 y A2 → EV-01, EV-03 ([[rubrica-y-evidencias]]).
 
 ## Ficha de problema (plantilla)
 

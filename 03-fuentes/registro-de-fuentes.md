@@ -24,6 +24,39 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | F-004 | Convocatoria FEMECI, capítulo San Luis Potosí (ciclo 2025–2026) | COPOCYT, Gobierno de San Luis Potosí | Primaria oficial (otro estado; referencia) | 2025-06-02 | 2026-10-01 | Automatizada |
 | F-005 | ISEF International Rules — Human Participants | Society for Science | Primaria oficial (reglamento internacional; referencia) | s. f. (vigente) | 2026-10-01 | Automatizada (citas textuales obtenidas con la herramienta; verificar) |
 | F-006 | Projects Involving Human Subjects | Science Buddies | Secundaria | s. f. | 2026-10-01 | Automatizada |
+| F-007 | Sitio oficial de la SECIHTI Puebla (inicio y "Quiénes somos") | SECIHTI Puebla | Primaria oficial | s. f. | 2026-10-01 | Automatizada |
+| F-008 | Listado de noticias de la SECIHTI Puebla | SECIHTI Puebla | Primaria oficial | 2026 | 2026-10-01 | Automatizada |
+| F-009 | "Puebla avanza firme hacia la soberanía tecnológica y justicia social: SECIHTI" (comparecencia) | SECIHTI Puebla | Primaria oficial | 2026-01-17 | 2026-10-01 | Automatizada |
+| F-010 | "Inicia trabajo intersecretarial en Puebla sobre proyectos estratégicos de tecnología" | SECIHTI Puebla | Primaria oficial | 2026-01-31 | 2026-10-01 | Automatizada |
+| F-011 | Comunicado SECIHTI 012/2026: infraestructura tecnológica para semiconductores | Gobierno de Puebla | Primaria oficial | 2026-05-11 | 2026-10-01 | Automatizada |
+| F-012 | Comunicado AA 549/2025: Puebla en 14 proyectos del Plan México | Gobierno de Puebla | Primaria oficial | 2025-08-11 | 2026-10-01 | Automatizada |
+| F-013 | Programa Institucional de la SECIHTI 2024–2030 (PDF) | Gobierno de Puebla | Primaria oficial | s. f. | 2026-10-01 | Automatizada |
+| F-014 | Plan Estatal de Desarrollo 2024–2030 (PDF) | Gobierno de Puebla | Primaria oficial | 2025-05-09 | 2026-10-01 | Automatizada (parcial) |
+| F-015 | "Oficializan Plan Estatal 2024-2030 en Puebla: contempla 30 proyectos" | e-consulta | Secundaria | 2025-05-11 | 2026-10-01 | Automatizada |
+| F-016 | "Miriam Aquino es la nueva secretaria de Ciencia y Tecnología en Puebla" | La Jornada de Oriente | Secundaria | 2026-02-17 | 2026-10-01 | Automatizada |
+| F-017 | "Se extinguen tres organismos públicos; pasan a ser secretarías" | Intolerancia Diario | Secundaria | 2025-01-30 | 2026-10-01 | Automatizada |
+| F-018 | "Crea el gobierno la paraestatal Yankuilotl, dedicada a la elaboración de semiconductores" | La Jornada de Oriente | Secundaria | 2025-07 | 2026-10-01 | Automatizada |
+| F-019 | "Puebla quiere convertirse en un referente de los semiconductores en México…" | Xataka México | Secundaria | 2026-07-10 | 2026-10-01 | Automatizada |
+| F-020 | "Puebla fortalece su ecosistema tecnológico con fábrica de semiconductores de Yankuilotl" | TyT | Secundaria | 2026-07-09 | 2026-10-01 | Automatizada |
+| F-021 | "Secihti visita INAOE… proyecto estratégico de semiconductores Kutsari" | SECIHTI federal | Primaria oficial | 2025-05-21 | 2026-10-01 | Automatizada |
+| F-022 | "Secihti: un año impulsando proyectos estratégicos…" | SECIHTI federal | Primaria oficial | 2025-12-28 | 2026-10-01 | Automatizada |
+| F-023 | "Polos de Desarrollo Económico para el Bienestar: … estado actual del polo de Puebla" | El Heraldo de Puebla | Secundaria | 2026-06-04 | 2026-10-01 | Automatizada |
+| F-024 | "Tecnológico de Puebla se unirá al proyecto de autos eléctricos Olinia" | TecNM Puebla | Primaria institucional | 2025-01-14 | 2026-10-01 | Automatizada |
+| F-025 | Convocatoria Feria Estatal de Ciencias e Ingenierías Puebla 2025 (PDF) | UPAEP y SECIHTI Puebla | Primaria oficial | 2025-09 | 2026-10-01 | Automatizada |
+| F-026 | FEMECI 2025 — proyectos finalistas (PDF) | REDNACECYT | Primaria oficial | 2025-02 | 2026-10-01 | Automatizada |
+| F-027 | "Estudiantes UDLAP fueron premiadas en la Feria Mexicana de Ciencias e Ingenierías" | Exclusivas Puebla | Secundaria | 2026-04-07 | 2026-10-01 | Automatizada |
+| F-028 | "Concluye con gran éxito la Feria Mexicana de Ciencias e Ingenierías 2026 en San Carlos" | Tribuna (Sonora) | Secundaria | 2026-03-14 | 2026-10-01 | Automatizada |
+| F-029 | Data México: perfil de Puebla | Secretaría de Economía | Primaria oficial | 2026 | 2026-10-01 | Automatizada (cifras por verificar) |
+| F-030 | "Puebla cierra 2025 como primer lugar en captación de capital extranjero para autopartes…" | Urbano Puebla | Secundaria (cita INEGI, SE, IMSS) | 2025-12 | 2026-10-01 | Automatizada |
+| F-031 | Comunicado SDET 045/2025: competitividad de la industria automotriz | Gobierno de Puebla | Primaria oficial | 2025-05-09 | 2026-10-01 | Automatizada |
+| F-032 | "Descargas irregulares en el Río Atoyac aumentaron un 160% en 2025, según Conagua" | Urbano Puebla | Secundaria (cita CONAGUA) | 2025-12-08 | 2026-10-01 | Automatizada |
+| F-033 | Comunicado AA 825/2025: atención a damnificados de la Sierra Norte | Gobierno de Puebla | Primaria oficial | 2025-10-28 | 2026-10-01 | Automatizada |
+| F-034 | "Lluvias en Puebla: 19 muertos, 64 mil damnificados, 404 deslaves…" | Puebla Online | Secundaria (cita al gobernador) | 2025-10-20 | 2026-10-01 | Automatizada |
+| F-035 | "Impulsa SECIHTI innovación con origen mediante CITRAS Territoriales" | SECIHTI Puebla | Primaria oficial | 2026-03-15 | 2026-10-01 | Automatizada |
+| F-036 | "Congreso del Estado reconoce mérito académico del nanosatélite Gxiba-1" | SECIHTI Puebla | Primaria oficial | 2026-02-20 | 2026-10-01 | Automatizada |
+| F-037 | Ficha "Apoyos a través del Programa Fomento e Innovación en Tecnología" | Ventanilla Digital, Gobierno de Puebla | Primaria oficial | 2026 | 2026-10-01 | Automatizada |
+| F-038 | Centro de Investigaciones en Dispositivos Semiconductores | BUAP (ICUAP) | Primaria institucional | s. f. | 2026-10-01 | Automatizada |
+| F-039 | "SECIHTI fortalece alianzas científicas y académicas en Puebla" | SECIHTI Puebla | Primaria oficial | 2026-06-02 | 2026-10-01 | Automatizada |
 
 ## F-001
 
@@ -71,6 +104,109 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 - **Qué aporta:** resumen divulgativo de las reglas ISEF sobre participantes humanos.
 - **Implicación:** solo como apoyo; las afirmaciones se basan en F-005.
 
+## Fuentes de la Fase 2 (F-007 a F-039)
+
+Formato compacto: URL · qué aporta · implicación. El análisis completo está en las notas de `04-investigacion-puebla/`, [[registro-de-problemas]] y [[mapa-de-actores]]. Todas se leyeron con una herramienta automatizada: antes de citar un dato en un entregable, verificarlo en la fuente original.
+
+### F-007
+https://secihti.puebla.gob.mx/ y https://secihti.puebla.gob.mx/quienes-somos · Titular (Miryam Aquino Mena), contacto, misión y visión · Identidad del organizador.
+
+### F-008
+https://secihti.puebla.gob.mx/noticias · Listado de acciones 2026 (CITRAS, STEM Racing, Gxiba-1, Kutsari, alianzas) · Mapa de prioridades visibles.
+
+### F-009
+https://secihti.puebla.gob.mx/noticias/puebla-avanza-firme-hacia-la-soberania-tecnologica-y-justicia-social-secihti · Comparecencia del primer año: soberanía tecnológica; Kutsari en el INAOE (9.3 millones de pesos), Olinia en el Instituto Tecnológico de Puebla (20 millones), Yankuilotl como brazo ejecutor · Prioridades con presupuesto.
+
+### F-010
+https://secihti.puebla.gob.mx/noticias/inicia-trabajo-intersecretarial-en-puebla-sobre-proyectos-estrategicos-de-tecnologia · Proyectos estratégicos territoriales (Gran Telescopio Milimétrico, Izta-Popo, geotermia de Los Húmeros) · Turismo tecnológico y divulgación.
+
+### F-011
+https://puebla.gob.mx/index.php/noticias/item/23602-gobierno-de-puebla-fortalece-infraestructura-tecnologica-para-el-desarrollo-de-semiconductores · Laboratorios de caracterización y validación de circuitos integrados del proyecto Kutsari · Capacidades de prueba en construcción (Fase 3).
+
+### F-012
+https://www.puebla.gob.mx/index.php/noticias/item/20043-ciencia-y-tecnologia-motores-del-desarrollo-puebla-sumado-a-14-proyectos-del-plan-mexico · Puebla en 14 proyectos del Plan México (Kutsari, Olinia, telescopios, Universidad Rosario Castellanos) · Alineación federal.
+
+### F-013
+https://planeader.puebla.gob.mx/progderi/programa-institucional-secretaria-de-ciencia-humanidades-tecnologia-e-innovacion.pdf · Misión, visión e indicadores 2024–2030 (incluye "atención a requerimientos tecnológicos") · Enfoque transversal, sin lista de sectores.
+
+### F-014
+https://ojp.puebla.gob.mx/media/k2/attachments/Plan_Estatal_de_Desarrollo,_2024-2030_T1_09052025.pdf · Ejes del plan; retos (informalidad 70.7 %, capacidades agrícolas, agua, residuos, movilidad); sin menciones de semiconductores en la lectura automatizada · Verificar con búsqueda de texto completa.
+
+### F-015
+https://historico.e-consulta.com/nota/2025-05-11/gobierno/oficializan-plan-estatal-2024-2030-en-puebla-contempla-30-proyectos · Proyectos estratégicos del plan · Complementa F-014.
+
+### F-016
+https://www.lajornadadeoriente.com.mx/puebla/miriam-aquino-es-la-nueva-secretaria-de-ciencia-y-tecnologia-en-puebla/ · Cambio de titular (feb 2026) · Contexto del organizador.
+
+### F-017
+https://intoleranciadiario.com/articles/politica/2025/01/30/1033549-se-extinguen-tres-organismos-publicos-pasan-a-ser-secretarias.html · Extinción del CONCYTEP y creación de la Secretaría · Historia institucional.
+
+### F-018
+https://www.lajornadadeoriente.com.mx/puebla/yankuilotl-puebla-semiconductores-innovacion-tecnologica/ · Creación de Yankuilotl (decreto del 15 jul 2025), objeto, líneas y presupuesto inicial · Verificar el decreto en el Periódico Oficial.
+
+### F-019
+https://www.xataka.com.mx/otros-1/puebla-quiere-ser-nuevo-hub-tecnologico-mexico-tiene-plan-ensamblar-200-000-componentes-hora · Planta de ensamble SMT y through-hole de Yankuilotl; universidades participantes, incluida la UTP · Vía de acceso por confirmar (Q-028).
+
+### F-020
+https://www.tyt.com.mx/nota/puebla-fortalece-su-ecosistema-tecnologico-con-fabrica-de-semiconductores-de-yankuilotl · Operación de la planta, cuarto limpio y validación de diseño antes de producción en serie · Calidad como tema de Fase 3.
+
+### F-021
+https://secihti.mx/sala-de-prensa/secihti-visita-inaoe-centro-publico-en-puebla-que-participa-en-proyecto-estrategico-de-semiconductores-kutsari/ · Kutsari: diseño y producción de semiconductores (CMOS, MEMS); INAOE con LIMEMS y cuarto limpio · Actor clave de Fase 3.
+
+### F-022
+https://secihti.mx/sala-de-prensa/secihti-un-ano-impulsando-proyectos-estrategicos-de-ciencia-humanidades-y-tecnologia/ · Proyectos estratégicos federales (Coatlicue, Olinia, Kutsari con sedes en Puebla, Jalisco y Sonora) · Prioridades nacionales.
+
+### F-023
+https://heraldodepuebla.com/2026/06/04/polos-de-desarrollo-economico-para-el-bienestar-que-son-y-estado-actual-del-polo-de-puebla/ · Polo de Desarrollo de Ciudad Modelo: sectores, inversión, empresas ancla, avance · Buscar fuente oficial de la Secretaría de Economía.
+
+### F-024
+https://www.puebla.tecnm.mx/tecnologico-de-puebla-se-unira-al-proyecto-de-autos-electricos-olinia/ · Participación del Instituto Tecnológico de Puebla en Olinia · Electromovilidad.
+
+### F-025
+https://app.femeci.mx/storage/proyectos/user_2724/coordinador/01K9FYPSR1QDPTJGBW578MV73V.pdf · Convocatoria estatal 2025 (UPAEP + SECIHTI) · Comparación con 2026 en [[femeci-antecedentes]].
+
+### F-026
+https://rednacecyt.org/wp-content/uploads/2025/02/RESULTADOS-FEMECI-.pdf · Finalistas FEMECI 2025, incluidos 6 de Puebla · Perfil de la delegación poblana.
+
+### F-027
+https://exclusivaspuebla.com.mx/estudiantes-udlap-premiadas-feria-ciencias/ · UDLAP, 2.º lugar nacional 2026 (superior, salud) · Referente de nivel.
+
+### F-028
+https://tribuna.com.mx/sonora/2026/03/14/concluye-con-gran-exito-la-feria-mexicana-de-ciencias-ingenierias-2026-en-san-carlos_432163/ · Clausura de FEMECI 2026; selección de representantes a ISEF · Contexto nacional.
+
+### F-029
+https://www.economia.gob.mx/datamexico/es/profile/geo/puebla-pu · Exportaciones, IED, empleo · Cifras por verificar.
+
+### F-030
+https://www.urbanopuebla.com.mx/gobierno/puebla-cierra-2025-como-primer-lugar-en-captacion-de-capital-extranjero-para-autopartes-y-como-tercero-en-produccion-de-vehiculos/ · Producción de vehículos, IED en autopartes, textil y alimentos · Base económica.
+
+### F-031
+https://www.puebla.gob.mx/index.php/noticias/item/18744-gobierno-estatal-y-empresas-automotrices-fortalecen-competitividad-de-la-industria · 107 paquetes de formación en manufactura 4.0, calidad, automatización y software · Brecha de talento documentada (P-004).
+
+### F-032
+https://www.urbanopuebla.com.mx/sociedad/medio-ambiente/descargas-irregulares-en-el-rio-atoyac-aumentaron-un-160-en-2025-segun-conagua-se-tienen-identificadas-mil-95/ · Descargas irregulares y limitaciones de vigilancia · P-001.
+
+### F-033
+https://www.puebla.gob.mx/index.php/noticias/item/21149-damnificados-de-la-sierra-norte-son-atendidos-con-puntualidad-y-cercania-armenta · Cifras oficiales de la emergencia de octubre de 2025 · P-002.
+
+### F-034
+https://www.pueblaonline.com.mx/2025/puebla/lluvias-en-puebla-19-muertos-64-mil-damnificados-404-deslaves-11-puentes-destruidos/124284/ · Cifras del 20 oct 2025 y compromiso de fortalecer pronóstico y alertamiento · P-002.
+
+### F-035
+https://secihti.puebla.gob.mx/noticias/impulsa-secihti-innovacion-con-origen-mediante-citras-territoriales · CITRAS Territoriales y bioplanta para residuos de mezcal · P-007.
+
+### F-036
+https://secihti.puebla.gob.mx/noticias/congreso-del-estado-reconoce-merito-academico-del-nanosatelite-gxiba-1 · Nanosatélite Gxiba-1 para monitoreo de cenizas · P-003.
+
+### F-037
+https://ventanilla.puebla.gob.mx/web/fichaAsunto.do?op=23&opcion=0&entidad=&idioma=1&asas_ide_asu=2724&empezarPorPagina=1&nocache=0.9331091432832181 · Programa Fomento e Innovación en Tecnología 2026 · Fuente de los premios y de posibles apoyos.
+
+### F-038
+https://icuap.buap.mx/content/centro-de-investigaciones-en-dispositivos-semiconductores · Centro de la BUAP en dispositivos semiconductores · Posible asesoría externa.
+
+### F-039
+https://secihti.puebla.gob.mx/noticias/secihti-fortalece-alianzas-cientificas-y-academicas-en-puebla · Encuentro Estatal del Sistema de CTI (jun 2026) · Red académica estatal.
+
 ## Fuentes identificadas, pendientes de revisar
 
 | Fuente | URL | Por qué | Estado |
@@ -79,3 +215,11 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | Feria de Ciencias e Ingenierías — COPOCYT / SEDECO San Luis Potosí | https://sedeco.slp.gob.mx/copocyt/tramites-y-servicios/feria-de-ciencias-e-ingenierias/ | Sede de la fase nacional 2027 | Pendiente (Fase 2) |
 | Formatos FEMECI Nuevo León | https://feriasdecienciasnl.org/femeci/formatos/ | Ejemplos públicos de formatos 1C–7 y PI | Pendiente |
 | Convocatoria FEMECI Sonora 2025 | https://coecyt.sonora.gob.mx/media/attachments/2025/07/01/convocatoria-femeci-estatal-2025-.pdf | Comparación con otro capítulo | Pendiente |
+| "Identifican 4,900 descargas contaminantes en la cuenca de ríos Atoyac y Zahuapan" (La Jornada, 13 feb 2026) | https://www.jornada.com.mx/2026/02/13/estados/025n1est | Ampliar P-001 | Pendiente |
+| "Descargas de textileras en Puebla han dañado el Río Atoyac: Sheinbaum" (Revista Fortuna, 16 jul 2026) | https://revistafortuna.com.mx/2026/07/16/descargas-de-textileras-en-puebla-han-danado-el-rio-atoyac-sheinbaum/ | Ampliar P-001 | Pendiente |
+| "Multan con 56 mdp a industrias de Puebla y Tlaxcala por descargas en el Atoyac" (El Popular, 17 jul 2026) | https://elpopular.mx/comunidad/medio-ambiente/2026/07/17/multan-con-56-mdp-a-industrias-de-puebla-y-tlaxcala-por-descargas-en-el-atoyac | Ampliar P-001 | Pendiente |
+| "Puebla se proyecta en semiconductores e IA con inversiones millonarias en Polo de Desarrollo" (Mexico Industry) | https://mexicoindustry.com/noticia/puebla-se-proyecta-en-semiconductores-e-ia-con-inversiones-millonarias-en-polo-de-desarrollo | Fase 3 | Pendiente |
+| "Puebla crea la empresa estatal Yankuilotl" (Intolerancia, 18 jul 2025) | https://intoleranciadiario.com/articles/gobierno/2025/07/18/1040637-puebla-crea-la-empresa-estatal-yankuilotl.html | Fase 3; localizar decreto en el Periódico Oficial | Pendiente |
+| Sitio de Kutsari (INNOVA Bienestar) | https://kutsari.innovabienestar.mx/ | Fase 3 | Pendiente |
+| "Puebla impulsa ciencia de alto impacto con semiconductores…" (Primera Plana) | https://primeraplanapuebla.com/gobierno/puebla-impulsa-ciencia-de-alto-impacto-con-semiconductores-innovacion-tecnologica-y-educacion/ | Fase 3 | No accesible el 2026-10-01 |
+| Ganadores poblanos de FEMECI 2024 (CONCYTEP) | https://concytep.gob.mx/participacion-concyt/proyectos-poblanos-ganadores-de-la-feria-mexicana-de-ciencias-e-ingenierias-femeci-2024-de-la-rednacecyt-y-el-concytep | Antecedentes FEMECI | Dominio fuera de servicio el 2026-10-01 |
