@@ -70,13 +70,15 @@ tags:          # lista
 
 ## 5. Autoría y uso de IA
 
-- Toda nota indica su autor. Las notas elaboradas por Claude (IA) son **material de trabajo**: el equipo las revisa y se anota en `revisado_por`.
-- Ningún texto de esta bóveda escrito por IA se copia a los documentos entregables (protocolo, F-01, cartel, bitácora oficial). Esos documentos los redactan Fortino e Israel. Ver D-003 (propuesta).
-- Cuando la IA ayude en una tarea, la bitácora lo dice: qué hizo y qué verificó el equipo.
-- Toda afirmación aportada por la IA se verifica contra la fuente original antes de usarse en un entregable.
+- El equipo decidió usar IA en el proyecto (D-003, adoptada el 1 oct). Salvaguardas:
+  - Toda nota indica su autor. Las notas elaboradas por Claude (IA) son **material de trabajo**: el equipo las revisa y se anota en `revisado_por`.
+  - Los textos que se entregan (protocolo, F-01, cartel, guion) los redactan Fortino e Israel con sus palabras y dominan todo su contenido.
+  - Cuando la IA ayude en una tarea, la bitácora lo dice: qué hizo y qué verificó el equipo; el protocolo declara el uso de IA en la metodología.
+  - Toda afirmación aportada por la IA se verifica contra la fuente original antes de usarse en un entregable.
 
 ## 6. Bitácora
 
+- La bitácora digital de esta bóveda es la **fuente de verdad** del proyecto (D-002); se exporta a PDF para el expediente.
 - Una nota por día en `02-bitacora/` llamada `AAAA-MM-DD.md`; índice en [[bitacora-indice]].
 - Cada entrada: hora aproximada, responsable (incluida la IA cuando aplique), actividad, resultado o evidencia, decisiones y pendientes.
 - Las entradas pasadas no se reescriben: las correcciones se agregan como nueva entrada o como bloque "Corrección (fecha)".

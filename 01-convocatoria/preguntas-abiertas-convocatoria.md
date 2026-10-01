@@ -48,9 +48,9 @@ Prioridad: **P1** bloquea el registro · **P2** afecta el diseño del proyecto �
 | Q-022 | ¿Ambos pueden asistir el viernes 30 oct y, si se acredita el proyecto, viajar en marzo 2027 (considerando estadías, prácticas o empleo)? | REQ-ELG-04 | Abierta |
 | Q-023 | ¿Quiénes son los autores del proyecto de referencia 2024? ¿Participó alguno de nosotros? ¿Se presentó en algún certamen? | REQ-DER-10, FE-07 | Abierta |
 | Q-024 | ¿Qué contactos del sector están disponibles para entrevistas entre el 5 y el 9 oct? ¿Alguno podría ser asesor científico externo? | EV-02, §3.6 | Abierta |
-| Q-025 | ¿Llevaremos además una bitácora manuscrita? | D-002 | Abierta |
+| Q-025 | ¿Llevaremos además una bitácora manuscrita? | D-002 | ✅ Resuelta (1 oct): no; la bitácora digital es la fuente de verdad, salvo que la DME exija manuscrita (Q-006) |
 | Q-026 | ¿Versionamos la bóveda con git para tener sellos de tiempo verificables? | D-004, C3 | ✅ Resuelta (1 oct): sí; repositorio inicializado |
-| Q-027 | ¿Aprobamos la política de uso de IA propuesta? | D-003 | Abierta |
+| Q-027 | ¿Aprobamos la política de uso de IA propuesta? | D-003 | ✅ Resuelta (1 oct): se usa IA, con salvaguardas |
 
 ## 3. Borrador de correo para la DME
 

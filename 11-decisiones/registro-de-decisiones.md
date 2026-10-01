@@ -19,8 +19,8 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | ID | Decisión | Estado | Fecha | Decide |
 |---|---|---|---|---|
 | D-001 | Estructura y convenciones de la bóveda | Adoptada (revisable) | 2026-10-01 | Claude (IA), por encargo del documento maestro |
-| D-002 | Formato de la bitácora | Propuesta (sin respuesta sobre la bitácora manuscrita) | 2026-10-01 | Equipo |
-| D-003 | Política de uso de IA | Propuesta (pendiente de aprobación explícita) | 2026-10-01 | Equipo |
+| D-002 | Formato de la bitácora | **Adoptada: bitácora digital en la bóveda como fuente de verdad**; manuscrita solo si la DME la exige | 2026-10-01 | Equipo (comunicado por Fortino) |
+| D-003 | Política de uso de IA | **Adoptada: el equipo usará IA** (salvaguardas en la ficha) | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-004 | Versionado de la bóveda con git | **Adoptada** | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-005 | Modalidad (Ciencias o Ingenierías) | Pendiente (G1) | — | Equipo |
 | D-006 | Categoría temática | Pendiente (G1) | — | Equipo |
@@ -35,24 +35,24 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 - **Razones:** trazabilidad para el criterio C3; el orden de carpetas refleja el principio "problema antes que tecnología"; nombres sin acentos ni espacios funcionan bien con git y en cualquier sistema operativo; cada carpeta tiene contenido, así que se conserva aunque se versione.
 - **Consecuencias:** las notas nuevas siguen las convenciones; el equipo puede cambiarlas registrando una nueva decisión.
 
-## D-002 · Formato de la bitácora (propuesta)
+## D-002 · Formato de la bitácora (adoptada)
 
 - **Contexto:** Puebla exige una "Bitácora de Investigación: registro cronológico de actividades" en PDF [F-001 §5] y evalúa su "coherencia y evidencia cronológica" (C3). Otro capítulo estatal exige bitácora manuscrita presente en el stand [F-004]. Puebla no especifica el formato (Q-006).
-- **Opciones:** (a) solo digital en la bóveda, exportada a PDF; (b) bitácora manuscrita oficial + bitácora digital detallada; (c) solo manuscrita.
-- **Propuesta:** (b) hasta que la DME responda. La manuscrita (cuaderno cosido, páginas numeradas, entradas fechadas con responsable, sin arrancar hojas) es el documento oficial que resguarda el líder; la digital ([[bitacora-indice]]) guarda el detalle, los enlaces y la evidencia, y la manuscrita la referencia.
-- **Razones:** cubre ambos escenarios sin rehacer trabajo; la versión digital facilita la trazabilidad con datos y decisiones.
-- **Si la DME acepta bitácora digital:** se puede simplificar a (a).
+- **Opciones consideradas:** (a) solo digital en la bóveda, exportada a PDF; (b) manuscrita oficial + digital detallada; (c) solo manuscrita.
+- **Decisión (2026-10-01, ≈ 09:50):** (a). La bitácora digital de la bóveda ([[bitacora-indice]]) es la **fuente de verdad**; el historial de git aporta sellos de tiempo verificables. Se exportará a PDF para el expediente.
+- **Condición:** si la DME responde que la bitácora debe ser manuscrita (Q-006), se reconsidera; en ese caso la manuscrita se derivaría de la digital.
 
-## D-003 · Política de uso de IA (propuesta)
+## D-003 · Política de uso de IA (adoptada)
 
-- **Contexto:** la convocatoria descalifica por "suplantación de autoría" [§9.1], exige que solo los estudiantes expongan y respondan [§7.4] y evalúa el "manejo ético de la información" (B3). Otro capítulo estatal prohíbe redactar con IA generativa la justificación, la metodología, los resultados o las conclusiones y exige declarar su uso [F-004]. Este proyecto usa a Claude (IA) como apoyo de investigación y documentación.
-- **Propuesta:**
-  1. Fortino e Israel redactan todo lo entregable: protocolo, F-01, cartel, guion y bitácora oficial.
-  2. La IA apoya en búsqueda, organización, revisión crítica, depuración de código y preparación de preguntas; no redacta secciones de entregables.
-  3. Toda afirmación aportada por la IA se verifica contra la fuente original antes de usarse.
-  4. Las notas de la bóveda indican su autor; la bitácora registra cuándo y para qué se usó IA.
-  5. El protocolo incluye una declaración breve de uso de herramientas de IA en la metodología, ajustada a lo que responda la DME (Q-010).
-- **Razones:** protege contra descalificación, fortalece B3 y obliga a dominar el contenido para la defensa (C1, C2).
+- **Decisión (2026-10-01, ≈ 09:50):** el equipo usará herramientas de IA en el proyecto.
+- **Salvaguardas que se mantienen como práctica recomendada** mientras la DME no publique lineamientos (Q-010), porque la convocatoria descalifica por "suplantación de autoría" [§9.1], solo los estudiantes exponen y responden [§7.4] y otro capítulo estatal ya restringe la IA generativa en secciones clave [F-004]:
+  1. Declarar el uso de IA en la metodología del protocolo y en la bitácora (qué se hizo con IA y qué verificó el equipo).
+  2. Verificar contra la fuente original toda afirmación aportada por la IA antes de usarla.
+  3. Que Fortino e Israel dominen todo el contenido y redacten con sus palabras los textos que se entregan (protocolo, resumen, cartel, guion).
+  4. Las notas de la bóveda indican su autor (`autor:` en las propiedades).
+
+> [!note] Versión anterior
+> La propuesta original de D-003 (1 oct, sesión 1) planteaba que la IA no redactara secciones de los entregables. El equipo aprobó usar IA; las salvaguardas anteriores conservan ese espíritu sin prohibirlo, y se ajustarán a lo que responda la DME.
 
 ## D-004 · Versionado de la bóveda con git (adoptada)
 
