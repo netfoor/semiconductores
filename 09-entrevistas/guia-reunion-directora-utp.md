@@ -15,6 +15,11 @@ aliases: ["Reunión con la directora", "Guía directora UTP"]
 
 **Cuándo:** viernes 2 de octubre. **Quién va:** Fortino. **Duración sugerida:** 10–15 minutos.
 
+> [!tip] Si pregunta si ya tienen proyecto (versión de 30 segundos; agregada el 2 oct, 12:30)
+> "Ya tenemos la línea y estamos por cerrar el tema exacto. Vamos a participar en FEMECI-PUEBLA 2026, nivel superior, con el profe José Francisco Espinosa como asesor. Ya analizamos la convocatoria, las prioridades de Puebla y el ecosistema de semiconductores. En Puebla lo que hay es diseño de chips (Kutsari, con el INAOE) y ensamble de tarjetas electrónicas (Yankuilotl). Lo más probable es un sistema de inspección con cámara y procesamiento local, en una Raspberry Pi. Ayudaría a detectar defectos en el ensamble de tarjetas, como soldaduras mal hechas o componentes faltantes o mal colocados, y lo validaríamos con datos reales y métricas. El tema exacto lo cerramos el martes 6, según lo que nos digan en Yankuilotl sobre sus problemas reales."
+>
+> `#inferencia` "Lo más probable" corresponde a IC-01 o IC-02 de [[mapa-de-oportunidades]] y sigue condicionado a la confirmación de Yankuilotl.
+
 ## 1. Carta de postulación (lo urgente)
 
 Lo que pide la convocatoria: "Carta de Postulación y Respaldo Institucional", con membrete oficial y firma o sello de la autoridad escolar o directiva del plantel [F-001 §5].
@@ -35,6 +40,7 @@ Preguntar:
 En la prensa aparece la UTP entre las universidades participantes en Yankuilotl [F-019].
 1. ¿Hay convenio, estancias, prácticas o algún enlace de la UTP con Yankuilotl?
 2. ¿Quién es el contacto? ¿La UTP podría presentarnos formalmente para una entrevista técnica breve la semana del 5 de octubre?
+3. *(Agregada el 2 oct.)* Fortino también preguntará si hay conexión para hacer sus prácticas profesionales en Yankuilotl.
 
 ## 3. Laboratorio de electrónica: plan B (Q-047)
 
