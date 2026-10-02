@@ -31,7 +31,7 @@ aliases: ["Rúbrica", "Rúbrica y evidencias"]
 ### Aritmética del umbral (`#inferencia`, con el supuesto de reparto igual)
 
 - El margen total de pérdida es de **20 puntos**.
-- Si obtenemos 90 % en todo, sumamos 90. Cada subcriterio que caiga a la mitad resta ≈ 4 puntos (en A) o ≈ 3.3 (en B o C). **Con 90 % en el resto, bastan tres subcriterios a la mitad para quedar debajo de 80.**
+- Si obtenemos 90 % en todo, sumamos 90. Cada subcriterio que caiga a la mitad resta ≈ 4 puntos (en A) o ≈ 3.3 (en B o C). **Con 90 % en el resto, bastan tres subcriterios a la mitad para quedar en 80 o menos** (debajo de 80 si al menos uno de ellos es del criterio A).
 - Ningún subcriterio es opcional: hay que cubrir los once.
 - Para competir por el top 3 estatal conviene apuntar a **≥ 90** (`#supuesto`: no conocemos la distribución de puntajes de otras ediciones).
 
