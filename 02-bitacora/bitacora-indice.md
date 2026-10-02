@@ -28,6 +28,7 @@ La convocatoria exige una "Bitácora de Investigación: registro cronológico de
 | Fecha | Fase | Resumen |
 |---|---|---|
 | [[2026-10-01]] | 1 a 4 | Sesión 1: inicio de la bitácora; lectura íntegra de la convocatoria; especificación, rúbrica, calendario, expediente, riesgos y estructura de la bóveda. Sesión 2: decisiones del equipo (líder, asesor, git), repositorio git e investigación estratégica sobre Puebla (Fase 2). Sesión 3: decisiones sobre IA y bitácora, carpeta de inundaciones de la Sierra Norte, guía de contacto con Yankuilotl y ecosistema de semiconductores con estudios existentes (Fase 3). Sesión 4: lectura completa de la presentación de 2024 (11 diapositivas y 4 videos), análisis del proyecto y comparación técnica nube/edge sin decisión (Fase 4). Sesión 5: autoría del proyecto 2024 aclarada (autor principal: Mirai) y propuesta D-010 sobre continuidad |
+| [[2026-10-02]] | 5 | Sesión 1: D-010 adoptada (desarrollo desde cero, sin continuidad); hallazgos de la plataforma de inscripción; información faltante y guías de contacto (directora de la UTP, Yankuilotl, INAOE/Kutsari); mapa de oportunidades con ocho ideas candidatas y ruta de decisión para G1; brief de cierre de la primera etapa |
 
 ## Antecedentes previos a la bitácora (por completar por el equipo)
 

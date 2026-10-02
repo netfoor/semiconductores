@@ -42,3 +42,6 @@ aliases: ["Oportunidades semiconductores"]
 1. Las oportunidades OP-01 a OP-03 son las que mejor encajan con las capacidades del equipo y con la rúbrica (prototipo, experimento cuantitativo, demo en mesa), **pero las tres dependen de lo que diga Yankuilotl**.
 2. La literatura muestra que la tecnología base ya existe [F-054]; el valor estaría en resolver un problema verificado de una planta poblana con datos propios y validación rigurosa.
 3. Si Yankuilotl no da acceso antes del ≈ 9 de octubre, la familia de semiconductores pierde fuerza frente a problemas con mejor evidencia pública (ver [[sintesis-fase-2]] §4).
+
+> [!info] Fase 5 (2 oct)
+> Estas oportunidades pasaron al [[mapa-de-oportunidades]] como ideas candidatas: OP-01 → IC-01, OP-02 → IC-03, OP-03 → IC-02, OP-04 → IC-04, OP-05 → IC-05 y OP-06 → IC-06.

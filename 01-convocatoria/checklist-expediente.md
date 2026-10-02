@@ -20,10 +20,19 @@ Fecha límite oficial: **domingo 18 oct 2026** (hora por confirmar, Q-003). Meta
 - [x] Designar Líder de Proyecto (D-007): **Fortino Romero Mantilla** — registro, canal oficial y resguardo de la bitácora [§3.3] ✅ 2026-10-01
 - [x] Crear cuenta en https://secihti-pue-dme.org/registro ✅ 2026-10-01 (la creó el líder)
 - [ ] Descargar dentro de la plataforma: plantilla del protocolo (Ciencias/Ingenierías), F-01 a F-05 y FE; guardarlos sin modificar en `01-convocatoria/documentos-oficiales/`
+  - *2 oct:* la página de inscripción no muestra plantilla ni formatos (captura de Fortino).
+  - Falta revisar el detalle del evento en "Eventos disponibles" y, después de inscribirse, el detalle de la inscripción.
+  - Si no aparecen, pedirlos a la DME (Q-001, Q-002; pregunta 2 del correo).
+- [ ] Inscripción en la plataforma: **no confirmarla antes de G1 (6 oct)**, salvo que la DME confirme que categoría, área y título se pueden editar después (Q-045). El formulario pide:
+  - categoría y área del proyecto;
+  - título (opcional);
+  - teléfono e institución.
+
+  Permite adjuntar archivos ahora o después desde el detalle de la inscripción: PDF, Word, video o imagen, máximo 10 MB por archivo y varios a la vez. Al preparar el expediente, cuidar que el protocolo y la bitácora en PDF pesen menos de 10 MB cada uno.
 - [ ] Registrar en la bitácora la fecha de descarga y la versión de cada formato
 - [ ] Confirmar que ninguno de los dos está inscrito en otro proyecto de esta convocatoria [§3.4]
 - [x] Confirmar asesor de la UTP: **Prof. José Francisco Espinosa Garita** ✅ 2026-10-01 — falta confirmar su disponibilidad para revisar (14 oct) y firmar (15 oct) (Q-019)
-- [ ] Carta de postulación: la gestiona la directora de división de la UTP; el líder inicia el trámite lo antes posible (Q-020)
+- [ ] Carta de postulación: la gestiona la directora de división de la UTP; el líder inicia el trámite lo antes posible (Q-020). *2 oct: Fortino se la pide hoy; guía de la reunión en [[guia-reunion-directora-utp]].*
 - [ ] Verificar que los nombres de integrantes y asesor se escriban igual que en sus identificaciones oficiales en todos los documentos
 
 ## 2. Documentos obligatorios [F-001 §5 (3.8)]
@@ -53,7 +62,7 @@ Se decide en G1, cuando el proyecto esté definido. Los formatos FE coinciden en
 | FE-04 | Hay participantes humanos (encuestas, cuestionarios, pruebas con personas) | Posible si validamos con usuarios u operadores o hacemos encuestas. Consultar a expertos **antes** de experimentar no se considera investigación con participantes humanos según ISEF [F-005]; confirmar el criterio de la DME (Q-008) | Diseñar pruebas sin participantes externos o tramitar FE-04 + consentimiento informado (formato PI nacional [F-003]) |
 | FE-05A/5B | Animales vertebrados | No previsto | — |
 | FE-06A/6B | Agentes biológicos peligrosos o tejidos | No previsto | — |
-| FE-07 | Proyecto de continuidad | Probablemente **no aplica** si el proyecto 2026 es nuevo: el proyecto 2024 fue de Mirai y el equipo solo participó (Q-023 resuelta; D-010 propuesta). Sí aplicaría si se retoma un proyecto propio previo | Declarar el antecedente de 2024 en el protocolo y en la bitácora; no reutilizar material de Mirai; confirmar con la DME (Q-011) |
+| FE-07 | Proyecto de continuidad | **No aplica** (D-010, adoptada el 2 oct): el proyecto se desarrolla desde cero. El proyecto 2024 de Mirai fue de otra institución y queda solo como referencia del análisis. Aplicaría si se retomara un proyecto propio previo | No reutilizar material de Mirai. Si un evaluador pregunta por experiencia previa, responder con la verdad (C2) |
 
 ## 4. Control de calidad antes de enviar (G3)
 

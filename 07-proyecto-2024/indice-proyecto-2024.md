@@ -36,10 +36,8 @@ tags: [femeci, proyecto-2024, fase-4]
 - `#hecho` Existe el formato FE-07 para proyectos de continuidad [F-001 §5.1]. En otro capítulo estatal, omitir la declaración de continuidad causa descalificación [F-004].
 - `#hecho` La presentación lleva "Confidential" en todas las diapositivas y no nombra autores. La tarjeta inspeccionada lleva el logotipo de MIRAI [F-059].
 - `#hecho` (dicho por Fortino, 1 oct) Fortino e Israel participaron en el proyecto durante su estancia en Mirai; el autor principal fue Mirai (Q-023 resuelta).
-- **Tratamiento propuesto (D-010):**
-  - proyecto 2026 propio, con el de 2024 declarado como antecedente;
-  - no se presenta como continuidad: no suma puntos y obligaría a documentar un trabajo ajeno.
-- `#pregunta` ¿La DME lo considera continuidad (Q-011)? ¿Se puede citar o mostrar algo de la presentación (Q-042)?
-- **Mientras tanto:**
+- **Decisión del equipo (D-010, adoptada el 2 oct):** el proyecto 2026 se desarrolla desde cero, sin continuidad. El de 2024 queda solo como referencia de este análisis.
+- **En consecuencia:**
   - no copiar texto, figuras, diagramas, capturas ni código de la presentación a ningún entregable;
-  - si se usa como referencia conceptual, citarla y explicar en qué nos diferenciamos. Escenarios en [[analisis-proyecto-2024]] §12.
+  - no construir el proyecto 2026 sobre el de 2024;
+  - si un evaluador pregunta por experiencia previa, responder con la verdad (C2).

@@ -96,6 +96,7 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | F-076 | Heckler-Kram, Neudeck, Scheler, König y Steger (2025). The MVTec AD 2 Dataset: Advanced Scenarios for Unsupervised Anomaly Detection. arXiv:2503.21622 | Académica (MVTec) | Académica / dataset | 2025-03-27 | 2026-10-01 | Automatizada (resumen) |
 | F-077 | ISEF International Rules: "Rules for All Projects" (sección de proyectos de continuidad) | Society for Science | Primaria oficial (reglamento internacional; referencia) | s. f. (ciclo 2026–2027) | 2026-10-01 | Automatizada (citas textuales obtenidas con la herramienta; verificar) |
 | F-078 | *Continuation/Research Progression Projects Form (7)*, versión 2022–2023 (copia publicada por una feria regional) | Society for Science | Primaria oficial (formulario; referencia) | 2022 | 2026-10-01 | Automatizada |
+| F-079 | Ross, G. (2006). *First Article Inspection Strategies*. IPC Printed Circuits Expo, APEX and the Designers Summit | Cluso Vision Systems (proveedor), vía IPC | Proveedor (ponencia técnica) | 2006 | 2026-10-02 | Automatizada |
 
 ## F-001
 
@@ -113,6 +114,11 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 - **Qué aporta:** la convocatoria activa listada es FEMECI-PUEBLA 2026; la versión en línea de la convocatoria coincide en fechas, ponderaciones y dinámica con F-001. Las páginas del evento redirigen a inicio de sesión: los formatos y la plantilla de protocolo no son públicos. El registro de cuenta pide nombre, correo y contraseña (teléfono e institución, opcionales). La plataforma anuncia "evaluaciones objetivas con rúbricas estandarizadas" y "monitoreo en tiempo real de tu puntaje y clasificación". Correo de contacto del sitio: contacto@secihti.puebla.gob.mx.
 - **Implicación:** hay que crear cuenta para obtener formatos y plantilla (ver [[checklist-expediente]]).
 - **Nota:** el sitio no fue accesible desde la terminal de trabajo; se consultó con una herramienta de lectura web.
+- **Actualización 2026-10-02 (captura de pantalla de Fortino, con sesión iniciada; Claude no inicia sesión).** La página `eventos/8/inscribirme` es el formulario de inscripción a FEMECI-PUEBLA 2026.
+  - **Campos:** categoría y área del proyecto (menús), título (opcional), teléfono de contacto e institución.
+  - **Archivos:** se pueden adjuntar ahora o después desde el detalle de la inscripción (tipo de documento libre, por ejemplo "Protocolo"; PDF, Word, video o imagen; máximo 10 MB por archivo; varios a la vez). Botones: "Confirmar inscripción" y "Cancelar".
+  - **Menú lateral:** Panel, Eventos disponibles, Mis inscripciones.
+  - **No hay plantilla ni formatos descargables en esa página.** Falta revisar el detalle del evento; si no aparecen ahí, se piden a la DME (Q-001, Q-002, Q-045).
 
 ## F-003
 
@@ -388,6 +394,16 @@ Implicación: en la lógica de los formatos FE (`#inferencia`), la continuidad n
 
 ### F-078
 https://www.dpo.uab.edu/carsef/images/7-Continuation.pdf · "Required for projects that are a continuation/progression in the same field of study as a previous project"; se acompaña del resumen y del plan del proyecto anterior; el estudiante certifica que su resumen y su cartel reflejan solo el trabajo del año en curso · Referencia para interpretar FE-07 mientras responde la DME (Q-011).
+
+## Fuentes de la Fase 5 (desde F-079)
+
+### F-079
+https://www.electronics.org/system/files/technical_resource/E16&S35-01.pdf · Verificación de la primera tarjeta (first article inspection) en ensamble:
+- caso con cuatro tarjetas de 300–600 componentes: ≈ 3 h de inspección manual por cambio de producto, frente a ≈ 0.6 h automatizada;
+- una planta con cambios en cada línea al menos dos veces por semana bajó de 30 a 6 h semanales;
+- la falla principal son piezas mal cargadas por errores de preparación de la máquina.
+
+Proveedor y año 2006: sirve para ilustrar el tipo de problema, no como dato actual. Respaldo de IC-02 en [[mapa-de-oportunidades]].
 
 ## Fuentes identificadas, pendientes de revisar
 

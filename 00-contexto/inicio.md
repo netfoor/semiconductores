@@ -26,7 +26,7 @@ aliases: ["Inicio", "Mapa del proyecto"]
 
 Decisiones: D-007 y D-008 en [[registro-de-decisiones]]. La bóveda se versiona con git (D-004).
 
-## Estado (al 2026-10-01)
+## Estado (al 2026-10-02)
 
 Las letras remiten a "Tu primera ejecución" del documento maestro.
 
@@ -36,17 +36,18 @@ Las letras remiten a "Tu primera ejecución" del documento maestro.
 | 2 | Investigación estratégica: SECIHTI y prioridades de Puebla (C) | ✅ Completada el 1 oct — pendiente de revisión del equipo → [[sintesis-fase-2]] |
 | 3 | Ecosistema de semiconductores en Puebla, actores y problemas documentados (D, E), con estudios existentes — hipótesis inicial, no aceptada de antemano | ✅ Completada el 1 oct — pendiente de revisión → [[sintesis-fase-3]] |
 | 4 | Análisis del proyecto de referencia 2024 (F), con comparación técnica nube/edge | ✅ Completada el 1 oct — pendiente de revisión → [[analisis-proyecto-2024]] |
-| 5 | Información faltante, preguntas para la industria y mapa de oportunidades (G, H) | ⏳ Pendiente |
-| 6 | Decisión, protocolo, prototipo, experimentos y defensa | ⏳ Pendiente |
+| 5 | Información faltante, preguntas para la industria y mapa de oportunidades (G, H), con brief de cierre de la primera etapa | ✅ Completada el 2 oct — pendiente de revisión → [[brief-investigacion-etapa-1]] · [[mapa-de-oportunidades]] |
+| 6 | Decisión (G1, mar 6 oct), protocolo, prototipo, experimentos y defensa | ⏳ Pendiente |
 
 ## Fechas que mandan
 
-| Fecha | Hito oficial | Faltan (desde 2026-10-01) |
+| Fecha | Hito oficial | Faltan (desde 2026-10-02) |
 |---|---|---|
-| dom 18 oct 2026 | Cierre del registro y del expediente | 17 días |
+| mar 6 oct 2026 | Decisión del problema (G1, compuerta interna) | 4 días |
+| dom 18 oct 2026 | Cierre del registro y del expediente | 16 días |
 | 19–23 oct 2026 | Revisión técnica de expedientes (CRC) | — |
-| lun 26 oct 2026 | Publicación de finalistas | 25 días |
-| vie 30 oct 2026 | Jornada de exhibición, evaluación y premiación (Centro de Vinculación UPAEP) | 29 días |
+| lun 26 oct 2026 | Publicación de finalistas | 24 días |
+| vie 30 oct 2026 | Jornada de exhibición, evaluación y premiación (Centro de Vinculación UPAEP) | 28 días |
 | marzo 2027 | FEMECI Nacional, San Luis Potosí | — |
 
 Plan inverso y compuertas: [[calendario-y-plazos]].
@@ -82,11 +83,18 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 - [[comparacion-nube-vs-edge]]: nube, local o híbrido, con datos de referencia y el experimento que decidiría (D-009, pendiente).
 - Índice: [[indice-proyecto-2024]].
 
+## Notas clave de la Fase 5
+
+- [[brief-investigacion-etapa-1]]: brief de cierre de la primera etapa (los 9 puntos del documento maestro y la evidencia que contradice nuestras suposiciones).
+- [[mapa-de-oportunidades]]: ocho ideas candidatas, matriz de 14 criterios, filtros y ruta de decisión para G1 (sin elegir).
+- [[informacion-faltante]]: qué nos falta saber, quién lo responde y qué pedir a cada contacto.
+- Guías: [[guia-reunion-directora-utp]] · [[guia-contacto-yankuilotl]] · [[guia-contacto-inaoe-kutsari]].
+
 ## Mapa de la bóveda
 
 | Carpeta | Contenido |
 |---|---|
-| `00-contexto/` | Documento maestro, inicio y convenciones |
+| `00-contexto/` | Documento maestro, inicio, convenciones y brief de investigación |
 | `01-convocatoria/` | Convocatoria, especificación, rúbrica, calendario, expediente, preguntas y documentos oficiales |
 | `02-bitacora/` | Bitácora cronológica (una nota por día) |
 | `03-fuentes/` | Registro de fuentes |
@@ -107,9 +115,9 @@ Plan inverso y compuertas: [[calendario-y-plazos]].
 ## Próximas acciones
 
 1. ✅ Líder (D-007), asesor (D-008), git (D-004), uso de IA (D-003) y bitácora digital como fuente de verdad (D-002) decididos el 1 oct.
-2. ✅ Cuenta creada en la plataforma. Pendiente: descargar plantilla y formatos → [[checklist-expediente]].
-3. Iniciar el trámite de la carta institucional con la directora de división de la UTP.
-4. Enviar las preguntas P1/P2 a la DME → [[preguntas-abiertas-convocatoria]].
-5. ✅ Fases 2, 3 y 4 completadas. Ahora: contactar a Yankuilotl con [[guia-contacto-yankuilotl]] (la entrevista decide si la familia de semiconductores es viable; se agregaron dos preguntas sobre conectividad y tiempo de ciclo).
-6. ✅ Autoría del proyecto 2024 aclarada (Q-023): participaron, pero el autor principal fue Mirai. Propuesta D-010: proyecto propio, con antecedente declarado y sin FE-07. Pendiente: incluir la pregunta 11 (continuidad) en el correo a la DME (Q-011).
-7. Fase 5 (5–6 oct): información faltante, guías de entrevista y mapa de oportunidades con matriz de comparación.
+2. ✅ Cuenta creada en la plataforma. La página de inscripción no muestra la plantilla ni los formatos: revisar el detalle del evento o pedirlos a la DME. **No confirmar la inscripción antes de G1** → [[checklist-expediente]].
+3. Hoy, 2 oct: pedir la carta institucional a la directora de división, con [[guia-reunion-directora-utp]].
+4. Hoy, 2 oct: enviar el correo a la DME → [[preguntas-abiertas-convocatoria]] §3.
+5. Hoy, 2 oct: platicar con los contactos de Yankuilotl, con la versión corta de [[guia-contacto-yankuilotl]]. La conversación decide si la familia de semiconductores pasa el filtro del problema.
+6. ✅ D-010 adoptada el 2 oct: desarrollo desde cero, sin continuidad.
+7. ✅ Fases 1 a 5 completadas. Siguiente: el lunes 5, actualizar el [[mapa-de-oportunidades]] con las respuestas; el **martes 6 (G1)**, decidir problema, modalidad y categoría con la ruta de §5.

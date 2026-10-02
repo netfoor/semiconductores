@@ -11,7 +11,12 @@ tags: [femeci, ideas]
 
 # Ideas candidatas — índice
 
-**Estado:** pendiente (Fase 5). Aquí se construyen **varias** hipótesis de proyecto (IC-##) y se comparan antes de elegir; ninguna se elige sin evidencia.
+**Estado:** primera versión del mapa lista el 2 oct (Fase 5): [[mapa-de-oportunidades]].
+- Ocho ideas candidatas (IC-01 a IC-08), con matriz de comparación, filtros y una ruta de decisión para G1 (martes 6 oct).
+- **Ninguna está elegida.**
+- La idea que elija el equipo tendrá su propia ficha con la plantilla de abajo.
+
+Aquí se construyen **varias** hipótesis de proyecto (IC-##) y se comparan antes de elegir; ninguna se elige sin evidencia.
 
 ## Criterios de comparación
 

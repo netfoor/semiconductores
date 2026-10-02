@@ -34,7 +34,7 @@ Fase 4 (letra F del documento maestro). Responde las nueve preguntas del documen
    - `#hecho` Ya hay regiones de nube en Querétaro [F-070 a F-072].
 7. **Autoría aclarada el 1 oct (Q-023).** Fortino e Israel participaron en el proyecto durante su estancia en Mirai Innovation [F-075], pero el autor principal fue Mirai.
    - `#inferencia` La continuidad no suma puntos y no es obligatoria si el proyecto 2026 es nuevo.
-   - Tratamiento propuesto: proyecto propio, declarando el antecedente (D-010). Falta la confirmación de la DME (Q-011). Detalle en §12.
+   - **Decisión del equipo (2 oct, D-010):** desarrollo desde cero, sin continuidad; el proyecto 2024 queda solo como referencia de este análisis. Detalle en §12.
 
 ## 1. Qué problema intentaba resolver
 
@@ -225,6 +225,9 @@ Lectura (`#inferencia`):
 3. **No hay que ocultar el antecedente:** se menciona en "Antecedentes" del protocolo (participación en un proyecto institucional de Mirai Innovation en 2024 que motivó el interés) y en la bitácora. Si se usa alguna idea, se cita. Así el antecedente se vuelve un argumento de experiencia, no un riesgo, y sirve para responder bien si un juez pregunta (C2).
 4. **Llamarlo "evolución" equivale, en la práctica, a declarar continuidad.** Solo convendría si el proyecto 2026 reutilizara el prototipo de 2024, lo cual no está previsto.
 5. **La DME tiene la última palabra:** se le pregunta en el correo (Q-011, pregunta 11). Decisión propuesta: D-010.
+
+> [!success] Decisión del equipo (2 oct)
+> El proyecto se desarrolla **desde cero, sin continuidad** (D-010 adoptada). El proyecto 2024 queda solo como referencia de este análisis. Se retiró la consulta a la DME.
 
 ## 13. Cómo le iría con la rúbrica de 2026 (`#inferencia`)
 

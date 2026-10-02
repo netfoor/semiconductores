@@ -27,7 +27,7 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-007 | Líder de Proyecto | **Adoptada: Fortino Romero Mantilla** | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-008 | Asesor institucional y posible asesor científico externo | **Adoptada (asesor institucional): Prof. José Francisco Espinosa Garita**; asesor externo pendiente | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-009 | Ubicación del procesamiento (nube, local o híbrido) | Pendiente: se decide con un experimento después de elegir el problema | — | Equipo, con datos del experimento |
-| D-010 | Tratamiento del proyecto 2024 de Mirai: ¿continuidad o antecedente? | **Propuesta:** proyecto propio, con el proyecto 2024 declarado como antecedente; no se presenta como continuidad. Sujeta a la respuesta de la DME (Q-011) | 2026-10-01 | Equipo (inclinación expresada por Fortino) |
+| D-010 | Tratamiento del proyecto 2024 de Mirai: ¿continuidad o antecedente? | **Adoptada: desarrollo desde cero, sin continuidad.** El proyecto 2024 queda solo como referencia del análisis | 2026-10-02 | Equipo (comunicado por Fortino) |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -92,7 +92,14 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 - **Depende de:** el problema elegido (G1), el tiempo de ciclo (Q-044), la conectividad y la política de datos del usuario (Q-043, Q-037) y el internet en la mesa de exhibición (Q-014).
 - **Registro:** 2026-10-01, Fase 4, por Claude (IA). Queda pendiente por instrucción del documento maestro.
 
-## D-010 · Tratamiento del proyecto 2024 de Mirai (propuesta)
+## D-010 · Tratamiento del proyecto 2024 de Mirai (adoptada)
+
+> [!success] Decisión del equipo (2026-10-02, ≈ 01:16, comunicada por Fortino)
+> "Desarrollamos nosotros desde 0, no hay continuidad." El proyecto 2024 queda **solo como referencia del análisis** de Claude, porque es distinto de lo que se haría en Puebla.
+> - **Consecuencias:** no se llena FE-07 ni se le pregunta a la DME (Q-011 cerrada); no se reutiliza código, textos, figuras ni datos de Mirai; el proyecto 2026 no se construye sobre el de 2024.
+> - **Nota de transparencia:** si un evaluador pregunta por experiencia previa, se responde con la verdad (participaron en 2024 en un proyecto de Mirai), sin presentarlo como base de este (C2).
+>
+> Abajo queda la propuesta original del 1 oct, que consideraba mencionar el antecedente en el protocolo; el equipo eligió la variante sin continuidad.
 
 - **Contexto:** Fortino e Israel participaron en 2024, durante su estancia en Mirai Innovation, en el proyecto *Industrial Semiconductor Inspection System with cloud-Based Inventory Control*. El autor principal fue Mirai (Q-023, respondida por Fortino el 1 oct, 16:07). Fortino pregunta si conviene o es obligatorio presentar el proyecto 2026 como continuidad.
 - **Lo que dicen las reglas:**
@@ -116,4 +123,4 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
   - citar cualquier idea que se tome de él.
 
   Si el proyecto 2026 terminara reutilizando el prototipo de 2024, se reconsidera (a).
-- **Confirmación pendiente:** pregunta 11 del correo a la DME (Q-011). Detalle en [[analisis-proyecto-2024]] §12.
+- **Confirmación pendiente (1 oct):** pregunta 11 del correo a la DME (Q-011). Detalle en [[analisis-proyecto-2024]] §12. *Superado el 2 oct por la decisión del equipo; la pregunta se retiró del correo.*

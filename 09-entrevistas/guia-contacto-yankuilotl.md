@@ -15,6 +15,13 @@ aliases: ["Guía Yankuilotl", "Qué queremos de Yankuilotl"]
 
 **Para qué:** Fortino conoce a personas del área de desarrollo de software. La idea es que ellos nos orienten o nos presenten con el área técnica de la planta de ensamble de tarjetas electrónicas. Esta guía dice **qué nos interesa de ellos**, en qué orden preguntarlo y qué podemos ofrecer. Perfil de la empresa: [[yankuilotl]].
 
+> [!tip] Versión corta: si solo hay 5 minutos (agregada el 2 oct)
+> 1. **¿Quién del laboratorio o de la dirección de tecnología podría platicar 20–30 minutos con nosotros la semana del 5?**
+> 2. A grandes rasgos, **¿cómo revisan hoy las tarjetas** (a ojo, con máquina AOI, con pruebas eléctricas) **y qué falla más seguido o les quita más tiempo?** Por ejemplo: soldaduras through-hole, componentes faltantes o mal colocados, o verificar la primera tarjeta al cambiar de producto.
+> 3. **¿Habría forma de fotografiar tarjetas o de que nos presten tarjetas de desecho o con defectos?** ¿Qué tendríamos que tratar como confidencial?
+>
+> Con esas tres respuestas se puede aplicar la ruta de decisión del martes 6 ([[mapa-de-oportunidades]] §5).
+
 ## 1. Lo que queremos lograr con el primer contacto
 
 1. Saber **si existe un problema técnico real** en la planta que un proyecto estudiantil pueda atacar en 4 semanas.
@@ -39,6 +46,7 @@ Pregunta clave para tus contactos: ¿hay convenio o colaboración entre la UTP y
 4. ¿Dónde se les atora más el proceso? (programación de máquinas por proyecto, inspección, retrabajo, pruebas)
 5. ¿Registran datos de defectos o de inspección? ¿En qué formato?
 6. ¿Sería posible visitar la línea o fotografiar tarjetas? ¿Qué información tendríamos que tratar como confidencial?
+   - *(Agregada el 2 oct.)* ¿Podrían prestarnos o donarnos tarjetas de desecho, de prueba o con defectos (incluidas las de retrabajo) para formar un conjunto de datos propio? (Q-046)
 
 **Bloque 2 — para dimensionar (si hay interés):**
 7. ¿Qué tipo de producción tienen? (muchos modelos de tarjeta en lotes pequeños, o pocos modelos en volumen)

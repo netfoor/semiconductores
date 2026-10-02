@@ -12,7 +12,16 @@ tags: [femeci, entrevistas]
 
 # Entrevistas y preguntas pendientes — índice
 
-**Estado:** preguntas para la DME listas en [[preguntas-abiertas-convocatoria]]; preguntas para contactos externos surgidas en la Fase 2 en [[preguntas-pendientes]]; guías para la industria pendientes (Fase 5). **Alimenta:** A1, A2 y B2 → EV-02.
+**Estado (2 oct, Fase 5):**
+- Preguntas para la DME y borrador de correo: [[preguntas-abiertas-convocatoria]].
+- Preguntas para contactos externos: [[preguntas-pendientes]].
+- Qué nos falta saber y qué pedir a cada contacto: [[informacion-faltante]].
+- Guías:
+  - [[guia-contacto-yankuilotl]] (con versión corta de 5 minutos);
+  - [[guia-reunion-directora-utp]];
+  - [[guia-contacto-inaoe-kutsari]].
+
+**Alimenta:** A1, A2 y B2 → EV-02.
 
 ## Pautas para entrevistas con especialistas
 
