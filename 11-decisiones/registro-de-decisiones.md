@@ -22,12 +22,13 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-002 | Formato de la bitácora | **Adoptada: bitácora digital en la bóveda como fuente de verdad**; manuscrita solo si la DME la exige | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-003 | Política de uso de IA | **Adoptada: el equipo usará IA** (salvaguardas en la ficha) | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-004 | Versionado de la bóveda con git | **Adoptada** | 2026-10-01 | Equipo (comunicado por Fortino) |
-| D-005 | Modalidad (Ciencias o Ingenierías) | Pendiente (G1) | — | Equipo |
-| D-006 | Categoría temática | Pendiente (G1) | — | Equipo |
+| D-005 | Modalidad (Ciencias o Ingenierías) | **Adoptada: Ingenierías** | 2026-10-18 | Equipo (comunicado por Fortino) |
+| D-006 | Categoría temática | **Adoptada: Sistemas Informáticos y Computación** (robótica y máquinas inteligentes: visión artificial); confirmar contra el menú de la plataforma | 2026-10-18 | Equipo (comunicado por Fortino) |
 | D-007 | Líder de Proyecto | **Adoptada: Fortino Romero Mantilla** | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-008 | Asesor institucional y posible asesor científico externo | **Adoptada (asesor institucional): Prof. José Francisco Espinosa Garita**; asesor externo pendiente | 2026-10-01 | Equipo (comunicado por Fortino) |
 | D-009 | Ubicación del procesamiento (nube, local o híbrido) | Pendiente: se decide con un experimento después de elegir el problema | — | Equipo, con datos del experimento |
 | D-010 | Tratamiento del proyecto 2024 de Mirai: ¿continuidad o antecedente? | **Adoptada: desarrollo desde cero, sin continuidad.** El proyecto 2024 queda solo como referencia del análisis | 2026-10-02 | Equipo (comunicado por Fortino) |
+| D-011 | Problema elegido (G1): IC-01, inspección asistida de uniones through-hole, con procesamiento local; y política de confidencialidad: los entregables no nombran empresas específicas | **Adoptada** | 2026-10-18 | Equipo (comunicado por Fortino) |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -124,3 +125,12 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 
   Si el proyecto 2026 terminara reutilizando el prototipo de 2024, se reconsidera (a).
 - **Confirmación pendiente (1 oct):** pregunta 11 del correo a la DME (Q-011). Detalle en [[analisis-proyecto-2024]] §12. *Superado el 2 oct por la decisión del equipo; la pregunta se retiró del correo.*
+
+## D-011 · Problema elegido (G1) y confidencialidad (adoptada)
+
+- **Decisión (2026-10-18, ≈ 19:15):** el equipo formaliza **IC-01**, inspección visual asistida de uniones soldadas through-hole, con humano en el ciclo y procesamiento local. Modalidad Ingenierías (D-005) y categoría Sistemas Informáticos y Computación (D-006).
+- **Evidencia que la sostiene:** conversación con personal de una empresa de ensamble electrónico de Puebla (comunicada por Fortino): la validación de piezas conserva partes manuales y las fallas se revisan con mayor resolución a ojo humano. Es una sola fuente y sin cifras; el protocolo la declara así. Literatura: [[mapa-de-oportunidades]] IC-01.
+- **Datos:** hoy no hay tarjetas ni imágenes. Se propone colaborar con un productor local para tarjetas (DS-02, opcional); el plan base es DS-01, tarjetas propias con defectos sembrados.
+- **Confidencialidad:** la información de la empresa es privada; **ningún entregable nombra empresas específicas** y no se publican imágenes ni datos sin autorización escrita. En la bóveda y en el historial git sí consta el nombre; la bitácora que se entrega usa una versión con el nombre reservado y lo declara.
+- **D-009** (nube, local o híbrido) sigue pendiente: se decide con EXP-003 y la regla fijada en el protocolo.
+- **Riesgo aceptado:** sin resultados al momento de entregar; el criterio A5 queda expuesto y el protocolo lo declara.
