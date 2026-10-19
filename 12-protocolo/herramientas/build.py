@@ -141,6 +141,7 @@ def main(src, out):
         subprocess.run(["pandoc", str(md), "-f", "markdown+fenced_divs+raw_attribute", "-o", str(dx),
                         "--reference-doc", str(ref), "-M", "lang=es-MX"], check=True)
         d = Document(dx); style_tables(d); add_page_numbers(d); d.save(dx)
+        if os.environ.get("OUT_DOCX"): Path(os.environ["OUT_DOCX"]).write_bytes(dx.read_bytes())
         subprocess.run(["soffice", "--headless", "--convert-to", "pdf", "--outdir", str(td), str(dx)],
                        check=True, capture_output=True)
         Path(out).write_bytes((td / "out.pdf").read_bytes())

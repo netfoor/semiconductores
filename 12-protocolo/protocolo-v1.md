@@ -186,7 +186,7 @@ Métricas adecuadas a clases desbalanceadas (sensibilidad, precisión, falsas al
 
 *Confidencialidad y propiedad intelectual.* No se usan datos de terceros sin autorización escrita de uso y de publicación; no se menciona a empresas específicas; las fuentes, licencias y permisos se registran. El proyecto se desarrolló desde cero y no reutiliza código, datos ni textos de proyectos anteriores.
 
-*Uso de inteligencia artificial.* Declaramos el uso de herramientas de IA como apoyo en búsqueda de información, organización del repositorio, revisión de estructura y borradores de trabajo. Los integrantes verifican cada afirmación con la fuente original, redactan y defienden el contenido entregado y registran en la bitácora qué se hizo con IA y qué verificó el equipo.
+*Uso de inteligencia artificial.* Declaramos el uso de un asistente de IA (Claude; Anthropic, 2026) como apoyo en búsqueda de información, organización del repositorio, revisión de estructura y borradores de trabajo. Los integrantes verifican cada afirmación con la fuente original, redactan y defienden el contenido entregado y registran en la bitácora qué se hizo con IA y qué verificó el equipo.
 
 *Reproducibilidad.* Entorno de Python gestionado con uv y archivo de bloqueo, semillas fijas, versión del código por *commit* y ubicación de datos crudos y resultados en el repositorio del proyecto.
 
@@ -238,6 +238,10 @@ Este protocolo no contiene conclusiones sobre el desempeño de la estación porq
 
 ::: {custom-style="Bibliography"}
 Andriulo, F. C., Fiore, M., Mongiello, M., Traversa, E., & Zizzo, V. (2024). Edge computing and cloud computing for Internet of Things: A review. *Informatics, 11*(4), Artículo 71. https://doi.org/10.3390/informatics11040071
+:::
+
+::: {custom-style="Bibliography"}
+Anthropic. (2026). *Claude* [Modelo de lenguaje de gran tamaño]. https://claude.ai
 :::
 
 ::: {custom-style="Bibliography"}
