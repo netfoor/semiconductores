@@ -32,7 +32,7 @@ def crear() -> "object":
     raiz.mkdir(parents=True, exist_ok=True)
     _preparar(raiz)
     app = crear_app(raiz, operador=os.environ.get("THT_OPERADOR", ""),
-                    modelo_nombre=os.environ.get("THT_MODELO", "linea_base"))
+                    modelo_nombre=os.environ.get("THT_MODELO", "linea_base"), en_linea=True)
     usuario, clave = os.environ.get("THT_USUARIO"), os.environ.get("THT_CLAVE")
     if usuario and clave:
         @app.before_request

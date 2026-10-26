@@ -21,7 +21,8 @@ from .plantilla import Plantilla, Union, al_marco_de_referencia, alinear
 from .registro import Registro
 
 
-def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base") -> Flask:
+def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base", en_linea: bool = False) -> Flask:
+    """`en_linea`: demostración pública en un servidor (cambia los textos que hablan de operar sin internet)."""
     c = Carpetas(Path(raiz)).crear()
     app = Flask(__name__)
     app.config["CARPETAS"] = c
@@ -66,11 +67,11 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base")
     @app.context_processor
     def comunes():
         return {"version": __version__, "sintetico": es_sintetico(), "clases": CLASES,
-                "nombres": NOMBRES, "operador": operador, "modelo_nombre": modelo_nombre}
+                "nombres": NOMBRES, "operador": operador, "modelo_nombre": modelo_nombre, "en_linea": en_linea}
 
     @app.get("/salud")
     def salud():
-        return jsonify(ok=True, version=__version__, sintetico=es_sintetico(), modelo=modelo_nombre)
+        return jsonify(ok=True, version=__version__, sintetico=es_sintetico(), modelo=modelo_nombre, en_linea=en_linea)
 
     @app.get("/")
     def inicio():
