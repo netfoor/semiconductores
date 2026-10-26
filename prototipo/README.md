@@ -66,6 +66,7 @@ uv run tht servir --datos datos-demo
 | `clasificador.py` | Interfaz común de modelos e inferencia ONNX |
 | `entrenamiento_red.py` | Entrenamiento de la red, aumento de datos y exportación a ONNX |
 | `wsgi.py` | Arranque de la demostración en la nube |
+| `externos.py` | Descarga y lectura de PCBSPDefect (EXP-006) |
 | `sintetico.py` | Tarjetas sintéticas para pruebas (con variabilidad de tamaño, brillo, reflejos y desenfoque) |
 
 ## Clasificador ligero
@@ -78,7 +79,7 @@ uv run tht servir --datos datos-demo
 
 ## Demostración en la nube
 
-`Dockerfile` y `railway.json` levantan la interfaz con datos **sintéticos** que se generan al arrancar (variable `THT_DATOS`, un volumen persistente). Con `THT_USUARIO` y `THT_CLAVE` pide usuario y contraseña. Nunca se suben imágenes de terceros (D-011): la estación real corre en local.
+`Dockerfile` y `railway.json` levantan la interfaz con datos **sintéticos** que se generan al arrancar (variable `THT_DATOS`, un volumen persistente). Con `THT_USUARIO` y `THT_CLAVE` pide usuario y contraseña. Nunca se suben imágenes de empresas (D-011): la estación real corre en local. Las páginas Fotos reales, Reto y Experimentos usan solo datos públicos con licencia abierta (PCBSPDefect, CC BY 4.0, con atribución; D-014), que `uv run --group cnn tht publicar` copia a `src/inspeccion_tht/publico/` (ver su `LEEME.md`).
 
 ## Pendiente
 
