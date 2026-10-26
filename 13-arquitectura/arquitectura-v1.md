@@ -63,6 +63,6 @@ La arquitectura inicial es **local completa**: captura, inferencia, interfaz y r
 
 ## 6. Lo que falta
 
-- Clasificador ligero de aprendizaje profundo: se agrega con datos reales y se compara contra la línea base con el mismo conjunto de prueba (EXP-002).
+- ~~Clasificador ligero~~ Hecho el 26 oct: red convolucional pequeña (PyTorch para entrenar, ONNX Runtime para inferir en la Pi), cinco semillas, modelo elegido por validación. Falta entrenarlo y evaluarlo con DS-01.
 - Soporte físico, iluminación difusa y cámara definitiva: resolución y distancia se fijan en la ficha del montaje.
 - Calibrar un umbral de puntaje con el conjunto de validación, si hace falta equilibrar M1 y M2 (la función `inspeccionar` ya acepta `umbral`).

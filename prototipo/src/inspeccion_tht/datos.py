@@ -14,9 +14,11 @@ datos/
 from dataclasses import dataclass
 from pathlib import Path
 
+import cv2
 import numpy as np
 
 from .anotaciones import todas
+from .clasificador import LADO_RED
 from .flujo import leer
 from .linea_base import caracteristicas
 from .plantilla import Plantilla, al_marco_de_referencia, alinear, recortes
@@ -70,7 +72,8 @@ class Ejemplo:
     imagen: str
     union_id: str
     clase: str
-    x: np.ndarray
+    x: np.ndarray            # características de la línea base
+    recorte: np.ndarray      # recorte BGR de 64 x 64 para la red
 
 
 def ejemplos(c: Carpetas, etiquetador: str = "consenso") -> list[Ejemplo]:
@@ -87,5 +90,7 @@ def ejemplos(c: Carpetas, etiquetador: str = "consenso") -> list[Ejemplo]:
         alineada = al_marco_de_referencia(img, alinear(img, ref), plantilla)
         rec = recortes(alineada, plantilla)
         for uid, clase in sorted(an.etiquetas.items()):
-            out.append(Ejemplo(an.tarjeta, an.imagen, uid, clase, caracteristicas(rec[uid])))
+            r = rec[uid]
+            out.append(Ejemplo(an.tarjeta, an.imagen, uid, clase, caracteristicas(r),
+                               cv2.resize(r, (LADO_RED, LADO_RED), interpolation=cv2.INTER_AREA)))
     return out

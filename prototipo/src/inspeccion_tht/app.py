@@ -16,12 +16,12 @@ from .anotaciones import Anotacion, todas
 from .clases import CLASES, NOMBRES, validar
 from .datos import Carpetas
 from .flujo import inspeccionar, leer
-from .linea_base import ClasificadorCentroide
+from . import clasificador
 from .plantilla import Plantilla, Union, al_marco_de_referencia, alinear
 from .registro import Registro
 
 
-def crear_app(raiz: Path, operador: str = "") -> Flask:
+def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base") -> Flask:
     c = Carpetas(Path(raiz)).crear()
     app = Flask(__name__)
     app.config["CARPETAS"] = c
@@ -34,13 +34,16 @@ def crear_app(raiz: Path, operador: str = "") -> Flask:
     def es_sintetico() -> bool:
         return (c.raiz / "LEEME_SINTETICO.txt").exists()
 
-    def modelo() -> ClasificadorCentroide | None:
-        ruta = c.modelos / "linea_base.json"
+    if modelo_nombre not in clasificador.MODELOS:
+        raise ValueError(f"Modelo desconocido: {modelo_nombre}")
+
+    def modelo():
+        ruta = clasificador.ruta_principal(c.modelos, modelo_nombre)
         if not ruta.exists():
             return None
         mt = ruta.stat().st_mtime
         if cache_modelo.get("mt") != mt:
-            cache_modelo.update(mt=mt, m=ClasificadorCentroide.cargar(ruta))
+            cache_modelo.update(mt=mt, m=clasificador.cargar(c.modelos, modelo_nombre))
         return cache_modelo["m"]
 
     def diseno_de(imagen: str) -> str:
@@ -63,11 +66,11 @@ def crear_app(raiz: Path, operador: str = "") -> Flask:
     @app.context_processor
     def comunes():
         return {"version": __version__, "sintetico": es_sintetico(), "clases": CLASES,
-                "nombres": NOMBRES, "operador": operador}
+                "nombres": NOMBRES, "operador": operador, "modelo_nombre": modelo_nombre}
 
     @app.get("/salud")
     def salud():
-        return jsonify(ok=True, version=__version__, sintetico=es_sintetico())
+        return jsonify(ok=True, version=__version__, sintetico=es_sintetico(), modelo=modelo_nombre)
 
     @app.get("/")
     def inicio():
@@ -150,11 +153,11 @@ def crear_app(raiz: Path, operador: str = "") -> Flask:
     def api_inspeccion(imagen):
         m = modelo()
         if m is None:
-            abort(409, "No hay modelo entrenado. Ejecute `tht entrenar` primero.")
+            abort(409, f"No hay modelo {modelo_nombre} entrenado. Ejecute `tht entrenar` o `tht entrenar-red` primero.")
         diseno = diseno_de(imagen)
         p, ref = c.plantilla(diseno)
         resultados, tiempos, _ = inspeccionar(leer(c.imagen(imagen)), ref, p, m)
-        return jsonify(diseno=diseno, ancho=p.ancho, alto=p.alto, tiempos=tiempos,
+        return jsonify(diseno=diseno, modelo=modelo_nombre, ancho=p.ancho, alto=p.alto, tiempos=tiempos,
                        resultados=[asdict(r) for r in resultados])
 
     @app.post("/api/decision")

@@ -31,7 +31,8 @@ def crear() -> "object":
     raiz = Path(os.environ.get("THT_DATOS", "/data/tht"))
     raiz.mkdir(parents=True, exist_ok=True)
     _preparar(raiz)
-    app = crear_app(raiz, operador=os.environ.get("THT_OPERADOR", ""))
+    app = crear_app(raiz, operador=os.environ.get("THT_OPERADOR", ""),
+                    modelo_nombre=os.environ.get("THT_MODELO", "linea_base"))
     usuario, clave = os.environ.get("THT_USUARIO"), os.environ.get("THT_CLAVE")
     if usuario and clave:
         @app.before_request

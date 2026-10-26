@@ -7,7 +7,6 @@ import cv2
 import numpy as np
 
 from .clases import es_defecto
-from .linea_base import ClasificadorCentroide, caracteristicas
 from .plantilla import Plantilla, al_marco_de_referencia, alinear, recortes
 
 
@@ -24,9 +23,11 @@ class Resultado:
 
 
 def inspeccionar(imagen: np.ndarray, referencia: np.ndarray, plantilla: Plantilla,
-                 modelo: ClasificadorCentroide, umbral: float | None = None
+                 modelo, umbral: float | None = None
                  ) -> tuple[list[Resultado], dict[str, float], np.ndarray]:
     """Devuelve resultados por unión, tiempos por etapa (s) y la imagen alineada.
+
+    `modelo` es cualquier clasificador con `evaluar_recortes` (línea base o red ONNX).
 
     Una unión es sospechosa si la clase sugerida es un defecto o, cuando se da
     `umbral`, si su puntaje de defecto lo supera.
@@ -40,12 +41,10 @@ def inspeccionar(imagen: np.ndarray, referencia: np.ndarray, plantilla: Plantill
     t = time.perf_counter()
     rec = recortes(alineada, plantilla)
     ids = [u.id for u in plantilla.uniones]
-    X = np.stack([caracteristicas(rec[i]) for i in ids]) if ids else np.empty((0, 9))
-    tiempos["caracteristicas_s"] = time.perf_counter() - t
+    tiempos["recortes_s"] = time.perf_counter() - t
 
     t = time.perf_counter()
-    sugerencias = modelo.predecir(X) if ids else []
-    puntajes = modelo.puntaje_defecto(X) if ids else np.array([])
+    sugerencias, puntajes = modelo.evaluar_recortes([rec[i] for i in ids])
     tiempos["clasificacion_s"] = time.perf_counter() - t
     tiempos["total_s"] = sum(tiempos.values())
 

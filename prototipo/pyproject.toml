@@ -11,12 +11,18 @@ dependencies = [
     "numpy>=1.26",
     "opencv-python-headless>=4.9",
     "flask>=3.0",
+    "onnxruntime>=1.31.0",
 ]
 
 [project.scripts]
 tht = "inspeccion_tht.cli:main"
 
 [dependency-groups]
+cnn = [
+    "onnx>=1.23.2",
+    "onnxscript>=0.7.2",
+    "torch>=2.14.1",
+]
 dev = [
     "pytest>=8",
 ]

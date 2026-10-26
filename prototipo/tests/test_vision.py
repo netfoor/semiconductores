@@ -9,12 +9,12 @@ from inspeccion_tht.metricas import Caso, binaria
 from inspeccion_tht.plantilla import Plantilla, al_marco_de_referencia, alinear
 
 
-def entrenar_sintetico(n=40, semilla=0):
+def entrenar_sintetico(n=40, semilla=0, variabilidad=1.0):
     rng = np.random.default_rng(semilla)
     X, y = [], []
     for c in CLASES:
         for _ in range(n):
-            X.append(caracteristicas(sintetico.celda(c, rng)))
+            X.append(caracteristicas(sintetico.celda(c, rng, variabilidad=variabilidad)))
             y.append(c)
     return ClasificadorCentroide.entrenar(np.array(X), y)
 
@@ -25,8 +25,10 @@ def test_caracteristicas_tienen_forma_fija():
     assert v.shape == (9,) and np.all(np.isfinite(v))
 
 
-def test_linea_base_separa_clases_sinteticas(tmp_path):
-    modelo = entrenar_sintetico()
+def test_linea_base_supera_el_azar_en_clases_sinteticas(tmp_path):
+    # Con variabilidad alta la línea base clásica falla a propósito en clases sutiles
+    # (insuficiente, fría): es la referencia que debe superar el clasificador ligero.
+    modelo = entrenar_sintetico(n=60)
     rng = np.random.default_rng(99)
     aciertos, total = 0, 0
     for c in CLASES:
@@ -34,7 +36,7 @@ def test_linea_base_separa_clases_sinteticas(tmp_path):
             pred = modelo.predecir(caracteristicas(sintetico.celda(c, rng)))[0]
             aciertos += pred == c
             total += 1
-    assert aciertos / total > 0.85
+    assert aciertos / total > 0.6
     ruta = tmp_path / "modelo.json"
     modelo.guardar(ruta)
     cargado = ClasificadorCentroide.cargar(ruta)

@@ -107,6 +107,12 @@ class ClasificadorCentroide:
             return np.ones(len(p))
         return 1 - p[:, self.clases.index(ACEPTABLE)]
 
+    def evaluar_recortes(self, recortes: list[np.ndarray]) -> tuple[list[str], np.ndarray]:
+        if not recortes:
+            return [], np.array([])
+        X = np.stack([caracteristicas(r) for r in recortes])
+        return self.predecir(X), self.puntaje_defecto(X)
+
     def guardar(self, ruta: Path) -> None:
         Path(ruta).write_text(json.dumps({
             "tipo": "linea_base_centroide",

@@ -29,36 +29,61 @@ def _metal(img, centro, radio, brillo=210, ruido=8.0, rng=None):
         img[..., c] = canal.astype(np.uint8)
 
 
-def celda(clase: str, rng: np.random.Generator, lado: int = LADO_CELDA) -> np.ndarray:
-    """Una unión sintética centrada en una celda de `lado` x `lado`."""
+def celda(clase: str, rng: np.random.Generator, lado: int = LADO_CELDA, variabilidad: float = 1.0) -> np.ndarray:
+    """Una unión sintética centrada en una celda de `lado` x `lado`.
+
+    `variabilidad` (0 a 1) controla cuánto cambian tamaño, brillo, desenfoque,
+    reflejos y orientación. Con 0 salen casi idénticas; con 1 se parecen más al
+    desorden de una foto real, aunque siguen siendo sintéticas.
+    """
     if clase not in CLASES:
         raise ValueError(clase)
-    img = np.full((lado, lado, 3), FONDO, np.uint8)
-    c = (lado // 2 + int(rng.integers(-2, 3)), lado // 2 + int(rng.integers(-2, 3)))
-    r_pad = lado // 4
+    v = float(np.clip(variabilidad, 0, 1))
+    fondo = np.clip(np.array(FONDO) + rng.normal(0, 12 * v, 3), 0, 255)
+    img = np.full((lado, lado, 3), fondo, np.uint8)
+    d = int(2 + 3 * v)
+    c = (lado // 2 + int(rng.integers(-d, d + 1)), lado // 2 + int(rng.integers(-d, d + 1)))
+    r_pad = int(round(lado / 4 * (1 + rng.uniform(-0.12, 0.12) * v)))
+    brillo = 215 + rng.uniform(-25, 15) * v
     cv2.circle(img, c, r_pad, COBRE, -1)
     if clase == "aceptable":
-        _metal(img, c, r_pad - 1, 215, rng=rng)
+        _metal(img, c, r_pad - 1, brillo, rng=rng)
     elif clase == "exceso":
-        _metal(img, c, int(r_pad * 1.55), 225, rng=rng)
+        _metal(img, c, int(r_pad * rng.uniform(1.4, 1.7)), brillo + 8, rng=rng)
     elif clase == "insuficiente":
-        _metal(img, c, r_pad - 1, 205, rng=rng)
-        cv2.circle(img, c, r_pad // 2, (25, 30, 35), -1)
+        _metal(img, c, r_pad - 1, brillo - 10, rng=rng)
+        hueco = int(r_pad * rng.uniform(0.35, 0.6))
+        cv2.circle(img, (c[0] + int(rng.integers(-2, 3)), c[1] + int(rng.integers(-2, 3))), hueco, (25, 30, 35), -1)
     elif clase == "sin_soldar":
         cv2.circle(img, c, r_pad // 2, (20, 25, 30), -1)
         cv2.circle(img, c, max(2, r_pad // 5), (150, 150, 150), -1)
     elif clase == "puente":
-        _metal(img, c, r_pad - 1, 215, rng=rng)
-        y0 = c[1] - r_pad // 3
-        cv2.rectangle(img, (c[0], y0), (lado - 1, y0 + 2 * r_pad // 3), (205, 205, 205), -1)
+        _metal(img, c, r_pad - 1, brillo, rng=rng)
+        grosor = int(r_pad * rng.uniform(0.5, 0.8))
+        gris = int(brillo - 10)
+        if rng.random() < 0.5 * v:
+            x0 = c[0] - grosor // 2
+            cv2.rectangle(img, (x0, c[1]), (x0 + grosor, lado - 1), (gris, gris, gris), -1)
+        else:
+            y0 = c[1] - grosor // 2
+            cv2.rectangle(img, (c[0], y0), (lado - 1, y0 + grosor), (gris, gris, gris), -1)
     elif clase == "fria":
-        _metal(img, c, r_pad - 1, 150, ruido=30.0, rng=rng)
-    ruido = rng.normal(0, 4, img.shape)
+        _metal(img, c, r_pad - 1, brillo - rng.uniform(55, 80), ruido=30.0, rng=rng)
+    if v and clase not in ("sin_soldar",) and rng.random() < 0.6 * v:
+        # Reflejo especular de la lámpara sobre el metal.
+        ang = rng.uniform(0, 2 * np.pi)
+        p = (int(c[0] + 0.35 * r_pad * np.cos(ang)), int(c[1] + 0.35 * r_pad * np.sin(ang)))
+        cv2.circle(img, p, max(2, r_pad // 5), (250, 250, 250), -1)
+    if v:
+        k = int(rng.choice([1, 1, 3, 3, 5]))
+        if k > 1:
+            img = cv2.GaussianBlur(img, (k, k), 0)
+    ruido = rng.normal(0, 4 + 4 * v, img.shape)
     return np.clip(img.astype(np.float32) + ruido, 0, 255).astype(np.uint8)
 
 
 def tarjeta(filas: int, columnas: int, rng: np.random.Generator, prob_defecto: float = 0.3,
-            diseno: str = "sintetica-01") -> tuple[np.ndarray, Plantilla, dict[str, str]]:
+            diseno: str = "sintetica-01", variabilidad: float = 1.0) -> tuple[np.ndarray, Plantilla, dict[str, str]]:
     """Tarjeta sintética, su plantilla y la verdad de referencia por unión."""
     margen = 40
     H, W = filas * LADO_CELDA + 2 * margen, columnas * LADO_CELDA + 2 * margen
@@ -70,12 +95,18 @@ def tarjeta(filas: int, columnas: int, rng: np.random.Generator, prob_defecto: f
             uid = f"U{i + 1:02d}{j + 1:02d}"
             clase = str(rng.choice(defectos)) if rng.random() < prob_defecto else "aceptable"
             x, y = margen + j * LADO_CELDA, margen + i * LADO_CELDA
-            img[y:y + LADO_CELDA, x:x + LADO_CELDA] = celda(clase, rng)
+            img[y:y + LADO_CELDA, x:x + LADO_CELDA] = celda(clase, rng, variabilidad=variabilidad)
             uniones.append(Union(uid, x, y, LADO_CELDA, LADO_CELDA))
             verdad[uid] = clase
     # Marcas de referencia para la alineación y marca de dato sintético.
     for (x, y) in [(12, 12), (W - 28, 12), (12, H - 28), (W - 28, H - 28)]:
         cv2.rectangle(img, (x, y), (x + 16, y + 16), (240, 240, 240), -1)
+    if variabilidad:
+        # Iluminación no uniforme sobre toda la tarjeta.
+        gx = np.linspace(1 - 0.12 * variabilidad, 1 + 0.12 * variabilidad, W)[None, :, None]
+        if rng.random() < 0.5:
+            gx = gx[:, ::-1]
+        img = np.clip(img.astype(np.float32) * gx, 0, 255).astype(np.uint8)
     cv2.putText(img, "SINTETICO", (margen, H - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
     return img, Plantilla(diseno, f"{diseno}.png", W, H, uniones), verdad
 

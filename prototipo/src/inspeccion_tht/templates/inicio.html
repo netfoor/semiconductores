@@ -13,7 +13,7 @@
   </div>
   <p class="nota">
     Partición por tarjeta: {{ "congelada" if hay_particion else "pendiente (tht particion)" }}.
-    Modelo de línea base: {{ "entrenado" if hay_modelo else "pendiente (tht entrenar)" }}.
+    Modelo en uso: {{ "red convolucional (ONNX)" if modelo_nombre == "red" else "línea base clásica" }}, {{ "entrenado" if hay_modelo else "pendiente de entrenar" }}.
     {% if por_etiquetador %}Anotaciones por etiquetador:
       {% for k, v in por_etiquetador.items() %}{{ k }} ({{ v }}){% if not loop.last %}, {% endif %}{% endfor %}.{% endif %}
   </p>

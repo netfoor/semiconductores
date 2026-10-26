@@ -6,7 +6,7 @@
   <p class="entrada"><span class="mono">{{ imagen }}</span>, diseño {{ diseno }}. El sistema marca las uniones sospechosas; usted confirma o corrige cada una. La decisión final siempre es suya.</p>
 </section>
 {% if not hay_modelo %}
-<div class="aviso-sintetico" role="alert"><p>No hay un modelo entrenado en esta carpeta. Ejecute <code>uv run tht entrenar</code> y recargue la página.</p></div>
+<div class="aviso-sintetico" role="alert"><p>No hay un modelo entrenado en esta carpeta. Ejecute <code>uv run tht entrenar</code> (línea base) o <code>uv run --group cnn tht entrenar-red</code> (red) y recargue la página.</p></div>
 {% else %}
 <div class="trabajo">
   <div class="lienzo"><canvas id="lienzo" aria-label="Tarjeta alineada con las uniones sospechosas"></canvas></div>
@@ -111,8 +111,8 @@
       lz = new Lienzo(document.getElementById("lienzo"), "{{ url_for('img_alineada', imagen=imagen, diseno=diseno) }}", d.ancho, d.alto);
       lz.alElegir = () => elegida();
       document.getElementById("tiempos").textContent =
-        `Procesamiento local: ${(d.tiempos.total_s * 1000).toFixed(0)} ms (alineación ${(d.tiempos.alineacion_s * 1000).toFixed(0)} ms, ` +
-        `características ${(d.tiempos.caracteristicas_s * 1000).toFixed(0)} ms, clasificación ${(d.tiempos.clasificacion_s * 1000).toFixed(0)} ms).`;
+        `Modelo ${d.modelo}. Procesamiento local: ${(d.tiempos.total_s * 1000).toFixed(0)} ms (alineación ${(d.tiempos.alineacion_s * 1000).toFixed(0)} ms, ` +
+        `recortes ${(d.tiempos.recortes_s * 1000).toFixed(0)} ms, clasificación ${(d.tiempos.clasificacion_s * 1000).toFixed(0)} ms).`;
       return lz.listo;
     })
     .then(() => {

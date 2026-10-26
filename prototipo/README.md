@@ -29,7 +29,8 @@ En la Raspberry Pi, la cámara se usa con Picamera2, que viene con Raspberry Pi 
 | 6. Medir el acuerdo entre etiquetadores | `uv run tht acuerdo --a fortino --b israel` | DS-01 |
 | 7. Congelar la partición por tarjeta | `uv run tht particion` | |
 | 8. Entrenar la línea base | `uv run tht entrenar` | EXP-002 |
-| 9. Evaluar en el conjunto de prueba | `uv run tht evaluar` | EXP-002 |
+| 8b. Entrenar el clasificador ligero (5 semillas) | `uv run --group cnn tht entrenar-red` | EXP-002 |
+| 9. Evaluar en el conjunto de prueba | `uv run tht evaluar --modelo linea_base` y `uv run --group cnn tht evaluar --modelo red` | EXP-002 |
 | 10. Medir la latencia | `uv run tht latencia --imagen ... --diseno ...` | EXP-003 |
 | 11. Inspección asistida | En la interfaz: "Inspeccionar" | EXP-005 |
 
@@ -62,9 +63,24 @@ uv run tht servir --datos datos-demo
 | `registro.py` | Decisiones del operador en SQLite |
 | `datos.py` | Organización de la carpeta de datos y construcción de ejemplos |
 | `app.py`, `templates/`, `static/` | Interfaz local; diseño en `DISENO_INTERFAZ.md` |
-| `sintetico.py` | Tarjetas sintéticas para pruebas |
+| `clasificador.py` | Interfaz común de modelos e inferencia ONNX |
+| `entrenamiento_red.py` | Entrenamiento de la red, aumento de datos y exportación a ONNX |
+| `wsgi.py` | Arranque de la demostración en la nube |
+| `sintetico.py` | Tarjetas sintéticas para pruebas (con variabilidad de tamaño, brillo, reflejos y desenfoque) |
+
+## Clasificador ligero
+
+- Se entrena con PyTorch (`uv sync --group cnn`), en la laptop o en otra computadora; la Raspberry Pi no necesita PyTorch.
+- Se exporta a ONNX y se ejecuta con ONNX Runtime, que es ligero (`red.onnx` y su `red.json` con clases, semilla, épocas e historial).
+- `tht entrenar-red` entrena cinco semillas y elige la de mejor exactitud balanceada **en validación**; el conjunto de prueba solo se usa en `tht evaluar`, que reporta cada semilla y su media.
+- Arquitecturas: `pequena` (unos 25 mil parámetros, desde cero) y `mobilenet` (MobileNetV3-Small con pesos de ImageNet; necesita `uv add --group cnn torchvision` e internet la primera vez).
+- La interfaz usa la red con `uv run tht servir --modelo red`.
+
+## Demostración en la nube
+
+`Dockerfile` y `railway.json` levantan la interfaz con datos **sintéticos** que se generan al arrancar (variable `THT_DATOS`, un volumen persistente). Con `THT_USUARIO` y `THT_CLAVE` pide usuario y contraseña. Nunca se suben imágenes de terceros (D-011): la estación real corre en local.
 
 ## Pendiente
 
-- Clasificador ligero de aprendizaje profundo (protocolo, sección 6.4). Se agrega cuando haya datos reales, para compararlo contra la línea base con el mismo conjunto de prueba.
 - Probar la captura con la cámara definitiva en la Raspberry Pi y fijar resolución e iluminación.
+- Entrenar y evaluar con DS-01 cuando haya tarjetas reales.
