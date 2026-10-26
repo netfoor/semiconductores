@@ -1,6 +1,6 @@
 """Entrenamiento del clasificador ligero (protocolo, sección 6.4). Requiere `uv sync --group cnn`.
 
-- Arquitectura "pequena": red convolucional de unos 25 mil parámetros, entrenada desde cero.
+- Arquitectura "pequena": red convolucional de unos 52 mil parámetros, entrenada desde cero.
 - Arquitectura "mobilenet": MobileNetV3-Small con pesos de ImageNet (transferencia de
   aprendizaje). Necesita torchvision y descargar los pesos una vez, con internet.
 

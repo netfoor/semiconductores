@@ -73,7 +73,7 @@ uv run tht servir --datos datos-demo
 - Se entrena con PyTorch (`uv sync --group cnn`), en la laptop o en otra computadora; la Raspberry Pi no necesita PyTorch.
 - Se exporta a ONNX y se ejecuta con ONNX Runtime, que es ligero (`red.onnx` y su `red.json` con clases, semilla, épocas e historial).
 - `tht entrenar-red` entrena cinco semillas y elige la de mejor exactitud balanceada **en validación**; el conjunto de prueba solo se usa en `tht evaluar`, que reporta cada semilla y su media.
-- Arquitecturas: `pequena` (unos 25 mil parámetros, desde cero) y `mobilenet` (MobileNetV3-Small con pesos de ImageNet; necesita `uv add --group cnn torchvision` e internet la primera vez).
+- Arquitecturas: `pequena` (unos 52 mil parámetros, desde cero) y `mobilenet` (MobileNetV3-Small con pesos de ImageNet; necesita `uv add --group cnn torchvision` e internet la primera vez).
 - La interfaz usa la red con `uv run tht servir --modelo red`.
 
 ## Demostración en la nube
