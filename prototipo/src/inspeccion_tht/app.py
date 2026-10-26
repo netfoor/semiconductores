@@ -65,6 +65,10 @@ def crear_app(raiz: Path, operador: str = "") -> Flask:
         return {"version": __version__, "sintetico": es_sintetico(), "clases": CLASES,
                 "nombres": NOMBRES, "operador": operador}
 
+    @app.get("/salud")
+    def salud():
+        return jsonify(ok=True, version=__version__, sintetico=es_sintetico())
+
     @app.get("/")
     def inicio():
         imagenes = [p.name for p in c.imagenes()]
