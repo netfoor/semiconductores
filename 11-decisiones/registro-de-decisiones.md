@@ -153,4 +153,4 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 ## D-014 · Validación externa con datos públicos y demo abierta (adoptada)
 
 - **Datos:** sin tarjetas propias todavía, se usa el subconjunto b_dip de PCBSPDefect [F-080] para una validación preliminar (EXP-006). Se descartó SolDef_AI porque es de componentes SMD y los conjuntos de Hugging Face porque no declaran licencia. Las imágenes no se suben al repositorio: se descargan de Zenodo y se verifica su huella.
-- **Demo:** femeci.foor.dev queda sin contraseña porque solo tiene datos sintéticos y solo el jurado tendrá la liga (decisión de Fortino, 26 oct). No se suben ahí datos de terceros (D-011).
+- **Demo:** femeci.foor.dev queda sin contraseña porque solo tiene datos sintéticos y solo el jurado tendrá la liga (decisión de Fortino, 26 oct). No se suben ahí datos de terceros (D-011). Actualización (26 oct, sesión 6): las páginas Fotos reales, Reto y Experimentos muestran 60 fotos públicas de PCBSPDefect (CC BY 4.0, con atribución) y el modelo de EXP-006; siguen sin subirse imágenes de empresas.
