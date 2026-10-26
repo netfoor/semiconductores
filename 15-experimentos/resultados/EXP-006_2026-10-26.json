@@ -1,0 +1,1487 @@
+{
+  "experimento": "EXP-006",
+  "datos": "PCBSPDefect b_dip",
+  "cita": "Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T., & Lun, D. P.-K. (2023). PCB soldering defect inspection using multitask learning under low data regimes. Advanced Intelligent Systems, 5, 2300364. https://doi.org/10.1002/aisy.202300364",
+  "sha256_zip": "1e135795835f04deccb0bc5fc1dd071c7fc944963e2cd5b76c6deff399c0de98",
+  "fecha_utc": "20261026T165622Z",
+  "particiones": {
+    "oficial": {
+      "conjuntos": {
+        "entrenamiento": {
+          "imagenes": 375,
+          "uniones": 125,
+          "tarjetas": 87,
+          "clases": {
+            "puente": 72,
+            "exceso": 90,
+            "aceptable": 72,
+            "insuficiente": 72,
+            "sin_soldar": 69
+          }
+        },
+        "validacion": {
+          "imagenes": 375,
+          "uniones": 125,
+          "tarjetas": 84,
+          "clases": {
+            "puente": 72,
+            "exceso": 90,
+            "aceptable": 72,
+            "insuficiente": 72,
+            "sin_soldar": 69
+          }
+        },
+        "prueba": {
+          "imagenes": 1116,
+          "uniones": 372,
+          "tarjetas": 120,
+          "clases": {
+            "puente": 210,
+            "exceso": 273,
+            "aceptable": 216,
+            "insuficiente": 213,
+            "sin_soldar": 204
+          }
+        }
+      },
+      "linea_base": {
+        "resumen": {
+          "n_uniones": 1116,
+          "n_tarjetas": 120,
+          "n_defectos": 900,
+          "n_aceptables": 216,
+          "vp": 665,
+          "fn": 235,
+          "fp": 61,
+          "vn": 155,
+          "sensibilidad": 0.7388888888888889,
+          "falsas_alarmas": 0.2824074074074074,
+          "precision": 0.9159779614325069,
+          "sensibilidad_wilson95": [
+            0.7092201192197811,
+            0.766527032898082
+          ],
+          "falsas_alarmas_wilson95": [
+            0.22658091748364384,
+            0.34583822263556474
+          ],
+          "sensibilidad_bootstrap95": [
+            0.6792998141099408,
+            0.7942899919130986
+          ],
+          "falsas_alarmas_bootstrap95": [
+            0.1706114718614719,
+            0.4074183006535947
+          ]
+        },
+        "por_clase": {
+          "aceptable": {
+            "n": 216,
+            "sensibilidad": 0.7175925925925926,
+            "precision": 0.3974358974358974
+          },
+          "insuficiente": {
+            "n": 213,
+            "sensibilidad": 0.3051643192488263,
+            "precision": 0.3651685393258427
+          },
+          "puente": {
+            "n": 210,
+            "sensibilidad": 0.19047619047619047,
+            "precision": 0.32
+          },
+          "sin_soldar": {
+            "n": 204,
+            "sensibilidad": 0.6862745098039216,
+            "precision": 0.41916167664670656
+          },
+          "exceso": {
+            "n": 273,
+            "sensibilidad": 0.09523809523809523,
+            "precision": 0.29213483146067415
+          },
+          "fria": {
+            "n": 0,
+            "sensibilidad": NaN,
+            "precision": NaN
+          }
+        },
+        "matriz_confusion": [
+          [
+            155,
+            20,
+            27,
+            5,
+            9,
+            0
+          ],
+          [
+            27,
+            65,
+            24,
+            86,
+            11,
+            0
+          ],
+          [
+            89,
+            24,
+            40,
+            35,
+            22,
+            0
+          ],
+          [
+            10,
+            30,
+            3,
+            140,
+            21,
+            0
+          ],
+          [
+            109,
+            39,
+            31,
+            68,
+            26,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "red": {
+        "por_semilla": {
+          "s1": {
+            "val_exactitud_balanceada": 0.9057729468599034,
+            "mejor_epoca": 34,
+            "resumen": {
+              "n_uniones": 1116,
+              "n_tarjetas": 120,
+              "n_defectos": 900,
+              "n_aceptables": 216,
+              "vp": 850,
+              "fn": 50,
+              "fp": 32,
+              "vn": 184,
+              "sensibilidad": 0.9444444444444444,
+              "falsas_alarmas": 0.14814814814814814,
+              "precision": 0.963718820861678,
+              "sensibilidad_wilson95": [
+                0.9275032588279002,
+                0.957607721856496
+              ],
+              "falsas_alarmas_wilson95": [
+                0.10693606311037726,
+                0.2016565889972791
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9185271064025254,
+                0.968255269320843
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.057692307692307696,
+                0.25252525252525254
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 216,
+                "sensibilidad": 0.8518518518518519,
+                "precision": 0.7863247863247863
+              },
+              "insuficiente": {
+                "n": 213,
+                "sensibilidad": 0.8732394366197183,
+                "precision": 0.9637305699481865
+              },
+              "puente": {
+                "n": 210,
+                "sensibilidad": 0.9476190476190476,
+                "precision": 0.8963963963963963
+              },
+              "sin_soldar": {
+                "n": 204,
+                "sensibilidad": 0.8480392156862745,
+                "precision": 0.8693467336683417
+              },
+              "exceso": {
+                "n": 273,
+                "sensibilidad": 0.8388278388278388,
+                "precision": 0.8544776119402985
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                184,
+                0,
+                5,
+                1,
+                26,
+                0
+              ],
+              [
+                2,
+                186,
+                1,
+                23,
+                1,
+                0
+              ],
+              [
+                9,
+                0,
+                199,
+                0,
+                2,
+                0
+              ],
+              [
+                13,
+                7,
+                1,
+                173,
+                10,
+                0
+              ],
+              [
+                26,
+                0,
+                16,
+                2,
+                229,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s2": {
+            "val_exactitud_balanceada": 0.9214975845410628,
+            "mejor_epoca": 34,
+            "resumen": {
+              "n_uniones": 1116,
+              "n_tarjetas": 120,
+              "n_defectos": 900,
+              "n_aceptables": 216,
+              "vp": 847,
+              "fn": 53,
+              "fp": 25,
+              "vn": 191,
+              "sensibilidad": 0.9411111111111111,
+              "falsas_alarmas": 0.11574074074074074,
+              "precision": 0.9713302752293578,
+              "sensibilidad_wilson95": [
+                0.9237746892074199,
+                0.9546979591218434
+              ],
+              "falsas_alarmas_wilson95": [
+                0.07963658437506893,
+                0.16527381200566107
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9129509853277008,
+                0.9669997867133653
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.029753151260504214,
+                0.2163440701339636
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 216,
+                "sensibilidad": 0.8842592592592593,
+                "precision": 0.7827868852459017
+              },
+              "insuficiente": {
+                "n": 213,
+                "sensibilidad": 0.9107981220657277,
+                "precision": 0.9107981220657277
+              },
+              "puente": {
+                "n": 210,
+                "sensibilidad": 0.9380952380952381,
+                "precision": 0.9120370370370371
+              },
+              "sin_soldar": {
+                "n": 204,
+                "sensibilidad": 0.8284313725490197,
+                "precision": 0.8666666666666667
+              },
+              "exceso": {
+                "n": 273,
+                "sensibilidad": 0.8058608058608059,
+                "precision": 0.8870967741935484
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                191,
+                0,
+                1,
+                2,
+                22,
+                0
+              ],
+              [
+                2,
+                194,
+                0,
+                17,
+                0,
+                0
+              ],
+              [
+                9,
+                0,
+                197,
+                1,
+                3,
+                0
+              ],
+              [
+                13,
+                19,
+                0,
+                169,
+                3,
+                0
+              ],
+              [
+                29,
+                0,
+                18,
+                6,
+                220,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s3": {
+            "val_exactitud_balanceada": 0.9144685990338164,
+            "mejor_epoca": 40,
+            "resumen": {
+              "n_uniones": 1116,
+              "n_tarjetas": 120,
+              "n_defectos": 900,
+              "n_aceptables": 216,
+              "vp": 856,
+              "fn": 44,
+              "fp": 34,
+              "vn": 182,
+              "sensibilidad": 0.9511111111111111,
+              "falsas_alarmas": 0.1574074074074074,
+              "precision": 0.9617977528089887,
+              "sensibilidad_wilson95": [
+                0.9350057089849871,
+                0.9633819364096751
+              ],
+              "falsas_alarmas_wilson95": [
+                0.11488205796571119,
+                0.21190552434963847
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9236087328767124,
+                0.9742018188854489
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.05845985155195685,
+                0.26666666666666666
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 216,
+                "sensibilidad": 0.8425925925925926,
+                "precision": 0.8053097345132744
+              },
+              "insuficiente": {
+                "n": 213,
+                "sensibilidad": 0.8497652582159625,
+                "precision": 0.9329896907216495
+              },
+              "puente": {
+                "n": 210,
+                "sensibilidad": 0.9476190476190476,
+                "precision": 0.8844444444444445
+              },
+              "sin_soldar": {
+                "n": 204,
+                "sensibilidad": 0.8823529411764706,
+                "precision": 0.8571428571428571
+              },
+              "exceso": {
+                "n": 273,
+                "sensibilidad": 0.8168498168498168,
+                "precision": 0.8544061302681992
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                182,
+                0,
+                5,
+                3,
+                26,
+                0
+              ],
+              [
+                0,
+                181,
+                5,
+                24,
+                3,
+                0
+              ],
+              [
+                5,
+                2,
+                199,
+                1,
+                3,
+                0
+              ],
+              [
+                9,
+                9,
+                0,
+                180,
+                6,
+                0
+              ],
+              [
+                30,
+                2,
+                16,
+                2,
+                223,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s4": {
+            "val_exactitud_balanceada": 0.8965700483091789,
+            "mejor_epoca": 38,
+            "resumen": {
+              "n_uniones": 1116,
+              "n_tarjetas": 120,
+              "n_defectos": 900,
+              "n_aceptables": 216,
+              "vp": 819,
+              "fn": 81,
+              "fp": 27,
+              "vn": 189,
+              "sensibilidad": 0.91,
+              "falsas_alarmas": 0.125,
+              "precision": 0.9680851063829787,
+              "sensibilidad_wilson95": [
+                0.8895191492809631,
+                0.9269957304003924
+              ],
+              "falsas_alarmas_wilson95": [
+                0.08734711096128595,
+                0.17575821562713728
+              ],
+              "sensibilidad_bootstrap95": [
+                0.8736656257754984,
+                0.9420732540317206
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.04039795545819644,
+                0.22875816993464052
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 216,
+                "sensibilidad": 0.875,
+                "precision": 0.7
+              },
+              "insuficiente": {
+                "n": 213,
+                "sensibilidad": 0.892018779342723,
+                "precision": 0.9178743961352657
+              },
+              "puente": {
+                "n": 210,
+                "sensibilidad": 0.9,
+                "precision": 0.8790697674418605
+              },
+              "sin_soldar": {
+                "n": 204,
+                "sensibilidad": 0.8235294117647058,
+                "precision": 0.8936170212765957
+              },
+              "exceso": {
+                "n": 273,
+                "sensibilidad": 0.7509157509157509,
+                "precision": 0.8686440677966102
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                189,
+                0,
+                5,
+                0,
+                22,
+                0
+              ],
+              [
+                1,
+                190,
+                0,
+                20,
+                2,
+                0
+              ],
+              [
+                15,
+                2,
+                189,
+                0,
+                4,
+                0
+              ],
+              [
+                21,
+                12,
+                0,
+                168,
+                3,
+                0
+              ],
+              [
+                44,
+                3,
+                21,
+                0,
+                205,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s5": {
+            "val_exactitud_balanceada": 0.9193961352657004,
+            "mejor_epoca": 27,
+            "resumen": {
+              "n_uniones": 1116,
+              "n_tarjetas": 120,
+              "n_defectos": 900,
+              "n_aceptables": 216,
+              "vp": 850,
+              "fn": 50,
+              "fp": 22,
+              "vn": 194,
+              "sensibilidad": 0.9444444444444444,
+              "falsas_alarmas": 0.10185185185185185,
+              "precision": 0.9747706422018348,
+              "sensibilidad_wilson95": [
+                0.9275032588279002,
+                0.957607721856496
+              ],
+              "falsas_alarmas_wilson95": [
+                0.06822737600440479,
+                0.14939062506478532
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9139728551018873,
+                0.9706516658167602
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.032675753228120524,
+                0.19181963470319613
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 216,
+                "sensibilidad": 0.8981481481481481,
+                "precision": 0.7950819672131147
+              },
+              "insuficiente": {
+                "n": 213,
+                "sensibilidad": 0.7746478873239436,
+                "precision": 0.8549222797927462
+              },
+              "puente": {
+                "n": 210,
+                "sensibilidad": 0.8952380952380953,
+                "precision": 0.9082125603864735
+              },
+              "sin_soldar": {
+                "n": 204,
+                "sensibilidad": 0.8431372549019608,
+                "precision": 0.7610619469026548
+              },
+              "exceso": {
+                "n": 273,
+                "sensibilidad": 0.7875457875457875,
+                "precision": 0.8739837398373984
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                194,
+                1,
+                2,
+                4,
+                15,
+                0
+              ],
+              [
+                0,
+                165,
+                1,
+                46,
+                1,
+                0
+              ],
+              [
+                10,
+                4,
+                188,
+                2,
+                6,
+                0
+              ],
+              [
+                6,
+                17,
+                0,
+                172,
+                9,
+                0
+              ],
+              [
+                34,
+                6,
+                16,
+                2,
+                215,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          }
+        },
+        "elegida_por_validacion": "s2",
+        "entre_semillas": {
+          "sensibilidad_media": 0.9382222222222222,
+          "sensibilidad_de": 0.014480297384573241,
+          "falsas_alarmas_media": 0.12962962962962962,
+          "falsas_alarmas_de": 0.020496244093683943
+        }
+      }
+    },
+    "tarjeta": {
+      "conjuntos": {
+        "entrenamiento": {
+          "imagenes": 1119,
+          "uniones": 373,
+          "tarjetas": 73,
+          "clases": {
+            "puente": 210,
+            "exceso": 318,
+            "aceptable": 180,
+            "insuficiente": 222,
+            "sin_soldar": 189
+          }
+        },
+        "validacion": {
+          "imagenes": 387,
+          "uniones": 129,
+          "tarjetas": 24,
+          "clases": {
+            "puente": 87,
+            "exceso": 33,
+            "aceptable": 108,
+            "insuficiente": 69,
+            "sin_soldar": 90
+          }
+        },
+        "prueba": {
+          "imagenes": 360,
+          "uniones": 120,
+          "tarjetas": 24,
+          "clases": {
+            "puente": 57,
+            "exceso": 102,
+            "aceptable": 72,
+            "insuficiente": 66,
+            "sin_soldar": 63
+          }
+        }
+      },
+      "linea_base": {
+        "resumen": {
+          "n_uniones": 360,
+          "n_tarjetas": 24,
+          "n_defectos": 288,
+          "n_aceptables": 72,
+          "vp": 197,
+          "fn": 91,
+          "fp": 24,
+          "vn": 48,
+          "sensibilidad": 0.6840277777777778,
+          "falsas_alarmas": 0.3333333333333333,
+          "precision": 0.8914027149321267,
+          "sensibilidad_wilson95": [
+            0.6282125748348364,
+            0.7349983288809574
+          ],
+          "falsas_alarmas_wilson95": [
+            0.23534643443153785,
+            0.448203956433948
+          ],
+          "sensibilidad_bootstrap95": [
+            0.5144850447116867,
+            0.8257617845117845
+          ],
+          "falsas_alarmas_bootstrap95": [
+            0.2777777777777778,
+            0.4444444444444444
+          ]
+        },
+        "por_clase": {
+          "aceptable": {
+            "n": 72,
+            "sensibilidad": 0.6666666666666666,
+            "precision": 0.34532374100719426
+          },
+          "insuficiente": {
+            "n": 66,
+            "sensibilidad": 0.3333333333333333,
+            "precision": 0.3548387096774194
+          },
+          "puente": {
+            "n": 57,
+            "sensibilidad": 0.19298245614035087,
+            "precision": 0.3055555555555556
+          },
+          "sin_soldar": {
+            "n": 63,
+            "sensibilidad": 0.7777777777777778,
+            "precision": 0.5104166666666666
+          },
+          "exceso": {
+            "n": 102,
+            "sensibilidad": 0.1568627450980392,
+            "precision": 0.5925925925925926
+          },
+          "fria": {
+            "n": 0,
+            "sensibilidad": NaN,
+            "precision": NaN
+          }
+        },
+        "matriz_confusion": [
+          [
+            48,
+            10,
+            11,
+            1,
+            2,
+            0
+          ],
+          [
+            3,
+            22,
+            8,
+            29,
+            4,
+            0
+          ],
+          [
+            37,
+            5,
+            11,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            13,
+            0,
+            49,
+            1,
+            0
+          ],
+          [
+            51,
+            12,
+            6,
+            17,
+            16,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "red": {
+        "por_semilla": {
+          "s1": {
+            "val_exactitud_balanceada": 0.8878712159071979,
+            "mejor_epoca": 35,
+            "resumen": {
+              "n_uniones": 360,
+              "n_tarjetas": 24,
+              "n_defectos": 288,
+              "n_aceptables": 72,
+              "vp": 284,
+              "fn": 4,
+              "fp": 3,
+              "vn": 69,
+              "sensibilidad": 0.9861111111111112,
+              "falsas_alarmas": 0.041666666666666664,
+              "precision": 0.9895470383275261,
+              "sensibilidad_wilson95": [
+                0.9648390491948016,
+                0.994585979488428
+              ],
+              "falsas_alarmas_wilson95": [
+                0.014270807466925182,
+                0.11549276741316111
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9545454545454546,
+                1.0
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.0,
+                0.13333333333333333
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 72,
+                "sensibilidad": 0.9583333333333334,
+                "precision": 0.9452054794520548
+              },
+              "insuficiente": {
+                "n": 66,
+                "sensibilidad": 1.0,
+                "precision": 1.0
+              },
+              "puente": {
+                "n": 57,
+                "sensibilidad": 1.0,
+                "precision": 1.0
+              },
+              "sin_soldar": {
+                "n": 63,
+                "sensibilidad": 1.0,
+                "precision": 1.0
+              },
+              "exceso": {
+                "n": 102,
+                "sensibilidad": 0.9607843137254902,
+                "precision": 0.9702970297029703
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                69,
+                0,
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                0,
+                66,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                57,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                63,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0,
+                98,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s2": {
+            "val_exactitud_balanceada": 0.9297445721583653,
+            "mejor_epoca": 31,
+            "resumen": {
+              "n_uniones": 360,
+              "n_tarjetas": 24,
+              "n_defectos": 288,
+              "n_aceptables": 72,
+              "vp": 283,
+              "fn": 5,
+              "fp": 6,
+              "vn": 66,
+              "sensibilidad": 0.9826388888888888,
+              "falsas_alarmas": 0.08333333333333333,
+              "precision": 0.9792387543252595,
+              "sensibilidad_wilson95": [
+                0.9600098428901799,
+                0.9925621498738836
+              ],
+              "falsas_alarmas_wilson95": [
+                0.038752424956949666,
+                0.17012355220676517
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9594509603943566,
+                1.0
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.0,
+                0.19444444444444445
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 72,
+                "sensibilidad": 0.9166666666666666,
+                "precision": 0.9295774647887324
+              },
+              "insuficiente": {
+                "n": 66,
+                "sensibilidad": 1.0,
+                "precision": 0.9705882352941176
+              },
+              "puente": {
+                "n": 57,
+                "sensibilidad": 0.9824561403508771,
+                "precision": 0.9824561403508771
+              },
+              "sin_soldar": {
+                "n": 63,
+                "sensibilidad": 1.0,
+                "precision": 0.984375
+              },
+              "exceso": {
+                "n": 102,
+                "sensibilidad": 0.9313725490196079,
+                "precision": 0.95
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                66,
+                1,
+                0,
+                1,
+                4,
+                0
+              ],
+              [
+                0,
+                66,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                56,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                63,
+                0,
+                0
+              ],
+              [
+                5,
+                1,
+                1,
+                0,
+                95,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s3": {
+            "val_exactitud_balanceada": 0.8957564147219321,
+            "mejor_epoca": 38,
+            "resumen": {
+              "n_uniones": 360,
+              "n_tarjetas": 24,
+              "n_defectos": 288,
+              "n_aceptables": 72,
+              "vp": 279,
+              "fn": 9,
+              "fp": 4,
+              "vn": 68,
+              "sensibilidad": 0.96875,
+              "falsas_alarmas": 0.05555555555555555,
+              "precision": 0.9858657243816255,
+              "sensibilidad_wilson95": [
+                0.9416860529296959,
+                0.9834737961577039
+              ],
+              "falsas_alarmas_wilson95": [
+                0.02181421598131665,
+                0.13432015965997918
+              ],
+              "sensibilidad_bootstrap95": [
+                0.8977272727272727,
+                1.0
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.0,
+                0.17777777777777778
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 72,
+                "sensibilidad": 0.9444444444444444,
+                "precision": 0.8831168831168831
+              },
+              "insuficiente": {
+                "n": 66,
+                "sensibilidad": 1.0,
+                "precision": 0.9428571428571428
+              },
+              "puente": {
+                "n": 57,
+                "sensibilidad": 1.0,
+                "precision": 1.0
+              },
+              "sin_soldar": {
+                "n": 63,
+                "sensibilidad": 0.9365079365079365,
+                "precision": 1.0
+              },
+              "exceso": {
+                "n": 102,
+                "sensibilidad": 0.9117647058823529,
+                "precision": 0.9587628865979382
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                68,
+                0,
+                0,
+                0,
+                4,
+                0
+              ],
+              [
+                0,
+                66,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                57,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                0,
+                59,
+                0,
+                0
+              ],
+              [
+                9,
+                0,
+                0,
+                0,
+                93,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s4": {
+            "val_exactitud_balanceada": 0.7543486337639261,
+            "mejor_epoca": 6,
+            "resumen": {
+              "n_uniones": 360,
+              "n_tarjetas": 24,
+              "n_defectos": 288,
+              "n_aceptables": 72,
+              "vp": 276,
+              "fn": 12,
+              "fp": 20,
+              "vn": 52,
+              "sensibilidad": 0.9583333333333334,
+              "falsas_alarmas": 0.2777777777777778,
+              "precision": 0.9324324324324325,
+              "sensibilidad_wilson95": [
+                0.9285939230417919,
+                0.9760068182881099
+              ],
+              "falsas_alarmas_wilson95": [
+                0.18760285856829367,
+                0.39046432925235425
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9077971460309322,
+                0.9937121612884265
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.05555555555555555,
+                0.3888888888888889
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 72,
+                "sensibilidad": 0.7222222222222222,
+                "precision": 0.8125
+              },
+              "insuficiente": {
+                "n": 66,
+                "sensibilidad": 0.9696969696969697,
+                "precision": 0.6808510638297872
+              },
+              "puente": {
+                "n": 57,
+                "sensibilidad": 0.9649122807017544,
+                "precision": 0.6547619047619048
+              },
+              "sin_soldar": {
+                "n": 63,
+                "sensibilidad": 0.5873015873015873,
+                "precision": 0.9487179487179487
+              },
+              "exceso": {
+                "n": 102,
+                "sensibilidad": 0.7254901960784313,
+                "precision": 0.9367088607594937
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                52,
+                2,
+                13,
+                0,
+                5,
+                0
+              ],
+              [
+                0,
+                64,
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                55,
+                0,
+                0,
+                0
+              ],
+              [
+                6,
+                20,
+                0,
+                37,
+                0,
+                0
+              ],
+              [
+                6,
+                6,
+                16,
+                0,
+                74,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "s5": {
+            "val_exactitud_balanceada": 0.8669626802760236,
+            "mejor_epoca": 37,
+            "resumen": {
+              "n_uniones": 360,
+              "n_tarjetas": 24,
+              "n_defectos": 288,
+              "n_aceptables": 72,
+              "vp": 280,
+              "fn": 8,
+              "fp": 3,
+              "vn": 69,
+              "sensibilidad": 0.9722222222222222,
+              "falsas_alarmas": 0.041666666666666664,
+              "precision": 0.9893992932862191,
+              "sensibilidad_wilson95": [
+                0.9461541500457419,
+                0.9858587349608235
+              ],
+              "falsas_alarmas_wilson95": [
+                0.014270807466925182,
+                0.11549276741316111
+              ],
+              "sensibilidad_bootstrap95": [
+                0.9090909090909091,
+                1.0
+              ],
+              "falsas_alarmas_bootstrap95": [
+                0.0,
+                0.13333333333333333
+              ]
+            },
+            "por_clase": {
+              "aceptable": {
+                "n": 72,
+                "sensibilidad": 0.9583333333333334,
+                "precision": 0.8961038961038961
+              },
+              "insuficiente": {
+                "n": 66,
+                "sensibilidad": 1.0,
+                "precision": 1.0
+              },
+              "puente": {
+                "n": 57,
+                "sensibilidad": 0.9649122807017544,
+                "precision": 1.0
+              },
+              "sin_soldar": {
+                "n": 63,
+                "sensibilidad": 1.0,
+                "precision": 1.0
+              },
+              "exceso": {
+                "n": 102,
+                "sensibilidad": 0.9215686274509803,
+                "precision": 0.9494949494949495
+              },
+              "fria": {
+                "n": 0,
+                "sensibilidad": NaN,
+                "precision": NaN
+              }
+            },
+            "matriz_confusion": [
+              [
+                69,
+                0,
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                0,
+                66,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                55,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                63,
+                0,
+                0
+              ],
+              [
+                8,
+                0,
+                0,
+                0,
+                94,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          }
+        },
+        "elegida_por_validacion": "s2",
+        "entre_semillas": {
+          "sensibilidad_media": 0.9736111111111111,
+          "sensibilidad_de": 0.009967152843338411,
+          "falsas_alarmas_media": 0.1,
+          "falsas_alarmas_de": 0.09018157267082183
+        }
+      }
+    }
+  }
+}

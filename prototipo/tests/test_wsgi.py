@@ -13,5 +13,8 @@ def test_demo_en_la_nube_prepara_datos_y_pide_clave(tmp_path, monkeypatch):
     assert c.get("/salud").get_json()["sintetico"] is True
     assert c.get("/").status_code == 401
     auth = {"Authorization": "Basic " + base64.b64encode(b"femeci:prueba").decode()}
-    assert c.get("/", headers=auth).status_code == 200
+    r = c.get("/", headers=auth)
+    assert r.status_code == 200
+    html = r.get_data(as_text=True)
+    assert "demostración en línea" in html and "Carpeta de datos" not in html
     assert (tmp_path / "nube" / "modelos" / "linea_base.json").exists()

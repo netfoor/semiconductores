@@ -3,8 +3,12 @@
 {% block contenido %}
 <section class="seccion">
   <h1>Inspección asistida de uniones through-hole</h1>
+  {% if en_linea %}
+  <p class="entrada">El sistema marca las uniones sospechosas y la persona decide. Esta es una demostración en línea con tarjetas sintéticas; en la estación real todo se procesa en la Raspberry Pi, sin internet, y las imágenes no salen del equipo.</p>
+  {% else %}
   <p class="entrada">El sistema marca las uniones sospechosas y la persona decide. Todo se procesa en este equipo, sin internet.</p>
   <p class="nota">Carpeta de datos: <code>{{ raiz }}</code></p>
+  {% endif %}
   <div class="cifras">
     <div><b class="num">{{ imagenes|length }}</b><span>imágenes en crudos</span></div>
     <div><b class="num">{{ disenos|length }}</b><span>diseños de tarjeta</span></div>

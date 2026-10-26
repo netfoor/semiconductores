@@ -21,7 +21,7 @@
   </header>
   {% if sintetico %}
   <div class="aviso-sintetico" role="note">
-    <p><b>Datos sintéticos.</b> Esta carpeta se generó con <code>tht demo</code> para probar el software. Nada de lo que se vea aquí es un resultado del proyecto.</p>
+    <p><b>Datos sintéticos.</b> {% if en_linea %}Estas tarjetas se generaron por computadora para mostrar el funcionamiento del software.{% else %}Esta carpeta se generó con <code>tht demo</code> para probar el software.{% endif %} Nada de lo que se vea aquí es un resultado del proyecto.</p>
   </div>
   {% endif %}
   <main>

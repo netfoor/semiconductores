@@ -97,6 +97,7 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | F-077 | ISEF International Rules: "Rules for All Projects" (sección de proyectos de continuidad) | Society for Science | Primaria oficial (reglamento internacional; referencia) | s. f. (ciclo 2026–2027) | 2026-10-01 | Automatizada (citas textuales obtenidas con la herramienta; verificar) |
 | F-078 | *Continuation/Research Progression Projects Form (7)*, versión 2022–2023 (copia publicada por una feria regional) | Society for Science | Primaria oficial (formulario; referencia) | 2022 | 2026-10-01 | Automatizada |
 | F-079 | Ross, G. (2006). *First Article Inspection Strategies*. IPC Printed Circuits Expo, APEX and the Designers Summit | Cluso Vision Systems (proveedor), vía IPC | Proveedor (ponencia técnica) | 2006 | 2026-10-02 | Automatizada |
+| F-080 | Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T. y Lun, D. P.-K. (2023). PCB soldering defect inspection using multitask learning under low data regimes. *Advanced Intelligent Systems*, 5, 2300364; conjunto PCBSPDefect (Zenodo 23307359, CC BY 4.0) | Académica (artículo y conjunto de datos) | Académica | 2023-09-21 | 2026-10-26 | Directa (metadatos de Zenodo y descarga del conjunto) |
 
 ## F-001
 
@@ -427,3 +428,6 @@ Proveedor y año 2006: sirve para ilustrar el tipo de problema, no como dato act
 | Especialidad en Tecnologías de Semiconductores (INAOE) | https://posgrados.inaoep.mx/oferta-academica/especialidad-en-tecnologias-de-semiconductores/ | Formación de talento | Error de certificado del sitio |
 | *Visual Inspection: A Review of the Literature* (Sandia, SAND2012-8590) | https://www.osti.gov/biblio/1055636 | Revisión original sobre la confiabilidad de la inspección visual humana (complementa F-060) | Bloqueado para la herramienta el 2026-10-01; leer en el navegador |
 | Precios de nube para inferencia (cómputo, almacenamiento y transferencia) en las regiones de Querétaro | Calculadoras oficiales de cada proveedor | Costo recurrente de la opción A en [[comparacion-nube-vs-edge]] | Consultar el día en que se decida (los precios cambian) |
+
+### F-080
+https://zenodo.org/records/23307359 (artículo: https://doi.org/10.1002/aisy.202300364) · Conjunto PCBSPDefect: fotos reales de 280 x 280 px de uniones de componentes DIP del lado de soldadura (b_dip), del lado de componentes (f_dip) y de cables planos (f_ffc); clases de b_dip: bridge, excess, good, insuff, no; tres iluminaciones por unión; particiones de entrenamiento (10 a 20 %), validación y prueba. Licencia CC BY 4.0: permite uso y redistribución citando el artículo. Descargado el 2026-10-26, SHA-256 del ZIP 1e135795835f04deccb0bc5fc1dd071c7fc944963e2cd5b76c6deff399c0de98 · Datos públicos reales de uniones through-hole para EXP-006; también es antecedente del estado del arte (aprendizaje multitarea con pocos datos).

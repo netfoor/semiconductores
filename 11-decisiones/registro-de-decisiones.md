@@ -31,6 +31,7 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-011 | Problema elegido (G1): IC-01, inspección asistida de uniones through-hole, con procesamiento local; y política de confidencialidad: los entregables no nombran empresas específicas | **Adoptada** | 2026-10-18 | Equipo (comunicado por Fortino) |
 | D-012 | Integración de una tercera integrante: María José de la Rosa Hernández | **Adoptada** | 2026-10-26 | Equipo (comunicado por Fortino) |
 | D-013 | Autoría de los commits del prototipo | **Adoptada** | 2026-10-26 | Fortino |
+| D-014 | Usar PCBSPDefect (público, CC BY 4.0) como validación externa preliminar (EXP-006) y dejar abierta la demo en línea | **Adoptada** | 2026-10-26 | Fortino (demo abierta); Claude (IA) propone el conjunto |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -148,3 +149,8 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 - **Decisión (2026-10-26, comunicada por Fortino):** los commits del desarrollo del prototipo hechos por Claude (IA) quedan con autor Fortino Romero Mantilla y sin la línea `Co-Authored-By: Claude`. Reemplaza en ese punto la práctica descrita en D-004.
 - **Lo que se mantiene para no perder transparencia (D-003):** cada sesión de desarrollo hecha por la IA se registra en la bitácora con responsable "Claude (IA)", qué se hizo y qué falta verificar; el protocolo declara el uso de IA.
 - **Lo que no se hizo:** Fortino propuso también commits a nombre de María José. Claude (IA) no los firmó con su nombre porque ella no escribió ese código, y la convocatoria descalifica por suplantación de autoría [F-001 §9.1]. María José entra como revisora del repositorio, y su trabajo propio va con su nombre.
+
+## D-014 · Validación externa con datos públicos y demo abierta (adoptada)
+
+- **Datos:** sin tarjetas propias todavía, se usa el subconjunto b_dip de PCBSPDefect [F-080] para una validación preliminar (EXP-006). Se descartó SolDef_AI porque es de componentes SMD y los conjuntos de Hugging Face porque no declaran licencia. Las imágenes no se suben al repositorio: se descargan de Zenodo y se verifica su huella.
+- **Demo:** femeci.foor.dev queda sin contraseña porque solo tiene datos sintéticos y solo el jurado tendrá la liga (decisión de Fortino, 26 oct). No se suben ahí datos de terceros (D-011).
