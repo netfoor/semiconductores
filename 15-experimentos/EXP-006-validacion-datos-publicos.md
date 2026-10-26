@@ -1,7 +1,7 @@
 ---
 titulo: "EXP-006 Validación con datos públicos reales (PCBSPDefect)"
 tipo: especificacion
-estado: planeado
+estado: ejecutado
 creado: 2026-10-26
 actualizado: 2026-10-26
 autor: "Claude (IA)"
@@ -39,5 +39,29 @@ La unidad de conteo es la imagen. Como cada unión tiene tres imágenes, el boot
 ## Registro
 
 - **Planeado:** 2026-10-26, antes de entrenar o evaluar cualquier modelo con estos datos.
-- **Ejecutado:** pendiente.
-- **Resultados crudos:** `15-experimentos/resultados/EXP-006_*.json`.
+- **Ejecutado:** 2026-10-26, por Claude (IA), con `uv run --group cnn tht externo evaluar` (12 minutos en el contenedor de desarrollo, CPU). Sin cambios respecto de lo planeado.
+- **Resultados crudos:** `15-experimentos/resultados/EXP-006_2026-10-26.json` (cada semilla, por clase y matrices de confusión).
+
+## Resultados
+
+Unidad: imagen (tres por unión). IC 95 %: Wilson y bootstrap agrupado por tarjeta (2000 repeticiones).
+
+| Partición | Prueba | Modelo | Sensibilidad | Falsas alarmas |
+|---|---|---|---|---|
+| Oficial | 1116 imágenes, 372 uniones, 120 tarjetas | Línea base | 0.739 (bootstrap 0.679 a 0.794) | 0.282 (bootstrap 0.171 a 0.407) |
+| Oficial | Igual | Red, semilla 2 (elegida por validación) | 0.941 (Wilson 0.924 a 0.955; bootstrap 0.913 a 0.967) | 0.116 (Wilson 0.080 a 0.165; bootstrap 0.030 a 0.216) |
+| Oficial | Igual | Red, media de 5 semillas | 0.938 (DE 0.014) | 0.130 (DE 0.020) |
+| Por tarjeta | 360 imágenes, 120 uniones, 24 tarjetas | Línea base | 0.684 (bootstrap 0.514 a 0.826) | 0.333 (bootstrap 0.278 a 0.444) |
+| Por tarjeta | Igual | Red, semilla 2 (elegida por validación) | 0.983 (Wilson 0.960 a 0.993; bootstrap 0.959 a 1.000) | 0.083 (Wilson 0.039 a 0.170; bootstrap 0.000 a 0.194) |
+| Por tarjeta | Igual | Red, media de 5 semillas | 0.974 (DE 0.010) | 0.100 (DE 0.090) |
+
+Sensibilidad por clase de la red elegida (oficial / por tarjeta): aceptable 0.88 / 0.92, insuficiente 0.91 / 1.00, puente 0.94 / 0.98, sin soldar 0.83 / 1.00, exceso 0.81 / 0.93.
+
+## Lectura
+
+- `#hecho` Con fotos reales de uniones through-hole, la red cumple M1 en las dos particiones (sensibilidad ≥ 0.90 y límite inferior de Wilson ≥ 0.85) y su falsa alarma puntual cumple M2 (≤ 0.15). La línea base clásica no cumple ninguna de las dos.
+- `#inferencia` El límite superior del IC de falsas alarmas (0.17 a 0.22) rebasa 0.15: con estos datos no se puede afirmar con seguridad que M2 se cumple. Hay que reportarlo así.
+- `#inferencia` Las falsas alarmas varían mucho entre semillas en la partición por tarjeta (la semilla 4 llegó a 0.278): elegir por validación importa, y conviene reportar la media y la dispersión, no solo la mejor semilla.
+- `#inferencia` La partición por tarjeta dio números más altos que la oficial, probablemente porque entrena con el triple de imágenes (1119 contra 375); no se probó por separado. Su conjunto de prueba es más chico (24 tarjetas), y por eso sus IC son más anchos.
+- Advertencia: las tres fotos de una unión no son independientes, así que el IC de Wilson queda demasiado estrecho. El IC que vale es el bootstrap por tarjeta.
+- Esto **no** es el resultado de EXP-002: falta repetirlo con DS-01, con la cámara y la iluminación de la estación.

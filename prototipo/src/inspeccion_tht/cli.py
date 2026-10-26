@@ -209,6 +209,73 @@ def cmd_demo(a):
     print(f"Conjunto sintético en {c.raiz} ({a.tarjetas} tarjetas)")
 
 
+def cmd_externo(a):
+    """EXP-006: entrena y evalúa ambos modelos con datos públicos reales."""
+    from collections import Counter
+    from . import externos
+    from .linea_base import ClasificadorCentroide, caracteristicas
+    from .metricas import Caso, matriz_confusion, por_clase, resumen
+    if a.accion == "descargar":
+        zip_ = externos.descargar(Path(a.ruta))
+        print(f"Descargado y verificado: {zip_}")
+        print(f"Extraído en: {externos.extraer(zip_, Path(a.ruta) / 'extraido')}")
+        return
+    muestras = externos.leer_pcbspdefect(Path(a.ruta))
+    imgs = externos.cargar_imagenes(muestras)
+    salida = {"experimento": "EXP-006", "datos": "PCBSPDefect b_dip", "cita": externos.CITA_PCBSPDEFECT,
+              "sha256_zip": externos.SHA256_PCBSPDEFECT, "fecha_utc": _fecha(), "particiones": {}}
+    for particion in a.particiones:
+        conj = externos.asignar(muestras, particion)
+        sel = {k: [i for i, c in enumerate(conj) if c == k] for k in ("entrenamiento", "validacion", "prueba")}
+        info = {k: {"imagenes": len(v), "uniones": len({muestras[i].union for i in v}),
+                    "tarjetas": len({muestras[i].tarjeta for i in v}),
+                    "clases": dict(Counter(muestras[i].clase for i in v))} for k, v in sel.items()}
+        casos_de = lambda pred: [Caso(muestras[i].tarjeta, f"{muestras[i].union}_{muestras[i].luz}", muestras[i].clase, p)
+                                 for i, p in zip(sel["prueba"], pred)]
+        bloque = {"conjuntos": info}
+        X = np.stack([caracteristicas(im) for im in imgs])
+        base = ClasificadorCentroide.entrenar(X[sel["entrenamiento"]], [muestras[i].clase for i in sel["entrenamiento"]])
+        cs = casos_de(base.predecir(X[sel["prueba"]]))
+        bloque["linea_base"] = {"resumen": resumen(cs), "por_clase": por_clase(cs), "matriz_confusion": matriz_confusion(cs)}
+        print(f"[{particion}] línea base: sensibilidad {bloque['linea_base']['resumen']['sensibilidad']:.3f}, "
+              f"falsas alarmas {bloque['linea_base']['resumen']['falsas_alarmas']:.3f}")
+        if a.sin_red:
+            salida["particiones"][particion] = bloque
+            continue
+        from .clasificador import ClasificadorONNX
+        from .entrenamiento_red import entrenar, exportar
+        import tempfile
+        semillas, mejor = {}, None
+        with tempfile.TemporaryDirectory() as td:
+            for s in a.semillas:
+                res = entrenar([imgs[i] for i in sel["entrenamiento"]], [muestras[i].clase for i in sel["entrenamiento"]],
+                               [imgs[i] for i in sel["validacion"]], [muestras[i].clase for i in sel["validacion"]],
+                               semilla=s, epocas=a.epocas)
+                ruta = exportar(res, Path(td) / f"red_s{s}.onnx", f"EXP-006 {particion}", len(sel["entrenamiento"]))
+                pred, _ = ClasificadorONNX(ruta).evaluar_recortes([imgs[i] for i in sel["prueba"]])
+                cs = casos_de(pred)
+                semillas[f"s{s}"] = {"val_exactitud_balanceada": res.val_exactitud_balanceada, "mejor_epoca": res.mejor_epoca,
+                                     "resumen": resumen(cs), "por_clase": por_clase(cs), "matriz_confusion": matriz_confusion(cs)}
+                print(f"[{particion}] red semilla {s}: val {res.val_exactitud_balanceada:.3f}, prueba sensibilidad "
+                      f"{semillas[f's{s}']['resumen']['sensibilidad']:.3f}, falsas alarmas {semillas[f's{s}']['resumen']['falsas_alarmas']:.3f}")
+                if mejor is None or res.val_exactitud_balanceada > mejor[1]:
+                    mejor = (f"s{s}", res.val_exactitud_balanceada)
+                    if a.guardar_modelo:
+                        import shutil
+                        Path(a.guardar_modelo).mkdir(parents=True, exist_ok=True)
+                        shutil.copyfile(ruta, Path(a.guardar_modelo) / f"red_pcbspdefect_{particion}.onnx")
+                        shutil.copyfile(ruta.with_suffix(".json"), Path(a.guardar_modelo) / f"red_pcbspdefect_{particion}.json")
+        sens = [v["resumen"]["sensibilidad"] for v in semillas.values()]
+        fa = [v["resumen"]["falsas_alarmas"] for v in semillas.values()]
+        bloque["red"] = {"por_semilla": semillas, "elegida_por_validacion": mejor[0],
+                         "entre_semillas": {"sensibilidad_media": float(np.mean(sens)), "sensibilidad_de": float(np.std(sens)),
+                                            "falsas_alarmas_media": float(np.mean(fa)), "falsas_alarmas_de": float(np.std(fa))}}
+        salida["particiones"][particion] = bloque
+    Path(a.salida).parent.mkdir(parents=True, exist_ok=True)
+    Path(a.salida).write_text(_json(salida), encoding="utf-8")
+    print(f"Guardado en {a.salida}")
+
+
 def cmd_servir(a):
     from .app import crear_app
     app = crear_app(Path(a.datos), operador=a.operador, modelo_nombre=a.modelo)
@@ -291,6 +358,17 @@ def construir_parser() -> argparse.ArgumentParser:
     x.add_argument("--columnas", type=int, default=8)
     x.add_argument("--semilla", type=int, default=7)
     x.set_defaults(f=cmd_demo)
+
+    x = s.add_parser("externo", help="EXP-006: datos públicos reales (PCBSPDefect)")
+    x.add_argument("accion", choices=["descargar", "evaluar"])
+    x.add_argument("--ruta", required=True, help="Carpeta de descarga o carpeta extraída")
+    x.add_argument("--particiones", nargs="+", default=["oficial", "tarjeta"], choices=["oficial", "tarjeta"])
+    x.add_argument("--semillas", type=int, nargs="+", default=[1, 2, 3, 4, 5])
+    x.add_argument("--epocas", type=int, default=40)
+    x.add_argument("--sin-red", action="store_true")
+    x.add_argument("--guardar-modelo", help="Carpeta donde guardar la red elegida por validación")
+    x.add_argument("--salida", default="resultados/EXP-006.json")
+    x.set_defaults(f=cmd_externo)
 
     x = s.add_parser("servir", help="Abre la interfaz local de etiquetado e inspección")
     x.add_argument("--datos", default="datos")

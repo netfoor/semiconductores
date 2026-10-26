@@ -49,7 +49,7 @@ FEMECI-PUEBLA 2026, Nivel Superior, Modalidad Ingenierías, Categoría Sistemas 
 
 # Resumen {-}
 
-Las uniones soldadas de componentes through-hole se revisan en buena medida a ojo, y la literatura muestra que la inspección visual humana deja pasar entre 20 % y 30 % de los defectos en la mayoría de las tareas (See, 2015). En una conversación con personal técnico de una empresa de ensamble electrónico de Puebla, se nos informó que la validación de piezas conserva etapas manuales y que, cuando algo falla, se revisa con mayor resolución a ojo humano (comunicación personal, octubre de 2026). Planteamos el siguiente reto de ingeniería: ¿es posible construir una estación de bajo costo, con cámara de alta resolución e inferencia local, que señale las uniones through-hole sospechosas con una sensibilidad y una tasa de falsas alarmas conocidas, sin conexión a internet y en un tiempo compatible con una estación de revisión? Proponemos un prototipo con humano en el ciclo: el sistema marca, la persona decide. Lo evaluaremos con un conjunto de datos propio de al menos 30 tarjetas con defectos sembrados a propósito, partido por tarjeta, con criterios de aceptación fijados antes de medir, línea base humana y línea base de visión clásica. A la fecha de este documento no existen resultados experimentales; el protocolo define cómo se obtendrán y cómo se reportarán, incluidos los resultados desfavorables.
+Las uniones soldadas de componentes through-hole se revisan en buena medida a ojo, y la literatura muestra que la inspección visual humana deja pasar entre 20 % y 30 % de los defectos en la mayoría de las tareas (See, 2015). En una conversación con personal técnico de una empresa de ensamble electrónico de Puebla, se nos informó que la validación de piezas conserva etapas manuales y que, cuando algo falla, se revisa con mayor resolución a ojo humano (comunicación personal, octubre de 2026). Planteamos el siguiente reto de ingeniería: ¿es posible construir una estación de bajo costo, con cámara de alta resolución e inferencia local, que señale las uniones through-hole sospechosas con una sensibilidad y una tasa de falsas alarmas conocidas, sin conexión a internet y en un tiempo compatible con una estación de revisión? Proponemos un prototipo con humano en el ciclo: el sistema marca, la persona decide. Lo evaluaremos con un conjunto de datos propio de al menos 30 tarjetas con defectos sembrados a propósito, partido por tarjeta, con criterios de aceptación fijados antes de medir, línea base humana y línea base de visión clásica. Aún no hay resultados con nuestras tarjetas. Como validación preliminar, entrenamos y evaluamos el método con un conjunto público de fotos reales de uniones through-hole (Tsang et al., 2023): la red alcanzó una sensibilidad de 0.94 (IC 95 % por bootstrap, 0.91 a 0.97) con 0.12 de falsas alarmas, frente a 0.74 y 0.28 de la línea base clásica. Este resultado no sustituye la evaluación con datos propios.
 
 *Palabras clave:* inspección de soldadura, through-hole, visión artificial, cómputo en el borde, control de calidad, ensamble electrónico
 
@@ -73,7 +73,7 @@ Las uniones through-hole son difíciles de inspeccionar automáticamente porque 
 
 ## 2.3 Estado del arte técnico
 
-Ong et al. (2025) revisan la inspección visual de uniones soldadas para aplicaciones industriales y señalan retos abiertos, entre ellos la dependencia de la iluminación y de los datos disponibles. Existen conjuntos de datos públicos de defectos en tarjetas y trabajos de detección con modelos ligeros en computadoras de placa única; revisamos estas opciones y sus licencias en el registro de búsquedas (Anexo A). Con esa revisión concluimos que detectar defectos en tarjetas con una red convolucional pequeña en una Raspberry Pi **no es en sí una novedad**. Lo que buscamos aportar es otra cosa (sección 4): una evaluación honesta y reproducible de un sistema de apoyo con humano en el ciclo, en la tecnología through-hole, con datos propios etiquetados de forma controlada, criterios de aceptación definidos antes de medir y una comparación explícita con la inspección humana y con una línea base de visión clásica.
+Ong et al. (2025) revisan la inspección visual de uniones soldadas para aplicaciones industriales y señalan retos abiertos, entre ellos la dependencia de la iluminación y de los datos disponibles. Tsang et al. (2023) publicaron PCBSPDefect, un conjunto de fotos reales de uniones de componentes DIP del lado de soldadura, y mostraron que el aprendizaje multitarea mejora la clasificación cuando hay pocas muestras. También existen otros conjuntos de defectos en tarjetas y trabajos de detección con modelos ligeros en computadoras de placa única; las búsquedas (1, 2 y 26 de octubre de 2026) y la licencia de cada fuente están en el registro de fuentes del proyecto. Con esa revisión concluimos que detectar defectos en tarjetas con una red convolucional pequeña en una Raspberry Pi **no es en sí una novedad**. Lo que buscamos aportar es otra cosa (sección 4): una evaluación honesta y reproducible de un sistema de apoyo con humano en el ciclo, en la tecnología through-hole, con datos propios etiquetados de forma controlada, criterios de aceptación definidos antes de medir y una comparación explícita con la inspección humana y con una línea base de visión clásica.
 
 ## 2.4 Dónde procesar: nube, local o híbrido
 
@@ -143,7 +143,7 @@ Una meta no cumplida se reporta como no cumplida, con su análisis de errores.
 
 ## 6.1 Proceso de diseño
 
-Seguimos la secuencia requisitos, alternativas, selección con criterios, construcción, pruebas e iteración. Cada decisión de diseño con alternativas se registra en el registro de decisiones de la bóveda del proyecto (D-###) y cada actividad en la bitácora (Anexo B). La bóveda está versionada con git, de modo que las fechas de cada cambio son verificables.
+Seguimos la secuencia requisitos, alternativas, selección con criterios, construcción, pruebas e iteración. Cada decisión de diseño con alternativas se registra en el registro de decisiones de la bóveda del proyecto (D-###) y cada actividad en la bitácora, que se entrega como documento aparte. La bóveda está versionada con git, de modo que las fechas de cada cambio son verificables.
 
 ## 6.2 Clases de condición
 
@@ -186,6 +186,7 @@ Cada experimento se registra antes de ejecutarlo (objetivo, hipótesis, métrica
 - **EXP-002. Desempeño del sistema.** Línea base clásica y clasificador ligero sobre el conjunto de prueba. Se reportan matriz de confusión, sensibilidad y precisión por clase, curva precisión-sensibilidad e intervalos de confianza por *bootstrap* por tarjeta, con cinco semillas de entrenamiento.
 - **EXP-003. Latencia y ubicación del procesamiento.** Medición de captura a resultado en Raspberry Pi 5 sin red (al menos 30 repeticiones, mediana y percentil 95), y estimación del tiempo de subida a un servicio remoto con la medición de la red disponible, para comparar nube, local e híbrido. *Regla de decisión fijada de antemano:* se elige la opción más simple que cumpla las metas de latencia, la operación sin internet y la confidencialidad; la nube solo se elige si el local no cumple M4.
 - **EXP-004. Robustez.** Variaciones controladas de iluminación (dos niveles y un ángulo adicional) y desplazamiento de la tarjeta (±3 mm), midiendo la caída de sensibilidad.
+- **EXP-006. Validación con datos públicos reales.** Los dos modelos se entrenan y evalúan con el subconjunto de uniones DIP del lado de soldadura de PCBSPDefect (Tsang et al., 2023; licencia CC BY 4.0), con la partición oficial del conjunto y con una partición por tarjeta. Se registró antes de ejecutarlo y no sustituye a EXP-002.
 - **EXP-005. Asistido frente a no asistido (exploratorio).** Los integrantes inspeccionan las tarjetas de prueba con las marcas del sistema y se compara con EXP-001 mediante la prueba de McNemar. Con tres personas, el resultado se reporta como exploratorio.
 
 ## 6.6 Análisis de datos
@@ -216,12 +217,36 @@ Métricas adecuadas a clases desbalanceadas (sensibilidad, precisión, falsas al
 
 # 8. Resultados
 
-**Estado al 26 de octubre de 2026: no hay resultados experimentales.** Este documento presenta el diseño y el plan de pruebas. No presentamos cifras de desempeño, y no hay datos de validación en este momento. Los resultados se obtendrán siguiendo la sección 6 y se reportarán completos y sin selección, cada uno con su entrada de bitácora y su archivo de datos. En la jornada del 30 de octubre presentaremos únicamente el avance que exista en esa fecha.
+**Estado al 26 de octubre de 2026: no hay resultados con nuestras tarjetas (DS-01).** La sección 8.1 presenta una validación preliminar con datos públicos reales (EXP-006). Los resultados se obtendrán siguiendo la sección 6 y se reportarán completos y sin selección, cada uno con su entrada de bitácora y su archivo de datos. En la jornada del 30 de octubre presentaremos únicamente el avance que exista en esa fecha.
+
+## 8.1 Validación preliminar con datos públicos (EXP-006)
+
+Entrenamos y evaluamos los dos modelos con 622 uniones reales de 121 tarjetas del conjunto PCBSPDefect (Tsang et al., 2023), fotografiadas con tres iluminaciones (1866 imágenes). Las clases del conjunto corresponden a cinco de las nuestras (no incluye unión fría). La red se entrenó con cinco semillas y se eligió la de mejor exactitud balanceada en validación; el conjunto de prueba solo se usó al final. Los intervalos se calcularon con bootstrap agrupando por tarjeta, porque las tres fotos de una unión no son independientes.
+
+::: {custom-style="TableLabel"}
+**Tabla 2**
+:::
+
+::: {custom-style="TableTitle"}
+*Resultados de EXP-006 en el conjunto de prueba (IC 95 % por bootstrap agrupado por tarjeta)*
+:::
+
+| Partición | Modelo | Sensibilidad | Falsas alarmas |
+|:------------|:------------------|:------------------|:------------------|
+| Oficial (372 uniones, 120 tarjetas) | Línea base clásica | 0.74 (0.68 a 0.79) | 0.28 (0.17 a 0.41) |
+| Oficial | Red elegida por validación | 0.94 (0.91 a 0.97) | 0.12 (0.03 a 0.22) |
+| Oficial | Red, media de 5 semillas | 0.94 (DE 0.01) | 0.13 (DE 0.02) |
+| Por tarjeta (120 uniones, 24 tarjetas) | Línea base clásica | 0.68 (0.51 a 0.83) | 0.33 (0.28 a 0.44) |
+| Por tarjeta | Red elegida por validación | 0.98 (0.96 a 1.00) | 0.08 (0.00 a 0.19) |
+
+Con fotos reales, la red cumple M1 en las dos particiones y su valor puntual de falsas alarmas cumple M2, mientras que la línea base no cumple ninguna. Sin embargo, el límite superior del intervalo de falsas alarmas rebasa 0.15, por lo que todavía no podemos afirmar que M2 se cumple. Además, la cámara, la iluminación y las tarjetas no son las de nuestra estación. Estos resultados muestran que el método aprende defectos reales; el desempeño en nuestras condiciones lo medirá EXP-002 con DS-01.
+
+## 8.2 Resultados con datos propios
 
 La tabla siguiente es la estructura en la que se reportarán, junto con los criterios ya fijados.
 
 ::: {custom-style="TableLabel"}
-**Tabla 2**
+**Tabla 3**
 :::
 
 ::: {custom-style="TableTitle"}
@@ -240,7 +265,7 @@ La tabla siguiente es la estructura en la que se reportarán, junto con los crit
 # 9. Cronograma
 
 ::: {custom-style="TableLabel"}
-**Tabla 3**
+**Tabla 4**
 :::
 
 ::: {custom-style="TableTitle"}
@@ -260,7 +285,7 @@ Si el tiempo no alcanza, priorizaremos EXP-001, EXP-002 y EXP-003 y reportaremos
 
 # 10. Conclusiones y límites esperados
 
-Este protocolo no contiene conclusiones sobre el desempeño de la estación porque aún no hay datos; contiene las condiciones bajo las cuales cada conclusión será válida o no. Si se cumplen las metas, concluiremos únicamente que una estación local de bajo costo logra, con datos propios y en las condiciones probadas, la sensibilidad, las falsas alarmas y la latencia reportadas, y que la inspección asistida mejora o no mejora la revisión de los integrantes. No concluiremos nada sobre el desempeño en una línea industrial real, con inspectores expertos o con otros tipos de tarjeta, y así lo declararemos.
+Este protocolo no contiene conclusiones sobre el desempeño de la estación con nuestras tarjetas porque aún no hay datos propios; la validación con datos públicos (sección 8.1) indica que el método es viable, pero no lo demuestra en nuestras condiciones. El protocolo define las condiciones bajo las cuales cada conclusión será válida o no. Si se cumplen las metas, concluiremos únicamente que una estación local de bajo costo logra, con datos propios y en las condiciones probadas, la sensibilidad, las falsas alarmas y la latencia reportadas, y que la inspección asistida mejora o no mejora la revisión de los integrantes. No concluiremos nada sobre el desempeño en una línea industrial real, con inspectores expertos o con otros tipos de tarjeta, y así lo declararemos.
 
 **Limitaciones conocidas.** Datos de tarjetas de práctica y defectos sembrados que pueden diferir de los defectos reales de producción; tres inspectores sin experiencia industrial; un solo tipo de montaje; una sola configuración de cámara e iluminación; la evidencia local del problema proviene de una conversación con una organización. **Trabajo futuro.** Validación externa con tarjetas de producción y con técnicos de calidad, ampliación a otras clases y evaluación de aceleradores de inferencia.
 
@@ -311,13 +336,9 @@ Siemens Digital Industries Software. (2023). *Smarter false call reduction for e
 :::
 
 ::: {custom-style="Bibliography"}
-Ultralytics. (2026). *Raspberry Pi* [Guía de documentación]. https://docs.ultralytics.com/guides/raspberry-pi/
+Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T., & Lun, D. P.-K. (2023). PCB soldering defect inspection using multitask learning under low data regimes. *Advanced Intelligent Systems, 5*, Artículo 2300364. https://doi.org/10.1002/aisy.202300364
 :::
 
-# Anexo A. Registro de búsquedas del estado del arte {-}
-
-Búsquedas realizadas entre el 1 y el 2 de octubre de 2026 sobre inspección de soldadura through-hole, falsas alarmas de inspección óptica automatizada, detección de defectos en tarjetas con aprendizaje profundo en computadoras de placa única y conjuntos de datos públicos de defectos en tarjetas. Los detalles de cada fuente (fecha de consulta, tipo y qué aporta) están en el registro de fuentes de la bóveda del proyecto. Los conjuntos de datos públicos encontrados se usarán, en todo caso, solo después de verificar su licencia, y se declararán como externos.
-
-# Anexo B. Bitácora de investigación {-}
-
-La bitácora cronológica se entrega como documento independiente (PDF) y es la fuente de verdad de las fechas del proceso. Está resguardada por el líder del proyecto y versionada con git.
+::: {custom-style="Bibliography"}
+Ultralytics. (2026). *Raspberry Pi* [Guía de documentación]. https://docs.ultralytics.com/guides/raspberry-pi/
+:::
