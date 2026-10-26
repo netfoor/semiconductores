@@ -18,7 +18,7 @@ Estación de inspección visual asistida con procesamiento local para uniones so
 :::
 
 ::: {custom-style="TitlePageText"}
-Fortino Romero Mantilla e Israel Jesus Garcia Osorio
+Fortino Romero Mantilla, Israel Jesús García Osorio y María José de la Rosa Hernández
 :::
 
 ::: {custom-style="TitlePageText"}
@@ -182,11 +182,11 @@ La unión fría es la clase más difícil de sembrar de forma reproducible; si n
 
 Cada experimento se registra antes de ejecutarlo (objetivo, hipótesis, métricas y criterio de aceptación) y también se registran las corridas fallidas.
 
-- **EXP-001. Línea base humana.** Los dos integrantes inspeccionan, sin asistencia y a ciegas respecto de la hoja de siembra, las tarjetas del conjunto de prueba; cada uno revisa tarjetas soldadas por el otro para reducir el conocimiento previo. Se mide sensibilidad, falsas alarmas y tiempo por tarjeta. Limitación: los inspectores no son técnicos con experiencia industrial.
+- **EXP-001. Línea base humana.** Los tres integrantes inspeccionan, sin asistencia y a ciegas respecto de la hoja de siembra, las tarjetas del conjunto de prueba; cada uno revisa tarjetas soldadas por otro integrante para reducir el conocimiento previo. Se mide sensibilidad, falsas alarmas y tiempo por tarjeta. Limitación: los inspectores no son técnicos con experiencia industrial.
 - **EXP-002. Desempeño del sistema.** Línea base clásica y clasificador ligero sobre el conjunto de prueba. Se reportan matriz de confusión, sensibilidad y precisión por clase, curva precisión-sensibilidad e intervalos de confianza por *bootstrap* por tarjeta, con cinco semillas de entrenamiento.
 - **EXP-003. Latencia y ubicación del procesamiento.** Medición de captura a resultado en Raspberry Pi 5 sin red (al menos 30 repeticiones, mediana y percentil 95), y estimación del tiempo de subida a un servicio remoto con la medición de la red disponible, para comparar nube, local e híbrido. *Regla de decisión fijada de antemano:* se elige la opción más simple que cumpla las metas de latencia, la operación sin internet y la confidencialidad; la nube solo se elige si el local no cumple M4.
 - **EXP-004. Robustez.** Variaciones controladas de iluminación (dos niveles y un ángulo adicional) y desplazamiento de la tarjeta (±3 mm), midiendo la caída de sensibilidad.
-- **EXP-005. Asistido frente a no asistido (exploratorio).** Los integrantes inspeccionan las tarjetas de prueba con las marcas del sistema y se compara con EXP-001 mediante la prueba de McNemar. Con dos personas, el resultado se reporta como exploratorio.
+- **EXP-005. Asistido frente a no asistido (exploratorio).** Los integrantes inspeccionan las tarjetas de prueba con las marcas del sistema y se compara con EXP-001 mediante la prueba de McNemar. Con tres personas, el resultado se reporta como exploratorio.
 
 ## 6.6 Análisis de datos
 
@@ -262,7 +262,7 @@ Si el tiempo no alcanza, priorizaremos EXP-001, EXP-002 y EXP-003 y reportaremos
 
 Este protocolo no contiene conclusiones sobre el desempeño de la estación porque aún no hay datos; contiene las condiciones bajo las cuales cada conclusión será válida o no. Si se cumplen las metas, concluiremos únicamente que una estación local de bajo costo logra, con datos propios y en las condiciones probadas, la sensibilidad, las falsas alarmas y la latencia reportadas, y que la inspección asistida mejora o no mejora la revisión de los integrantes. No concluiremos nada sobre el desempeño en una línea industrial real, con inspectores expertos o con otros tipos de tarjeta, y así lo declararemos.
 
-**Limitaciones conocidas.** Datos de tarjetas de práctica y defectos sembrados que pueden diferir de los defectos reales de producción; dos inspectores sin experiencia industrial; un solo tipo de montaje; una sola configuración de cámara e iluminación; la evidencia local del problema proviene de una conversación con una organización. **Trabajo futuro.** Validación externa con tarjetas de producción y con técnicos de calidad, ampliación a otras clases y evaluación de aceleradores de inferencia.
+**Limitaciones conocidas.** Datos de tarjetas de práctica y defectos sembrados que pueden diferir de los defectos reales de producción; tres inspectores sin experiencia industrial; un solo tipo de montaje; una sola configuración de cámara e iluminación; la evidencia local del problema proviene de una conversación con una organización. **Trabajo futuro.** Validación externa con tarjetas de producción y con técnicos de calidad, ampliación a otras clases y evaluación de aceleradores de inferencia.
 
 # Referencias {-}
 

@@ -13,7 +13,7 @@ Heroica Puebla de Zaragoza, Puebla, a 26 de octubre de 2026
 Presente
 :::
 
-Quien suscribe, José Francisco Espinosa Garita, docente de la Universidad Tecnológica de Puebla, con número de empleado \_\_\_\_\_\_\_\_\_\_\_\_, manifiesto que acepto fungir como asesor institucional del proyecto "Estación de inspección visual asistida con procesamiento local para uniones soldadas through-hole en el ensamble electrónico: diseño y validación experimental de un prototipo", presentado por Fortino Romero Mantilla (líder del proyecto) e Israel Jesus Garcia Osorio en la FEMECI-PUEBLA 2026, nivel Superior, modalidad Ingenierías.
+Quien suscribe, José Francisco Espinosa Garita, docente de la Universidad Tecnológica de Puebla, con número de empleado \_\_\_\_\_\_\_\_\_\_\_\_, manifiesto que acepto fungir como asesor institucional del proyecto "Estación de inspección visual asistida con procesamiento local para uniones soldadas through-hole en el ensamble electrónico: diseño y validación experimental de un prototipo", presentado por Fortino Romero Mantilla (líder del proyecto), Israel Jesús García Osorio y María José de la Rosa Hernández en la FEMECI-PUEBLA 2026, nivel Superior, modalidad Ingenierías.
 
 Mi perfil es congruente con la temática del proyecto por mi formación y experiencia en \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
 

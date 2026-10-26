@@ -30,7 +30,7 @@ Estación de inspección visual asistida con procesamiento local para uniones so
 :::
 
 ::: {custom-style="TitlePageText"}
-Fortino Romero Mantilla (líder del proyecto) e Israel Jesus Garcia Osorio
+Fortino Romero Mantilla (líder del proyecto), Israel Jesús García Osorio y María José de la Rosa Hernández
 :::
 
 ::: {custom-style="TitlePageText"}

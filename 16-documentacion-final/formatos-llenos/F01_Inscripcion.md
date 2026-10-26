@@ -33,8 +33,8 @@ FEMECI Puebla 2026 — Feria Mexicana de Ciencias e Ingenierías, Capítulo Pueb
 | Rol | Nombre completo | CURP | Grado / Semestre | Correo electrónico |
 |:------|:---------|:-------|:-------|:---------|
 | Líder de Proyecto | Fortino Romero Mantilla | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |
-| Integrante 2 | Israel Jesus Garcia Osorio | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |
-| Integrante 3 | No aplica | | | |
+| Integrante 2 | Israel Jesús García Osorio | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |
+| Integrante 3 | María José de la Rosa Hernández | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |
 | Asesor(a) Institucional | José Francisco Espinosa Garita | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | No aplica | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |
 
 ## 4. Resumen Ejecutivo (máximo 250 palabras)

@@ -21,6 +21,7 @@ aliases: ["Inicio", "Mapa del proyecto"]
 |---|---|
 | Líder de Proyecto (registro, canal oficial, resguardo de la bitácora) | Fortino Romero Mantilla |
 | Integrante | Israel Jesus Garcia Osorio |
+| Integrante | María José de la Rosa Hernández (comunicado por Fortino el 2026-10-26; D-012) |
 | Asesor institucional (UTP) | Prof. José Francisco Espinosa Garita |
 | Asesor científico externo (opcional) | Por definir |
 

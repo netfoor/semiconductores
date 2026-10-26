@@ -29,6 +29,7 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-009 | Ubicación del procesamiento (nube, local o híbrido) | Pendiente: se decide con un experimento después de elegir el problema | — | Equipo, con datos del experimento |
 | D-010 | Tratamiento del proyecto 2024 de Mirai: ¿continuidad o antecedente? | **Adoptada: desarrollo desde cero, sin continuidad.** El proyecto 2024 queda solo como referencia del análisis | 2026-10-02 | Equipo (comunicado por Fortino) |
 | D-011 | Problema elegido (G1): IC-01, inspección asistida de uniones through-hole, con procesamiento local; y política de confidencialidad: los entregables no nombran empresas específicas | **Adoptada** | 2026-10-18 | Equipo (comunicado por Fortino) |
+| D-012 | Integración de una tercera integrante: María José de la Rosa Hernández | **Adoptada** | 2026-10-26 | Equipo (comunicado por Fortino) |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -134,3 +135,9 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 - **Confidencialidad:** la información de la empresa es privada; **ningún entregable nombra empresas específicas** y no se publican imágenes ni datos sin autorización escrita. En la bóveda y en el historial git sí consta el nombre; la bitácora que se entrega usa una versión con el nombre reservado y lo declara.
 - **D-009** (nube, local o híbrido) sigue pendiente: se decide con EXP-003 y la regla fijada en el protocolo.
 - **Riesgo aceptado:** sin resultados al momento de entregar; el criterio A5 queda expuesto y el protocolo lo declara.
+
+## D-012 · Tercera integrante (adoptada)
+
+- **Decisión (comunicada por Fortino el 2026-10-26):** el equipo queda integrado por Fortino Romero Mantilla (líder), Israel Jesús García Osorio y María José de la Rosa Hernández. La convocatoria permite equipos de 2 a 3 estudiantes y los integrantes registrados son irremplazables [F-001 §3.2, §3.3].
+- **Consecuencias:** María José aparece en el protocolo, F-01, F-04, la carta de postulación, la carta del asesor y la bitácora, y firma su propio F-03 y F-05. Debe participar en la exposición y la defensa [§7.4] y no estar inscrita en otro proyecto [§3.4].
+- **Pendiente:** confirmar la fecha real en que se integró, para registrarla en la bitácora sin inventarla, y la escritura exacta de los tres nombres según la INE.

@@ -19,7 +19,7 @@ aliases: ["F-01 resumen"]
 
 **Modalidad / categoría / nivel:** Ingenierías · Sistemas Informáticos y Computación (robótica y máquinas inteligentes: visión artificial) · Superior
 
-**Integrantes:** Fortino Romero Mantilla (líder) e Israel Jesus Garcia Osorio · **Asesor institucional:** José Francisco Espinosa Garita (UTP)
+**Integrantes:** Fortino Romero Mantilla (líder), Israel Jesús García Osorio y María José de la Rosa Hernández · **Asesor institucional:** José Francisco Espinosa Garita (UTP)
 
 **Resumen ejecutivo (≈ 250 palabras):**
 

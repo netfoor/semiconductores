@@ -34,6 +34,10 @@ Las y los abajo firmantes, en calidad de autores y asesor del proyecto, declaram
 | Firma del Líder de Proyecto | Firma Integrante 2 | Firma del Asesor(a) Institucional |
 |:----------------|:----------------|:----------------|
 | \_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_ |
-| Fortino Romero Mantilla · matrícula \_\_\_\_\_\_ | Israel Jesus Garcia Osorio | José Francisco Espinosa Garita |
+| Fortino Romero Mantilla · matrícula \_\_\_\_\_\_ | Israel Jesús García Osorio | José Francisco Espinosa Garita |
 
-Integrante 3: no aplica.
+| Firma Integrante 3 |
+|:------------------------|
+| \_\_\_\_\_\_\_\_\_\_\_\_ |
+| María José de la Rosa Hernández · matrícula \_\_\_\_\_\_ |
+

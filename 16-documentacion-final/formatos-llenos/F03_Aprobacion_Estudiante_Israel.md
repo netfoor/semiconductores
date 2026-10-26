@@ -14,7 +14,7 @@ FEMECI Puebla 2026 — Feria Mexicana de Ciencias e Ingenierías, Capítulo Pueb
 
 | Campo | Respuesta |
 |:--------------|:------------------------------|
-| Nombre completo | Israel Jesus Garcia Osorio |
+| Nombre completo | Israel Jesús García Osorio |
 | CURP | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |
 | Grado / Semestre actual | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ |
 | Institución educativa | Universidad Tecnológica de Puebla (UTP) |
@@ -48,4 +48,4 @@ Si el estudiante es menor de 18 años, el tutor legal debe también firmar este 
 | Firma del Estudiante | Firma del Tutor Legal (si aplica) |
 |:-------------------------|:-------------------------|
 | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | No aplica |
-| Israel Jesus Garcia Osorio · matrícula: \_\_\_\_\_\_\_\_\_\_ | |
+| Israel Jesús García Osorio · matrícula: \_\_\_\_\_\_\_\_\_\_ | |

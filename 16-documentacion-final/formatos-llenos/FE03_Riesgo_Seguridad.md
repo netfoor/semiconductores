@@ -17,7 +17,7 @@ FEMECI Puebla 2026 — Feria Mexicana de Ciencias e Ingenierías, Capítulo Pueb
 | Título del proyecto | Estación de inspección visual asistida con procesamiento local para uniones soldadas through-hole en el ensamble electrónico: diseño y validación experimental de un prototipo |
 | Categoría temática | Sistemas Informáticos y Computación (robótica y máquinas inteligentes: visión artificial) |
 | Institución educativa | Universidad Tecnológica de Puebla (UTP) |
-| Nombres del equipo | Fortino Romero Mantilla; Israel Jesus Garcia Osorio |
+| Nombres del equipo | Fortino Romero Mantilla; Israel Jesús García Osorio; María José de la Rosa Hernández |
 
 ## 2. Identificación de Riesgos
 
