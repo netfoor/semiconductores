@@ -3,7 +3,7 @@ titulo: "Protocolo y Plan de Investigación v1 (Ingenierías)"
 tipo: entregable
 estado: borrador
 creado: 2026-10-18
-actualizado: 2026-10-18
+actualizado: 2026-10-26
 autor: "Claude (IA)"
 revisado_por: []
 fuentes: [F-001, F-014, F-043, F-046, F-048, F-051, F-052, F-057, F-060, F-061, F-073, F-079]
@@ -30,12 +30,18 @@ Asesor institucional: José Francisco Espinosa Garita
 :::
 
 ::: {custom-style="TitlePageText"}
-FEMECI-PUEBLA 2026 · Nivel Superior · Modalidad Ingenierías · Categoría Sistemas Informáticos y Computación (robótica y máquinas inteligentes: visión artificial)
+FEMECI-PUEBLA 2026, Nivel Superior, Modalidad Ingenierías, Categoría Sistemas Informáticos y Computación (robótica y máquinas inteligentes: visión artificial)
 :::
 
 ::: {custom-style="TitlePageText"}
-18 de octubre de 2026
+26 de octubre de 2026
 :::
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+<!-- INDICE -->
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -77,7 +83,7 @@ Las revisiones sobre cómputo en el borde y en la nube señalan que el borde red
 
 **Quién.** Inspectores, técnicos de calidad y personal de retrabajo en estaciones de ensamble through-hole y de soldadura manual de una línea de manufactura electrónica en Puebla.
 
-**Qué ocurre.** Personal técnico de una empresa de ensamble electrónico del estado nos informó que la validación de piezas todavía tiene partes manuales y que, cuando algo falla, se revisa con mayor resolución a ojo humano (comunicación personal, octubre de 2026). Esta es una fuente primaria pero única, de una sola organización, cuyo nombre se reserva por confidencialidad; la tratamos como un indicio local que motiva el problema y no como una cifra del sector.
+**Qué ocurre.** Personal técnico de una empresa de ensamble electrónico del estado nos informó que la validación de piezas todavía tiene partes manuales y que, cuando algo falla, se revisa con mayor resolución a ojo humano (comunicación personal, octubre de 2026). Esta es una fuente primaria pero única, de una sola organización, cuyo nombre se reserva por confidencialidad; la tratamos como un indicio local que motiva el problema y no como una cifra del sector. La universidad gestionó una visita técnica a una planta de ensamble electrónico del estado, programada para el 5 de noviembre de 2026; la usaremos para observar el proceso de validación de piezas, confirmar el problema con el personal técnico y explorar la colaboración descrita en la sección 6.3.
 
 **Cómo se resuelve hoy.** Inspección visual humana, con apoyo de mayor resolución cuando se sospecha una falla.
 
@@ -113,6 +119,14 @@ Las revisiones sobre cómputo en el borde y en la nube señalan que el borde red
 6. Decidir la ubicación del procesamiento con base en las mediciones.
 
 **Metas técnicas.** Los umbrales son valores iniciales y se fijan antes de observar los datos de prueba. Si se modifican con base en información del usuario, el cambio y su razón se registran en la bitácora antes de ejecutar EXP-002.
+
+::: {custom-style="TableLabel"}
+**Tabla 1**
+:::
+
+::: {custom-style="TableTitle"}
+*Metas técnicas, umbral inicial, origen del umbral y prueba asociada*
+:::
 
 | ID | Meta | Umbral inicial | Origen del umbral | Prueba |
 |:--|:--------------------|:------------|:--------------------|:-----|
@@ -156,7 +170,7 @@ La unión fría es la clase más difícil de sembrar de forma reproducible; si n
 
 *Tamaño y justificación.* Con unos 150 defectos en prueba, el intervalo de confianza de 95 % de una sensibilidad cercana a 0.90 tiene una semiamplitud aproximada de ±0.05 (1.96 × raíz de 0.90 × 0.10 / 150 ≈ 0.048). Por clase, los intervalos serán más amplios y así se reportarán. Si las tarjetas logradas son menos de las planeadas, se reporta el tamaño real y se ajusta la interpretación.
 
-*Datos externos (DS-02, opcional).* Proponemos colaborar con un productor local que aporte tarjetas bajo acuerdo escrito, para una validación externa independiente; esta colaboración aún no está acordada, no es necesaria para el proyecto y las tarjetas externas no se usan en el entrenamiento principal. No se incluirán diseños, marcas ni datos de clientes, y ninguna imagen se publicará sin autorización escrita. Si el acuerdo no se concreta, el proyecto se evalúa solo con DS-01 y se declara así.
+*Datos externos (DS-02, opcional).* Proponemos colaborar con un productor local, con el que se tiene programada una visita técnica, que aporte tarjetas bajo acuerdo escrito, para una validación externa independiente; esta colaboración aún no está acordada, no es necesaria para el proyecto y las tarjetas externas no se usan en el entrenamiento principal. No se incluirán diseños, marcas ni datos de clientes, y ninguna imagen se publicará sin autorización escrita. Si el acuerdo no se concreta, el proyecto se evalúa solo con DS-01 y se declara así.
 
 ## 6.4 Modelos y líneas base
 
@@ -202,9 +216,17 @@ Métricas adecuadas a clases desbalanceadas (sensibilidad, precisión, falsas al
 
 # 8. Resultados
 
-**Estado al 18 de octubre de 2026: no hay resultados experimentales.** Este documento presenta el diseño y el plan de pruebas. No presentamos cifras de desempeño, y no hay datos de validación en este momento. Los resultados se obtendrán siguiendo la sección 6 y se reportarán, completos y sin selección, en el cartel y en la exposición del 30 de octubre, con su entrada de bitácora y su archivo de datos.
+**Estado al 26 de octubre de 2026: no hay resultados experimentales.** Este documento presenta el diseño y el plan de pruebas. No presentamos cifras de desempeño, y no hay datos de validación en este momento. Los resultados se obtendrán siguiendo la sección 6 y se reportarán completos y sin selección, cada uno con su entrada de bitácora y su archivo de datos. En la jornada del 30 de octubre presentaremos únicamente el avance que exista en esa fecha.
 
 La tabla siguiente es la estructura en la que se reportarán, junto con los criterios ya fijados.
+
+::: {custom-style="TableLabel"}
+**Tabla 2**
+:::
+
+::: {custom-style="TableTitle"}
+*Estructura de reporte de resultados por meta*
+:::
 
 | Meta | Resultado medido | Intervalo de confianza | Cumple |
 |:----|:------------|:-------------|:-----|
@@ -217,16 +239,24 @@ La tabla siguiente es la estructura en la que se reportarán, junto con los crit
 
 # 9. Cronograma
 
+::: {custom-style="TableLabel"}
+**Tabla 3**
+:::
+
+::: {custom-style="TableTitle"}
+*Cronograma de actividades*
+:::
+
 | Fechas | Actividad | Entregable |
 |:------|:-----------------------|:-----------------|
-| 19–23 oct | Montaje de la estación, protocolo de captura, soldadura de tarjetas con defectos sembrados | Ficha de montaje; hoja de siembra |
-| 24–26 oct | Captura y etiquetado; partición y congelamiento del conjunto de prueba | DS-01 con huellas |
-| 26–28 oct | EXP-001 y EXP-002; EXP-003 y EXP-004 | Resultados crudos y scripts |
-| 28–29 oct | EXP-005; análisis; cartel; ensayos | Cartel 90 × 120 cm; guion |
-| 30 oct | Jornada estatal | Exposición y demostración |
-| Nov 2026 – mar 2027 | Validación externa (DS-02), si se concreta; mejoras; preparación para la fase nacional | Informe ampliado |
+| 26–29 oct | Montaje inicial de la estación (soporte, cámara e iluminación), protocolo de captura y primeras tarjetas con defectos sembrados | Ficha de montaje; hoja de siembra |
+| 30 oct | Jornada estatal | Exposición del diseño y del avance real |
+| 5 nov | Visita técnica a una planta de ensamble electrónico del estado | Notas de la visita; confirmación del problema |
+| Nov 2026 | Completar DS-01 (captura, etiquetado, partición y congelamiento del conjunto de prueba); EXP-001, EXP-002 y EXP-003 | DS-01 con huellas; resultados crudos y scripts |
+| Dic 2026 | EXP-004 y EXP-005; análisis y reporte de resultados | Informe de resultados |
+| Ene – mar 2027 | Validación externa (DS-02), si se concreta; mejoras; preparación para la fase nacional | Informe ampliado |
 
-El calendario es ajustado y lo sabemos. Si el tiempo no alcanza, priorizaremos EXP-001, EXP-002 y EXP-003 y reportaremos con claridad lo que no se hizo.
+Si el tiempo no alcanza, priorizaremos EXP-001, EXP-002 y EXP-003 y reportaremos con claridad lo que no se hizo.
 
 # 10. Conclusiones y límites esperados
 

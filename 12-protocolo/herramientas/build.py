@@ -53,7 +53,8 @@ def make_reference(path):
             from docx.enum.style import WD_STYLE_TYPE
             return st.add_style(name, WD_STYLE_TYPE.PARAGRAPH)
     for n in ("Normal", "Body Text", "First Paragraph", "Compact", "Block Text"):
-        s = get(n); set_font(s); para(s, WD_ALIGN_PARAGRAPH.LEFT, indent=0.5 if n in ("Body Text", "First Paragraph") else None)
+        body = n in ("Body Text", "First Paragraph")
+        s = get(n); set_font(s); para(s, WD_ALIGN_PARAGRAPH.JUSTIFY if body else WD_ALIGN_PARAGRAPH.LEFT, indent=0.5 if body else None)
     para(get("Compact"), WD_ALIGN_PARAGRAPH.LEFT)
     for n, al, b, i in (("Heading 1", WD_ALIGN_PARAGRAPH.CENTER, True, False),
                         ("Heading 2", WD_ALIGN_PARAGRAPH.LEFT, True, False),
@@ -63,6 +64,17 @@ def make_reference(path):
         s = get(n); set_font(s, 12, n == "Title"); para(s, WD_ALIGN_PARAGRAPH.CENTER, indent=0)
     s = get("TitlePageTitle"); set_font(s, 12, True); para(s, WD_ALIGN_PARAGRAPH.CENTER, indent=0, before=144)
     s = get("TitlePageText"); set_font(s, 12); para(s, WD_ALIGN_PARAGRAPH.CENTER, indent=0)
+    s = get("TableLabel"); set_font(s, 12, True); para(s, WD_ALIGN_PARAGRAPH.LEFT, indent=0, spacing=1.0, before=12)
+    s.paragraph_format.keep_with_next = True
+    s = get("TableTitle"); set_font(s, 12, False, True); para(s, WD_ALIGN_PARAGRAPH.LEFT, indent=0, spacing=1.0, after=6)
+    s.paragraph_format.keep_with_next = True
+    s = get("TocEntry"); set_font(s); para(s, WD_ALIGN_PARAGRAPH.LEFT, indent=0, spacing=1.0, after=4)
+    s.paragraph_format.tab_stops.add_tab_stop(Inches(6.5), alignment=2, leader=1)
+    s = get("LetterRight"); set_font(s); para(s, WD_ALIGN_PARAGRAPH.RIGHT, indent=0, spacing=1.0, after=12)
+    s = get("LetterBlock"); set_font(s); para(s, WD_ALIGN_PARAGRAPH.LEFT, indent=0, spacing=1.0, after=12)
+    if os.environ.get("APA_SPACING") == "single":
+        for n in ("Body Text", "First Paragraph"):
+            get(n).paragraph_format.space_after = Pt(8)
     s = get("Bibliography"); set_font(s); para(s, WD_ALIGN_PARAGRAPH.LEFT, hanging=0.5)
     for sec in d.sections:
         sec.left_margin = sec.right_margin = sec.top_margin = sec.bottom_margin = Inches(1)
@@ -130,9 +142,55 @@ def style_tables(doc):
                 e = OxmlElement("w:bottom"); e.set(qn("w:val"), "single"); e.set(qn("w:sz"), "6"); e.set(qn("w:color"), "000000"); bb.append(e); tcPr.append(bb)
 
 
+MARCA = "<!-- INDICE -->"
+
+
+def encabezados(text):
+    out = []
+    for line in text.splitlines():
+        m = re.match(r"^(#{1,2}) (.+?)(\s*\{-\})?\s*$", line)
+        if m:
+            out.append((len(m.group(1)), m.group(2).strip()))
+    return out
+
+
+def paginas(pdf, heads, desde):
+    txt = subprocess.run(["pdftotext", "-layout", str(pdf), "-"], check=True, capture_output=True, text=True).stdout
+    pags = txt.split("\f")
+    res, inicio = {}, desde
+    for _, h in heads:
+        clave = re.sub(r"\s+", " ", h.replace("*", ""))
+        for i in range(inicio, len(pags)):
+            lineas = [re.sub(r"\s+", " ", l).strip() for l in pags[i].splitlines()]
+            if any(l == clave or l.startswith(clave) for l in lineas):
+                res[h] = i + 1; inicio = i; break
+    return res
+
+
+def indice(heads, pags):
+    filas = ['# Índice {-}', '']
+    for nivel, h in heads:
+        if h.startswith("Índice"):
+            continue
+        sangria = "\u2003\u2003" if nivel == 2 else ""
+        h_md = re.sub(r"^(\d+)\.", r"\1\\.", h)
+        filas += ['::: {custom-style="TocEntry"}', f"{sangria}{h_md}`<w:r><w:tab/></w:r>`{{=openxml}}{pags.get(h, '')}", ":::", ""]
+    return "\n".join(filas)
+
+
 def main(src, out):
     text = Path(src).read_text(encoding="utf-8")
     text = re.sub(r"\A---\n.*?\n---\n", "", text, flags=re.S)
+    text = re.sub(r"\A.*?<!-- CONSTRUCCI[^>]*-->\n", "", text, flags=re.S)
+    if MARCA in text:
+        heads = encabezados(text)
+        render(text.replace(MARCA, indice(heads, {})), out)
+        pags = paginas(out, heads, desde=2)
+        text = text.replace(MARCA, indice(heads, pags))
+    render(text, out)
+
+
+def render(text, out):
     text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
     with tempfile.TemporaryDirectory() as td:
         td = Path(td)
@@ -140,7 +198,9 @@ def main(src, out):
         make_reference(ref); md.write_text(text, encoding="utf-8")
         subprocess.run(["pandoc", str(md), "-f", "markdown+fenced_divs+raw_attribute", "-o", str(dx),
                         "--reference-doc", str(ref), "-M", "lang=es-MX"], check=True)
-        d = Document(dx); style_tables(d); add_page_numbers(d); d.save(dx)
+        d = Document(dx); style_tables(d)
+        if not os.environ.get("NO_PAGENUM"): add_page_numbers(d)
+        d.save(dx)
         if os.environ.get("OUT_DOCX"): Path(os.environ["OUT_DOCX"]).write_bytes(dx.read_bytes())
         subprocess.run(["soffice", "--headless", "--convert-to", "pdf", "--outdir", str(td), str(dx)],
                        check=True, capture_output=True)
