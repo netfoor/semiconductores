@@ -79,6 +79,58 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
         resultados = json.loads(publico.read_text(encoding="utf-8"))
         return render_template("landing.html", resultados=resultados, ocultar_aviso=True)
 
+    carpeta_publica = publico.parent
+    cache_red: dict[str, object] = {}
+
+    def red_publica():
+        if "m" not in cache_red:
+            cache_red["m"] = clasificador.ClasificadorONNX(carpeta_publica / "red_pcbspdefect.onnx")
+        return cache_red["m"]
+
+    def leer_publico(nombre: str):
+        return json.loads((carpeta_publica / nombre).read_text(encoding="utf-8"))
+
+    @app.get("/fotos-reales")
+    def fotos_reales():
+        return render_template("fotos.html", fotos=leer_publico("fotos.json"), ocultar_aviso=True)
+
+    @app.get("/reto")
+    def reto():
+        return render_template("reto.html", fotos=leer_publico("fotos.json"), ocultar_aviso=True)
+
+    def confusiones(resultados: dict, modelo: str, n: int = 2) -> list[dict]:
+        """Las confusiones más frecuentes, calculadas de la matriz (para no escribir lecturas a mano)."""
+        cl, m = resultados["clases"], resultados["matrices"]["oficial"][modelo]["matriz"]
+        pares = [(m[i][j], cl[i], cl[j]) for i in range(len(cl)) for j in range(len(cl)) if i != j and m[i][j]]
+        return [{"n": k, "real": NOMBRES[a], "predicha": NOMBRES[b]} for k, a, b in sorted(pares, reverse=True)[:n]]
+
+    @app.get("/experimentos")
+    def experimentos():
+        resultados = leer_publico("resultados.json")
+        return render_template("experimentos.html", experimentos=leer_publico("experimentos.json"), resultados=resultados,
+                               conf_base=confusiones(resultados, "linea_base"), conf_red=confusiones(resultados, "red"),
+                               ocultar_aviso=True)
+
+    @app.get("/publico/fotos/<nombre>")
+    def foto_publica(nombre):
+        return send_from_directory(carpeta_publica / "fotos", nombre, max_age=86400)
+
+    @app.get("/api/foto/<nombre>")
+    def api_foto(nombre):
+        import time as _t
+        datos = leer_publico("fotos.json")
+        foto = next((f for f in datos["fotos"] if f["archivo"] == nombre), None)
+        if foto is None:
+            abort(404, f"No existe la foto {nombre}")
+        img = leer(carpeta_publica / "fotos" / nombre)
+        m = red_publica()
+        t = _t.perf_counter()
+        p = m.probabilidades([img])[0]
+        ms = (_t.perf_counter() - t) * 1000
+        orden = sorted(zip(m.clases, p.tolist()), key=lambda x: -x[1])
+        return jsonify(archivo=nombre, verdad=foto["clase"], prediccion=orden[0][0], acierto=orden[0][0] == foto["clase"],
+                       probabilidades=[{"clase": c, "nombre": NOMBRES[c], "p": v} for c, v in orden], milisegundos=ms)
+
     # En línea, la raíz es la página del proyecto y la interfaz de trabajo vive en /demo.
     # En la estación local, la raíz es la interfaz de trabajo y la página está en /proyecto.
     app.add_url_rule("/" if en_linea else "/proyecto", "proyecto", pagina_proyecto)

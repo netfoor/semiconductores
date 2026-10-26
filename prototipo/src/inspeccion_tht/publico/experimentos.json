@@ -1,0 +1,44 @@
+[
+  {
+    "id": "EXP-001",
+    "titulo": "EXP-001 Línea base humana",
+    "estado": "planeado",
+    "planeado": "2026-10-26",
+    "ejecutado": null
+  },
+  {
+    "id": "EXP-002",
+    "titulo": "EXP-002 Desempeño del sistema",
+    "estado": "planeado",
+    "planeado": "2026-10-26",
+    "ejecutado": null
+  },
+  {
+    "id": "EXP-003",
+    "titulo": "EXP-003 Latencia y ubicación del procesamiento",
+    "estado": "planeado",
+    "planeado": "2026-10-26",
+    "ejecutado": null
+  },
+  {
+    "id": "EXP-004",
+    "titulo": "EXP-004 Robustez a iluminación y posición",
+    "estado": "planeado",
+    "planeado": "2026-10-26",
+    "ejecutado": null
+  },
+  {
+    "id": "EXP-005",
+    "titulo": "EXP-005 Inspección asistida frente a no asistida",
+    "estado": "planeado",
+    "planeado": "2026-10-26",
+    "ejecutado": null
+  },
+  {
+    "id": "EXP-006",
+    "titulo": "EXP-006 Validación con datos públicos reales (PCBSPDefect)",
+    "estado": "ejecutado",
+    "planeado": "2026-10-26",
+    "ejecutado": "2026-10-26"
+  }
+]

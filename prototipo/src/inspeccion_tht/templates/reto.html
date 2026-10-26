@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block titulo %}Reto{% endblock %}
+{% block contenido %}
+<section class="seccion">
+  <h1>¿Lo detectas tú?</h1>
+  <p class="entrada">Diez fotos reales de uniones through-hole. Diga qué ve en cada una y al final compare su resultado con el de la red, que clasificó las mismas fotos.</p>
+  <p class="nota">Sus respuestas se quedan en este navegador: no se envían ni se guardan en ningún lado.</p>
+</section>
+<div class="reto" id="reto">
+  <div class="reto-foto"><img id="foto" alt="Foto de una unión soldada" width="280" height="280"><p class="num nota" id="avance"></p></div>
+  <div class="reto-panel">
+    <h3 id="pregunta">¿Cómo está esta unión?</h3>
+    <div class="clases" role="group" aria-label="Su respuesta">
+      {% for c in ["aceptable", "insuficiente", "puente", "sin_soldar", "exceso"] %}
+      <button type="button" data-clase="{{ c }}"><span class="muestra {{ c }}" aria-hidden="true"></span><span>{{ nombres[c] }}</span><kbd>{{ loop.index }}</kbd></button>
+      {% endfor %}
+    </div>
+    <p id="respuesta" class="veredicto" aria-live="polite"></p>
+    <div class="acciones"><button class="boton" id="siguiente" hidden>Siguiente foto</button></div>
+  </div>
+</div>
+<section class="seccion" id="final" hidden>
+  <h2>Resultado</h2>
+  <div class="cifras">
+    <div><b class="num" id="tus-aciertos"></b><span>sus aciertos de clase</span></div>
+    <div><b class="num" id="red-aciertos"></b><span>aciertos de la red en las mismas fotos</span></div>
+    <div><b class="num" id="tus-defectos"></b><span>defectos que usted detectó (cualquier clase distinta de aceptable)</span></div>
+  </div>
+  <p>La inspección visual cansa y varía de persona a persona: en la mayoría de las tareas se escapan entre 20 % y 30 % de los defectos (See, 2015). Por eso el sistema no decide solo: marca y la persona confirma.</p>
+  <div class="acciones"><a class="boton" href="{{ url_for('reto') }}">Intentar con otras 10</a><a class="boton secundario" href="{{ url_for('fotos_reales') }}">Ver todas las fotos</a></div>
+</section>
+{% include "_atribucion.html" %}
+{% endblock %}
+{% block scripts %}
+<script>
+  const FOTOS = {{ fotos.fotos|tojson }};
+  const NOMBRES = {{ nombres|tojson }};
+  const CLASES = ["aceptable", "insuficiente", "puente", "sin_soldar", "exceso"];
+  const ronda = [...FOTOS].sort(() => Math.random() - 0.5).slice(0, 10);
+  let i = 0, contestada = false; const res = [];
+  const foto = document.getElementById("foto"), respuesta = document.getElementById("respuesta"), siguiente = document.getElementById("siguiente");
+  function mostrar() {
+    contestada = false; respuesta.textContent = ""; siguiente.hidden = true;
+    document.querySelectorAll(".clases button").forEach((b) => { b.disabled = false; b.classList.remove("activa"); });
+    foto.src = `/publico/fotos/${ronda[i].archivo}`;
+    document.getElementById("avance").textContent = `Foto ${i + 1} de ${ronda.length}`;
+  }
+  async function contestar(clase) {
+    if (contestada) return; contestada = true;
+    document.querySelectorAll(".clases button").forEach((b) => { b.disabled = true; b.classList.toggle("activa", b.dataset.clase === clase); });
+    const f = ronda[i];
+    let red = null;
+    try { const r = await fetch(`/api/foto/${f.archivo}`); red = (await r.json()).prediccion; } catch (e) {}
+    res.push({ verdad: f.clase, tu: clase, red });
+    respuesta.innerHTML = `<b>Era:</b> ${NOMBRES[f.clase]} ${clase === f.clase ? '<span class="marca-ok">acertó</span>' : '<span class="marca-error">no</span>'}<br>` +
+      (red ? `<b>La red dijo:</b> ${NOMBRES[red]}` : "");
+    siguiente.hidden = false; siguiente.focus();
+  }
+  function terminar() {
+    document.getElementById("reto").hidden = true;
+    const fin = document.getElementById("final"); fin.hidden = false;
+    const def = res.filter((r) => r.verdad !== "aceptable");
+    document.getElementById("tus-aciertos").textContent = `${res.filter((r) => r.tu === r.verdad).length} de ${res.length}`;
+    document.getElementById("red-aciertos").textContent = `${res.filter((r) => r.red === r.verdad).length} de ${res.length}`;
+    document.getElementById("tus-defectos").textContent = `${def.filter((r) => r.tu !== "aceptable").length} de ${def.length}`;
+    fin.scrollIntoView();
+  }
+  document.querySelectorAll(".clases button").forEach((b) => b.addEventListener("click", () => contestar(b.dataset.clase)));
+  siguiente.addEventListener("click", () => { i += 1; if (i < ronda.length) mostrar(); else terminar(); });
+  document.addEventListener("keydown", (e) => { const n = Number(e.key); if (n >= 1 && n <= CLASES.length) contestar(CLASES[n - 1]); });
+  mostrar();
+</script>
+{% endblock %}

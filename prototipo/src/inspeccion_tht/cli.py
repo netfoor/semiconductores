@@ -277,30 +277,86 @@ def cmd_externo(a):
 
 
 def cmd_publicar(a):
-    """Resume los resultados de EXP-006 para la página del proyecto (con la huella del archivo fuente)."""
+    """Prepara los datos públicos de la plataforma: resultados de EXP-006 (con la huella del archivo
+    fuente), una muestra de fotos de prueba de PCBSPDefect, el modelo y el estado de los experimentos."""
     import hashlib
+    import random
+    import re
+    import shutil
+    destino = Path(a.salida)
+    destino.mkdir(parents=True, exist_ok=True)
     fuente = Path(a.exp006)
     r = json.loads(fuente.read_text(encoding="utf-8"))
-    filas = []
+    filas, matrices = [], {}
     for particion, b in r["particiones"].items():
         prueba = b["conjuntos"]["prueba"]
-        modelos = [("linea_base", "Línea base clásica", b["linea_base"]["resumen"])]
+        modelos = [("linea_base", "Línea base clásica", b["linea_base"])]
         if "red" in b:
-            e = b["red"]["elegida_por_validacion"]
-            modelos.append(("red", "Red convolucional", b["red"]["por_semilla"][e]["resumen"]))
-        for clave, nombre, res in modelos:
+            modelos.append(("red", "Red convolucional", b["red"]["por_semilla"][b["red"]["elegida_por_validacion"]]))
+        for clave, nombre, bloque in modelos:
+            res = bloque["resumen"]
             filas.append({
                 "particion": particion, "modelo": clave, "nombre": nombre,
                 "uniones_prueba": prueba["uniones"], "tarjetas_prueba": prueba["tarjetas"],
                 "sensibilidad": res["sensibilidad"], "sensibilidad_ic": res.get("sensibilidad_bootstrap95"),
                 "falsas_alarmas": res["falsas_alarmas"], "falsas_alarmas_ic": res.get("falsas_alarmas_bootstrap95"),
             })
-    salida = {"experimento": "EXP-006", "datos": r["datos"], "cita": r["cita"], "fecha": r["fecha_utc"],
-              "fuente": fuente.name, "fuente_sha256": hashlib.sha256(fuente.read_bytes()).hexdigest(),
-              "metas": {"sensibilidad_min": 0.90, "falsas_alarmas_max": 0.15}, "filas": filas}
-    Path(a.salida).parent.mkdir(parents=True, exist_ok=True)
-    Path(a.salida).write_text(_json(salida), encoding="utf-8")
-    print(f"Publicado en {a.salida} ({len(filas)} filas)")
+            matrices.setdefault(particion, {})[clave] = {"matriz": bloque["matriz_confusion"], "por_clase": bloque["por_clase"]}
+    from .clases import CLASES
+    resultados = {"experimento": "EXP-006", "datos": r["datos"], "cita": r["cita"], "fecha": r["fecha_utc"],
+                  "fuente": fuente.name, "fuente_sha256": hashlib.sha256(fuente.read_bytes()).hexdigest(),
+                  "metas": {"sensibilidad_min": 0.90, "falsas_alarmas_max": 0.15}, "filas": filas,
+                  "clases": list(CLASES), "matrices": matrices}
+    (destino / "resultados.json").write_text(_json(resultados), encoding="utf-8")
+    print(f"resultados.json: {len(filas)} filas")
+
+    if a.fotos:
+        from . import externos
+        prueba = [m for m in externos.leer_pcbspdefect(Path(a.fotos)) if m.conjunto_oficial == "prueba"]
+        rng = random.Random(a.semilla)
+        por_clase: dict[str, list[str]] = {}
+        for m in prueba:
+            por_clase.setdefault(m.clase, [])
+            if m.union not in por_clase[m.clase]:
+                por_clase[m.clase].append(m.union)
+        elegidas = {u for c, us in por_clase.items() for u in rng.sample(sorted(us), min(a.n_por_clase, len(us)))}
+        carpeta = destino / "fotos"
+        if carpeta.exists():
+            shutil.rmtree(carpeta)
+        carpeta.mkdir()
+        fotos = []
+        for u in sorted(elegidas):
+            candidatas = sorted((m for m in prueba if m.union == u), key=lambda m: m.luz)
+            m = rng.choice(candidatas)
+            nombre = f"{len(fotos) + 1:03d}.jpg"
+            shutil.copyfile(m.ruta, carpeta / nombre)
+            fotos.append({"archivo": nombre, "clase": m.clase, "tarjeta": m.tarjeta, "union": m.union, "luz": m.luz,
+                          "original": m.ruta.name})
+        rng.shuffle(fotos)
+        (destino / "fotos.json").write_text(_json({
+            "datos": "PCBSPDefect b_dip, conjunto de prueba oficial", "licencia": "CC BY 4.0",
+            "licencia_url": "https://creativecommons.org/licenses/by/4.0/deed.es", "cita": externos.CITA_PCBSPDEFECT,
+            "url": "https://zenodo.org/records/23307359", "cambios": "Ninguno; se copian sin modificar.",
+            "semilla": a.semilla, "fotos": fotos}), encoding="utf-8")
+        print(f"fotos: {len(fotos)} ({a.n_por_clase} uniones por clase)")
+
+    if a.modelo:
+        shutil.copyfile(a.modelo, destino / "red_pcbspdefect.onnx")
+        shutil.copyfile(Path(a.modelo).with_suffix(".json"), destino / "red_pcbspdefect.json")
+        print("modelo copiado")
+
+    if a.experimentos:
+        lista = []
+        for f in sorted(Path(a.experimentos).glob("EXP-*.md")):
+            t = f.read_text(encoding="utf-8")
+            meta = dict(re.findall(r"^(titulo|estado): \"?(.*?)\"?$", t, re.M))
+            planeado = re.search(r"\*\*Planeado:\*\* (\d{4}-\d{2}-\d{2})", t)
+            ejecutado = re.search(r"\*\*Ejecutado:\*\* (\d{4}-\d{2}-\d{2})", t)
+            lista.append({"id": f.stem.split("-")[0] + "-" + f.stem.split("-")[1], "titulo": meta.get("titulo", f.stem),
+                          "estado": meta.get("estado", ""), "planeado": planeado.group(1) if planeado else None,
+                          "ejecutado": ejecutado.group(1) if ejecutado else None})
+        (destino / "experimentos.json").write_text(_json(lista), encoding="utf-8")
+        print(f"experimentos: {len(lista)}")
 
 
 def cmd_servir(a):
@@ -397,9 +453,14 @@ def construir_parser() -> argparse.ArgumentParser:
     x.add_argument("--salida", default="resultados/EXP-006.json")
     x.set_defaults(f=cmd_externo)
 
-    x = s.add_parser("publicar", help="Resume EXP-006 para la página del proyecto")
-    x.add_argument("--exp006", required=True)
-    x.add_argument("--salida", default=str(Path(__file__).parent / "publico" / "resultados.json"))
+    x = s.add_parser("publicar", help="Prepara los datos públicos de la plataforma")
+    x.add_argument("--exp006", required=True, help="JSON de resultados de EXP-006")
+    x.add_argument("--fotos", help="Carpeta extraída de PCBSPDefect, para copiar una muestra de prueba")
+    x.add_argument("--n-por-clase", type=int, default=12)
+    x.add_argument("--semilla", type=int, default=20261030)
+    x.add_argument("--modelo", help="ONNX de la red de EXP-006 (partición oficial)")
+    x.add_argument("--experimentos", help="Carpeta con las fichas EXP-*.md")
+    x.add_argument("--salida", default=str(Path(__file__).parent / "publico"))
     x.set_defaults(f=cmd_publicar)
 
     x = s.add_parser("servir", help="Abre la interfaz local de etiquetado e inspección")
