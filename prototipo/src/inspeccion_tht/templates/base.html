@@ -15,11 +15,11 @@
       </a>
       <div class="motivo" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <nav aria-label="Principal">
-        <a href="{{ url_for('proyecto') }}">Proyecto</a>
-        <a href="{{ url_for('fotos_reales') }}">Fotos reales</a>
-        <a href="{{ url_for('reto') }}">Reto</a>
-        <a href="{{ url_for('experimentos') }}">Experimentos</a>
-        <a href="{{ url_for('inicio') }}">{{ "Demostración" if en_linea else "Estación" }}</a>
+        <a href="{{ url_for('proyecto') }}"{% if request.endpoint == 'proyecto' %} aria-current="page"{% endif %}>Proyecto</a>
+        <a href="{{ url_for('fotos_reales') }}"{% if request.endpoint == 'fotos_reales' %} aria-current="page"{% endif %}>Fotos reales</a>
+        <a href="{{ url_for('reto') }}"{% if request.endpoint == 'reto' %} aria-current="page"{% endif %}>Reto</a>
+        <a href="{{ url_for('experimentos') }}"{% if request.endpoint == 'experimentos' %} aria-current="page"{% endif %}>Experimentos</a>
+        <a href="{{ url_for('inicio') }}"{% if request.endpoint == 'inicio' %} aria-current="page"{% endif %}>{{ "Demostración" if en_linea else "Estación" }}</a>
       </nav>
     </div>
   </header>

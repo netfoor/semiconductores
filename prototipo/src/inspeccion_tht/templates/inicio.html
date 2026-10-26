@@ -30,7 +30,7 @@
     <label for="etiquetador">Quien etiqueta o inspecciona</label>
     <input type="text" id="etiquetador" placeholder="Nombre, por ejemplo fortino" value="{{ operador }}" autocomplete="off">
   </div>
-  <table>
+  <div class="desliza"><table>
     <thead><tr><th>Imagen</th><th class="tabla-movil-oculta">Tarjeta</th><th>Acciones</th></tr></thead>
     <tbody>
     {% for im in imagenes %}
@@ -44,7 +44,7 @@
       </tr>
     {% endfor %}
     </tbody>
-  </table>
+  </table></div>
   {% else %}
   <p>Aún no hay imágenes. Capture una con <code>uv run tht capturar --tarjeta T01 --lado B --responsable fortino</code>.</p>
   {% endif %}
