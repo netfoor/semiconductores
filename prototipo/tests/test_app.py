@@ -69,3 +69,10 @@ def test_api_plantilla_rechaza_ids_repetidos(cliente):
 def test_error_amable_si_no_existe(cliente):
     r = cliente.get("/img/crudo/T99_B_il1_X.png")
     assert r.status_code == 404
+
+
+def test_estacion_local_tiene_la_pagina_del_proyecto_aparte(cliente):
+    r = cliente.get("/proyecto")
+    assert r.status_code == 200
+    html = r.get_data(as_text=True)
+    assert "Sensibilidad" in html and "SHA-256" in html

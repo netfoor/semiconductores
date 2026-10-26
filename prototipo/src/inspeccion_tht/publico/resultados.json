@@ -1,0 +1,82 @@
+{
+  "experimento": "EXP-006",
+  "datos": "PCBSPDefect b_dip",
+  "cita": "Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T., & Lun, D. P.-K. (2023). PCB soldering defect inspection using multitask learning under low data regimes. Advanced Intelligent Systems, 5, 2300364. https://doi.org/10.1002/aisy.202300364",
+  "fecha": "20261026T165622Z",
+  "fuente": "EXP-006_2026-10-26.json",
+  "fuente_sha256": "1803f771c9f69912b18c74772286cb5f08cfeda5be7d070c0403ab414ba30380",
+  "metas": {
+    "sensibilidad_min": 0.9,
+    "falsas_alarmas_max": 0.15
+  },
+  "filas": [
+    {
+      "particion": "oficial",
+      "modelo": "linea_base",
+      "nombre": "Línea base clásica",
+      "uniones_prueba": 372,
+      "tarjetas_prueba": 120,
+      "sensibilidad": 0.7388888888888889,
+      "sensibilidad_ic": [
+        0.6792998141099408,
+        0.7942899919130986
+      ],
+      "falsas_alarmas": 0.2824074074074074,
+      "falsas_alarmas_ic": [
+        0.1706114718614719,
+        0.4074183006535947
+      ]
+    },
+    {
+      "particion": "oficial",
+      "modelo": "red",
+      "nombre": "Red convolucional",
+      "uniones_prueba": 372,
+      "tarjetas_prueba": 120,
+      "sensibilidad": 0.9411111111111111,
+      "sensibilidad_ic": [
+        0.9129509853277008,
+        0.9669997867133653
+      ],
+      "falsas_alarmas": 0.11574074074074074,
+      "falsas_alarmas_ic": [
+        0.029753151260504214,
+        0.2163440701339636
+      ]
+    },
+    {
+      "particion": "tarjeta",
+      "modelo": "linea_base",
+      "nombre": "Línea base clásica",
+      "uniones_prueba": 120,
+      "tarjetas_prueba": 24,
+      "sensibilidad": 0.6840277777777778,
+      "sensibilidad_ic": [
+        0.5144850447116867,
+        0.8257617845117845
+      ],
+      "falsas_alarmas": 0.3333333333333333,
+      "falsas_alarmas_ic": [
+        0.2777777777777778,
+        0.4444444444444444
+      ]
+    },
+    {
+      "particion": "tarjeta",
+      "modelo": "red",
+      "nombre": "Red convolucional",
+      "uniones_prueba": 120,
+      "tarjetas_prueba": 24,
+      "sensibilidad": 0.9826388888888888,
+      "sensibilidad_ic": [
+        0.9594509603943566,
+        1.0
+      ],
+      "falsas_alarmas": 0.08333333333333333,
+      "falsas_alarmas_ic": [
+        0.0,
+        0.19444444444444445
+      ]
+    }
+  ]
+}

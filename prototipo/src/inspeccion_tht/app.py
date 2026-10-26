@@ -73,7 +73,17 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
     def salud():
         return jsonify(ok=True, version=__version__, sintetico=es_sintetico(), modelo=modelo_nombre, en_linea=en_linea)
 
-    @app.get("/")
+    publico = Path(__file__).parent / "publico" / "resultados.json"
+
+    def pagina_proyecto():
+        resultados = json.loads(publico.read_text(encoding="utf-8"))
+        return render_template("landing.html", resultados=resultados, ocultar_aviso=True)
+
+    # En línea, la raíz es la página del proyecto y la interfaz de trabajo vive en /demo.
+    # En la estación local, la raíz es la interfaz de trabajo y la página está en /proyecto.
+    app.add_url_rule("/" if en_linea else "/proyecto", "proyecto", pagina_proyecto)
+
+    @app.get("/demo" if en_linea else "/")
     def inicio():
         imagenes = [p.name for p in c.imagenes()]
         por_etiquetador: dict[str, int] = {}
