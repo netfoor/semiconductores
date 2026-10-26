@@ -1,0 +1,17 @@
+import base64
+import importlib
+import sys
+
+
+def test_demo_en_la_nube_prepara_datos_y_pide_clave(tmp_path, monkeypatch):
+    monkeypatch.setenv("THT_DATOS", str(tmp_path / "nube"))
+    monkeypatch.setenv("THT_USUARIO", "femeci")
+    monkeypatch.setenv("THT_CLAVE", "prueba")
+    sys.modules.pop("inspeccion_tht.wsgi", None)
+    wsgi = importlib.import_module("inspeccion_tht.wsgi")
+    c = wsgi.app.test_client()
+    assert c.get("/salud").get_json()["sintetico"] is True
+    assert c.get("/").status_code == 401
+    auth = {"Authorization": "Basic " + base64.b64encode(b"femeci:prueba").decode()}
+    assert c.get("/", headers=auth).status_code == 200
+    assert (tmp_path / "nube" / "modelos" / "linea_base.json").exists()

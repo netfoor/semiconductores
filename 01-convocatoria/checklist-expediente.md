@@ -23,7 +23,8 @@ Fecha límite oficial: **domingo 18 oct 2026** (hora por confirmar, Q-003). Meta
   - *2 oct:* la página de inscripción no muestra plantilla ni formatos (captura de Fortino).
   - Falta revisar el detalle del evento en "Eventos disponibles" y, después de inscribirse, el detalle de la inscripción.
   - Si no aparecen, pedirlos a la DME (Q-001, Q-002; pregunta 2 del correo).
-- [ ] Inscripción en la plataforma: **no confirmarla antes de G1 (6 oct)**, salvo que la DME confirme que categoría, área y título se pueden editar después (Q-045). El formulario pide:
+- [ ] **Actualización 2026-10-18 (guía de inscripción de la DME, 12 páginas, de otra edición con fechas distintas):** los formatos **aparecen solo después de "Confirmar inscripción"**, en *Mis inscripciones → detalle → Formatos para llenar*: F01, F02, F03, F04, F05, FE_PI (consentimiento informado), FE1C, FE02, FE03, FE04, FE05A, FE05B, FE06A, FE06B, FE07 (todos "_FEMECI_2026_v2"). Se descargan, se llenan, se guardan en PDF y se suben con el botón "Subir" (tipo de documento + archivo). El detalle muestra "Cancelar inscripción", así que la inscripción parece reversible, y los documentos tienen "Eliminar". G1 ya se decidió (D-011), por lo que ya se puede confirmar. `#inferencia` el campo "Área" del ejemplo de la guía ("Ciencias") corresponde a la modalidad: elegir Ingenierías.
+- [ ] Inscripción en la plataforma (nota anterior, superada por la actualización de arriba): **no confirmarla antes de G1 (6 oct)**, salvo que la DME confirme que categoría, área y título se pueden editar después (Q-045). El formulario pide:
   - categoría y área del proyecto;
   - título (opcional);
   - teléfono e institución.

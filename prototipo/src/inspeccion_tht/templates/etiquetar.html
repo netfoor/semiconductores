@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block titulo %}Etiquetar {{ imagen }}{% endblock %}
+{% block contenido %}
+<section class="seccion">
+  <h1>Etiquetar</h1>
+  <p class="entrada"><span class="mono">{{ imagen }}</span>, diseño {{ diseno }}. Etiquetado ciego: aquí no se muestran las etiquetas de otras personas, ni la hoja de siembra, ni lo que sugiere el modelo.</p>
+</section>
+<div class="trabajo">
+  <div class="lienzo"><canvas id="lienzo" aria-label="Tarjeta alineada con sus uniones"></canvas></div>
+  <aside class="panel">
+    <div class="campo"><label for="persona">Quien etiqueta</label><input type="text" id="persona" value="{{ etiquetador }}" autocomplete="off"></div>
+    <h3 id="titulo-union">Elija una unión</h3>
+    <div class="clases" role="group" aria-label="Clase de la unión elegida">
+      {% for c in clases %}
+      <button type="button" data-clase="{{ c }}"><span class="muestra {{ c }}" aria-hidden="true"></span><span>{{ nombres[c] }}</span><kbd>{{ loop.index }}</kbd></button>
+      {% endfor %}
+    </div>
+    <p class="num"><b id="hechas">0</b> de {{ plantilla.uniones|length }} etiquetadas</p>
+    <div class="progreso" id="progreso" aria-hidden="true"></div>
+    <div class="acciones">
+      <button class="boton secundario" id="siguiente">Siguiente pendiente</button>
+      <button class="boton" id="guardar">Guardar etiquetas</button>
+    </div>
+    <p class="estado" id="estado" role="status"></p>
+    <p class="nota">Teclas: 1 a 6 asignan la clase y avanzan a la siguiente pendiente; N salta a la siguiente.</p>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  const PLANTILLA = {{ plantilla|tojson }};
+  const CLASES = {{ clases|list|tojson }};
+  const NOMBRES = {{ nombres|tojson }};
+  const etiquetas = {{ previas|tojson }};
+  const { Lienzo, enviar, estado } = window.Estacion;
+  const lz = new Lienzo(document.getElementById("lienzo"), "{{ url_for('img_alineada', imagen=imagen, diseno=diseno) }}", PLANTILLA.ancho, PLANTILLA.alto);
+  const msg = document.getElementById("estado"), titulo = document.getElementById("titulo-union");
+  const hechas = document.getElementById("hechas"), progreso = document.getElementById("progreso");
+  let sinGuardar = false;
+  PLANTILLA.uniones.forEach(() => progreso.appendChild(document.createElement("i")));
+
+  function refrescar() {
+    lz.uniones = PLANTILLA.uniones.map((u) => ({ ...u, estilo: etiquetas[u.id] || "pendiente" }));
+    const n = Object.keys(etiquetas).length;
+    hechas.textContent = n;
+    [...progreso.children].forEach((el, i) => el.classList.toggle("hecho", Boolean(etiquetas[PLANTILLA.uniones[i].id])));
+    document.querySelectorAll(".clases button").forEach((b) => b.classList.toggle("activa", lz.elegida && etiquetas[lz.elegida] === b.dataset.clase));
+    titulo.textContent = lz.elegida ? `Unión ${lz.elegida}${etiquetas[lz.elegida] ? ": " + NOMBRES[etiquetas[lz.elegida]] : ""}` : "Elija una unión";
+    lz.dibujar();
+  }
+  function siguiente() {
+    const orden = PLANTILLA.uniones.map((u) => u.id);
+    const desde = Math.max(0, orden.indexOf(lz.elegida));
+    for (let k = 1; k <= orden.length; k++) {
+      const id = orden[(desde + k) % orden.length];
+      if (!etiquetas[id]) { lz.elegir(id); refrescar(); return; }
+    }
+    estado(msg, "Todas las uniones tienen etiqueta. Guarde para terminar.");
+  }
+  function asignar(clase) {
+    if (!lz.elegida) { estado(msg, "Primero elija una unión en la imagen.", true); return; }
+    etiquetas[lz.elegida] = clase; sinGuardar = true; estado(msg, ""); refrescar(); siguiente();
+  }
+  lz.alElegir = () => refrescar();
+  document.querySelectorAll(".clases button").forEach((b) => b.addEventListener("click", () => asignar(b.dataset.clase)));
+  document.getElementById("siguiente").addEventListener("click", siguiente);
+  document.addEventListener("keydown", (e) => {
+    if (e.target.tagName === "INPUT") return;
+    const i = Number(e.key);
+    if (i >= 1 && i <= CLASES.length) asignar(CLASES[i - 1]);
+    if (e.key === "n" || e.key === "N") siguiente();
+  });
+  document.getElementById("guardar").addEventListener("click", async () => {
+    const persona = document.getElementById("persona").value.trim();
+    if (!persona) { estado(msg, "Escriba quién etiqueta antes de guardar.", true); return; }
+    try {
+      const r = await enviar("{{ url_for('guardar_anotacion') }}", { imagen: "{{ imagen }}", diseno: "{{ diseno }}", etiquetador: persona, etiquetas });
+      sinGuardar = false; estado(msg, `Guardado en ${r.archivo} (${r.uniones} uniones).`);
+    } catch (e) { estado(msg, `No se guardó: ${e.message}`, true); }
+  });
+  window.addEventListener("beforeunload", (e) => { if (sinGuardar) { e.preventDefault(); e.returnValue = ""; } });
+  lz.listo.then(() => { siguiente(); refrescar(); }).catch((e) => estado(msg, e.message, true));
+</script>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block titulo %}Inspeccionar {{ imagen }}{% endblock %}
+{% block contenido %}
+<section class="seccion">
+  <h1>Inspección asistida</h1>
+  <p class="entrada"><span class="mono">{{ imagen }}</span>, diseño {{ diseno }}. El sistema marca las uniones sospechosas; usted confirma o corrige cada una. La decisión final siempre es suya.</p>
+</section>
+{% if not hay_modelo %}
+<div class="aviso-sintetico" role="alert"><p>No hay un modelo entrenado en esta carpeta. Ejecute <code>uv run tht entrenar</code> (línea base) o <code>uv run --group cnn tht entrenar-red</code> (red) y recargue la página.</p></div>
+{% else %}
+<div class="trabajo">
+  <div class="lienzo"><canvas id="lienzo" aria-label="Tarjeta alineada con las uniones sospechosas"></canvas></div>
+  <aside class="panel">
+    <div class="campo"><label for="persona">Operador</label><input type="text" id="persona" value="{{ request.args.get('etiquetador', operador) }}" autocomplete="off"></div>
+    <p class="num" id="resumen">Analizando la tarjeta…</p>
+    <div class="lista-sospechas" id="lista"></div>
+    <h3 id="titulo-union">Elija una unión marcada</h3>
+    <p class="nota" id="detalle"></p>
+    <div class="clases" role="group" aria-label="Decisión sobre la unión elegida">
+      {% for c in clases %}
+      <button type="button" data-clase="{{ c }}"><span class="muestra {{ c }}" aria-hidden="true"></span><span>{{ nombres[c] }}</span><kbd>{{ loop.index }}</kbd></button>
+      {% endfor %}
+    </div>
+    <div class="acciones"><button class="boton secundario" id="todas">Mostrar todas las uniones</button></div>
+    <p class="estado" id="estado" role="status"></p>
+    <p class="nota" id="tiempos"></p>
+  </aside>
+</div>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+{% if hay_modelo %}
+<script>
+  const NOMBRES = {{ nombres|tojson }};
+  const CLASES = {{ clases|list|tojson }};
+  const { Lienzo, enviar, estado } = window.Estacion;
+  const msg = document.getElementById("estado"), lista = document.getElementById("lista");
+  const titulo = document.getElementById("titulo-union"), detalle = document.getElementById("detalle");
+  const decididas = {};
+  let lz, resultados = [], verTodas = false, marcaTiempo = performance.now();
+
+  function dibujarUniones() {
+    lz.uniones = resultados
+      .filter((r) => r.sospechosa || verTodas || decididas[r.union_id])
+      .map((r) => {
+        const dec = decididas[r.union_id];
+        return { id: r.union_id, x: r.x, y: r.y, w: r.w, h: r.h,
+                 estilo: dec || (r.sospechosa ? r.sugerencia : "pendiente"),
+                 texto: r.union_id === lz.elegida ? `${r.union_id} ${NOMBRES[dec || r.sugerencia]}` : "" };
+      });
+    lz.dibujar();
+  }
+  function pintarLista() {
+    const sosp = resultados.filter((r) => r.sospechosa).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto);
+    lista.innerHTML = "";
+    for (const r of sosp) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.innerHTML = `<span>${r.union_id}: ${NOMBRES[r.sugerencia]}</span><span class="num">${r.puntaje_defecto.toFixed(2)}</span>`;
+      b.classList.toggle("elegida", lz.elegida === r.union_id);
+      b.classList.toggle("resuelta", Boolean(decididas[r.union_id]));
+      b.addEventListener("click", () => { lz.elegir(r.union_id); elegida(); });
+      lista.appendChild(b);
+    }
+    const pendientes = sosp.filter((r) => !decididas[r.union_id]).length;
+    document.getElementById("resumen").textContent =
+      `${sosp.length} de ${resultados.length} uniones marcadas como sospechosas; ${pendientes} por revisar.`;
+  }
+  function elegida() {
+    const r = resultados.find((x) => x.union_id === lz.elegida);
+    if (!r) return;
+    titulo.textContent = `Unión ${r.union_id}`;
+    detalle.textContent = `Sugerencia del sistema: ${NOMBRES[r.sugerencia]} (puntaje de defecto ${r.puntaje_defecto.toFixed(2)}; sirve para ordenar la revisión, no es una probabilidad calibrada).` +
+      (decididas[r.union_id] ? ` Su decisión: ${NOMBRES[decididas[r.union_id]]}.` : "");
+    document.querySelectorAll(".clases button").forEach((b) => b.classList.toggle("activa", decididas[r.union_id] === b.dataset.clase));
+    pintarLista(); dibujarUniones();
+  }
+  async function decidir(clase) {
+    const r = resultados.find((x) => x.union_id === lz.elegida);
+    if (!r) { estado(msg, "Primero elija una unión marcada.", true); return; }
+    const persona = document.getElementById("persona").value.trim();
+    if (!persona) { estado(msg, "Escriba el nombre del operador.", true); return; }
+    const ahora = performance.now();
+    try {
+      await enviar("{{ url_for('api_decision') }}", { operador: persona, imagen: "{{ imagen }}", union_id: r.union_id,
+        sugerencia: r.sugerencia, puntaje: r.puntaje_defecto, decision: clase, segundos: (ahora - marcaTiempo) / 1000 });
+      marcaTiempo = ahora;
+      decididas[r.union_id] = clase;
+      estado(msg, `Registrado: ${r.union_id} como ${NOMBRES[clase]}.`);
+      const sig = resultados.filter((x) => x.sospechosa && !decididas[x.union_id]).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto)[0];
+      if (sig) lz.elegir(sig.union_id);
+      elegida();
+    } catch (e) { estado(msg, `No se registró: ${e.message}`, true); }
+  }
+  document.querySelectorAll(".clases button").forEach((b) => b.addEventListener("click", () => decidir(b.dataset.clase)));
+  document.addEventListener("keydown", (e) => {
+    if (e.target.tagName === "INPUT") return;
+    const i = Number(e.key);
+    if (i >= 1 && i <= CLASES.length) decidir(CLASES[i - 1]);
+  });
+  document.getElementById("todas").addEventListener("click", (e) => {
+    verTodas = !verTodas;
+    e.target.textContent = verTodas ? "Mostrar solo las sospechosas" : "Mostrar todas las uniones";
+    dibujarUniones();
+  });
+
+  fetch("{{ url_for('api_inspeccion', imagen=imagen, diseno=diseno) }}")
+    .then(async (r) => { const j = await r.json(); if (!r.ok) throw new Error(j.error); return j; })
+    .then((d) => {
+      resultados = d.resultados;
+      lz = new Lienzo(document.getElementById("lienzo"), "{{ url_for('img_alineada', imagen=imagen, diseno=diseno) }}", d.ancho, d.alto);
+      lz.alElegir = () => elegida();
+      document.getElementById("tiempos").textContent =
+        `Modelo ${d.modelo}. Procesamiento local: ${(d.tiempos.total_s * 1000).toFixed(0)} ms (alineación ${(d.tiempos.alineacion_s * 1000).toFixed(0)} ms, ` +
+        `recortes ${(d.tiempos.recortes_s * 1000).toFixed(0)} ms, clasificación ${(d.tiempos.clasificacion_s * 1000).toFixed(0)} ms).`;
+      return lz.listo;
+    })
+    .then(() => {
+      marcaTiempo = performance.now();
+      const primera = resultados.filter((x) => x.sospechosa).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto)[0];
+      if (primera) lz.elegir(primera.union_id);
+      pintarLista(); elegida(); dibujarUniones();
+    })
+    .catch((e) => { document.getElementById("resumen").textContent = ""; estado(msg, e.message, true); });
+</script>
+{% endif %}
+{% endblock %}

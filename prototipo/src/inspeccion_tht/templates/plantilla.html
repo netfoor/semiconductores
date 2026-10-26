@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block titulo %}Diseño {{ diseno }}{% endblock %}
+{% block contenido %}
+<section class="seccion">
+  <h1>Diseño {{ diseno }}</h1>
+  <p class="entrada">Arrastre sobre la imagen para marcar cada unión. Haga clic en un rectángulo para elegirlo y borrarlo.</p>
+</section>
+<div class="trabajo">
+  <div class="lienzo"><canvas id="lienzo" aria-label="Imagen de referencia con las uniones marcadas"></canvas></div>
+  <aside class="panel">
+    <h3>Uniones</h3>
+    <p class="num"><b id="conteo">0</b> marcadas</p>
+    <div class="campo"><label for="prefijo">Prefijo de los identificadores</label><input type="text" id="prefijo" value="U"></div>
+    <div class="acciones">
+      <button class="boton secundario" id="borrar" disabled>Borrar la elegida</button>
+      <button class="boton" id="guardar">Guardar diseño</button>
+    </div>
+    <p class="estado" id="estado" role="status"></p>
+    <p class="nota">Los identificadores se asignan en el orden en que se marcan. Conviene marcar por filas, de izquierda a derecha.</p>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  const plantilla = {{ plantilla|tojson }};
+  const { Lienzo, enviar, estado } = window.Estacion;
+  const lz = new Lienzo(document.getElementById("lienzo"), "{{ url_for('img_plantilla', diseno=diseno) }}", plantilla.ancho, plantilla.alto);
+  const conteo = document.getElementById("conteo"), msg = document.getElementById("estado"), borrar = document.getElementById("borrar");
+  let sinGuardar = false;
+  lz.uniones = plantilla.uniones.map((u) => ({ ...u, estilo: "plantilla", texto: u.id }));
+  const refrescar = () => { conteo.textContent = lz.uniones.length; borrar.disabled = !lz.elegida; lz.dibujar(); };
+  const siguienteId = () => {
+    const pre = document.getElementById("prefijo").value.trim() || "U";
+    let n = lz.uniones.length + 1, id;
+    do { id = pre + String(n++).padStart(3, "0"); } while (lz.uniones.some((u) => u.id === id));
+    return id;
+  };
+  lz.alTrazar = (r) => { const id = siguienteId(); lz.uniones.push({ id, ...r, estilo: "plantilla", texto: id }); sinGuardar = true; refrescar(); };
+  lz.alElegir = () => refrescar();
+  borrar.addEventListener("click", () => { lz.uniones = lz.uniones.filter((u) => u.id !== lz.elegida); lz.elegida = null; sinGuardar = true; refrescar(); });
+  document.getElementById("guardar").addEventListener("click", async () => {
+    try {
+      const r = await enviar("{{ url_for('guardar_plantilla', diseno=diseno) }}", { uniones: lz.uniones.map(({ id, x, y, w, h }) => ({ id, x, y, w, h })) });
+      sinGuardar = false; estado(msg, `Guardado: ${r.uniones} uniones.`);
+    } catch (e) { estado(msg, `No se guardó: ${e.message}`, true); }
+  });
+  window.addEventListener("beforeunload", (e) => { if (sinGuardar) { e.preventDefault(); e.returnValue = ""; } });
+  lz.listo.then(refrescar).catch((e) => estado(msg, e.message, true));
+</script>
+{% endblock %}

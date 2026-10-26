@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Estación de inspección{% endblock %} | FEMECI Puebla 2026</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="fila">
+      <a class="logotipo" href="{{ url_for('inicio') }}">
+        <b><span>Estación</span> THT</b>
+        <small>FEMECI Capítulo Puebla 2026</small>
+      </a>
+      <div class="motivo" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <nav aria-label="Principal">
+        <a href="{{ url_for('inicio') }}">Inicio</a>
+      </nav>
+    </div>
+  </header>
+  {% if sintetico %}
+  <div class="aviso-sintetico" role="note">
+    <p><b>Datos sintéticos.</b> Esta carpeta se generó con <code>tht demo</code> para probar el software. Nada de lo que se vea aquí es un resultado del proyecto.</p>
+  </div>
+  {% endif %}
+  <main>
+    {% block contenido %}{% endblock %}
+  </main>
+  <script src="{{ url_for('static', filename='lienzo.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -24,3 +24,15 @@ tags: [femeci, experimentos]
 ## Ficha de experimento (plantilla)
 
 `EXP-###-nombre.md`: objetivo · meta o hipótesis (A3) · variables (independiente, dependiente, controladas) · montaje y equipo · datos (DS-##) · procedimiento · métricas y criterio de aceptación · resultados crudos (ubicación) · análisis (incertidumbre, errores) · conclusión · amenazas a la validez · fecha, responsables y commit.
+
+## Fichas (planeadas el 2026-10-26)
+
+| ID | Experimento | Metas |
+|---|---|---|
+| EXP-001 | [[EXP-001-linea-base-humana]] | Referencia de M1 y M2 |
+| EXP-002 | [[EXP-002-desempeno-del-sistema]] | M1, M2 |
+| EXP-003 | [[EXP-003-latencia-y-ubicacion]] | M4, M5; decide D-009 |
+| EXP-004 | [[EXP-004-robustez]] | M6 |
+| EXP-005 | [[EXP-005-asistido-vs-no-asistido]] | M3 (exploratoria) |
+
+Código para ejecutarlos: `prototipo/` (comandos `tht`).
