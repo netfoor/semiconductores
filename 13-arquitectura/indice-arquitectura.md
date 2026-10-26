@@ -23,3 +23,7 @@ tags: [femeci, arquitectura]
 ## Pendiente explícito del documento maestro
 
 Comparar técnicamente procesamiento en la nube frente a inferencia local (edge) **cuando** existan requisitos y datos para hacerlo; la decisión no se toma antes.
+
+## Notas
+
+- [[arquitectura-v1]]: plantilla por diseño con alineación, línea base clásica, procesamiento local y registro de decisiones. Código en `prototipo/`; diseño de la interfaz en `prototipo/DISENO_INTERFAZ.md`.

@@ -30,6 +30,7 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-010 | Tratamiento del proyecto 2024 de Mirai: ¿continuidad o antecedente? | **Adoptada: desarrollo desde cero, sin continuidad.** El proyecto 2024 queda solo como referencia del análisis | 2026-10-02 | Equipo (comunicado por Fortino) |
 | D-011 | Problema elegido (G1): IC-01, inspección asistida de uniones through-hole, con procesamiento local; y política de confidencialidad: los entregables no nombran empresas específicas | **Adoptada** | 2026-10-18 | Equipo (comunicado por Fortino) |
 | D-012 | Integración de una tercera integrante: María José de la Rosa Hernández | **Adoptada** | 2026-10-26 | Equipo (comunicado por Fortino) |
+| D-013 | Autoría de los commits del prototipo | **Adoptada** | 2026-10-26 | Fortino |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -141,3 +142,9 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 - **Decisión (comunicada por Fortino el 2026-10-26):** el equipo queda integrado por Fortino Romero Mantilla (líder), Israel Jesús García Osorio y María José de la Rosa Hernández. La convocatoria permite equipos de 2 a 3 estudiantes y los integrantes registrados son irremplazables [F-001 §3.2, §3.3].
 - **Consecuencias:** María José aparece en el protocolo, F-01, F-04, la carta de postulación, la carta del asesor y la bitácora, y firma su propio F-03 y F-05. Debe participar en la exposición y la defensa [§7.4] y no estar inscrita en otro proyecto [§3.4].
 - **Pendiente:** confirmar la fecha real en que se integró, para registrarla en la bitácora sin inventarla, y la escritura exacta de los tres nombres según la INE.
+
+## D-013 · Autoría de los commits del prototipo (adoptada)
+
+- **Decisión (2026-10-26, comunicada por Fortino):** los commits del desarrollo del prototipo hechos por Claude (IA) quedan con autor Fortino Romero Mantilla y sin la línea `Co-Authored-By: Claude`. Reemplaza en ese punto la práctica descrita en D-004.
+- **Lo que se mantiene para no perder transparencia (D-003):** cada sesión de desarrollo hecha por la IA se registra en la bitácora con responsable "Claude (IA)", qué se hizo y qué falta verificar; el protocolo declara el uso de IA.
+- **Lo que no se hizo:** Fortino propuso también commits a nombre de María José. Claude (IA) no los firmó con su nombre porque ella no escribió ese código, y la convocatoria descalifica por suplantación de autoría [F-001 §9.1]. María José entra como revisora del repositorio, y su trabajo propio va con su nombre.

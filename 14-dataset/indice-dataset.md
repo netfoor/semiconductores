@@ -24,3 +24,7 @@ tags: [femeci, dataset]
 ## Ficha de dataset (plantilla)
 
 `DS-##-nombre.md`: propósito · origen y procedencia · licencia o permiso · fecha y condiciones de captura · instrumento (cámara, sensor) y configuración · tamaño y clases · protocolo de etiquetado y quién etiquetó · acuerdo entre etiquetadores · partición · hash de los archivos crudos · limitaciones y sesgos conocidos · ubicación de los archivos.
+
+## Fichas
+
+- [[DS-01-tarjetas-propias]] (planeado; incluye la nota sobre DS-02 opcional).

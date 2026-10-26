@@ -38,7 +38,7 @@ Las letras remiten a "Tu primera ejecución" del documento maestro.
 | 3 | Ecosistema de semiconductores en Puebla, actores y problemas documentados (D, E), con estudios existentes — hipótesis inicial, no aceptada de antemano | ✅ Completada el 1 oct — pendiente de revisión → [[sintesis-fase-3]] |
 | 4 | Análisis del proyecto de referencia 2024 (F), con comparación técnica nube/edge | ✅ Completada el 1 oct — pendiente de revisión → [[analisis-proyecto-2024]] |
 | 5 | Información faltante, preguntas para la industria y mapa de oportunidades (G, H), con brief de cierre de la primera etapa | ✅ Completada el 2 oct — pendiente de revisión → [[brief-investigacion-etapa-1]] · [[mapa-de-oportunidades]] |
-| 6 | Decisión (G1), protocolo, prototipo, experimentos y defensa | 🔄 En curso (18 oct): G1 decidida (IC-01, D-011); [[protocolo-v1]] en borrador; expediente en preparación. Prototipo y experimentos, pendientes |
+| 6 | Decisión (G1), protocolo, prototipo, experimentos y defensa | 🔄 En curso (18 oct): G1 decidida (IC-01, D-011); [[protocolo-v1]] en borrador; expediente en preparación. Software del prototipo listo para datos reales (`prototipo/`, [[arquitectura-v1]]); experimentos planeados en `15-experimentos/` |
 
 ## Fechas que mandan
 
