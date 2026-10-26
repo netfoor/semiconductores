@@ -276,6 +276,33 @@ def cmd_externo(a):
     print(f"Guardado en {a.salida}")
 
 
+def cmd_publicar(a):
+    """Resume los resultados de EXP-006 para la página del proyecto (con la huella del archivo fuente)."""
+    import hashlib
+    fuente = Path(a.exp006)
+    r = json.loads(fuente.read_text(encoding="utf-8"))
+    filas = []
+    for particion, b in r["particiones"].items():
+        prueba = b["conjuntos"]["prueba"]
+        modelos = [("linea_base", "Línea base clásica", b["linea_base"]["resumen"])]
+        if "red" in b:
+            e = b["red"]["elegida_por_validacion"]
+            modelos.append(("red", "Red convolucional", b["red"]["por_semilla"][e]["resumen"]))
+        for clave, nombre, res in modelos:
+            filas.append({
+                "particion": particion, "modelo": clave, "nombre": nombre,
+                "uniones_prueba": prueba["uniones"], "tarjetas_prueba": prueba["tarjetas"],
+                "sensibilidad": res["sensibilidad"], "sensibilidad_ic": res.get("sensibilidad_bootstrap95"),
+                "falsas_alarmas": res["falsas_alarmas"], "falsas_alarmas_ic": res.get("falsas_alarmas_bootstrap95"),
+            })
+    salida = {"experimento": "EXP-006", "datos": r["datos"], "cita": r["cita"], "fecha": r["fecha_utc"],
+              "fuente": fuente.name, "fuente_sha256": hashlib.sha256(fuente.read_bytes()).hexdigest(),
+              "metas": {"sensibilidad_min": 0.90, "falsas_alarmas_max": 0.15}, "filas": filas}
+    Path(a.salida).parent.mkdir(parents=True, exist_ok=True)
+    Path(a.salida).write_text(_json(salida), encoding="utf-8")
+    print(f"Publicado en {a.salida} ({len(filas)} filas)")
+
+
 def cmd_servir(a):
     from .app import crear_app
     app = crear_app(Path(a.datos), operador=a.operador, modelo_nombre=a.modelo)
@@ -369,6 +396,11 @@ def construir_parser() -> argparse.ArgumentParser:
     x.add_argument("--guardar-modelo", help="Carpeta donde guardar la red elegida por validación")
     x.add_argument("--salida", default="resultados/EXP-006.json")
     x.set_defaults(f=cmd_externo)
+
+    x = s.add_parser("publicar", help="Resume EXP-006 para la página del proyecto")
+    x.add_argument("--exp006", required=True)
+    x.add_argument("--salida", default=str(Path(__file__).parent / "publico" / "resultados.json"))
+    x.set_defaults(f=cmd_publicar)
 
     x = s.add_parser("servir", help="Abre la interfaz local de etiquetado e inspección")
     x.add_argument("--datos", default="datos")

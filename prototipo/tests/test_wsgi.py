@@ -16,5 +16,8 @@ def test_demo_en_la_nube_prepara_datos_y_pide_clave(tmp_path, monkeypatch):
     r = c.get("/", headers=auth)
     assert r.status_code == 200
     html = r.get_data(as_text=True)
-    assert "demostración en línea" in html and "Carpeta de datos" not in html
+    assert "Una segunda mirada" in html and "Primeros resultados con fotos reales" in html
+    assert "Datos sintéticos." not in html  # la página del proyecto no es la demo
+    demo = c.get("/demo", headers=auth).get_data(as_text=True)
+    assert "demostración en línea" in demo and "Carpeta de datos" not in demo
     assert (tmp_path / "nube" / "modelos" / "linea_base.json").exists()

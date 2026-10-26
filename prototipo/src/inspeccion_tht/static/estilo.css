@@ -144,3 +144,88 @@ label { font-weight: 600; font-size: 15px; display: block; margin-bottom: var(--
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 .campo-corto { max-width: 360px; }
 .acciones.al-pie { align-items: end; }
+
+/* Página del proyecto */
+:root { --c-base: #0086c0; --c-red: #d4006f; }
+.portada { display: grid; grid-template-columns: minmax(0, 470px) minmax(0, 1fr); gap: var(--e7); align-items: center; padding: var(--e6) 0 var(--e7); }
+.portada h1 { font-size: clamp(38px, 4.4vw, 58px); line-height: 1.04; letter-spacing: -0.03em; }
+.sobretitulo { color: var(--acento); font-weight: 700; font-size: 15px; margin-bottom: var(--e3); }
+.portada-figura svg { width: 100%; height: auto; display: block; border: 1px solid var(--linea); }
+.tarjeta-svg { fill: #96643c; }
+.pad-svg { fill: #c88c46; }
+.metal-svg { fill: #d9d6d2; }
+.hueco-svg { fill: #2b1d30; }
+.marca-svg { fill: none; stroke-width: 3.5; }
+.marca-svg.c-insuficiente { stroke: var(--c-insuficiente); }
+.marca-svg.c-puente { stroke: var(--c-puente); }
+.marca-svg.c-exceso { stroke: var(--c-exceso); stroke-dasharray: 2 0; }
+.bloque { padding: var(--e8) 0; border-top: 1px solid var(--linea); }
+.bloque.banda { background: var(--banda); box-shadow: 0 0 0 100vmax var(--banda); clip-path: inset(0 -100vmax); }
+.bloque h2 { font-size: clamp(28px, 3.2vw, 42px); }
+.bloque .entrada { max-width: 62ch; }
+.pasos { list-style: none; counter-reset: paso; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; padding: 0; margin: var(--e5) 0 0; border-top: 1px solid var(--linea); }
+.pasos li { counter-increment: paso; padding: var(--e4) var(--e4) var(--e4) 0; }
+.pasos li + li { border-left: 1px solid var(--linea); padding-left: var(--e4); }
+.pasos li::before { content: counter(paso); display: block; font-weight: 800; font-size: 34px; color: var(--marca); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.pasos b { display: block; margin-bottom: var(--e1); }
+.pasos span, .cifras span { font-size: 15.5px; color: var(--tinta-2); line-height: 1.5; }
+.tabla-metas { max-width: 820px; margin-top: var(--e4); }
+.dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e6); margin-bottom: var(--e4); }
+.linea-tiempo { list-style: none; padding: 0; margin: var(--e4) 0 0; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid var(--linea); }
+.linea-tiempo li { padding: var(--e4) var(--e3) 0 0; position: relative; }
+.linea-tiempo li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; background: var(--blanco); border: 2px solid var(--acento); }
+.linea-tiempo li.hecho::before { background: var(--acento); }
+.linea-tiempo b { display: block; font-variant-numeric: tabular-nums; }
+.linea-tiempo span { font-size: 15px; color: var(--tinta-2); }
+.fuentes li { font-size: 14.5px; color: var(--tinta-2); margin-bottom: var(--e2); overflow-wrap: anywhere; }
+
+/* Gráficas de puntos con intervalo */
+.leyenda { display: flex; flex-wrap: wrap; gap: var(--e5); font-size: 14.5px; color: var(--tinta-2); margin: var(--e4) 0; }
+.leyenda span { display: inline-flex; align-items: center; gap: var(--e2); }
+.punto-muestra { width: 12px; height: 12px; display: inline-block; }
+.punto-muestra.linea_base, .punto.linea_base { background: var(--c-base); }
+.punto-muestra.red, .punto.red { background: var(--c-red); border-radius: 50%; }
+.ic-muestra { width: 26px; height: 2px; background: var(--tinta-2); display: inline-block; }
+.dos-graficas { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e6); }
+.puntos { margin: 0 0 var(--e4); }
+.puntos figcaption { margin-bottom: var(--e3); }
+.fila-punto { display: grid; grid-template-columns: 128px minmax(0, 1fr) 44px; align-items: center; gap: var(--e3); padding: var(--e2) 0; border-bottom: 1px solid var(--linea); outline-offset: 2px; }
+.fila-punto:hover, .fila-punto:focus { background: var(--blanco); }
+.etiqueta-fila { font-size: 14px; line-height: 1.25; }
+.etiqueta-fila small { color: var(--gris); font-size: 12.5px; }
+.pista { position: relative; height: 22px; }
+.pista i { position: absolute; top: 50%; }
+.pista .ic { height: 2px; margin-top: -1px; background: var(--tinta-2); opacity: 0.55; }
+.pista .punto { width: 12px; height: 12px; margin: -6px 0 0 -6px; box-shadow: 0 0 0 2px var(--banda); }
+.pista .meta { top: 0; bottom: 0; width: 0; border-left: 1.5px dashed var(--gris); }
+.valor { font-size: 14.5px; text-align: right; color: var(--tinta); }
+.eje { display: grid; grid-template-columns: 128px minmax(0, 1fr) 44px; gap: var(--e3); height: 22px; font-size: 12.5px; color: var(--gris); }
+.eje .marcas { position: relative; }
+.eje .marcas b { position: absolute; font-weight: 400; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
+.leyenda-meta { display: flex; align-items: center; gap: var(--e2); margin-top: var(--e2); }
+.meta-muestra { width: 0; height: 14px; border-left: 1.5px dashed var(--gris); display: inline-block; }
+.tabla-datos { margin-top: var(--e4); }
+.tabla-datos summary { cursor: pointer; font-weight: 700; color: var(--marca-profunda); min-height: 44px; display: flex; align-items: center; }
+.hash { overflow-wrap: anywhere; }
+.tooltip { position: absolute; z-index: 20; max-width: 300px; background: var(--tinta); color: var(--blanco); font-size: 13.5px; padding: var(--e2) var(--e3); pointer-events: none; }
+
+@media (max-width: 860px) {
+  .portada { grid-template-columns: 1fr; gap: var(--e5); padding-top: var(--e4); }
+  .bloque { padding: var(--e7) 0; }
+  .pasos, .linea-tiempo { grid-template-columns: 1fr; border-top: 0; }
+  .pasos li, .pasos li + li { border-left: 0; border-top: 1px solid var(--linea); padding: var(--e3) 0; }
+  .linea-tiempo { border-left: 2px solid var(--linea); padding-left: var(--e4); }
+  .linea-tiempo li { padding: 0 0 var(--e4); }
+  .linea-tiempo li::before { top: 4px; left: calc(-1 * var(--e4) - 7px); }
+  .dos-graficas, .dos-columnas { grid-template-columns: 1fr; gap: var(--e4); }
+  .fila-punto, .eje { grid-template-columns: 104px minmax(0, 1fr) 40px; }
+}
+.cifras b { white-space: nowrap; }
+@media (max-width: 860px) {
+  .logotipo b { font-size: 17px; white-space: nowrap; }
+  .logotipo small { display: none; }
+  .encabezado nav { gap: var(--e3); font-size: 14.5px; }
+  .cifras { grid-template-columns: 1fr; }
+  .cifras div + div { border-left: 0; border-top: 1px solid var(--linea); padding-left: 0; }
+}
+@media (max-width: 420px) { .motivo { display: none; } }

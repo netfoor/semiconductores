@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% block titulo %}Proyecto{% endblock %}
+{% macro grafica(titulo, clave, minimo, maximo, meta, meta_texto, sentido) %}
+<figure class="puntos" aria-labelledby="t-{{ clave }}">
+  <figcaption id="t-{{ clave }}"><b>{{ titulo }}</b> <span class="nota">{{ sentido }}</span></figcaption>
+  {% for f in resultados.filas %}
+  {% set v = f[clave] %}{% set ic = f[clave ~ '_ic'] %}
+  {% set x = ((v - minimo) / (maximo - minimo) * 100) | round(2) %}
+  <div class="fila-punto" data-tip="{{ f.nombre }}, partición {{ 'oficial' if f.particion == 'oficial' else 'por tarjeta' }}: {{ '%.2f'|format(v) }}{% if ic %} (IC 95 %: {{ '%.2f'|format(ic[0]) }} a {{ '%.2f'|format(ic[1]) }}){% endif %}" tabindex="0">
+    <span class="etiqueta-fila">{{ 'Oficial' if f.particion == 'oficial' else 'Por tarjeta' }}<br><small>{{ f.nombre }}</small></span>
+    <span class="pista">
+      <i class="meta" style="left: {{ ((meta - minimo) / (maximo - minimo) * 100) | round(2) }}%"></i>
+      {% if ic %}<i class="ic {{ f.modelo }}" style="left: {{ ((ic[0] - minimo) / (maximo - minimo) * 100) | round(2) }}%; width: {{ ((ic[1] - ic[0]) / (maximo - minimo) * 100) | round(2) }}%"></i>{% endif %}
+      <i class="punto {{ f.modelo }}" style="left: {{ x }}%"></i>
+    </span>
+    <span class="valor num">{{ '%.2f'|format(v) }}</span>
+  </div>
+  {% endfor %}
+  <div class="eje" aria-hidden="true"><span></span><span class="marcas"><b style="left:0">{{ '%.1f'|format(minimo) }}</b><b style="left:50%">{{ '%.2f'|format((minimo + maximo) / 2) }}</b><b style="left:100%">{{ '%.1f'|format(maximo) }}</b></span><span></span></div>
+  <p class="nota leyenda-meta"><i class="meta-muestra"></i> {{ meta_texto }}</p>
+</figure>
+{% endmacro %}
+{% block contenido %}
+<section class="portada">
+  <div class="portada-texto">
+    <p class="sobretitulo">FEMECI Capítulo Puebla 2026, nivel superior, modalidad Ingenierías</p>
+    <h1>Una segunda mirada para cada soldadura</h1>
+    <p class="entrada">Estación de bajo costo que fotografía tarjetas electrónicas, marca las uniones through-hole sospechosas y deja que la persona decida. Está diseñada para procesar todo en una Raspberry Pi, sin internet, para que las imágenes de la planta no salgan del equipo.</p>
+    <div class="acciones">
+      <a class="boton" href="{{ url_for('inicio') }}">Probar la demostración</a>
+      <a class="boton secundario" href="#resultados">Ver los primeros resultados</a>
+    </div>
+  </div>
+  <div class="portada-figura" aria-hidden="true">
+    <svg viewBox="0 0 360 260" role="img">
+      <rect x="0" y="0" width="360" height="260" class="tarjeta-svg"/>
+      {% for i in range(4) %}{% for j in range(6) %}
+      <circle cx="{{ 40 + j * 56 }}" cy="{{ 45 + i * 57 }}" r="15" class="pad-svg"/>
+      <circle cx="{{ 40 + j * 56 }}" cy="{{ 45 + i * 57 }}" r="11" class="metal-svg"/>
+      {% endfor %}{% endfor %}
+      <circle cx="152" cy="102" r="6" class="hueco-svg"/>
+      <rect x="194" y="154" width="44" height="10" class="metal-svg"/>
+      <rect x="128" y="78" width="48" height="48" class="marca-svg c-insuficiente"/>
+      <rect x="184" y="135" width="104" height="48" class="marca-svg c-puente"/>
+      <rect x="16" y="192" width="48" height="48" class="marca-svg c-exceso"/>
+      <circle cx="40" cy="216" r="17" class="metal-svg"/>
+    </svg>
+    <p class="nota">Ilustración: el sistema enmarca tres uniones sospechosas; la persona confirma o corrige cada una.</p>
+  </div>
+</section>
+
+<section class="bloque" id="problema">
+  <h2>El problema</h2>
+  <p class="entrada">En el ensamble de tarjetas electrónicas, la verificación de soldaduras through-hole todavía depende en buena parte de la vista del inspector.</p>
+  <div class="cifras">
+    <div><b class="num">20–30 %</b><span>de los defectos pasan sin detectarse en la mayoría de las tareas de inspección visual humana (See, 2015).</span></div>
+    <div><b>Manual</b><span>Personal técnico de una empresa de ensamble electrónico de Puebla nos dijo que la validación de piezas conserva etapas manuales y que las fallas se revisan a ojo con más resolución.</span></div>
+    <div><b>Difícil</b><span>La unión through-hole queda del lado inferior y entre componentes altos, lo que complica automatizar su inspección (GÖPEL electronic, s. f.).</span></div>
+  </div>
+</section>
+
+<section class="bloque banda" id="propuesta">
+  <h2>La propuesta</h2>
+  <p class="entrada">No reemplaza al inspector: le señala dónde mirar. Cada decisión queda registrada.</p>
+  <ol class="pasos">
+    <li><b>Capturar</b><span>Cámara de al menos 12 MP en un soporte fijo con luz difusa.</span></li>
+    <li><b>Alinear</b><span>La foto se ajusta a una plantilla del diseño de tarjeta, aunque la tarjeta quede unos milímetros movida.</span></li>
+    <li><b>Recortar</b><span>Cada unión se recorta según la plantilla, sin necesidad de un detector.</span></li>
+    <li><b>Clasificar</b><span>Una red convolucional pequeña (ONNX) sugiere la clase: aceptable, insuficiente, puente, sin soldar, exceso o fría.</span></li>
+    <li><b>Decide la persona</b><span>La pantalla muestra solo las sospechosas, ordenadas; el operador confirma o corrige.</span></li>
+  </ol>
+</section>
+
+<section class="bloque" id="metodo">
+  <h2>Cómo lo vamos a demostrar</h2>
+  <p class="entrada">Las metas se fijaron antes de medir y cada experimento quedó registrado antes de ejecutarse.</p>
+  <table class="tabla-metas">
+    <thead><tr><th>Meta</th><th>Umbral</th><th>Experimento</th></tr></thead>
+    <tbody>
+      <tr><td>Detectar los defectos (sensibilidad)</td><td class="num">≥ 0.90</td><td>EXP-002</td></tr>
+      <tr><td>Pocas falsas alarmas</td><td class="num">≤ 0.15</td><td>EXP-002</td></tr>
+      <tr><td>Ayudar al inspector frente a no usarlo</td><td>asistido ≥ no asistido</td><td>EXP-005</td></tr>
+      <tr><td>Tiempo por tarjeta en la Raspberry Pi, sin red</td><td class="num">mediana ≤ 5 s</td><td>EXP-003</td></tr>
+      <tr><td>Robustez a luz y posición</td><td class="num">caída ≤ 0.05</td><td>EXP-004</td></tr>
+    </tbody>
+  </table>
+  <p class="nota">Conjunto de datos propio: al menos 30 tarjetas con defectos sembrados a propósito, etiquetado a ciegas por dos personas y partido por tarjeta.</p>
+</section>
+
+<section class="bloque banda" id="resultados">
+  <h2>Primeros resultados con fotos reales</h2>
+  <p class="entrada">Mientras soldamos nuestras tarjetas, probamos el método con {{ resultados.filas[0].uniones_prueba }} uniones de prueba del conjunto público PCBSPDefect, con fotos reales de componentes through-hole (Tsang et al., 2023).</p>
+  <div class="leyenda" aria-label="Leyenda">
+    <span><i class="punto-muestra linea_base"></i>Línea base clásica</span>
+    <span><i class="punto-muestra red"></i>Red convolucional</span>
+    <span><i class="ic-muestra"></i>Intervalo de confianza de 95 %</span>
+  </div>
+  <div class="dos-graficas">
+    {{ grafica("Sensibilidad", "sensibilidad", 0.5, 1.0, resultados.metas.sensibilidad_min, "Meta: al menos 0.90", "a la derecha, mejor") }}
+    {{ grafica("Falsas alarmas", "falsas_alarmas", 0.0, 0.5, resultados.metas.falsas_alarmas_max, "Meta: como máximo 0.15", "a la izquierda, mejor") }}
+  </div>
+  <p>La red detectó la mayoría de los defectos y superó a la línea base en las dos particiones. Todavía no afirmamos que cumple la meta de falsas alarmas: el extremo alto del intervalo pasa de 0.15. Además, la cámara y las tarjetas son de otro grupo de investigación, así que la prueba definitiva será con nuestras tarjetas.</p>
+  <details class="tabla-datos">
+    <summary>Ver los datos en tabla</summary>
+    <table>
+      <thead><tr><th>Partición</th><th>Modelo</th><th>Uniones de prueba</th><th>Sensibilidad (IC 95 %)</th><th>Falsas alarmas (IC 95 %)</th></tr></thead>
+      <tbody>
+      {% for f in resultados.filas %}
+        <tr><td>{{ 'Oficial' if f.particion == 'oficial' else 'Por tarjeta' }}</td><td>{{ f.nombre }}</td><td class="num">{{ f.uniones_prueba }} ({{ f.tarjetas_prueba }} tarjetas)</td>
+        <td class="num">{{ '%.3f'|format(f.sensibilidad) }}{% if f.sensibilidad_ic %} ({{ '%.3f'|format(f.sensibilidad_ic[0]) }} a {{ '%.3f'|format(f.sensibilidad_ic[1]) }}){% endif %}</td>
+        <td class="num">{{ '%.3f'|format(f.falsas_alarmas) }}{% if f.falsas_alarmas_ic %} ({{ '%.3f'|format(f.falsas_alarmas_ic[0]) }} a {{ '%.3f'|format(f.falsas_alarmas_ic[1]) }}){% endif %}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <p class="nota">Intervalos por bootstrap agrupado por tarjeta. Archivo fuente <code>{{ resultados.fuente }}</code>, SHA-256 <code class="hash">{{ resultados.fuente_sha256 }}</code>.</p>
+  </details>
+</section>
+
+<section class="bloque" id="prototipo">
+  <h2>El prototipo</h2>
+  <div class="dos-columnas">
+    <div>
+      <h3>Equipo</h3>
+      <p>Raspberry Pi 5, cámara de al menos 12 MP, iluminación difusa y un soporte de altura fija. El prototipo de la mesa no lleva herramientas calientes ni alta tensión.</p>
+    </div>
+    <div>
+      <h3>Programa</h3>
+      <p>Python, OpenCV y ONNX Runtime. Datos crudos con huella SHA-256, partición por tarjeta con el conjunto de prueba congelado e intervalos de confianza en cada resultado.</p>
+    </div>
+  </div>
+  <p><a class="boton" href="{{ url_for('inicio') }}">Abrir la demostración</a></p>
+  <p class="nota">La demostración en línea usa tarjetas sintéticas generadas por computadora; sirve para ver cómo se usa, no para medir el desempeño.</p>
+</section>
+
+<section class="bloque banda" id="estado">
+  <h2>Estado del proyecto</h2>
+  <ol class="linea-tiempo">
+    <li class="hecho"><b>26 oct</b><span>Programa completo, demostración en línea y validación con fotos públicas (EXP-006).</span></li>
+    <li><b>30 oct</b><span>Jornada estatal en el Centro de Vinculación de la UPAEP.</span></li>
+    <li><b>5 nov</b><span>Visita técnica a una planta de ensamble electrónico del estado.</span></li>
+    <li><b>Nov</b><span>Tarjetas propias, etiquetado y experimentos EXP-001 a EXP-003.</span></li>
+    <li><b>Dic</b><span>Robustez y prueba con inspectores (EXP-004 y EXP-005).</span></li>
+  </ol>
+</section>
+
+<section class="bloque" id="equipo">
+  <h2>Equipo</h2>
+  <p>Fortino Romero Mantilla (líder del proyecto), Israel Jesús García Osorio y María José de la Rosa Hernández, estudiantes de la Universidad Tecnológica de Puebla. Asesor institucional: José Francisco Espinosa Garita.</p>
+  <p class="nota">El desarrollo contó con apoyo de herramientas de inteligencia artificial, declarado en el protocolo del proyecto.</p>
+</section>
+
+<section class="bloque banda fuentes" id="fuentes">
+  <h2>Fuentes</h2>
+  <ul>
+    <li>GÖPEL electronic. (s. f.). <i>Optimal inspection of THT assemblies</i> [Documento técnico].</li>
+    <li>See, J. E. (2015). Visual inspection reliability for precision manufactured parts. <i>Human Factors, 57</i>(8), 1427–1442. https://doi.org/10.1177/0018720815602389</li>
+    <li>{{ resultados.cita }}</li>
+  </ul>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+  // Tooltip para las filas de las gráficas (ratón y teclado).
+  const tip = document.createElement("div");
+  tip.className = "tooltip"; tip.setAttribute("role", "tooltip"); tip.hidden = true;
+  document.body.appendChild(tip);
+  document.querySelectorAll(".fila-punto").forEach((fila) => {
+    const mostrar = () => {
+      tip.textContent = fila.dataset.tip; tip.hidden = false;
+      const r = fila.querySelector(".pista").getBoundingClientRect();
+      tip.style.left = Math.min(window.innerWidth - tip.offsetWidth - 8, Math.max(8, r.left + window.scrollX)) + "px";
+      tip.style.top = (r.top + window.scrollY - tip.offsetHeight - 6) + "px";
+    };
+    fila.addEventListener("mouseenter", mostrar); fila.addEventListener("focus", mostrar);
+    fila.addEventListener("mouseleave", () => (tip.hidden = true)); fila.addEventListener("blur", () => (tip.hidden = true));
+  });
+</script>
+{% endblock %}
