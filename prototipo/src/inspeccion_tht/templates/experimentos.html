@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block titulo %}Experimentos{% endblock %}
+{% macro matriz(titulo, m) %}
+<figure class="matriz">
+  <figcaption><b>{{ titulo }}</b></figcaption>
+  {% set clases = ["aceptable", "insuficiente", "puente", "sin_soldar", "exceso"] %}
+  {% set idx = {"aceptable": 0, "insuficiente": 1, "puente": 2, "sin_soldar": 3, "exceso": 4, "fria": 5} %}
+  <table>
+    <thead><tr><th scope="col">Real \ Predicha</th>{% for c in clases %}<th scope="col">{{ nombres[c] }}</th>{% endfor %}</tr></thead>
+    <tbody>
+    {% for r in clases %}
+      {% set fila = m.matriz[resultados.clases.index(r)] %}{% set total = fila|sum %}
+      <tr><th scope="row">{{ nombres[r] }}</th>
+      {% for c in clases %}
+        {% set n = fila[resultados.clases.index(c)] %}{% set q = (n / total) if total else 0 %}
+        {% set paso = 0 if q < 0.05 else (1 if q < 0.25 else (2 if q < 0.5 else (3 if q < 0.75 else 4))) %}
+        <td class="celda s{{ paso }}{% if r == c %} diagonal{% endif %}" title="{{ nombres[r] }} predicha como {{ nombres[c] }}: {{ n }} de {{ total }} ({{ (q * 100)|round|int }} %)"><span class="num">{{ n }}</span></td>
+      {% endfor %}</tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</figure>
+{% endmacro %}
+{% block contenido %}
+<section class="seccion">
+  <h1>Experimentos</h1>
+  <p class="entrada">Cada experimento se registra con sus criterios antes de ejecutarse, y el registro queda fechado en el historial del repositorio. Así nadie puede mover la meta después de ver los datos.</p>
+  <div class="desliza"><table>
+    <thead><tr><th>Experimento</th><th>Estado</th><th>Registrado</th><th>Ejecutado</th></tr></thead>
+    <tbody>
+    {% for e in experimentos %}
+      <tr><td><b>{{ e.id }}</b> {{ e.titulo.split(' ', 1)[1] }}</td><td>{{ "Ejecutado" if e.estado == "ejecutado" else "Planeado" }}</td><td class="num">{{ e.planeado or "" }}</td><td class="num">{{ e.ejecutado or "pendiente" }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+<section class="seccion">
+  <h2>EXP-006: ¿en qué se equivoca cada modelo?</h2>
+  <p class="entrada">Matrices de confusión en el conjunto de prueba oficial de PCBSPDefect ({{ resultados.filas[0].uniones_prueba }} uniones, tres fotos por unión). Cada fila es la clase real; el color indica qué proporción de esa fila cayó en cada columna. La diagonal son los aciertos.</p>
+  <div class="leyenda-rampa" aria-hidden="true"><span>0 %</span><i class="s0"></i><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><span>100 % de la fila</span></div>
+  <div class="dos-graficas">
+    {{ matriz("Línea base clásica", resultados.matrices.oficial.linea_base) }}
+    {{ matriz("Red convolucional", resultados.matrices.oficial.red) }}
+  </div>
+  <p>Confusiones más frecuentes de la línea base: {% for c in conf_base %}{{ c.real|lower }} tomada como {{ c.predicha|lower }} ({{ c.n }} fotos){% if not loop.last %}; {% endif %}{% endfor %}. De la red: {% for c in conf_red %}{{ c.real|lower }} tomada como {{ c.predicha|lower }} ({{ c.n }} fotos){% if not loop.last %}; {% endif %}{% endfor %}. Un defecto tomado como unión aceptable es el error más costoso, porque la tarjeta pasaría sin revisión.</p>
+  <p class="nota">Archivo fuente <code>{{ resultados.fuente }}</code>, SHA-256 <code class="hash">{{ resultados.fuente_sha256 }}</code>.</p>
+</section>
+{% endblock %}

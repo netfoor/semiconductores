@@ -1,0 +1,491 @@
+{
+  "datos": "PCBSPDefect b_dip, conjunto de prueba oficial",
+  "licencia": "CC BY 4.0",
+  "licencia_url": "https://creativecommons.org/licenses/by/4.0/deed.es",
+  "cita": "Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T., & Lun, D. P.-K. (2023). PCB soldering defect inspection using multitask learning under low data regimes. Advanced Intelligent Systems, 5, 2300364. https://doi.org/10.1002/aisy.202300364",
+  "url": "https://zenodo.org/records/23307359",
+  "cambios": "Ninguno; se copian sin modificar.",
+  "semilla": 20261030,
+  "fotos": [
+    {
+      "archivo": "051.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2116",
+      "union": "b2116_good_b4",
+      "luz": "light2",
+      "original": "b_light2_b2116_dip_good_b4_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "001.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b1003",
+      "union": "b1003_no_b1",
+      "luz": "light1",
+      "original": "b_light1_b1003_dip_no_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "037.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2074",
+      "union": "b2074_good_b4",
+      "luz": "light1",
+      "original": "b_light1_b2074_dip_good_b4_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "014.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b1050",
+      "union": "b1050_no_b0",
+      "luz": "light1",
+      "original": "b_light1_b1050_dip_no_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "026.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b2026",
+      "union": "b2026_no_b5",
+      "luz": "light1",
+      "original": "b_light1_b2026_dip_no_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "007.jpg",
+      "clase": "exceso",
+      "tarjeta": "b1037",
+      "union": "b1037_excess_b0",
+      "luz": "light3",
+      "original": "b_light3_b1037_dip_excess_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "025.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b2026",
+      "union": "b2026_no_b3",
+      "luz": "light2",
+      "original": "b_light2_b2026_dip_no_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "044.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2087",
+      "union": "b2087_excess_b3",
+      "luz": "light1",
+      "original": "b_light1_b2087_dip_excess_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "060.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2145",
+      "union": "b2145_insuff_b3",
+      "luz": "light2",
+      "original": "b_light2_b2145_dip_insuff_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "028.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b2028",
+      "union": "b2028_no_b5",
+      "luz": "light3",
+      "original": "b_light3_b2028_dip_no_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "030.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2031",
+      "union": "b2031_insuff_b5",
+      "luz": "light2",
+      "original": "b_light2_b2031_dip_insuff_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "046.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2090",
+      "union": "b2090_insuff_b4",
+      "luz": "light1",
+      "original": "b_light1_b2090_dip_insuff_b4_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "036.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2072",
+      "union": "b2072_good_b5",
+      "luz": "light1",
+      "original": "b_light1_b2072_dip_good_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "004.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b1031",
+      "union": "b1031_insuff_b0",
+      "luz": "light1",
+      "original": "b_light1_b1031_dip_insuff_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "052.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2117",
+      "union": "b2117_good_b1",
+      "luz": "light3",
+      "original": "b_light3_b2117_dip_good_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "039.jpg",
+      "clase": "puente",
+      "tarjeta": "b2076",
+      "union": "b2076_bridge_b2",
+      "luz": "light3",
+      "original": "b_light3_b2076_dip_bridge_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "010.jpg",
+      "clase": "puente",
+      "tarjeta": "b1044",
+      "union": "b1044_bridge_b3",
+      "luz": "light1",
+      "original": "b_light1_b1044_dip_bridge_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "050.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2116",
+      "union": "b2116_good_b2",
+      "luz": "light3",
+      "original": "b_light3_b2116_dip_good_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "018.jpg",
+      "clase": "puente",
+      "tarjeta": "b2000",
+      "union": "b2000_bridge_b5",
+      "luz": "light1",
+      "original": "b_light1_b2000_dip_bridge_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "034.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2039",
+      "union": "b2039_good_b0",
+      "luz": "light3",
+      "original": "b_light3_b2039_dip_good_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "023.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b2015",
+      "union": "b2015_no_b5",
+      "luz": "light2",
+      "original": "b_light2_b2015_dip_no_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "056.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2127",
+      "union": "b2127_insuff_b1",
+      "luz": "light2",
+      "original": "b_light2_b2127_dip_insuff_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "002.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b1004",
+      "union": "b1004_no_b1",
+      "luz": "light1",
+      "original": "b_light1_b1004_dip_no_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "035.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2070",
+      "union": "b2070_good_b5",
+      "luz": "light3",
+      "original": "b_light3_b2070_dip_good_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "055.jpg",
+      "clase": "puente",
+      "tarjeta": "b2124",
+      "union": "b2124_bridge_b5",
+      "luz": "light2",
+      "original": "b_light2_b2124_dip_bridge_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "009.jpg",
+      "clase": "puente",
+      "tarjeta": "b1043",
+      "union": "b1043_bridge_b2",
+      "luz": "light2",
+      "original": "b_light2_b1043_dip_bridge_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "029.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2031",
+      "union": "b2031_insuff_b0",
+      "luz": "light1",
+      "original": "b_light1_b2031_dip_insuff_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "011.jpg",
+      "clase": "puente",
+      "tarjeta": "b1045",
+      "union": "b1045_bridge_b2",
+      "luz": "light3",
+      "original": "b_light3_b1045_dip_bridge_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "031.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2033",
+      "union": "b2033_insuff_b3",
+      "luz": "light2",
+      "original": "b_light2_b2033_dip_insuff_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "015.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b1053",
+      "union": "b1053_good_b0",
+      "luz": "light2",
+      "original": "b_light2_b1053_dip_good_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "057.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2133",
+      "union": "b2133_excess_b3",
+      "luz": "light1",
+      "original": "b_light1_b2133_dip_excess_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "041.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2080",
+      "union": "b2080_excess_b1",
+      "luz": "light2",
+      "original": "b_light2_b2080_dip_excess_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "021.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2005",
+      "union": "b2005_excess_b5",
+      "luz": "light2",
+      "original": "b_light2_b2005_dip_excess_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "033.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2036",
+      "union": "b2036_good_b1",
+      "luz": "light1",
+      "original": "b_light1_b2036_dip_good_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "003.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b1004",
+      "union": "b1004_no_b5",
+      "luz": "light1",
+      "original": "b_light1_b1004_dip_no_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "022.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2006",
+      "union": "b2006_excess_b1",
+      "luz": "light3",
+      "original": "b_light3_b2006_dip_excess_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "045.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2088",
+      "union": "b2088_excess_b5",
+      "luz": "light2",
+      "original": "b_light2_b2088_dip_excess_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "053.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2117",
+      "union": "b2117_good_b5",
+      "luz": "light2",
+      "original": "b_light2_b2117_dip_good_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "008.jpg",
+      "clase": "exceso",
+      "tarjeta": "b1039",
+      "union": "b1039_excess_b5",
+      "luz": "light3",
+      "original": "b_light3_b1039_dip_excess_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "017.jpg",
+      "clase": "puente",
+      "tarjeta": "b1059",
+      "union": "b1059_bridge_b5",
+      "luz": "light2",
+      "original": "b_light2_b1059_dip_bridge_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "043.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2084",
+      "union": "b2084_excess_b1",
+      "luz": "light2",
+      "original": "b_light2_b2084_dip_excess_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "058.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2142",
+      "union": "b2142_excess_b3",
+      "luz": "light3",
+      "original": "b_light3_b2142_dip_excess_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "047.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2094",
+      "union": "b2094_insuff_b1",
+      "luz": "light1",
+      "original": "b_light1_b2094_dip_insuff_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "032.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2034",
+      "union": "b2034_insuff_b1",
+      "luz": "light3",
+      "original": "b_light3_b2034_dip_insuff_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "016.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b1053",
+      "union": "b1053_good_b4",
+      "luz": "light3",
+      "original": "b_light3_b1053_dip_good_b4_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "024.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b2019",
+      "union": "b2019_no_b3",
+      "luz": "light3",
+      "original": "b_light3_b2019_dip_no_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "054.jpg",
+      "clase": "aceptable",
+      "tarjeta": "b2118",
+      "union": "b2118_good_b5",
+      "luz": "light1",
+      "original": "b_light1_b2118_dip_good_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "059.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2143",
+      "union": "b2143_excess_b3",
+      "luz": "light1",
+      "original": "b_light1_b2143_dip_excess_b3_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "049.jpg",
+      "clase": "puente",
+      "tarjeta": "b2098",
+      "union": "b2098_bridge_b0",
+      "luz": "light2",
+      "original": "b_light2_b2098_dip_bridge_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "038.jpg",
+      "clase": "puente",
+      "tarjeta": "b2075",
+      "union": "b2075_bridge_b2",
+      "luz": "light3",
+      "original": "b_light3_b2075_dip_bridge_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "027.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b2028",
+      "union": "b2028_no_b1",
+      "luz": "light3",
+      "original": "b_light3_b2028_dip_no_b1_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "020.jpg",
+      "clase": "puente",
+      "tarjeta": "b2003",
+      "union": "b2003_bridge_b2",
+      "luz": "light1",
+      "original": "b_light1_b2003_dip_bridge_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "048.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b2094",
+      "union": "b2094_insuff_b5",
+      "luz": "light2",
+      "original": "b_light2_b2094_dip_insuff_b5_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "019.jpg",
+      "clase": "puente",
+      "tarjeta": "b2002",
+      "union": "b2002_bridge_b2",
+      "luz": "light2",
+      "original": "b_light2_b2002_dip_bridge_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "006.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b1034",
+      "union": "b1034_insuff_b4",
+      "luz": "light2",
+      "original": "b_light2_b1034_dip_insuff_b4_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "013.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b1049",
+      "union": "b1049_no_b0",
+      "luz": "light1",
+      "original": "b_light1_b1049_dip_no_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "005.jpg",
+      "clase": "insuficiente",
+      "tarjeta": "b1034",
+      "union": "b1034_insuff_b0",
+      "luz": "light1",
+      "original": "b_light1_b1034_dip_insuff_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "042.jpg",
+      "clase": "exceso",
+      "tarjeta": "b2082",
+      "union": "b2082_excess_b2",
+      "luz": "light2",
+      "original": "b_light2_b2082_dip_excess_b2_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "012.jpg",
+      "clase": "sin_soldar",
+      "tarjeta": "b1046",
+      "union": "b1046_no_b0",
+      "luz": "light3",
+      "original": "b_light3_b1046_dip_no_b0_a0_y0_x0.jpg"
+    },
+    {
+      "archivo": "040.jpg",
+      "clase": "puente",
+      "tarjeta": "b2078",
+      "union": "b2078_bridge_b5",
+      "luz": "light3",
+      "original": "b_light3_b2078_dip_bridge_b5_a0_y0_x0.jpg"
+    }
+  ]
+}

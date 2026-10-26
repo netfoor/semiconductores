@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block titulo %}Fotos reales{% endblock %}
+{% block contenido %}
+<section class="seccion">
+  <h1>Fotos reales, clasificadas en vivo</h1>
+  <p class="entrada">{{ fotos.fotos|length }} uniones through-hole del conjunto de prueba de PCBSPDefect. La red no vio ninguna al entrenar. Elija una foto: el servidor la clasifica en ese momento y muestra qué tan segura está la red de cada clase.</p>
+  <div class="alterna" role="group" aria-label="Filtrar por clase real">
+    <button type="button" class="activa" data-filtro="todas">Todas</button>
+    {% for c in ["aceptable", "insuficiente", "puente", "sin_soldar", "exceso"] %}<button type="button" data-filtro="{{ c }}">{{ nombres[c] }}</button>{% endfor %}
+  </div>
+</section>
+<div class="trabajo">
+  <div class="rejilla-fotos" id="rejilla">
+    {% for f in fotos.fotos %}
+    <button type="button" class="foto" data-archivo="{{ f.archivo }}" data-clase="{{ f.clase }}" aria-label="Foto {{ f.archivo }}, clase real {{ nombres[f.clase] }}">
+      <img src="{{ url_for('foto_publica', nombre=f.archivo) }}" alt="" loading="lazy" width="140" height="140">
+    </button>
+    {% endfor %}
+  </div>
+  <aside class="panel" aria-live="polite">
+    <h3 id="titulo-foto">Elija una foto</h3>
+    <img id="foto-grande" class="foto-grande" alt="" hidden>
+    <p id="veredicto" class="veredicto"></p>
+    <div id="barras" class="barras"></div>
+    <p class="nota" id="tiempo"></p>
+  </aside>
+</div>
+{% include "_atribucion.html" %}
+{% endblock %}
+{% block scripts %}
+<script>
+  const NOMBRES = {{ nombres|tojson }};
+  const titulo = document.getElementById("titulo-foto"), grande = document.getElementById("foto-grande");
+  const veredicto = document.getElementById("veredicto"), barras = document.getElementById("barras"), tiempo = document.getElementById("tiempo");
+  async function clasificar(boton) {
+    document.querySelectorAll(".foto").forEach((b) => b.classList.toggle("elegida", b === boton));
+    const archivo = boton.dataset.archivo;
+    titulo.textContent = `Foto ${archivo}`;
+    grande.src = boton.querySelector("img").src; grande.hidden = false;
+    veredicto.textContent = "Clasificando…"; barras.innerHTML = ""; tiempo.textContent = "";
+    try {
+      const r = await fetch(`/api/foto/${archivo}`); const d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      veredicto.innerHTML = `<b>Clase real:</b> ${NOMBRES[d.verdad]}<br><b>La red dice:</b> ${NOMBRES[d.prediccion]} ` +
+        (d.acierto ? '<span class="marca-ok">acierto</span>' : '<span class="marca-error">error</span>');
+      for (const p of d.probabilidades) {
+        const fila = document.createElement("div");
+        fila.className = "barra" + (p.clase === d.prediccion ? " predicha" : "");
+        fila.innerHTML = `<span>${p.nombre}${p.clase === d.verdad ? " (real)" : ""}</span><span class="pista-barra"><i style="width:${(p.p * 100).toFixed(1)}%"></i></span><span class="num">${(p.p * 100).toFixed(0)} %</span>`;
+        barras.appendChild(fila);
+      }
+      tiempo.textContent = `Inferencia en el servidor: ${d.milisegundos.toFixed(1)} ms.`;
+    } catch (e) { veredicto.textContent = `No se pudo clasificar: ${e.message}`; }
+  }
+  document.querySelectorAll(".foto").forEach((b) => b.addEventListener("click", () => clasificar(b)));
+  document.querySelectorAll(".alterna button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".alterna button").forEach((x) => x.classList.toggle("activa", x === b));
+    document.querySelectorAll(".foto").forEach((f) => (f.hidden = b.dataset.filtro !== "todas" && f.dataset.clase !== b.dataset.filtro));
+  }));
+</script>
+{% endblock %}

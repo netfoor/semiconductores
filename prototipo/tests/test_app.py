@@ -76,3 +76,20 @@ def test_estacion_local_tiene_la_pagina_del_proyecto_aparte(cliente):
     assert r.status_code == 200
     html = r.get_data(as_text=True)
     assert "Sensibilidad" in html and "SHA-256" in html
+
+
+def test_secciones_publicas(cliente):
+    for url in ["/fotos-reales", "/reto", "/experimentos"]:
+        r = cliente.get(url)
+        assert r.status_code == 200, url
+    html = cliente.get("/experimentos").get_data(as_text=True)
+    assert "EXP-006" in html and "tomada como" in html
+    assert cliente.get("/publico/fotos/001.jpg").mimetype == "image/jpeg"
+
+
+def test_api_foto_clasifica_en_vivo(cliente):
+    d = cliente.get("/api/foto/001.jpg").get_json()
+    assert d["prediccion"] in {p["clase"] for p in d["probabilidades"]}
+    assert abs(sum(p["p"] for p in d["probabilidades"]) - 1) < 1e-4
+    assert d["milisegundos"] > 0
+    assert cliente.get("/api/foto/999.jpg").status_code == 404
