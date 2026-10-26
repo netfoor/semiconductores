@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block titulo %}Error {{ codigo }}{% endblock %}
+{% block contenido %}
+<section class="seccion">
+  <h1>No se pudo completar la acción</h1>
+  <p class="entrada">{{ mensaje }}</p>
+  <p><a class="boton secundario" href="{{ url_for('inicio') }}">Volver al inicio</a></p>
+</section>
+{% endblock %}

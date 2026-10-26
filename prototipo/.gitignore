@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# Los datos no se versionan aquí: las imágenes de terceros pueden ser confidenciales
+# y las crudas viven con su MANIFIESTO.csv en la carpeta de datos del proyecto.
+datos/
+datos-demo/
+*.sqlite
