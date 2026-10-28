@@ -122,3 +122,11 @@ def desplazar(img: np.ndarray, dx: float, dy: float, angulo: float = 0.0) -> np.
 def iluminar(img: np.ndarray, factor: float) -> np.ndarray:
     """Simula otra condición de iluminación (EXP-004)."""
     return np.clip(img.astype(np.float32) * factor, 0, 255).astype(np.uint8)
+
+
+def con_orientacion_exif(jpeg: bytes, orientacion: int) -> bytes:
+    """Inserta en un JPEG un EXIF mínimo con la etiqueta de orientación (para probar fotos verticales)."""
+    import struct
+    tiff = b"MM\x00*" + struct.pack(">IH", 8, 1) + struct.pack(">HHIHH", 0x0112, 3, 1, orientacion, 0) + struct.pack(">I", 0)
+    app1 = b"Exif\x00\x00" + tiff
+    return jpeg[:2] + b"\xff\xe1" + struct.pack(">H", len(app1) + 2) + app1 + jpeg[2:]

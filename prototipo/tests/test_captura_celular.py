@@ -229,3 +229,28 @@ def test_captura_de_archivo_conserva_su_json(tmp_path):
 def test_leer_exif_tolera_datos_danados():
     assert captura.leer_exif(b"\xff\xd8\xff\xe1\x00\x10Exif\x00\x00XX\x00\x00") == {}
     assert captura.leer_exif(jpeg()) == {}
+
+
+def test_fotos_prueba_se_alinean_con_el_diseno_de_demo(con_diseno, tmp_path):
+    tht(["fotos-prueba", "--salida", str(tmp_path / "fotos"), "--tarjetas", "2"])
+    vertical = tmp_path / "fotos" / "T12_sintetica_vertical_exif6.jpg"
+    assert captura.leer_exif(vertical.read_bytes()) == {"orientacion": 6}
+    assert (tmp_path / "fotos" / "LEEME.txt").exists() and len(list((tmp_path / "fotos" / "publicas-pcbspdefect").glob("*.jpg"))) == 5
+    app = crear_app(con_diseno)
+    c = app.test_client()
+    r = enviar(c, vertical.read_bytes(), tarjeta="T12", diseno="sintetica-01")
+    png = next((con_diseno / "crudos" / "T12").glob("*.png"))
+    alto, ancho = cv2.imread(str(png)).shape[:2]
+    assert r.status_code == 302 and ancho > alto  # quedó en la orientación del diseño
+
+
+def test_verificar_sin_manifiesto_explica_que_hacer(tmp_path):
+    with pytest.raises(SystemExit) as e:
+        tht(["manifiesto", "verificar", str(tmp_path)])
+    assert "tht manifiesto generar" in str(e.value)
+
+
+def test_aviso_sin_modelo_indica_la_carpeta(con_diseno):
+    c = crear_app(con_diseno).test_client()
+    html = c.get("/inspeccionar/T01_B_il1_SINTETICO.png").get_data(as_text=True)
+    assert f"tht entrenar --datos {con_diseno}" in html

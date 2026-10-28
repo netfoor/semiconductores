@@ -34,6 +34,9 @@ def cmd_manifiesto(a):
     if a.accion == "generar":
         print(manifiesto.generar(Path(a.carpeta)))
     else:
+        if not (Path(a.carpeta) / "MANIFIESTO.csv").exists():
+            sys.exit(f"No hay MANIFIESTO.csv en {a.carpeta}. Si los archivos actuales son los correctos, "
+                     f"genérelo con `uv run tht manifiesto generar {a.carpeta}`.")
         problemas = manifiesto.verificar(Path(a.carpeta))
         for d in problemas:
             print(f"{d.problema}\t{d.archivo}")
@@ -209,6 +212,60 @@ def cmd_demo(a):
     print(f"Conjunto sintético en {c.raiz} ({a.tarjetas} tarjetas)")
 
 
+def cmd_fotos_prueba(a):
+    """Fotos JPEG para probar la captura desde el celular (SINTÉTICAS y públicas; no son DS-01)."""
+    import cv2
+    from . import sintetico
+    salida = Path(a.salida)
+    if salida.exists() and any(salida.iterdir()):
+        sys.exit(f"{salida} ya existe y no está vacía; bórrela para regenerarla.")
+    salida.mkdir(parents=True, exist_ok=True)
+    rng = np.random.default_rng(a.semilla)
+    verdad = {}
+    for i in range(a.tarjetas):
+        # Mismas filas y columnas que `tht demo`: las uniones coinciden con el diseño sintetica-01.
+        img, _, v = sintetico.tarjeta(5, 8, rng, prob_defecto=0.35)
+        img = sintetico.desplazar(img, rng.uniform(-10, 10), rng.uniform(-10, 10), rng.uniform(-0.8, 0.8))
+        nombre = f"T{11 + i:02d}_sintetica.jpg"
+        datos = cv2.imencode(".jpg", img, [cv2.IMWRITE_JPEG_QUALITY, 95])[1].tobytes()
+        if i == a.tarjetas - 1:
+            # Como un celular en vertical: píxeles girados y EXIF que indica girar 90° a la derecha.
+            nombre = f"T{11 + i:02d}_sintetica_vertical_exif6.jpg"
+            girada = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
+            datos = sintetico.con_orientacion_exif(cv2.imencode(".jpg", girada, [cv2.IMWRITE_JPEG_QUALITY, 95])[1].tobytes(), 6)
+        (salida / nombre).write_bytes(datos)
+        verdad[nombre] = v
+    (salida / "verdad_sintetica.json").write_text(_json(verdad), encoding="utf-8")
+    cv2.imwrite(str(salida / "rechazo_formato.png"), np.zeros((40, 60, 3), np.uint8))
+
+    publico = Path(__file__).parent / "publico"
+    fotos = json.loads((publico / "fotos.json").read_text(encoding="utf-8"))["fotos"]
+    elegidas = {}
+    for f in fotos:
+        elegidas.setdefault(f["clase"], f)
+    (salida / "publicas-pcbspdefect").mkdir(exist_ok=True)
+    for clase, f in sorted(elegidas.items()):
+        (salida / "publicas-pcbspdefect" / f"{clase}_{f['archivo']}").write_bytes((publico / "fotos" / f["archivo"]).read_bytes())
+    (salida / "LEEME.txt").write_text(f"""Fotos para probar la captura desde el celular. Generadas con `tht fotos-prueba`.
+
+T##_sintetica*.jpg   Tarjetas SINTÉTICAS de 5 x 8 uniones, del mismo diseño que `sintetica-01` de datos-demo.
+                     Se pueden subir en /capturar y luego inspeccionar con ese diseño. No son datos del proyecto.
+*_vertical_exif6.jpg Píxeles girados con orientación EXIF 6: debe guardarse derecha (prueba de R7).
+verdad_sintetica.json Clase real de cada unión de las tarjetas sintéticas, para comparar con lo que marque el sistema.
+rechazo_formato.png  PNG: la página debe rechazarlo con un mensaje claro.
+publicas-pcbspdefect/ Una foto real por clase de PCBSPDefect (uniones DIP individuales, no tarjetas completas):
+                     sirven para probar la subida, no la inspección por diseño.
+                     Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T., & Lun, D. P.-K. (2023). PCB soldering
+                     defect inspection using multitask learning under low data regimes. Advanced Intelligent
+                     Systems, 5, 2300364. https://doi.org/10.1002/aisy.202300364
+                     Conjunto: https://zenodo.org/records/23307359, licencia CC BY 4.0.
+
+Ninguna de estas fotos trae marca ni modelo de cámara en el EXIF: la página mostrará
+"el EXIF no trae el modelo". Con una foto tomada en el teléfono sí debe aparecer.
+""", encoding="utf-8")
+    print(f"Fotos de prueba en {salida}")
+
+
 def cmd_externo(a):
     """EXP-006: entrena y evalúa ambos modelos con datos públicos reales."""
     from collections import Counter
@@ -362,7 +419,11 @@ def cmd_publicar(a):
 def cmd_servir(a):
     from .app import crear_app
     app = crear_app(Path(a.datos), operador=a.operador, modelo_nombre=a.modelo)
-    print(f"Abrir http://{a.host}:{a.puerto} (sin internet; solo en esta red)")
+    if a.host in ("127.0.0.1", "localhost"):
+        print(f"Abrir http://{a.host}:{a.puerto} (sin internet; solo en este equipo)")
+    else:
+        print(f"Escuchando en {a.host}:{a.puerto} para la red local. Úselo solo en un hotspot propio con contraseña: "
+              "la interfaz no pide usuario. Ejecute `make url` para ver la dirección del celular.")
     app.run(host=a.host, port=a.puerto, debug=False)
 
 
@@ -441,6 +502,12 @@ def construir_parser() -> argparse.ArgumentParser:
     x.add_argument("--columnas", type=int, default=8)
     x.add_argument("--semilla", type=int, default=7)
     x.set_defaults(f=cmd_demo)
+
+    x = s.add_parser("fotos-prueba", help="Genera fotos JPEG para probar la captura desde el celular")
+    x.add_argument("--salida", default="fotos-prueba")
+    x.add_argument("--tarjetas", type=int, default=4)
+    x.add_argument("--semilla", type=int, default=11)
+    x.set_defaults(f=cmd_fotos_prueba)
 
     x = s.add_parser("externo", help="EXP-006: datos públicos reales (PCBSPDefect)")
     x.add_argument("accion", choices=["descargar", "evaluar"])
