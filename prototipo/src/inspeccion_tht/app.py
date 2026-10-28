@@ -214,7 +214,7 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
     @app.get("/inspeccionar/<imagen>")
     def pagina_inspeccionar(imagen):
         return render_template("inspeccionar.html", imagen=imagen, diseno=diseno_de(imagen),
-                               hay_modelo=modelo() is not None)
+                               hay_modelo=modelo() is not None, raiz=str(c.raiz))
 
     @app.get("/api/inspeccion/<imagen>")
     def api_inspeccion(imagen):

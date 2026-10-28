@@ -6,7 +6,7 @@
   <p class="entrada"><span class="mono">{{ imagen }}</span>, diseño {{ diseno }}. El sistema marca las uniones sospechosas; usted confirma o corrige cada una. La decisión final siempre es suya.</p>
 </section>
 {% if not hay_modelo %}
-<div class="aviso-sintetico" role="alert"><p>No hay un modelo entrenado en esta carpeta. Ejecute <code>uv run tht entrenar</code> (línea base) o <code>uv run --group cnn tht entrenar-red</code> (red) y recargue la página.</p></div>
+<div class="aviso-sintetico" role="alert"><p>No hay un modelo entrenado en esta carpeta. Para la línea base ejecute <code>uv run tht entrenar --datos {{ raiz }}</code>; para la red, <code>uv run --group cnn tht entrenar-red --datos {{ raiz }}</code>. Si aún no hay partición, antes ejecute <code>uv run tht particion --datos {{ raiz }}</code>. Luego recargue la página.</p></div>
 {% else %}
 <div class="trabajo">
   <div class="lienzo"><canvas id="lienzo" aria-label="Tarjeta alineada con las uniones sospechosas"></canvas></div>
