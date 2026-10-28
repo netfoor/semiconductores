@@ -288,3 +288,23 @@ label { font-weight: 600; font-size: 15px; display: block; margin-bottom: var(--
 }
 .desliza { overflow-x: auto; }
 @media (max-width: 860px) { .desliza td.num, .desliza th:nth-child(3) { white-space: nowrap; } }
+
+/* Captura desde el celular */
+.captura { max-width: 560px; }
+.captura input[type=text], .captura select { width: 100%; }
+.dos-campos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e3); }
+.lados { border: 0; padding: 0; margin: 0 0 var(--e4); display: flex; flex-wrap: wrap; gap: var(--e2); }
+.lados legend, .etiqueta-campo { font-weight: 600; font-size: 15px; display: block; margin-bottom: var(--e1); padding: 0; }
+.lados label { flex: 1 1 0; display: flex; align-items: center; gap: var(--e2); min-height: 44px; margin: 0; padding: 0 var(--e3);
+  border: 1px solid var(--linea); font-weight: 400; cursor: pointer; }
+.lados label:has(input:checked) { background: var(--seleccion); border-color: var(--marca); font-weight: 700; }
+.lados input { accent-color: var(--marca); width: 18px; height: 18px; margin: 0; }
+.archivo-oculto { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
+.fotos-entrada .boton { flex: 1 1 180px; }
+.tabla-captura { margin-bottom: var(--e5); }
+.tabla-captura th { width: 34%; border-bottom: 1px solid var(--linea); font-size: 14.5px; vertical-align: top; }
+.al-pie-captura { margin-top: var(--e5); }
+@media (max-width: 860px) {
+  .captura .acciones .boton { width: 100%; }
+  .tabla-captura th { width: 40%; }
+}

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block titulo %}Capturar{% endblock %}
+{% block contenido %}
+<section class="seccion captura">
+  <h1>Capturar desde el celular</h1>
+  <p class="entrada">La foto viaja por la red local de la mesa a esta estación, que la guarda sin modificar junto con una copia PNG, sus metadatos y su huella. No sale a internet.</p>
+
+  <form method="post" action="{{ url_for('subir_captura') }}" enctype="multipart/form-data" id="forma-captura">
+    <div class="dos-campos">
+      <div class="campo">
+        <label for="tarjeta">Tarjeta</label>
+        <input type="text" id="tarjeta" name="tarjeta" required pattern="[Tt][0-9]{2,3}" placeholder="T07"
+               autocapitalize="characters" autocomplete="off" title="T seguido de 2 o 3 dígitos, por ejemplo T07">
+      </div>
+      <div class="campo">
+        <label for="iluminacion">Iluminación</label>
+        <input type="text" id="iluminacion" name="iluminacion" required pattern="[0-9A-Za-z]{1,10}" value="1"
+               inputmode="numeric" autocomplete="off" title="Número de la configuración de luz, por ejemplo 1">
+      </div>
+    </div>
+
+    <fieldset class="campo lados">
+      <legend>Lado</legend>
+      <label><input type="radio" name="lado" value="B" checked> B · soldadura</label>
+      <label><input type="radio" name="lado" value="A"> A · componentes</label>
+    </fieldset>
+
+    <div class="campo">
+      <label for="responsable">Responsable</label>
+      <input type="text" id="responsable" name="responsable" required placeholder="Nombre, por ejemplo fortino" autocomplete="off">
+    </div>
+
+    <div class="campo">
+      <label for="diseno">Diseño de tarjeta <span class="nota">(opcional)</span></label>
+      <select id="diseno" name="diseno">
+        <option value="">Sin diseño todavía</option>
+        {% for d in disenos %}<option>{{ d }}</option>{% endfor %}
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="nota">Nota <span class="nota">(opcional)</span></label>
+      <input type="text" id="nota" name="nota" autocomplete="off" placeholder="Por ejemplo: reflejo en la esquina">
+    </div>
+
+    <div class="campo">
+      <span class="etiqueta-campo">Foto</span>
+      <div class="acciones fotos-entrada">
+        <label class="boton" for="foto-camara">Tomar foto</label>
+        <label class="boton secundario" for="foto-galeria">Elegir de la galería</label>
+      </div>
+      <input class="archivo-oculto" type="file" id="foto-camara" name="foto" accept="image/*" capture="environment">
+      <input class="archivo-oculto" type="file" id="foto-galeria" name="foto" accept="image/jpeg,image/*">
+      <p class="estado" id="elegida" aria-live="polite">Ninguna foto elegida.</p>
+      <p class="nota">«Elegir de la galería» sirve para fotos tomadas con una app de cámara en modo manual. Solo JPEG, hasta {{ limite_mb }} MB; en iPhone, use el formato «Más compatible». Si la cámara guarda la ubicación, desactívela antes de fotografiar.</p>
+    </div>
+
+    <div class="acciones">
+      <button class="boton" type="submit" id="enviar">Guardar captura</button>
+    </div>
+  </form>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+  // Recuerda tarjeta, lado, iluminación y responsable para la siguiente foto (solo en este teléfono).
+  const forma = document.getElementById("forma-captura");
+  const recordar = ["tarjeta", "iluminacion", "responsable", "diseno"];
+  try {
+    for (const n of recordar) { const v = localStorage.getItem("captura-" + n); if (v) forma.elements[n].value = v; }
+    const lado = localStorage.getItem("captura-lado"); if (lado) forma.querySelector(`[name=lado][value=${lado}]`).checked = true;
+  } catch (e) {}
+
+  const camara = document.getElementById("foto-camara"), galeria = document.getElementById("foto-galeria");
+  const elegida = document.getElementById("elegida");
+  function mostrar(desde, otro) {
+    if (desde.files.length) otro.value = "";  // una sola foto por envío
+    const f = desde.files[0];
+    elegida.textContent = f ? `${f.name} · ${(f.size / 1048576).toFixed(1)} MB` : "Ninguna foto elegida.";
+  }
+  camara.addEventListener("change", () => mostrar(camara, galeria));
+  galeria.addEventListener("change", () => mostrar(galeria, camara));
+
+  forma.addEventListener("submit", (ev) => {
+    if (!camara.files.length && !galeria.files.length) {
+      ev.preventDefault(); elegida.textContent = "Falta la foto."; elegida.classList.add("error"); return;
+    }
+    forma.elements.tarjeta.value = forma.elements.tarjeta.value.trim().toUpperCase();
+    try {
+      for (const n of recordar) localStorage.setItem("captura-" + n, forma.elements[n].value);
+      localStorage.setItem("captura-lado", forma.elements.lado.value);
+    } catch (e) {}
+    const b = document.getElementById("enviar"); b.disabled = true; b.textContent = "Enviando…";
+  });
+  // Al volver con el botón Atrás, el botón no debe quedar desactivado.
+  window.addEventListener("pageshow", () => { const b = document.getElementById("enviar"); b.disabled = false; b.textContent = "Guardar captura"; });
+</script>
+{% endblock %}

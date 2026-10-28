@@ -20,6 +20,7 @@
         <a href="{{ url_for('reto') }}"{% if request.endpoint == 'reto' %} aria-current="page"{% endif %}>Reto</a>
         <a href="{{ url_for('experimentos') }}"{% if request.endpoint == 'experimentos' %} aria-current="page"{% endif %}>Experimentos</a>
         <a href="{{ url_for('inicio') }}"{% if request.endpoint == 'inicio' %} aria-current="page"{% endif %}>{{ "Demostración" if en_linea else "Estación" }}</a>
+        {% if not en_linea %}<a href="{{ url_for('pagina_capturar') }}"{% if request.endpoint in ('pagina_capturar', 'captura_guardada') %} aria-current="page"{% endif %}>Capturar</a>{% endif %}
       </nav>
     </div>
   </header>
