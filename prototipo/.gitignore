@@ -6,4 +6,6 @@ __pycache__/
 # y las crudas viven con su MANIFIESTO.csv en la carpeta de datos del proyecto.
 datos/
 datos-demo/
+datos-mosaico/
+fotos-prueba/
 *.sqlite

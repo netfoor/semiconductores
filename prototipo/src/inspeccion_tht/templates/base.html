@@ -20,12 +20,18 @@
         <a href="{{ url_for('reto') }}"{% if request.endpoint == 'reto' %} aria-current="page"{% endif %}>Reto</a>
         <a href="{{ url_for('experimentos') }}"{% if request.endpoint == 'experimentos' %} aria-current="page"{% endif %}>Experimentos</a>
         <a href="{{ url_for('inicio') }}"{% if request.endpoint == 'inicio' %} aria-current="page"{% endif %}>{{ "Demostración" if en_linea else "Estación" }}</a>
+        {% if not en_linea %}<a href="{{ url_for('pagina_capturar') }}"{% if request.endpoint in ('pagina_capturar', 'captura_guardada') %} aria-current="page"{% endif %}>Capturar</a>{% endif %}
       </nav>
     </div>
   </header>
   {% if sintetico and not ocultar_aviso %}
   <div class="aviso-sintetico" role="note">
     <p><b>Datos sintéticos.</b> {% if en_linea %}Estas tarjetas se generaron por computadora para mostrar el funcionamiento del software.{% else %}Esta carpeta se generó con <code>tht demo</code> para probar el software.{% endif %} Nada de lo que se vea aquí es un resultado del proyecto.</p>
+  </div>
+  {% endif %}
+  {% if mosaico and not ocultar_aviso %}
+  <div class="aviso-sintetico" role="note">
+    <p><b>Tarjeta-mosaico de demostración.</b> Fotos reales de uniones del conjunto público PCBSPDefect (Tsang et al., 2023; CC BY 4.0), acomodadas como una tarjeta. No es una tarjeta física ni datos propios del proyecto.</p>
   </div>
   {% endif %}
   <main>

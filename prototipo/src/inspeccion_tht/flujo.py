@@ -7,7 +7,7 @@ import cv2
 import numpy as np
 
 from .clases import es_defecto
-from .plantilla import Plantilla, al_marco_de_referencia, alinear, recortes
+from .plantilla import Plantilla, al_marco_de_referencia, alinear, normalizar_color, recortes
 
 
 @dataclass
@@ -35,7 +35,7 @@ def inspeccionar(imagen: np.ndarray, referencia: np.ndarray, plantilla: Plantill
     tiempos = {}
     t = time.perf_counter()
     warp = alinear(imagen, referencia)
-    alineada = al_marco_de_referencia(imagen, warp, plantilla)
+    alineada = normalizar_color(al_marco_de_referencia(imagen, warp, plantilla), referencia)
     tiempos["alineacion_s"] = time.perf_counter() - t
 
     t = time.perf_counter()

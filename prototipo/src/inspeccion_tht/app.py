@@ -5,13 +5,14 @@ No usa recursos de internet: todo se sirve desde esta carpeta.
 
 import json
 import shutil
+import threading
 from dataclasses import asdict
 from pathlib import Path
 
 import cv2
-from flask import Flask, abort, jsonify, render_template, request, send_from_directory
+from flask import Flask, abort, jsonify, redirect, render_template, request, send_from_directory, url_for
 
-from . import __version__
+from . import __version__, captura
 from .anotaciones import Anotacion, todas
 from .clases import CLASES, NOMBRES, validar
 from .datos import Carpetas
@@ -20,9 +21,12 @@ from . import clasificador
 from .plantilla import Plantilla, Union, al_marco_de_referencia, alinear
 from .registro import Registro
 
+LIMITE_FOTO_MB = 30
+
 
 def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base", en_linea: bool = False) -> Flask:
-    """`en_linea`: demostración pública en un servidor (cambia los textos que hablan de operar sin internet)."""
+    """`en_linea`: demostración pública en un servidor (cambia los textos que hablan de operar sin internet
+    y quita la captura desde el celular, que solo existe en la estación local)."""
     c = Carpetas(Path(raiz)).crear()
     app = Flask(__name__)
     app.config["CARPETAS"] = c
@@ -34,6 +38,9 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
 
     def es_sintetico() -> bool:
         return (c.raiz / "LEEME_SINTETICO.txt").exists()
+
+    def es_mosaico() -> bool:
+        return (c.raiz / "LEEME_MOSAICO.txt").exists()
 
     if modelo_nombre not in clasificador.MODELOS:
         raise ValueError(f"Modelo desconocido: {modelo_nombre}")
@@ -67,7 +74,7 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
     @app.context_processor
     def comunes():
         return {"version": __version__, "sintetico": es_sintetico(), "clases": CLASES,
-                "nombres": NOMBRES, "operador": operador, "modelo_nombre": modelo_nombre, "en_linea": en_linea}
+                "nombres": NOMBRES, "mosaico": es_mosaico(), "operador": operador, "modelo_nombre": modelo_nombre, "en_linea": en_linea}
 
     @app.get("/salud")
     def salud():
@@ -210,7 +217,7 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
     @app.get("/inspeccionar/<imagen>")
     def pagina_inspeccionar(imagen):
         return render_template("inspeccionar.html", imagen=imagen, diseno=diseno_de(imagen),
-                               hay_modelo=modelo() is not None)
+                               hay_modelo=modelo() is not None, raiz=str(c.raiz))
 
     @app.get("/api/inspeccion/<imagen>")
     def api_inspeccion(imagen):
@@ -255,6 +262,58 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
         if not ok:
             abort(500)
         return app.response_class(buf.tobytes(), mimetype="image/jpeg")
+
+    # Captura desde un celular en la red local de la mesa. Solo existe en la estación local:
+    # la demostración en línea nunca recibe fotos (D-011).
+    if not en_linea:
+        app.config["MAX_CONTENT_LENGTH"] = LIMITE_FOTO_MB * 1024 * 1024
+        candado = threading.Lock()  # dos envíos simultáneos no deben pisar el manifiesto ni el nombre
+
+        @app.get("/capturar")
+        def pagina_capturar():
+            return render_template("capturar.html", disenos=disenos(), limite_mb=LIMITE_FOTO_MB)
+
+        @app.post("/capturar")
+        def subir_captura():
+            fotos = [f for f in request.files.getlist("foto") if f and f.filename]
+            if not fotos:
+                abort(400, "Falta la foto. Use «Tomar foto» o «Elegir de la galería».")
+            if len(fotos) > 1:
+                abort(400, "Se recibieron dos fotos. Envíe solo una por captura.")
+            f = request.form
+            responsable = (f.get("responsable") or "").strip()
+            if not responsable:
+                abort(400, "Falta el nombre de quien captura.")
+            diseno = (f.get("diseno") or "").strip()
+            if diseno and diseno not in disenos():
+                abort(400, f"No existe el diseño {diseno}.")
+            camara = captura.CamaraMemoria(fotos[0].read(), request.headers.get("User-Agent", ""))
+            with candado:
+                try:
+                    ruta = captura.capturar(camara, c.crudos, (f.get("tarjeta") or "").strip().upper(),
+                                            (f.get("lado") or "").strip().upper(), (f.get("iluminacion") or "1").strip(),
+                                            responsable, (f.get("nota") or "").strip(), diseno)
+                except FileExistsError:
+                    abort(409, "Ya existe una captura con ese nombre (misma tarjeta, lado e iluminación en el mismo "
+                               "segundo). No se sobrescribió nada; espere un segundo y envíela otra vez.")
+            diseno = diseno or (disenos()[0] if len(disenos()) == 1 else "")
+            if diseno:
+                return redirect(url_for("pagina_inspeccionar", imagen=ruta.name, diseno=diseno, etiquetador=responsable))
+            return redirect(url_for("captura_guardada", imagen=ruta.name))
+
+        @app.get("/capturar/<imagen>")
+        def captura_guardada(imagen):
+            meta = json.loads(c.imagen(imagen).with_suffix(".json").read_text(encoding="utf-8"))
+            return render_template("capturada.html", imagen=imagen, meta=meta, disenos=disenos())
+
+    @app.errorhandler(413)
+    def error_tamano(e):
+        return responder_error(413, f"La foto pesa más de {LIMITE_FOTO_MB} MB. Tómela con menor resolución o "
+                                    "envíela desde la laptop con «tht capturar --archivo».")
+
+    @app.errorhandler(captura.FormatoNoSoportado)
+    def error_formato(e):
+        return responder_error(415, str(e))
 
     def responder_error(codigo: int, mensaje: str):
         if request.path.startswith("/api/"):

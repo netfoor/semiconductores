@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}Captura guardada{% endblock %}
+{% block contenido %}
+<section class="seccion captura">
+  <h1>Captura guardada</h1>
+  <p class="entrada mono hash">{{ imagen }}</p>
+  {% if meta.tiene_gps %}
+  <p class="estado error">La foto original trae datos de ubicación (GPS). Se conserva sin modificar para no alterar su huella; desactive la ubicación en la cámara antes de las siguientes fotos.</p>
+  {% endif %}
+  <table class="tabla-captura">
+    <tbody>
+      <tr><th scope="row">Tarjeta y lado</th><td>{{ meta.tarjeta }} · {{ meta.lado }} · iluminación {{ meta.iluminacion }}</td></tr>
+      <tr><th scope="row">Tamaño</th><td class="num">{{ meta.ancho }} × {{ meta.alto }} px</td></tr>
+      <tr><th scope="row">Cámara</th><td>{{ meta.modelo_camara or "celular (el EXIF no trae el modelo)" }}</td></tr>
+      <tr><th scope="row">Original</th><td class="mono hash">{{ meta.original }}<br>SHA-256 {{ meta.original_sha256 }}</td></tr>
+      <tr><th scope="row">Responsable</th><td>{{ meta.responsable }}</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Siguiente paso</h2>
+  {% if disenos %}
+  <p>{% if disenos|length == 1 %}Inspeccione esta captura con el diseño de tarjeta que ya existe.{% else %}Hay varios diseños de tarjeta y esta captura no indica cuál es. Elija uno para inspeccionarla.{% endif %}</p>
+  <div class="acciones">
+    {% for d in disenos %}<a class="boton secundario" href="{{ url_for('pagina_inspeccionar', imagen=imagen, diseno=d, etiquetador=meta.responsable) }}">Inspeccionar con {{ d }}</a>{% endfor %}
+  </div>
+  {% else %}
+  <p>Todavía no hay un diseño de tarjeta. Para inspeccionar, primero cree uno con una foto de referencia de esta tarjeta y marque sus uniones (mejor en la laptop, con pantalla grande). Puede usar esta misma captura.</p>
+  <form method="post" action="{{ url_for('nueva_plantilla') }}">
+    <input type="hidden" name="imagen" value="{{ imagen }}">
+    <div class="campo"><label for="diseno">Nombre del diseño nuevo</label><input type="text" id="diseno" name="diseno" placeholder="practica-01" required pattern="[A-Za-z0-9_\-]+"></div>
+    <div class="acciones"><button class="boton" type="submit">Crear diseño con esta foto</button></div>
+  </form>
+  {% endif %}
+  <p class="al-pie-captura"><a class="boton secundario" href="{{ url_for('pagina_capturar') }}">Tomar otra foto</a></p>
+</section>
+{% endblock %}

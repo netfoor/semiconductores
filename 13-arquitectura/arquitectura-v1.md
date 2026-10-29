@@ -3,7 +3,7 @@ titulo: "Arquitectura del prototipo v1"
 tipo: especificacion
 estado: borrador
 creado: 2026-10-26
-actualizado: 2026-10-26
+actualizado: 2026-10-28
 autor: "Claude (IA)"
 revisado_por: []
 fuentes: [F-061, F-073, F-074]
@@ -38,9 +38,10 @@ Diseño técnico de la estación de inspección asistida (IC-01, D-011). Respond
 
 | Componente | Módulo | Qué hace |
 |---|---|---|
-| Captura | `captura.py` | Toma la foto (Picamera2, cámara USB o archivo), la guarda en PNG sin pérdida con nombre `T07_B_il1_<fecha>.png`, escribe sus metadatos y la agrega al manifiesto |
+| Captura | `captura.py` | Toma la foto (Picamera2, cámara USB, archivo o foto de celular), la guarda en PNG sin pérdida con nombre `T07_B_il1_<fecha>.png`, escribe sus metadatos y la agrega al manifiesto |
+| Captura por celular | `app.py` (`/capturar`), `captura.CamaraMemoria` | Recibe una foto JPEG del celular por la red local de la mesa, conserva el original y lo pasa por la misma captura (§7) |
 | Integridad | `manifiesto.py` | Huella SHA-256 de cada imagen cruda y verificación posterior |
-| Alineación | `plantilla.py` | ECC (correlación de intensidades, transformación euclidiana) sobre versiones reducidas; si no converge, puntos ORB con RANSAC |
+| Alineación | `plantilla.py` | Homografía con puntos SIFT y RANSAC (corrige escala y perspectiva de una foto a mano); si no reproduce bien la referencia, también ECC euclidiano (o ORB) y se elige la de mayor correlación con la referencia. Después, normalización de color (media y desviación por canal) contra la referencia (§8) |
 | Línea base | `linea_base.py` | Nueve características por recorte (brillo, áreas, componentes, circularidad, extensión, rugosidad) y clasificador de centroides |
 | Datos | `anotaciones.py`, `particion.py`, `datos.py` | Etiquetas por persona, kappa y consenso; partición por tarjeta con huella del conjunto de prueba |
 | Evaluación | `metricas.py` | Sensibilidad, falsas alarmas, Wilson, bootstrap por tarjeta, McNemar |
@@ -49,7 +50,7 @@ Diseño técnico de la estación de inspección asistida (IC-01, D-011). Respond
 
 ## 4. Flujo de una inspección
 
-1. El operador coloca la tarjeta en el soporte y captura.
+1. El operador coloca la tarjeta en el soporte y captura (cámara de la estación o celular, §7).
 2. La captura se alinea contra la referencia del diseño (`alineacion_s`).
 3. Se recorta cada unión con un margen de 15 % y se calculan sus características (`caracteristicas_s`).
 4. El clasificador sugiere una clase por unión y un puntaje de defecto (`clasificacion_s`).
@@ -59,10 +60,45 @@ Medición inicial con datos **sintéticos** en el contenedor de desarrollo (no e
 
 ## 5. Dónde se procesa (D-009)
 
-La arquitectura inicial es **local completa**: captura, inferencia, interfaz y registro en el mismo equipo, sin red (opción B o E de [[comparacion-nube-vs-edge]]). Es una hipótesis: EXP-003 la confirma o la descarta con la regla fijada en el protocolo (la opción más simple que cumpla latencia, operación sin internet y confidencialidad; la nube solo si lo local no cumple M4). La interfaz escucha en `127.0.0.1` por omisión, de modo que no queda expuesta a la red de la planta [F-074 §5].
+La arquitectura inicial es **local completa**: captura, inferencia, interfaz y registro en el mismo equipo, sin red (opción B o E de [[comparacion-nube-vs-edge]]). Es una hipótesis: EXP-003 la confirma o la descarta con la regla fijada en el protocolo (la opción más simple que cumpla latencia, operación sin internet y confidencialidad; la nube solo si lo local no cumple M4). La interfaz escucha en `127.0.0.1` por omisión, de modo que no queda expuesta a la red de la planta [F-074 §5]. La captura por celular (§7) agrega una red local **sin internet** entre el teléfono y la laptop; no cambia la opción: el procesamiento sigue en el mismo equipo.
 
 ## 6. Lo que falta
 
 - ~~Clasificador ligero~~ Hecho el 26 oct: red convolucional pequeña (PyTorch para entrenar, ONNX Runtime para inferir en la Pi), cinco semillas, modelo elegido por validación. Falta entrenarlo y evaluarlo con DS-01.
 - Soporte físico, iluminación difusa y cámara definitiva: resolución y distancia se fijan en la ficha del montaje.
 - Calibrar un umbral de puntaje con el conjunto de validación, si hace falta equilibrar M1 y M2 (la función `inspeccionar` ya acepta `umbral`).
+- Probar la captura por celular (§7) con teléfonos reales, Android e iPhone.
+
+## 7. Captura desde un celular (agregado el 2026-10-27)
+
+Componente para la jornada del 30 de octubre: un celular sirve de cámara sin instalar ninguna app. Bitácora: [[2026-10-27]]. Guía de operación: `prototipo/MESA.md`.
+
+```
+celular (navegador) ──HTTP, hotspot propio con contraseña, sin internet──▶ laptop Ubuntu
+  /capturar: <input type="file" capture="environment">                      tht servir --host 0.0.0.0
+                                                                            CamaraMemoria → captura.capturar
+                                                                            crudos/ + MANIFIESTO.csv → inspección
+```
+
+| Aspecto | Diseño | Tipo |
+|---|---|---|
+| Sin app | La página usa el selector de archivos con `capture="environment"`, que abre la cámara del sistema a resolución completa. No usa `getUserMedia`, que exige HTTPS; por eso funciona sobre HTTP en la red local | `#inferencia` (comportamiento documentado de los navegadores; falta probar en teléfonos reales) |
+| Una sola lógica de captura | `CamaraMemoria` decodifica el JPEG con `cv2.imdecode` y entra a `captura.capturar`: mismo nombre, mismo JSON, mismo manifiesto | `#hecho` (código y pruebas) |
+| Integridad del original (RA-04) | El JPEG se guarda sin modificar junto al PNG, con el mismo nombre y su propia huella. La huella del JPEG prueba lo que generó la cámara; la del PNG, la copia que se procesa | `#hecho` (pruebas) |
+| Orientación | OpenCV 5.0 aplica la orientación EXIF al decodificar; una prueba lo fija para detectar si una versión distinta lo cambia | `#hecho` (prueba del 27 oct) |
+| Metadatos | `camara: "celular"`, marca y modelo del EXIF (lector propio, sin Pillow), orientación, `tiene_gps` y User-Agent | `#hecho` |
+| Formatos | Solo JPEG, hasta 30 MB; HEIC se rechaza con instrucciones para el iPhone | `#hecho` |
+| Ubicación (GPS) | No se borra del original, para no alterar su huella; se marca en el JSON, la página avisa y la guía pide desactivar la ubicación de la cámara | Elección aprobada por Fortino al aprobar el plan |
+| Exposición en red (RA-02) | Solo en la estación local: con `en_linea=True` la ruta no existe y la demo pública no recibe fotos (D-011). `127.0.0.1` sigue siendo el valor por omisión; `0.0.0.0` solo con `make mesa` en un hotspot propio con contraseña [F-074 §5] | `#hecho` (pruebas) |
+| Contenedor | `make docker-mesa` usa la imagen de Railway con el comando `tht servir` en modo local, sin cambiar `wsgi.py` | `#hecho` (probado en la laptop de Fortino) |
+
+- `#inferencia` La subida por Wi-Fi agrega tiempo entre la captura y el resultado; EXP-003 tendría que medirlo aparte si se adopta la desviación propuesta en [[EXP-003-latencia-y-ubicacion]].
+- `#supuesto` Chrome en Android conserva el EXIF al subir y Safari en iPhone entrega JPEG; se verifica con teléfonos reales antes del 30 de octubre.
+
+## 8. Alineación por homografía y normalización de color (agregado el 2026-10-29)
+
+- `#hecho` (prueba de software del 29 oct con fotos simuladas) La alineación original (ECC euclidiano) supone un soporte fijo: corrige giro y desplazamiento, pero no escala ni perspectiva. Con una foto tomada a mano, los recortes caían fuera de las uniones.
+- `#hecho` La red de EXP-006 tolera desenfoque, JPEG y cambios multiplicativos de brillo, pero no un corrimiento del nivel de negro de ±20: en el mosaico bajó de 26 a 6 y 10 aciertos de 30. Igualar media y desviación de cada canal a las de la referencia lo recupera (23 a 27 de 30 según el caso).
+- Con ambos cambios, una foto simulada de 12 MP de la tarjeta-mosaico impresa, subida por `/capturar`, dio 26 de 30 clases correctas, igual que la imagen digital. Es una prueba de software, no un experimento: falta probar con fotos reales del celular.
+- La normalización también se aplica al construir ejemplos de entrenamiento (`datos.py`), para que entrenar e inspeccionar usen el mismo preprocesamiento. Los modelos de línea base entrenados antes del 29 oct deben reentrenarse (`make demo` lo hace).
+- Costo: unos 0.5 s de alineación por foto de 12 MP en el contenedor de desarrollo; en la Raspberry Pi 4 será mayor y se mide en EXP-003.
