@@ -1,9 +1,15 @@
 {% extends "base.html" %}
-{% block titulo %}Inspeccionar {{ imagen }}{% endblock %}
+{% block titulo %}Tarjeta {{ imagen.split('_')[0] }}{% endblock %}
 {% block contenido %}
-<section class="seccion">
-  <h1>Inspección asistida</h1>
-  <p class="entrada"><span class="mono">{{ imagen }}</span>, diseño {{ diseno }}. El sistema marca las uniones sospechosas; usted confirma o corrige cada una. La decisión final siempre es suya.</p>
+<section class="seccion cabeza-inspeccion">
+  <p class="antetitulo">Inspección · {{ diseno }}</p>
+  <h1>Tarjeta {{ imagen.split('_')[0] }}</h1>
+  <p class="entrada" id="quien"></p>
+  <div class="cifras-inspeccion" aria-live="polite">
+    <div><b id="n-revisar">…</b><span>por revisar</span></div>
+    <div><b id="n-ok">…</b><span>sin observaciones</span></div>
+    <div><b id="t-analisis">…</b><span>de análisis</span></div>
+  </div>
 </section>
 {% if not hay_modelo %}
 <div class="aviso-sintetico" role="alert"><p>No hay un modelo entrenado en esta carpeta. Para la línea base ejecute <code>uv run tht entrenar --datos {{ raiz }}</code>; para la red, <code>uv run --group cnn tht entrenar-red --datos {{ raiz }}</code>. Si aún no hay partición, antes ejecute <code>uv run tht particion --datos {{ raiz }}</code>. Luego recargue la página.</p></div>
@@ -11,19 +17,26 @@
 <div class="trabajo">
   <div class="lienzo"><canvas id="lienzo" aria-label="Tarjeta alineada con las uniones sospechosas"></canvas></div>
   <aside class="panel">
-    <div class="campo"><label for="persona">Operador</label><input type="text" id="persona" value="{{ request.args.get('etiquetador', operador) }}" autocomplete="off"></div>
-    <p class="num" id="resumen">Analizando la tarjeta…</p>
+    <input type="hidden" id="persona" value="{{ request.args.get('etiquetador', operador) }}">
+    <p id="resumen" class="resumen-inspeccion">Analizando la tarjeta…</p>
     <div class="lista-sospechas" id="lista"></div>
+    <div id="revision">
     <h3 id="titulo-union">Elija una unión marcada</h3>
-    <p class="nota" id="detalle"></p>
-    <div class="clases" role="group" aria-label="Decisión sobre la unión elegida">
+    <p id="detalle"></p>
+    <p class="pregunta-union">¿Cómo está esta unión?</p>
+    <div class="clases" role="group" aria-label="Condición de la unión elegida">
       {% for c in clases %}
       <button type="button" data-clase="{{ c }}"><span class="muestra {{ c }}" aria-hidden="true"></span><span>{{ nombres[c] }}</span><kbd>{{ loop.index }}</kbd></button>
       {% endfor %}
     </div>
-    <div class="acciones"><button class="boton secundario" id="todas">Mostrar todas las uniones</button></div>
+    </div>
+    <div class="terminada" id="terminada" hidden>
+      <b>Inspección terminada</b>
+      <p id="terminada-texto"></p>
+      <a class="boton" href="{{ url_for('pagina_capturar') if not en_linea else url_for('inicio') }}">{{ "Nueva inspección" if not en_linea else "Otra tarjeta" }}</a>
+    </div>
     <p class="estado" id="estado" role="status"></p>
-    <p class="nota" id="tiempos"></p>
+    <div class="acciones"><button class="enlace" id="todas">Ver todas las uniones</button></div>
   </aside>
 </div>
 {% endif %}
@@ -37,7 +50,14 @@
   const msg = document.getElementById("estado"), lista = document.getElementById("lista");
   const titulo = document.getElementById("titulo-union"), detalle = document.getElementById("detalle");
   const decididas = {};
-  let lz, resultados = [], verTodas = false, marcaTiempo = performance.now();
+  let lz, resultados = [], verTodas = false, marcaTiempo = performance.now(), inicio = performance.now();
+  // Inspector: el de la sesión del teléfono, si no vino en la dirección.
+  try {
+    const ins = JSON.parse(localStorage.getItem("inspector") || "null");
+    const campo = document.getElementById("persona");
+    if (!campo.value && ins) campo.value = ins.nombre;
+    document.getElementById("quien").textContent = campo.value ? `Inspecciona ${campo.value}` : "";
+  } catch (e) {}
 
   function dibujarUniones() {
     lz.uniones = resultados
@@ -56,37 +76,50 @@
     for (const r of sosp) {
       const b = document.createElement("button");
       b.type = "button";
-      b.innerHTML = `<span>${r.union_id}: ${NOMBRES[r.sugerencia]}</span><span class="num">${r.puntaje_defecto.toFixed(2)}</span>`;
+      const dec = decididas[r.union_id];
+      b.innerHTML = `<span><b>${r.union_id}</b> ${NOMBRES[dec || r.sugerencia]}</span><span>${dec ? "✓" : ""}</span>`;
       b.classList.toggle("elegida", lz.elegida === r.union_id);
       b.classList.toggle("resuelta", Boolean(decididas[r.union_id]));
       b.addEventListener("click", () => { lz.elegir(r.union_id); elegida(); });
       lista.appendChild(b);
     }
     const pendientes = sosp.filter((r) => !decididas[r.union_id]).length;
-    document.getElementById("resumen").textContent =
-      `${sosp.length} de ${resultados.length} uniones marcadas como sospechosas; ${pendientes} por revisar.`;
+    document.getElementById("n-revisar").textContent = pendientes;
+    document.getElementById("n-ok").textContent = resultados.length - sosp.length;
+    document.getElementById("resumen").textContent = sosp.length
+      ? `${sosp.length} de ${resultados.length} uniones por revisar.`
+      : `Las ${resultados.length} uniones se ven bien.`;
+    const fin = sosp.length > 0 && pendientes === 0;
+    document.getElementById("revision").hidden = fin || sosp.length === 0;
+    document.getElementById("terminada").hidden = !(fin || sosp.length === 0);
+    if (fin || sosp.length === 0) {
+      const corregidas = sosp.filter((r) => decididas[r.union_id] && decididas[r.union_id] !== r.sugerencia).length;
+      const seg = Math.round((performance.now() - inicio) / 1000);
+      document.getElementById("terminada-texto").textContent = sosp.length
+        ? `${sosp.length} uniones revisadas en ${seg} s` + (corregidas ? `, ${corregidas} corregidas.` : ", todas coincidieron con la sugerencia.")
+        : "No hubo uniones por revisar.";
+    }
   }
   function elegida() {
     const r = resultados.find((x) => x.union_id === lz.elegida);
     if (!r) return;
     titulo.textContent = `Unión ${r.union_id}`;
-    detalle.textContent = `Sugerencia del sistema: ${NOMBRES[r.sugerencia]} (puntaje de defecto ${r.puntaje_defecto.toFixed(2)}; sirve para ordenar la revisión, no es una probabilidad calibrada).` +
-      (decididas[r.union_id] ? ` Su decisión: ${NOMBRES[decididas[r.union_id]]}.` : "");
+    detalle.innerHTML = `El sistema sugiere <b>${NOMBRES[r.sugerencia]}</b>.` +
+      (decididas[r.union_id] ? ` Revisión: <b>${NOMBRES[decididas[r.union_id]]}</b>.` : "");
     document.querySelectorAll(".clases button").forEach((b) => b.classList.toggle("activa", decididas[r.union_id] === b.dataset.clase));
     pintarLista(); dibujarUniones();
   }
   async function decidir(clase) {
     const r = resultados.find((x) => x.union_id === lz.elegida);
-    if (!r) { estado(msg, "Primero elija una unión marcada.", true); return; }
-    const persona = document.getElementById("persona").value.trim();
-    if (!persona) { estado(msg, "Escriba el nombre del operador.", true); return; }
+    if (!r) { estado(msg, "Elija una unión marcada.", true); return; }
+    const persona = document.getElementById("persona").value.trim() || "Inspector";
     const ahora = performance.now();
     try {
       await enviar("{{ url_for('api_decision') }}", { operador: persona, imagen: "{{ imagen }}", union_id: r.union_id,
         sugerencia: r.sugerencia, puntaje: r.puntaje_defecto, decision: clase, segundos: (ahora - marcaTiempo) / 1000 });
       marcaTiempo = ahora;
       decididas[r.union_id] = clase;
-      estado(msg, `Registrado: ${r.union_id} como ${NOMBRES[clase]}.`);
+      estado(msg, "");
       const sig = resultados.filter((x) => x.sospechosa && !decididas[x.union_id]).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto)[0];
       if (sig) lz.elegir(sig.union_id);
       elegida();
@@ -100,7 +133,7 @@
   });
   document.getElementById("todas").addEventListener("click", (e) => {
     verTodas = !verTodas;
-    e.target.textContent = verTodas ? "Mostrar solo las sospechosas" : "Mostrar todas las uniones";
+    e.target.textContent = verTodas ? "Ver solo las marcadas" : "Ver todas las uniones";
     dibujarUniones();
   });
 
@@ -110,13 +143,11 @@
       resultados = d.resultados;
       lz = new Lienzo(document.getElementById("lienzo"), "{{ url_for('img_alineada', imagen=imagen, diseno=diseno) }}", d.ancho, d.alto);
       lz.alElegir = () => elegida();
-      document.getElementById("tiempos").textContent =
-        `Modelo ${d.modelo}. Procesamiento local: ${(d.tiempos.total_s * 1000).toFixed(0)} ms (alineación ${(d.tiempos.alineacion_s * 1000).toFixed(0)} ms, ` +
-        `recortes ${(d.tiempos.recortes_s * 1000).toFixed(0)} ms, clasificación ${(d.tiempos.clasificacion_s * 1000).toFixed(0)} ms).`;
+      document.getElementById("t-analisis").textContent = `${d.tiempos.total_s.toFixed(1)} s`;
       return lz.listo;
     })
     .then(() => {
-      marcaTiempo = performance.now();
+      marcaTiempo = inicio = performance.now();
       const primera = resultados.filter((x) => x.sospechosa).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto)[0];
       if (primera) lz.elegir(primera.union_id);
       pintarLista(); elegida(); dibujarUniones();

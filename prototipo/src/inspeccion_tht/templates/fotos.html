@@ -3,7 +3,7 @@
 {% block contenido %}
 <section class="seccion">
   <h1>Fotos reales, clasificadas en vivo</h1>
-  <p class="entrada">{{ fotos.fotos|length }} uniones through-hole del conjunto de prueba de PCBSPDefect. La red no vio ninguna al entrenar. Elija una foto: el servidor la clasifica en ese momento y muestra qué tan segura está la red de cada clase.</p>
+  <p class="entrada">Uniones reales que el sistema nunca vio al entrenar. Toca una para ver qué condición detecta y con cuánta seguridad.</p>
   <div class="alterna" role="group" aria-label="Filtrar por clase real">
     <button type="button" class="activa" data-filtro="todas">Todas</button>
     {% for c in ["aceptable", "insuficiente", "puente", "sin_soldar", "exceso"] %}<button type="button" data-filtro="{{ c }}">{{ nombres[c] }}</button>{% endfor %}
@@ -18,7 +18,7 @@
     {% endfor %}
   </div>
   <aside class="panel" aria-live="polite">
-    <h3 id="titulo-foto">Elija una foto</h3>
+    <h3 id="titulo-foto">Toca una foto</h3>
     <img id="foto-grande" class="foto-grande" alt="" hidden>
     <p id="veredicto" class="veredicto"></p>
     <div id="barras" class="barras"></div>

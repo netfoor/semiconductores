@@ -22,10 +22,12 @@ def cliente(datos):
 
 
 def test_inicio_avisa_que_es_sintetico(cliente):
+    """D-015: el aviso grande pasa a una etiqueta «Demostración» que lleva al anexo, que lo explica."""
     r = cliente.get("/")
     assert r.status_code == 200
     html = r.get_data(as_text=True)
-    assert "Datos sintéticos" in html and "T01_B_il1_SINTETICO.png" in html
+    assert 'class="etiqueta-demo" href="/acerca"' in html and "T01_B_il1_SINTETICO.png" in html
+    assert "generaron por computadora" in cliente.get("/acerca").get_data(as_text=True)
 
 
 def test_paginas_principales(cliente):

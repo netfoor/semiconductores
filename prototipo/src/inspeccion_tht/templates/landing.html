@@ -45,7 +45,7 @@
       <rect x="16" y="192" width="48" height="48" class="marca-svg c-exceso"/>
       <circle cx="40" cy="216" r="17" class="metal-svg"/>
     </svg>
-    <p class="nota">Ilustración: el sistema enmarca tres uniones sospechosas; la persona confirma o corrige cada una.</p>
+    <p class="nota">El sistema enmarca tres uniones sospechosas; el inspector revisa solo esas.</p>
   </div>
 </section>
 
@@ -67,7 +67,7 @@
     <li><b>Alinear</b><span>La foto se ajusta a una plantilla del diseño de tarjeta, aunque la tarjeta quede unos milímetros movida.</span></li>
     <li><b>Recortar</b><span>Cada unión se recorta según la plantilla, sin necesidad de un detector.</span></li>
     <li><b>Clasificar</b><span>Una red convolucional pequeña (ONNX) sugiere la clase: aceptable, insuficiente, puente, sin soldar, exceso o fría.</span></li>
-    <li><b>Decide la persona</b><span>La pantalla muestra solo las sospechosas, ordenadas; el operador confirma o corrige.</span></li>
+    <li><b>Decide la persona</b><span>El inspector revisa solo las marcadas. Cada decisión queda registrada y servirá para mejorar el modelo de su planta.</span></li>
   </ol>
 </section>
 
@@ -131,7 +131,7 @@
   <div class="dos-columnas">
     <div>
       <h3>Equipo</h3>
-      <p>Raspberry Pi 5, cámara de al menos 12 MP, iluminación difusa y un soporte de altura fija. El prototipo de la mesa no lleva herramientas calientes ni alta tensión.</p>
+      <p>Raspberry Pi (una Pi 4 en la demostración), cámara de al menos 12 MP o un celular, iluminación difusa y un soporte de altura fija. El prototipo de la mesa no lleva herramientas calientes ni alta tensión.</p>
     </div>
     <div>
       <h3>Programa</h3>
@@ -139,7 +139,17 @@
     </div>
   </div>
   <p><a class="boton" href="{{ url_for('inicio') }}">Abrir la demostración</a></p>
-  <p class="nota">La demostración en línea usa tarjetas sintéticas generadas por computadora; sirve para ver cómo se usa, no para medir el desempeño.</p>
+  <p class="nota">La demostración usa tarjetas de ejemplo. <a href="{{ url_for('acerca') }}">Acerca de la demostración</a>.</p>
+</section>
+
+<section class="bloque" id="rumbo">
+  <h2>Hacia dónde va</h2>
+  <p class="entrada">El inspector no es un paso que sobra: es quien entrena al sistema mientras este se gana la confianza con datos.</p>
+  <ol class="pasos">
+    <li><b>Hoy: apoyo al inspector</b><span>En lugar de revisar cada unión a ojo, revisa primero las que el sistema marca. Medimos si así detecta más y en menos tiempo.</span></li>
+    <li><b>Piloto en una planta</b><span>Cada empresa tiene su propio modelo, entrenado con sus tarjetas. Cada confirmación o corrección del inspector es un ejemplo nuevo.</span></li>
+    <li><b>Automatización gradual</b><span>Cuando los datos de esa planta lo respalden, las uniones claramente buenas pasan solas y solo las dudosas llegan a la persona, con auditorías por muestreo.</span></li>
+  </ol>
 </section>
 
 <section class="bloque" id="estado">
@@ -156,7 +166,6 @@
 <section class="bloque banda" id="equipo">
   <h2>Equipo</h2>
   <p>Fortino Romero Mantilla (líder del proyecto), Israel Jesús García Osorio y María José de la Rosa Hernández, estudiantes de la Universidad Tecnológica de Puebla. Asesor institucional: José Francisco Espinosa Garita.</p>
-  <p class="nota">El desarrollo contó con apoyo de herramientas de inteligencia artificial, declarado en el protocolo del proyecto.</p>
 </section>
 
 <section class="bloque fuentes" id="fuentes">

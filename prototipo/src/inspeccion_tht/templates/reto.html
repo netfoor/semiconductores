@@ -2,15 +2,14 @@
 {% block titulo %}Reto{% endblock %}
 {% block contenido %}
 <section class="seccion">
-  <h1>¿Lo detectas tú?</h1>
-  <p class="entrada">Diez fotos reales de uniones through-hole. Diga qué ve en cada una y al final compare su resultado con el de la red, que clasificó las mismas fotos.</p>
-  <p class="nota">Sus respuestas se quedan en este navegador: no se envían ni se guardan en ningún lado.</p>
+  <h1>¿Puedes ver lo que ve la red?</h1>
+  <p class="entrada">Diez uniones reales. Clasifica cada una y al final compara tu resultado con el del sistema.</p>
 </section>
 <div class="reto" id="reto">
   <div class="reto-foto"><img id="foto" alt="Foto de una unión soldada" width="280" height="280"><p class="num nota" id="avance"></p></div>
   <div class="reto-panel">
     <h3 id="pregunta">¿Cómo está esta unión?</h3>
-    <div class="clases" role="group" aria-label="Su respuesta">
+    <div class="clases" role="group" aria-label="Tu respuesta">
       {% for c in ["aceptable", "insuficiente", "puente", "sin_soldar", "exceso"] %}
       <button type="button" data-clase="{{ c }}"><span class="muestra {{ c }}" aria-hidden="true"></span><span>{{ nombres[c] }}</span><kbd>{{ loop.index }}</kbd></button>
       {% endfor %}
@@ -22,11 +21,11 @@
 <section class="seccion" id="final" hidden>
   <h2>Resultado</h2>
   <div class="cifras">
-    <div><b class="num" id="tus-aciertos"></b><span>sus aciertos de clase</span></div>
+    <div><b class="num" id="tus-aciertos"></b><span>tus aciertos</span></div>
     <div><b class="num" id="red-aciertos"></b><span>aciertos de la red en las mismas fotos</span></div>
-    <div><b class="num" id="tus-defectos"></b><span>defectos que usted detectó (cualquier clase distinta de aceptable)</span></div>
+    <div><b class="num" id="tus-defectos"></b><span>defectos que detectaste</span></div>
   </div>
-  <p>La inspección visual cansa y varía de persona a persona: en la mayoría de las tareas se escapan entre 20 % y 30 % de los defectos (See, 2015). Por eso el sistema no decide solo: marca y la persona confirma.</p>
+  <p>La inspección visual cansa y varía de persona a persona: en la mayoría de las tareas se escapan entre 20 % y 30 % de los defectos (See, 2015). Por eso el sistema no busca reemplazar al inspector, sino señalarle dónde mirar.</p>
   <div class="acciones"><a class="boton" href="{{ url_for('reto') }}">Intentar con otras 10</a><a class="boton secundario" href="{{ url_for('fotos_reales') }}">Ver todas las fotos</a></div>
 </section>
 {% include "_atribucion.html" %}

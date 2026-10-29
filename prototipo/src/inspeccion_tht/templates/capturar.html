@@ -1,98 +1,83 @@
 {% extends "base.html" %}
-{% block titulo %}Capturar{% endblock %}
+{% block titulo %}Nueva inspección{% endblock %}
 {% block contenido %}
-<section class="seccion captura">
-  <h1>Capturar desde el celular</h1>
-  <p class="entrada">La foto viaja por la red local de la mesa a esta estación, que la guarda sin modificar junto con una copia PNG, sus metadatos y su huella. No sale a internet.</p>
+<section class="seccion inspeccion-nueva">
+  <div class="sesion" id="sesion" hidden>
+    <span class="avatar" id="avatar" aria-hidden="true"></span>
+    <div><b id="sesion-nombre"></b><small id="sesion-turno"></small></div>
+    <button class="enlace" type="button" id="cambiar">Cambiar</button>
+  </div>
 
-  <form method="post" action="{{ url_for('subir_captura') }}" enctype="multipart/form-data" id="forma-captura">
-    <div class="dos-campos">
-      <div class="campo">
-        <label for="tarjeta">Tarjeta</label>
-        <input type="text" id="tarjeta" name="tarjeta" required pattern="[Tt][0-9]{2,3}" placeholder="T07"
-               autocapitalize="characters" autocomplete="off" title="T seguido de 2 o 3 dígitos, por ejemplo T07">
-      </div>
-      <div class="campo">
-        <label for="iluminacion">Iluminación</label>
-        <input type="text" id="iluminacion" name="iluminacion" required pattern="[0-9A-Za-z]{1,10}" value="1"
-               inputmode="numeric" autocomplete="off" title="Número de la configuración de luz, por ejemplo 1">
-      </div>
-    </div>
+  <div id="elegir" hidden>
+    <h1>¿Quién inspecciona?</h1>
+    <p class="entrada">Elija su perfil para empezar el turno.</p>
+    <ul class="perfiles">
+      {% for o in operadores %}
+      <li><button type="button" class="perfil" data-nombre="{{ o.nombre }}" data-turno="{{ o.turno }} · {{ o.estacion }}">
+        <span class="avatar" aria-hidden="true">{{ (o.nombre.split()[0][0] ~ (o.nombre.split()[-1][0] if o.nombre.split()|length > 1 else ''))|upper }}</span>
+        <span><b>{{ o.nombre }}</b><small>{{ o.turno }} · {{ o.estacion }}</small></span>
+      </button></li>
+      {% endfor %}
+    </ul>
+  </div>
 
-    <fieldset class="campo lados">
-      <legend>Lado</legend>
-      <label><input type="radio" name="lado" value="B" checked> B · soldadura</label>
-      <label><input type="radio" name="lado" value="A"> A · componentes</label>
-    </fieldset>
-
+  <form method="post" action="{{ url_for('subir_captura') }}" enctype="multipart/form-data" id="forma-captura" hidden>
+    <h1>Nueva inspección</h1>
+    <p class="entrada">Coloque la tarjeta con el lado de soldadura hacia arriba y tome la foto completa.</p>
+    <input type="hidden" name="responsable" id="responsable">
+    <input type="hidden" name="lado" value="B">
+    <input type="hidden" name="iluminacion" value="1">
+    {% if disenos|length > 1 %}
     <div class="campo">
-      <label for="responsable">Responsable</label>
-      <input type="text" id="responsable" name="responsable" required placeholder="Nombre, por ejemplo fortino" autocomplete="off">
+      <label for="diseno">Modelo de tarjeta</label>
+      <select id="diseno" name="diseno">{% for d in disenos %}<option>{{ d }}</option>{% endfor %}</select>
     </div>
-
-    <div class="campo">
-      <label for="diseno">Diseño de tarjeta <span class="nota">(opcional)</span></label>
-      <select id="diseno" name="diseno">
-        <option value="">Sin diseño todavía</option>
-        {% for d in disenos %}<option>{{ d }}</option>{% endfor %}
-      </select>
-    </div>
-
-    <div class="campo">
-      <label for="nota">Nota <span class="nota">(opcional)</span></label>
-      <input type="text" id="nota" name="nota" autocomplete="off" placeholder="Por ejemplo: reflejo en la esquina">
-    </div>
-
-    <div class="campo">
-      <span class="etiqueta-campo">Foto</span>
-      <div class="acciones fotos-entrada">
-        <label class="boton" for="foto-camara">Tomar foto</label>
-        <label class="boton secundario" for="foto-galeria">Elegir de la galería</label>
-      </div>
-      <input class="archivo-oculto" type="file" id="foto-camara" name="foto" accept="image/*" capture="environment">
-      <input class="archivo-oculto" type="file" id="foto-galeria" name="foto" accept="image/jpeg,image/*">
-      <p class="estado" id="elegida" aria-live="polite">Ninguna foto elegida.</p>
-      <p class="nota">«Elegir de la galería» sirve para fotos tomadas con una app de cámara en modo manual. Solo JPEG, hasta {{ limite_mb }} MB; en iPhone, use el formato «Más compatible». Si la cámara guarda la ubicación, desactívela antes de fotografiar.</p>
-    </div>
-
-    <div class="acciones">
-      <button class="boton" type="submit" id="enviar">Guardar captura</button>
-    </div>
+    {% elif disenos %}
+    <input type="hidden" name="diseno" value="{{ disenos[0] }}">
+    <p class="modelo-tarjeta">Modelo de tarjeta: <b>{{ disenos[0] }}</b></p>
+    {% endif %}
+    <label class="boton boton-foto" for="foto">Tomar foto</label>
+    <input class="archivo-oculto" type="file" id="foto" name="foto" accept="image/*" capture="environment">
   </form>
+
+  <div class="analizando" id="analizando" hidden role="status">
+    <span class="giro" aria-hidden="true"></span>
+    <b>Analizando la tarjeta…</b>
+  </div>
 </section>
 {% endblock %}
 {% block scripts %}
 <script>
-  // Recuerda tarjeta, lado, iluminación y responsable para la siguiente foto (solo en este teléfono).
-  const forma = document.getElementById("forma-captura");
-  const recordar = ["tarjeta", "iluminacion", "responsable", "diseno"];
-  try {
-    for (const n of recordar) { const v = localStorage.getItem("captura-" + n); if (v) forma.elements[n].value = v; }
-    const lado = localStorage.getItem("captura-lado"); if (lado) forma.querySelector(`[name=lado][value=${lado}]`).checked = true;
-  } catch (e) {}
+  // Sesión del inspector: se elige una vez y se recuerda en este teléfono.
+  const $ = (id) => document.getElementById(id);
+  const leer = () => { try { return JSON.parse(localStorage.getItem("inspector") || "null"); } catch (e) { return null; } };
+  const guardar = (v) => { try { v ? localStorage.setItem("inspector", JSON.stringify(v)) : localStorage.removeItem("inspector"); } catch (e) {} };
+  const iniciales = (n) => n.split(/\s+/).filter(Boolean).map((p, i, a) => (i === 0 || i === a.length - 1) ? p[0] : "").join("").toUpperCase();
 
-  const camara = document.getElementById("foto-camara"), galeria = document.getElementById("foto-galeria");
-  const elegida = document.getElementById("elegida");
-  function mostrar(desde, otro) {
-    if (desde.files.length) otro.value = "";  // una sola foto por envío
-    const f = desde.files[0];
-    elegida.textContent = f ? `${f.name} · ${(f.size / 1048576).toFixed(1)} MB` : "Ninguna foto elegida.";
-  }
-  camara.addEventListener("change", () => mostrar(camara, galeria));
-  galeria.addEventListener("change", () => mostrar(galeria, camara));
-
-  forma.addEventListener("submit", (ev) => {
-    if (!camara.files.length && !galeria.files.length) {
-      ev.preventDefault(); elegida.textContent = "Falta la foto."; elegida.classList.add("error"); return;
+  function mostrar() {
+    const ins = leer();
+    $("elegir").hidden = !!ins;
+    $("sesion").hidden = $("forma-captura").hidden = !ins;
+    if (ins) {
+      $("sesion-nombre").textContent = ins.nombre;
+      $("sesion-turno").textContent = ins.turno;
+      $("avatar").textContent = iniciales(ins.nombre);
+      $("responsable").value = ins.nombre;
     }
-    forma.elements.tarjeta.value = forma.elements.tarjeta.value.trim().toUpperCase();
-    try {
-      for (const n of recordar) localStorage.setItem("captura-" + n, forma.elements[n].value);
-      localStorage.setItem("captura-lado", forma.elements.lado.value);
-    } catch (e) {}
-    const b = document.getElementById("enviar"); b.disabled = true; b.textContent = "Enviando…";
+  }
+  document.querySelectorAll(".perfil").forEach((b) => b.addEventListener("click", () => {
+    guardar({nombre: b.dataset.nombre, turno: b.dataset.turno}); mostrar();
+  }));
+  $("cambiar").addEventListener("click", () => { guardar(null); mostrar(); });
+
+  // Al tomar la foto se envía sola.
+  $("foto").addEventListener("change", () => {
+    if (!$("foto").files.length) return;
+    $("forma-captura").hidden = true; $("sesion").hidden = true; $("analizando").hidden = false;
+    $("forma-captura").submit();
   });
-  // Al volver con el botón Atrás, el botón no debe quedar desactivado.
-  window.addEventListener("pageshow", () => { const b = document.getElementById("enviar"); b.disabled = false; b.textContent = "Guardar captura"; });
+  // Al volver con «Atrás», la pantalla queda lista para otra foto.
+  window.addEventListener("pageshow", () => { $("analizando").hidden = true; $("foto").value = ""; mostrar(); });
+  mostrar();
 </script>
 {% endblock %}

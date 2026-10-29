@@ -32,6 +32,8 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-012 | Integración de una tercera integrante: María José de la Rosa Hernández | **Adoptada** | 2026-10-26 | Equipo (comunicado por Fortino) |
 | D-013 | Autoría de los commits del prototipo | **Adoptada** | 2026-10-26 | Fortino |
 | D-014 | Usar PCBSPDefect (público, CC BY 4.0) como validación externa preliminar (EXP-006) y dejar abierta la demo en línea | **Adoptada** | 2026-10-26 | Fortino (demo abierta); Claude (IA) propone el conjunto |
+| D-015 | Interfaz centrada en el inspector: lo técnico y las declaraciones pasan a un anexo | **Adoptada** | 2026-10-29 | Fortino |
+| D-016 | El inspector sigue en el ciclo; ruta hacia la automatización gradual por planta (fuera del alcance de esta investigación) | **Adoptada** | 2026-10-29 | Fortino; Claude (IA) ordena la idea |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -154,3 +156,19 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 
 - **Datos:** sin tarjetas propias todavía, se usa el subconjunto b_dip de PCBSPDefect [F-080] para una validación preliminar (EXP-006). Se descartó SolDef_AI porque es de componentes SMD y los conjuntos de Hugging Face porque no declaran licencia. Las imágenes no se suben al repositorio: se descargan de Zenodo y se verifica su huella.
 - **Demo:** femeci.foor.dev queda sin contraseña porque solo tiene datos sintéticos y solo el jurado tendrá la liga (decisión de Fortino, 26 oct). No se suben ahí datos de terceros (D-011). Actualización (26 oct, sesión 6): las páginas Fotos reales, Reto y Experimentos muestran 60 fotos públicas de PCBSPDefect (CC BY 4.0, con atribución) y el modelo de EXP-006; siguen sin subirse imágenes de empresas.
+
+## D-015 · Interfaz centrada en el inspector (adoptada)
+
+- **Decisión (2026-10-29, Fortino):** la plataforma y la demostración muestran el sistema como lo usaría un inspector. Las aclaraciones técnicas, el uso de IA y el origen de los datos dejan las pantallas principales y pasan a una página «Acerca de la demostración», a la bitácora y al protocolo. Se reducen los pasos manuales (sesión de inspector, número de tarjeta automático, un solo botón para tomar la foto) y se cambia el tono de los textos a uno de presentación. Spec: [[spec-interfaz-v2]].
+- **Razón:** en una presentación pesa más la idea y su uso que la tecnología; los avisos grandes distraen de lo que el sistema hace. Los evaluadores tienen la bitácora y el protocolo.
+- **Salvaguardas que se mantienen (D-003, D-014):** la demostración se identifica con una etiqueta «Demostración» que lleva al anexo; nunca se presenta un dato sintético o público como propio; el crédito CC BY 4.0 de PCBSPDefect queda junto a sus fotos; el uso de IA sigue declarado en el protocolo y la bitácora.
+
+## D-016 · Humano en el ciclo y ruta hacia la automatización (adoptada)
+
+- **Pregunta que responde:** si el inspector sigue revisando, ¿de qué sirve el sistema? ¿No es la inspección manual con una capa más?
+- **Decisión (2026-10-29, idea de Fortino ordenada por Claude (IA)):** el inspector se mantiene en el ciclo porque hoy cumple dos funciones que el sistema no puede cubrir: garantizar la calidad mientras el modelo no ha demostrado ser confiable en esa planta, y producir, con cada confirmación o corrección, los ejemplos con los que el modelo de esa planta mejora. La ruta tiene tres fases:
+  1. **Apoyo (este proyecto).** El inspector deja de revisar el 100 % de las uniones con la misma atención y revisa primero las marcadas; cada decisión queda registrada. `#hipotesis` Así detecta más defectos y en menos tiempo que sin apoyo; se mide con M3 (EXP-005).
+  2. **Piloto por empresa (siguiente paso, con una planta colaboradora).** Cada empresa tiene su propio modelo, entrenado con sus tarjetas, porque los defectos, la iluminación y los diseños cambian de planta a planta. Las decisiones del inspector se vuelven etiquetas, sin un etiquetado aparte.
+  3. **Automatización gradual (fuera del alcance de esta investigación).** Cuando los datos de esa planta muestren un desempeño suficiente, con un umbral calibrado, las uniones con confianza muy alta pasan sin revisión y solo las dudosas llegan a la persona, con auditorías por muestreo. El inspector pasa de filtrar todo a supervisar los casos difíciles.
+- **Lo que no se afirma:** que el sistema ya sirve para desplegarse ni que ahorra tiempo; eso se mide. La observación exploratoria del 29 oct (la red de EXP-006 falla con una tarjeta de otra fuente) respalda que cada planta necesita su propio modelo.
+- **Dónde aparece:** sección «Hacia dónde va» de la página del proyecto; protocolo (trabajo futuro) y exposición, al actualizarlos.

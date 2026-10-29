@@ -4,6 +4,7 @@ No usa recursos de internet: todo se sirve desde esta carpeta.
 """
 
 import json
+import re
 import shutil
 import threading
 from dataclasses import asdict
@@ -23,6 +24,14 @@ from .registro import Registro
 
 LIMITE_FOTO_MB = 30
 
+# Inspectores de la estación (demostración). Se reemplazan con datos/operadores.json.
+OPERADORES = [
+    {"nombre": "Fortino Romero", "turno": "Turno matutino", "estacion": "Estación de revisión 1"},
+    {"nombre": "Israel García", "turno": "Turno matutino", "estacion": "Estación de revisión 1"},
+    {"nombre": "María José de la Rosa", "turno": "Turno matutino", "estacion": "Estación de revisión 1"},
+    {"nombre": "Evaluador invitado", "turno": "Visita", "estacion": "Estación de revisión 1"},
+]
+
 
 def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base", en_linea: bool = False) -> Flask:
     """`en_linea`: demostración pública en un servidor (cambia los textos que hablan de operar sin internet
@@ -41,6 +50,15 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
 
     def es_mosaico() -> bool:
         return (c.raiz / "LEEME_MOSAICO.txt").exists()
+
+    def operadores() -> list[dict]:
+        ruta = c.raiz / "operadores.json"
+        return json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else OPERADORES
+
+    def siguiente_tarjeta() -> str:
+        """Siguiente número de tarjeta libre (T01, T02...), para no pedírselo al inspector."""
+        usados = [int(m.group(1)) for d in c.crudos.glob("T*") if (m := re.fullmatch(r"T(\d{2,3})", d.name))]
+        return f"T{max(usados, default=0) + 1:02d}"
 
     if modelo_nombre not in clasificador.MODELOS:
         raise ValueError(f"Modelo desconocido: {modelo_nombre}")
@@ -74,7 +92,11 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
     @app.context_processor
     def comunes():
         return {"version": __version__, "sintetico": es_sintetico(), "clases": CLASES,
-                "nombres": NOMBRES, "mosaico": es_mosaico(), "operador": operador, "modelo_nombre": modelo_nombre, "en_linea": en_linea}
+                "nombres": NOMBRES, "mosaico": es_mosaico(), "demostracion": en_linea or es_sintetico() or es_mosaico(), "operador": operador, "modelo_nombre": modelo_nombre, "en_linea": en_linea}
+
+    @app.get("/acerca")
+    def acerca():
+        return render_template("acerca.html")
 
     @app.get("/salud")
     def salud():
@@ -271,27 +293,27 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
 
         @app.get("/capturar")
         def pagina_capturar():
-            return render_template("capturar.html", disenos=disenos(), limite_mb=LIMITE_FOTO_MB)
+            return render_template("capturar.html", disenos=disenos(), operadores=operadores())
 
         @app.post("/capturar")
         def subir_captura():
             fotos = [f for f in request.files.getlist("foto") if f and f.filename]
             if not fotos:
-                abort(400, "Falta la foto. Use «Tomar foto» o «Elegir de la galería».")
+                abort(400, "Falta la foto. Toque «Tomar foto».")
             if len(fotos) > 1:
                 abort(400, "Se recibieron dos fotos. Envíe solo una por captura.")
             f = request.form
             responsable = (f.get("responsable") or "").strip()
             if not responsable:
-                abort(400, "Falta el nombre de quien captura.")
+                abort(400, "Elija quién inspecciona.")
             diseno = (f.get("diseno") or "").strip()
             if diseno and diseno not in disenos():
                 abort(400, f"No existe el diseño {diseno}.")
             camara = captura.CamaraMemoria(fotos[0].read(), request.headers.get("User-Agent", ""))
             with candado:
                 try:
-                    ruta = captura.capturar(camara, c.crudos, (f.get("tarjeta") or "").strip().upper(),
-                                            (f.get("lado") or "").strip().upper(), (f.get("iluminacion") or "1").strip(),
+                    ruta = captura.capturar(camara, c.crudos, (f.get("tarjeta") or "").strip().upper() or siguiente_tarjeta(),
+                                            (f.get("lado") or "B").strip().upper(), (f.get("iluminacion") or "1").strip(),
                                             responsable, (f.get("nota") or "").strip(), diseno)
                 except FileExistsError:
                     abort(409, "Ya existe una captura con ese nombre (misma tarjeta, lado e iluminación en el mismo "
