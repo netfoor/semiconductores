@@ -45,15 +45,16 @@ def datos_uri(ruta: Path, tipo: str) -> str:
     return f"data:{tipo};base64,{base64.b64encode(ruta.read_bytes()).decode()}"
 
 
-def grafica(filas: list[dict], metas: dict) -> str:
+def grafica(filas: list[dict], metas: dict, fuente: str = "InterCartel, sans-serif",
+            etiqueta_w: int = 175, panel_w: int = 300, hueco: int = 45) -> str:
     """Dos paneles de puntos con IC (sensibilidad y falsas alarmas). Unidades del SVG: mm."""
-    etiqueta_w, panel_w, hueco, fila_h, cab = 175, 300, 45, 34, 30
+    fila_h, cab = 34, 30
     orden = [("oficial", "linea_base"), ("oficial", "red"), ("tarjeta", "linea_base"), ("tarjeta", "red")]
     por = {(f["particion"], f["modelo"]): f for f in filas}
     alto = cab + fila_h * 4 + 14 + 20
     ancho = etiqueta_w + 2 * panel_w + hueco + 8
     s = [f'<svg viewBox="0 0 {ancho} {alto}" width="{ancho}mm" height="{alto}mm" '
-         f'font-family="InterCartel, sans-serif" role="img" aria-label="Resultados de EXP-006">']
+         f'font-family="{fuente}" role="img" aria-label="Resultados de EXP-006">']
     paneles = [
         ("Sensibilidad", "sensibilidad", metas["sensibilidad_min"], "meta M1 ≥ 0.90", "más alto es mejor"),
         ("Falsas alarmas", "falsas_alarmas", metas["falsas_alarmas_max"], "meta M2 ≤ 0.15", "más bajo es mejor"),
