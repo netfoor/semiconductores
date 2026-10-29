@@ -29,7 +29,7 @@ Idea de Fortino (29 oct), en la línea de D-015: la página principal de femeci.
 | L1 | Portada | «Una segunda mirada para cada soldadura» y una captura del celular con la inspección | Pendiente (se conserva la actual) |
 | L2 | **Del diseño a la tarjeta revisada** (recorrido) | Seis pasos con una tarjeta en 3D cuyas capas se separan: 1 tarjeta desnuda (sustrato, cobre, máscara); 2 montaje superficial (SMD): pasta, colocación automática y horno, lo inspeccionan máquinas (AOI); 3 montaje through-hole (THT): las patillas atraviesan la tarjeta; 4 soldadura por ola o a mano, del lado inferior; 5 **inspección, donde trabaja nuestra estación** (barrido y uniones marcadas); 6 prueba eléctrica y envío. Corte transversal THT frente a SMD en los pasos 2 y 3 | Hecho (v2-3) |
 | L3 | El problema | Breve, con la cifra de See (2015) | Se conserva, se acorta |
-| L4 | **La estación en uso** | Capturas del celular en secuencia: elegir perfil, tomar foto, analizando, inspección, revisión, inspección terminada | Hecho (v2-4) |
+| L4 | **La estación en uso** | Capturas del celular en secuencia: elegir perfil, tomar foto, analizando, inspección, revisión, inspección terminada; marco de teléfono en CSS (sin imágenes de terceros); se regeneran con `prototipo/herramientas/capturas_uso.js` | Hecho (v2-4) |
 | L5 | Resultados | Gráfica de EXP-006 con mejor presentación: cifras grandes y una vista de «en qué se equivoca» | Pendiente (se conserva la actual) |
 | L6 | Hacia dónde va | Las tres fases de D-016 | Hecho |
 | L7 | Equipo y fuentes | Se conserva | Hecho |
