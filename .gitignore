@@ -14,3 +14,6 @@ __pycache__/
 
 # Nota: los datos crudos pesados (imágenes, videos) se decidirán al definir el dataset
 # (posible Git LFS o almacenamiento externo con hash registrado en 14-dataset/).
+
+# HTML intermedio de la guía de la jornada
+16-documentacion-final/jornada/guia.html
