@@ -17,7 +17,7 @@ Lista viva: se actualiza en cada sesión. Lo terminado se marca con la fecha y s
 
 | # | Pendiente | Responsable | Estado |
 |---|---|---|---|
-| 1 | Revisar en local la interfaz v2 (rama `claude/modest-mendel-05zfor`) y decir si se fusiona a main | Fortino | Pendiente |
+| 1 | Revisar en local la interfaz v2 y fusionar a main | Fortino | Hecho 29 oct (PR #13) |
 | 2 | Recibir la Raspberry Pi (14:20): revisar `uname -m` = `aarch64` y Python 3.11–3.13 (guía §2) | Fortino | Pendiente |
 | 3 | `make paquete-pi` en la laptop y copiar `paquete-pi/` a la USB | Fortino | Pendiente |
 | 4 | Instalar y probar en la Pi: `bash instalar.sh` y `bash probar.sh`; anotar el tiempo medido | Fortino, Israel | Pendiente |
@@ -35,7 +35,18 @@ Lista viva: se actualiza en cada sesión. Lo terminado se marca con la fecha y s
 | 11 | Historial de inspecciones de la estación | P2 | Pendiente |
 | 12 | Pantalla de la laptop como tablero de la estación mientras el celular captura | P2 | Pendiente |
 | 13 | Revisar textos de Experimentos con el mismo tono (la página es para evaluadores; se deja técnica por ahora) | P2 | Pendiente |
-| 14 | Fusionar a main y comprobar femeci.foor.dev | P1 | Tras la revisión de Fortino |
+| 14 | Fusionar a main y comprobar femeci.foor.dev | P1 | Fusionado 29 oct; falta comprobar el despliegue |
+
+## Página del proyecto v2 (spec-landing-v2)
+
+| # | Pendiente | Prioridad | Estado |
+|---|---|---|---|
+| 18 | L2: recorrido «Del diseño a la tarjeta revisada» con la tarjeta en capas 3D y la barra de proceso | P1 | Hecho 29 oct (rama; falta tu revisión) |
+| 19 | L2: corte transversal THT frente a SMD | P1 | Hecho 29 oct (rama) |
+| 20 | L4: «La estación en uso» con capturas reales del celular | P1 | Pendiente |
+| 21 | L1: portada con captura del celular | P2 | Pendiente |
+| 22 | L5: mejor presentación de resultados (en qué se equivoca cada modelo) | P2 | Pendiente |
+| 23 | L3: acortar «El problema» | P2 | Pendiente |
 
 ## Para la exposición (30 de octubre)
 
