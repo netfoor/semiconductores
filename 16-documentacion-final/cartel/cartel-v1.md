@@ -1,7 +1,7 @@
 ---
 titulo: "Cartel v1 para la jornada (90 x 120 cm)"
 tipo: entregable
-estado: borrador
+estado: sustituido
 creado: 2026-10-26
 actualizado: 2026-10-26
 autor: "Claude (IA)"
@@ -11,6 +11,8 @@ tags: [femeci, cartel, jornada]
 ---
 
 # Cartel v1 para la jornada
+
+> Sustituido por [[triptico-v1]] (150 x 120 cm), según las recomendaciones de la SECIHTI Puebla del 26 de octubre.
 
 - **Archivo para imprimir:** `cartel-v1.pdf`, una página de 900 x 1200 mm (vertical, convocatoria §7.2), con fuentes incrustadas. Vista previa: `cartel-v1-vista.png`.
 - **Cómo se genera:** `uv run --no-project --with segno --with pillow python 16-documentacion-final/cartel/build_cartel.py`. Las cifras salen de `resultados.json` de EXP-006, no se escriben a mano, así que el cartel coincide con el protocolo (§8.1) y con femeci.foor.dev.
