@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -60,7 +61,7 @@ body {{ width: 1500mm; height: 1200mm; font-family: {FUENTE}; color: var(--tinta
 .titulo h1 span {{ color: var(--marca); }}
 .titulo p {{ margin: 5mm auto 0; font-size: 12.5mm; color: var(--tinta-2); max-width: 1250mm; }}
 .paneles {{ flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; min-height: 0; }}
-.panel {{ padding: 18mm 28mm 16mm; display: flex; flex-direction: column; gap: 24mm; min-height: 0; overflow: hidden; }}
+.panel {{ font-size: 15mm; padding: 18mm 28mm 16mm; display: flex; flex-direction: column; justify-content: space-between; gap: 14mm; min-height: 0; overflow: hidden; }}
 .panel + .panel {{ border-left: 0.6mm dashed var(--linea); }}
 h2 {{ font-size: 23mm; margin: 0 0 3mm; color: var(--acento); line-height: 1.1; }}
 p {{ margin: 0 0 3mm; }}
@@ -92,9 +93,9 @@ figcaption b {{ color: var(--tinta-2); }}
 .leyenda .circulo {{ width: 6.5mm; height: 6.5mm; background: {MAGENTA}; border-radius: 50%; }}
 .grafica svg {{ width: 100%; height: auto; display: block; }}
 .aviso {{ font-weight: 700; }}
-.refs {{ font-size: 10.6mm; line-height: 1.3; color: var(--tinta-2); }}
+.refs {{ font-size: 8mm; line-height: 1.3; color: var(--tinta-2); }}
 .refs p {{ margin: 0 0 2mm; padding-left: 6mm; text-indent: -6mm; }}
-.nota-ia {{ font-size: 11mm; color: var(--tinta-2); margin-top: auto; line-height: 1.3; }}
+.nota-ia {{ font-size: 8.6mm; color: var(--tinta-2); line-height: 1.3; }}
 </style></head>
 <body>
 <div class="motivo" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -157,7 +158,7 @@ figcaption b {{ color: var(--tinta-2); }}
   </div>
   <figure class="inspeccion">
     <img src="{inspeccion}" alt="Interfaz del prototipo con las uniones sospechosas marcadas por clase">
-    <figcaption><b>Figura 2.</b> El prototipo marca las uniones sospechosas. Captura de elaboración propia (foto simulada); fotos de PCBSPDefect, CC BY 4.0.</figcaption>
+    <figcaption><b>Figura 2.</b> El prototipo marca las uniones sospechosas. Captura de elaboración propia (foto simulada); fotos de PCBSPDefect, CC&nbsp;BY&nbsp;4.0.</figcaption>
   </figure>
   <div>
     <h2>Creatividad e innovación</h2>
@@ -175,20 +176,20 @@ figcaption b {{ color: var(--tinta-2); }}
     <p>622 uniones reales de un conjunto público (Tsang et al., 2023).</p>
   </div>
   <div class="cifras">
-    <div><div class="cifra">{f2(red["sensibilidad"])}</div><div class="cifra-pie">sensibilidad (línea base: {f2(lb["sensibilidad"])})</div></div>
-    <div><div class="cifra">{f2(red["falsas_alarmas"])}</div><div class="cifra-pie">falsas alarmas (línea base: {f2(lb["falsas_alarmas"])})</div></div>
+    <div><div class="cifra">{f2(red["sensibilidad"])}</div><div class="cifra-pie">sensibilidad<br>(línea base: {f2(lb["sensibilidad"])})</div></div>
+    <div><div class="cifra">{f2(red["falsas_alarmas"])}</div><div class="cifra-pie">falsas alarmas<br>(línea base: {f2(lb["falsas_alarmas"])})</div></div>
   </div>
   <figure class="grafica">
     <div class="leyenda"><span><i class="cuadro"></i>Línea base clásica</span><span><i class="circulo"></i>Red convolucional</span></div>
     {grafica(r["filas"], r["metas"], FUENTE, etiqueta_w=92, panel_w=125, hueco=24, nota=False)}
-    <figcaption><b>Figura 3.</b> Punto: valor medido; línea: intervalo de confianza de 95 %. Gráfica de elaboración propia.</figcaption>
+    <figcaption><b>Figura 3.</b> Punto: valor medido; línea: intervalo de confianza de 95&nbsp;%. Gráfica de elaboración propia.</figcaption>
   </figure>
   <div>
     <h2>Conclusiones</h2>
     <ul>
       <li>La red cumple M1; M2 aún no se puede afirmar (intervalo hasta {f2(red["falsas_alarmas_ic"][1])}).</li>
       <li>La visión clásica no basta.</li>
-      <li>Falta medir con tarjetas propias y en la Raspberry Pi 4.</li>
+      <li>Falta medir con tarjetas propias, en la Raspberry&nbsp;Pi&nbsp;4.</li>
     </ul>
   </div>
   <div class="refs">
@@ -203,6 +204,52 @@ figcaption b {{ color: var(--tinta-2); }}
 </section>
 </main>
 </body></html>"""
+
+
+def escalar(doc: str, k: float) -> str:
+    """Multiplica por `k` las medidas en mm del estilo de los paneles (letra, márgenes y espacios)."""
+    ini, fin = doc.index(".paneles {"), doc.index("</style>")
+    bloque = re.sub(r"(\d+(?:\.\d+)?)mm", lambda m: f"{float(m.group(1)) * k:.2f}mm", doc[ini:fin])
+    return doc[:ini] + bloque + doc[fin:]
+
+
+MEDIR = r"""
+const {chromium} = require('playwright');
+(async () => {
+  const [html] = process.argv.slice(2);
+  const b = await chromium.launch();
+  const p = await b.newPage({viewport: {width: 5669, height: 4535}});
+  await p.goto('file://' + html);
+  await p.evaluate(() => document.fonts.ready);
+  // Altura natural del contenido de cada panel (sin repartir el espacio sobrante) / altura disponible
+  const r = await p.evaluate(() => [...document.querySelectorAll('.panel')].map(e => {
+    e.style.justifyContent = 'flex-start';
+    const cs = getComputedStyle(e), hijos = [...e.children];
+    const ult = hijos[hijos.length - 1].getBoundingClientRect(), top = e.getBoundingClientRect().top;
+    return (ult.bottom - top + parseFloat(cs.paddingBottom)) / e.clientHeight;
+  }));
+  console.log(JSON.stringify(r));
+  await b.close();
+})();
+"""
+
+
+def ajustar(doc: str, ruta: Path) -> tuple[str, float]:
+    """Escala más grande con la que ningún panel se desborda (búsqueda binaria)."""
+    script = AQUI / ".medir-triptico.js"
+    script.write_text(MEDIR, encoding="utf-8")
+    try:
+        def lleno(k: float) -> float:
+            ruta.write_text(escalar(doc, k), encoding="utf-8")
+            salida = subprocess.run(["node", str(script), str(ruta)], check=True, capture_output=True, text=True)
+            return max(json.loads(salida.stdout.strip().splitlines()[-1]))
+        bajo, alto = 0.8, 1.6
+        for _ in range(7):
+            k = (bajo + alto) / 2
+            bajo, alto = (k, alto) if lleno(k) <= 0.985 else (bajo, k)
+        return escalar(doc, bajo), bajo
+    finally:
+        script.unlink()
 
 
 IMPRIMIR = r"""
@@ -224,7 +271,9 @@ const {chromium} = require('playwright');
 
 def main() -> None:
     html_ruta = AQUI / "triptico-v1.html"
-    html_ruta.write_text(construir(), encoding="utf-8")
+    doc, k = ajustar(construir(), html_ruta)
+    html_ruta.write_text(doc, encoding="utf-8")
+    print(f"escala {k:.3f}")
     script = AQUI / ".imprimir-triptico.js"
     script.write_text(IMPRIMIR, encoding="utf-8")
     grande = AQUI / "triptico-v1-vista-completa.png"
