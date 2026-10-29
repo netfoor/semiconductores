@@ -33,6 +33,8 @@ tags: [femeci, experimento, exp-003]
 > [!warning] No adoptada
 > Esta sección es una **propuesta** redactada por Claude (IA). Los criterios fijados el 2026-10-26 siguen vigentes hasta que el equipo la confirme o la rechace, y la decisión se anota aquí con fecha antes de ejecutar.
 
+**Actualización (2026-10-29).** `#hecho` (comunicado por Fortino) El equipo consiguió una **Raspberry Pi 4 Model B**, que irá a la mesa. La propuesta se amplía: EXP-003 se ejecutaría en la Raspberry Pi 4 (equipo principal) y, si no fuera posible, en la laptop. Sigue sin adoptar.
+
 **Qué cambiaría.** Si no se consigue una Raspberry Pi 5 antes de medir, EXP-003 se ejecutaría en la laptop con Ubuntu que se usará en la mesa, sin red, con el mismo comando (`make latencia IMAGEN=... DISENO=...` o `uv run tht latencia`) y las mismas metas M4 y M5.
 
 **Razón.**
@@ -44,6 +46,9 @@ tags: [femeci, experimento, exp-003]
 2. M4 se reporta como cumplida o no **en la laptop**. `#inferencia` Una laptop suele ser más rápida que una Raspberry Pi 5, así que el resultado no demuestra M4 en la Pi: la afirmación "funciona en una Raspberry Pi" queda pendiente hasta medir en ella.
 3. Con celular, el tiempo de captura a resultado incluye la subida de la foto por la red local. Se propone medir por separado: (a) la inspección (`tht latencia`, sin cambios) y (b) la subida desde el celular, tomada del registro del servidor o con cronómetro, al menos 30 veces. M4 se evaluaría con la suma, y se reporta cada parte.
 4. El tamaño de imagen será el de la cámara del celular, no el de la cámara de 12 MP de la ficha; se anota la resolución.
+
+5. Si se mide en la Raspberry Pi 4: `#inferencia` la Pi 4 es más lenta que la Pi 5, así que cumplir M4 en la Pi 4 hace probable cumplirla en la Pi 5, pero no lo demuestra; se reporta como «Raspberry Pi 4 Model B (RAM)». No cumplirla en la Pi 4 no dice nada definitivo sobre la Pi 5.
+6. La alineación cambió el 29 oct (homografía con SIFT, [[arquitectura-v1]] §8), que cuesta más que la anterior; se mide con el código vigente el día de la medición y se anota el commit.
 
 **Lo que no cambia.** M5 (todo funciona con la red desconectada) se comprueba igual: la red local del hotspot no tiene internet. La regla de decisión de D-009 no cambia.
 

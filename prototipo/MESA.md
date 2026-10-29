@@ -91,9 +91,28 @@ make mesa DATOS=datos-mosaico MODELO=red
 
 Prueba de software del 29 oct (simulación, no experimento): con una foto simulada de 12 MP de la hoja (perspectiva, tinte y desenfoque), el sistema acertó la clase de 26 de 30 uniones. Con una foto real de la hoja impresa puede ser distinto: pruébelo antes de abrir la mesa.
 
+### En la Raspberry Pi 4 Model B
+
+El código corre igual que en la laptop; solo cambia la instalación. Hágala **antes** del día, con internet, porque `uv sync` descarga paquetes.
+
+1. Sistema: **Raspberry Pi OS de 64 bits** (Raspberry Pi Imager, «Raspberry Pi OS (64-bit)»). En 32 bits no hay paquetes de onnxruntime y no funciona. Compruebe con `uname -m`: debe decir `aarch64`.
+2. Instale uv y el proyecto:
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh     # luego cierre y abra la terminal
+   git clone https://github.com/netfoor/semiconductores.git && cd semiconductores/prototipo
+   uv sync                    # si el sistema trae Python 3.11, uv descarga 3.12 por su cuenta
+   make probar
+   make mosaico
+   ```
+   No instale el grupo `cnn` (PyTorch): en la Pi solo se usa la red ya exportada a ONNX.
+3. Arranque igual que en la laptop: `make mesa DATOS=datos-mosaico MODELO=red`. Para el hotspot, la opción B (hotspot del celular) es la más sencilla; la opción A también funciona si `nmcli` reporta modo punto de acceso.
+4. Mida el tiempo de una inspección antes de abrir la mesa (la página de inspección muestra los tiempos por etapa). `#supuesto` La Pi 4 es más lenta que la laptop y que la Pi 5 del protocolo; si tarda demasiado, la laptop es el respaldo.
+5. Lleve su fuente oficial de 5 V / 3 A (USB-C): con cargadores de celular la Pi baja su velocidad.
+6. Dígalo así en la exposición: «corre en una Raspberry Pi 4, sin internet». El protocolo menciona la Pi 5; la diferencia se declara (ver EXP-003).
+
 ## 5. Lista de verificación antes de abrir la mesa
 
-- [ ] `make probar` pasa.
+- [ ] `make probar` pasa (en la laptop y en la Raspberry Pi 4).
 - [ ] `uv run tht manifiesto verificar datos/crudos` dice `Íntegro`.
 - [ ] La página Estación indica la partición congelada y el modelo entrenado.
 - [ ] La laptop **no** tiene internet: `ping -c1 -W2 1.1.1.1` falla. El celular tiene los datos móviles apagados.
