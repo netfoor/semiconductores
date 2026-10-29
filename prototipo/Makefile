@@ -13,7 +13,7 @@ FILTRO_IF := ^(lo|docker|br-|veth|virbr)
 IP ?= $(shell ip -4 -o addr show scope global 2>/dev/null | awk '$$2 !~ /$(FILTRO_IF)/ {split($$4, a, "/"); print a[1]; exit}')
 
 .DEFAULT_GOAL := ayuda
-.PHONY: ayuda instalar probar demo mosaico fotos-prueba mesa url latencia docker-construir docker-mesa
+.PHONY: ayuda instalar probar demo mosaico paquete-pi fotos-prueba mesa url latencia docker-construir docker-mesa
 
 ayuda: ## Muestra esta lista
 	@echo "Uso: make <objetivo> [DATOS=carpeta] [PUERTO=8000] [MODELO=linea_base|red]"
@@ -34,6 +34,9 @@ demo: ## Datos SINTÉTICOS listos en datos-demo: manifiesto, partición y modelo
 
 mosaico: ## Tarjeta-mosaico con fotos REALES públicas (PCBSPDefect) en datos-mosaico, con la red de EXP-006
 	uv run tht mosaico --salida datos-mosaico
+
+paquete-pi: ## Paquete para instalar en la Raspberry Pi de 64 bits SIN internet (se arma aquí, con internet)
+	bash pi/armar_paquete.sh
 
 fotos-prueba: ## Fotos JPEG para probar /capturar (sintéticas del diseño de datos-demo y públicas)
 	uv run tht fotos-prueba --salida fotos-prueba

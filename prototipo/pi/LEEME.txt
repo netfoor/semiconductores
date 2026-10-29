@@ -1,0 +1,13 @@
+Paquete de instalación de la estación de inspección THT para Raspberry Pi (64 bits), sin internet.
+
+1. Copie esta carpeta completa a la Raspberry Pi (por ejemplo, desde la memoria USB a ~/paquete-pi).
+2. En una terminal de la Pi:
+     cd ~/paquete-pi
+     bash instalar.sh
+     bash probar.sh
+3. Arranque la estación con el comando que imprime probar.sh y abra en el celular la dirección
+   que aparece (http://IP:8000/capturar), conectado a la misma red local sin internet.
+
+Contenido: inspeccion_tht-*.whl (el programa, con la red ONNX de EXP-006 y las fotos públicas
+de PCBSPDefect, CC BY 4.0), wheels/ (bibliotecas para Python 3.11 a 3.13, ARM de 64 bits) y estos scripts.
+Guía completa: 16-documentacion-final/jornada/guia-raspberry-pi.pdf

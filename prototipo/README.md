@@ -6,7 +6,7 @@ El diseño experimental está en el protocolo (`12-protocolo/protocolo-v1.md`), 
 
 ## Instalación
 
-Requiere [uv](https://docs.astral.sh/uv/) y Python 3.12 o superior.
+Requiere [uv](https://docs.astral.sh/uv/) y Python 3.11 o superior (3.11 es el de Raspberry Pi OS Bookworm).
 
 ```bash
 cd prototipo
