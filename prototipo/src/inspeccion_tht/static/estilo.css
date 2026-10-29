@@ -480,8 +480,18 @@ body.con-cajon { overflow: hidden; }
 .uso { list-style: none; margin: var(--e6) 0 var(--e3); padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--e4); }
 .uso li { display: flex; flex-direction: column; gap: var(--e1); font-size: 15px; color: var(--tinta-2); }
 .uso b { color: var(--tinta); font-size: 16px; margin-top: var(--e3); }
-.telefono { margin: 0; border: 6px solid var(--tinta); border-radius: 22px; overflow: hidden; background: var(--blanco); aspect-ratio: 420 / 715; }
-.telefono img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+/* Marco de teléfono dibujado en CSS (borde metálico, bisel, isla y botones), sin imágenes de terceros */
+.telefono { --borde: #b7abc6; position: relative; margin: 0 4px; padding: 3.2%; border-radius: 15% / 7.2%;
+  background: linear-gradient(135deg, #d8cfe3, var(--borde) 45%, #9e91b0); box-shadow: inset 0 0 0 1px rgba(43, 29, 48, 0.25); }
+.telefono::before, .telefono::after { content: ""; position: absolute; width: 3px; background: var(--borde); border-radius: 2px; }
+.telefono::before { left: -3px; top: 18%; height: 6%; box-shadow: 0 9cqh 0 var(--borde), 0 17cqh 0 var(--borde); }
+.telefono::after { right: -3px; top: 24%; height: 10%; }
+.telefono { container-type: size; aspect-ratio: 9 / 19.4; }
+.pantalla { position: relative; height: 100%; background: #0b0b0d; padding: 2.4%; border-radius: 12.5% / 6%; }
+.pantalla::before { content: ""; position: absolute; top: 3.3%; left: 50%; transform: translateX(-50%); width: 30%; height: 3.2%;
+  background: #0b0b0d; border-radius: 999px; z-index: 1; }
+.pantalla img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; border-radius: 10.5% / 4.9%;
+  background: var(--blanco); padding-top: 9.5%; }
 @media (max-width: 1100px) { .uso { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 860px) {
   .uso { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: var(--e4); padding-bottom: var(--e3); }
