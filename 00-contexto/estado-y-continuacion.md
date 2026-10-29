@@ -73,6 +73,10 @@ Detalle y responsables en [[pendientes]].
 - **Prototipo:** `cd prototipo && make ayuda` lista las tareas. Python siempre con `uv`.
 - **Ver la estación con el mosaico:** `make mosaico` y `uv run tht servir --datos datos-mosaico --modelo red --puerto 8000`. Después abrir `http://127.0.0.1:8000/` (la página del proyecto) y `/capturar`.
 - **Capturas de «La estación en uso»:** `prototipo/herramientas/capturas_uso.js` (Playwright; instrucciones en su encabezado).
+- **Protocolo y bitácora en PDF:** los generadores están en `12-protocolo/herramientas/` (los PDF van a `16-documentacion-final/expediente/`):
+  - Protocolo: `uv run --with python-docx python build.py ENTRADA.md SALIDA.pdf`.
+  - Bitácora: `python exportar_bitacora.py SALIDA.md`, que junta las entradas en un solo Markdown para convertirlo a PDF.
+- **Guía de la Raspberry Pi en PDF:** `16-documentacion-final/jornada/guia_pdf.js` (instrucciones en su encabezado).
 - **Tríptico:** `uv run python 16-documentacion-final/cartel/build_triptico.py`. En Canva quedó una copia del PDF en «Cargas»; hay que abrirla para que Canva la convierta.
 - **Skill de diseño:** la skill `ui-minimal` se actualizó con dos secciones nuevas: «Interfaces de producto y demostraciones» y «Recorridos con scroll». Falta subirla a claude.ai (#24).
 
