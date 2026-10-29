@@ -40,6 +40,7 @@ def construir() -> str:
         for _, archivo, nombre in EJEMPLOS
     )
     inspeccion = datos_uri(AQUI / "img" / "inspeccion-mosaico.jpg", "image/jpeg")
+    celular = datos_uri(AQUI / "img" / "inspeccion-celular.jpg", "image/jpeg")
     cita_tsang = html.escape(r["cita"]).replace(
         "Advanced Intelligent Systems, 5, ", "<i>Advanced Intelligent Systems, 5</i>, Artículo ")
     return f"""<!doctype html>
@@ -83,7 +84,7 @@ figcaption b {{ color: var(--tinta-2); }}
 .ejemplos {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 3.5mm; }}
 .ejemplos img {{ width: 100%; aspect-ratio: 1; display: block; }}
 .ejemplos figcaption {{ font-size: 10.5mm; font-weight: 700; color: var(--tinta); text-align: center; margin-top: 1.5mm; }}
-.inspeccion img {{ width: 100%; display: block; border: 0.4mm solid var(--linea); }}
+.inspeccion img {{ width: 80%; margin: 0 auto; display: block; border: 0.4mm solid var(--linea); }}
 .cifras {{ display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }}
 .cifra {{ font-size: 52mm; font-weight: 700; line-height: 1; color: var(--marca); }}
 .cifra-pie {{ font-size: 14mm; color: var(--tinta-2); margin-top: 1.5mm; line-height: 1.25; }}
@@ -95,6 +96,19 @@ figcaption b {{ color: var(--tinta-2); }}
 .aviso {{ font-weight: 700; }}
 .refs {{ font-size: 8mm; line-height: 1.3; color: var(--tinta-2); }}
 .refs p {{ margin: 0 0 2mm; padding-left: 6mm; text-indent: -6mm; }}
+.integrantes {{ margin-top: 3mm !important; font-size: 11mm !important; color: var(--tinta) !important; }}
+.cortes {{ display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }}
+.cortes svg {{ width: 100%; height: auto; display: block; }}
+.cortes b {{ display: block; font-size: 12mm; color: var(--tinta); margin-bottom: 1mm; }}
+.corte-tarjeta {{ fill: #2f6b3c; }} .corte-cobre, .corte-hueco {{ fill: #ddb04a; }} .corte-componente {{ fill: #24222a; }}
+.corte-patilla {{ stroke: #7d858a; stroke-width: 4; }} .corte-soldadura {{ fill: #c9cdd0; stroke: #6f777b; stroke-width: 1.5; }}
+.corte-t {{ font: 700 13px {FUENTE}; fill: var(--marca); }}
+.metodo {{ display: grid; grid-template-columns: 1.15fr 1fr; gap: 10mm; align-items: start; }}
+.metodo img {{ width: 100%; display: block; border: 0.8mm solid var(--tinta); border-radius: 6mm; }}
+.ruta {{ list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }}
+.ruta li {{ margin: 0; background: var(--banda); padding: 6mm 7mm; border-top: 2mm solid var(--acento); font-size: 13.5mm; line-height: 1.25; }}
+.ruta li.hoy {{ border-top-color: var(--marca); }}
+.ruta b {{ display: block; color: var(--tinta); }}
 .nota-ia {{ font-size: 8.6mm; color: var(--tinta-2); line-height: 1.3; }}
 </style></head>
 <body>
@@ -102,6 +116,7 @@ figcaption b {{ color: var(--tinta-2); }}
 <header class="titulo">
   <h1>Estación de inspección visual asistida con procesamiento local para uniones soldadas <span>through-hole</span> en el ensamble electrónico</h1>
   <p>Diseño y validación experimental de un prototipo</p>
+  <p class="integrantes">Fortino Romero Mantilla · Israel Jesus Garcia Osorio · María José de la Rosa Hernández</p>
 </header>
 <main class="paneles">
 
@@ -111,8 +126,29 @@ figcaption b {{ color: var(--tinta-2); }}
     <p>En el ensamble electrónico, muchas uniones through-hole todavía se revisan a ojo. Puebla busca crecer en esta industria (CANIETI, 2024; OECD, 2026).</p>
   </div>
   <figure>
+    <div class="cortes">
+      <div><b>Montaje superficial (SMD)</b>
+        <svg viewBox="0 0 330 80" role="img" aria-label="Componente de montaje superficial soldado sobre la tarjeta">
+          <rect x="10" y="50" width="280" height="22" class="corte-tarjeta"/>
+          <rect x="105" y="44" width="22" height="6" class="corte-cobre"/><rect x="173" y="44" width="22" height="6" class="corte-cobre"/>
+          <rect x="112" y="26" width="76" height="18" class="corte-componente"/>
+          <path d="M104 44 Q112 32 120 44 Z M180 44 Q188 32 196 44 Z" class="corte-soldadura"/>
+        </svg></div>
+      <div><b>Through-hole (THT)</b>
+        <svg viewBox="0 0 330 100" role="img" aria-label="Patillas que atraviesan la tarjeta y se sueldan por el lado inferior">
+          <rect x="112" y="6" width="76" height="22" rx="8" class="corte-componente"/>
+          <rect x="10" y="44" width="280" height="22" class="corte-tarjeta"/>
+          <rect x="118" y="44" width="16" height="22" class="corte-hueco"/><rect x="166" y="44" width="16" height="22" class="corte-hueco"/>
+          <path d="M126 28 V86 M174 28 V86" class="corte-patilla"/>
+          <path d="M112 66 Q126 86 140 66 Z M160 66 Q174 86 188 66 Z" class="corte-soldadura"/>
+          <text x="196" y="90" class="corte-t">unión, lado inferior</text>
+        </svg></div>
+    </div>
+    <figcaption><b>Figura 1.</b> En THT la patilla atraviesa la tarjeta y la unión queda abajo: ahí trabaja la estación. Ilustración de elaboración propia.</figcaption>
+  </figure>
+  <figure>
     <div class="ejemplos">{ejemplos}</div>
-    <figcaption><b>Figura 1.</b> Defectos que busca el sistema. Fotografías tomadas de PCBSPDefect (Tsang et al., 2023), CC BY 4.0.</figcaption>
+    <figcaption><b>Figura 2.</b> Defectos que busca el sistema. Fotografías tomadas de PCBSPDefect (Tsang et al., 2023), CC BY 4.0.</figcaption>
   </figure>
   <div>
     <h2>Antecedentes</h2>
@@ -148,17 +184,21 @@ figcaption b {{ color: var(--tinta-2); }}
   </div>
   <div>
     <h2>Metodología</h2>
+    <div class="metodo">
     <ol class="pasos">
       <li><span><b>Capturar</b> con el celular, sin internet</span></li>
       <li><span><b>Alinear</b> con la plantilla de la tarjeta</span></li>
       <li><span><b>Recortar</b> cada unión</span></li>
       <li><span><b>Clasificar</b> con una red pequeña, en local</span></li>
-      <li><span><b>La persona</b> confirma o corrige</span></li>
+      <li><span><b>La persona</b> revisa una unión a la vez: confirma o corrige</span></li>
     </ol>
+    <figure><img src="{celular}" alt="Pantalla del celular: acercamiento a una unión, sugerencia del sistema y las clases para confirmar o corregir">
+    <figcaption><b>Figura 3.</b> Revisión en el celular, una unión a la vez. Captura de elaboración propia; foto de PCBSPDefect, CC&nbsp;BY&nbsp;4.0.</figcaption></figure>
+    </div>
   </div>
   <figure class="inspeccion">
     <img src="{inspeccion}" alt="Interfaz del prototipo con las uniones sospechosas marcadas por clase">
-    <figcaption><b>Figura 2.</b> El prototipo marca las uniones sospechosas. Captura de elaboración propia (foto simulada); fotos de PCBSPDefect, CC&nbsp;BY&nbsp;4.0.</figcaption>
+    <figcaption><b>Figura 4.</b> El prototipo marca las uniones sospechosas. Captura de elaboración propia (foto simulada); fotos de PCBSPDefect, CC&nbsp;BY&nbsp;4.0.</figcaption>
   </figure>
   <div>
     <h2>Creatividad e innovación</h2>
@@ -182,15 +222,24 @@ figcaption b {{ color: var(--tinta-2); }}
   <figure class="grafica">
     <div class="leyenda"><span><i class="cuadro"></i>Línea base clásica</span><span><i class="circulo"></i>Red convolucional</span></div>
     {grafica(r["filas"], r["metas"], FUENTE, etiqueta_w=92, panel_w=125, hueco=24, nota=False)}
-    <figcaption><b>Figura 3.</b> Punto: valor medido; línea: intervalo de confianza de 95&nbsp;%. Gráfica de elaboración propia.</figcaption>
+    <figcaption><b>Figura 5.</b> Punto: valor medido; línea: intervalo de confianza de 95&nbsp;%. Gráfica de elaboración propia.</figcaption>
   </figure>
   <div>
     <h2>Conclusiones</h2>
     <ul>
       <li>La red cumple M1; M2 aún no se puede afirmar (intervalo hasta {f2(red["falsas_alarmas_ic"][1])}).</li>
       <li>La visión clásica no basta.</li>
-      <li>Falta medir con tarjetas propias, en la Raspberry&nbsp;Pi&nbsp;4.</li>
+      <li>El prototipo ya corre en una Raspberry&nbsp;Pi&nbsp;4, en local y sin internet.</li>
+      <li>Falta medir con tarjetas propias y frente a la inspección sin apoyo.</li>
     </ul>
+  </div>
+  <div>
+    <h2>Hacia dónde va</h2>
+    <ol class="ruta">
+      <li class="hoy"><b>1. Apoyo</b>El inspector revisa primero lo marcado (este proyecto)</li>
+      <li><b>2. Piloto por planta</b>Un modelo por empresa, entrenado con sus tarjetas</li>
+      <li><b>3. Automatización gradual</b>Solo las uniones dudosas llegan a la persona</li>
+    </ol>
   </div>
   <div class="refs">
     <h2>Referencias</h2>
@@ -270,21 +319,21 @@ const {chromium} = require('playwright');
 
 
 def main() -> None:
-    html_ruta = AQUI / "triptico-v1.html"
+    html_ruta = AQUI / "triptico-v2.html"
     doc, k = ajustar(construir(), html_ruta)
     html_ruta.write_text(doc, encoding="utf-8")
     print(f"escala {k:.3f}")
     script = AQUI / ".imprimir-triptico.js"
     script.write_text(IMPRIMIR, encoding="utf-8")
-    grande = AQUI / "triptico-v1-vista-completa.png"
+    grande = AQUI / "triptico-v2-vista-completa.png"
     try:
-        subprocess.run(["node", str(script), str(html_ruta), str(AQUI / "triptico-v1.pdf"), str(grande)], check=True)
+        subprocess.run(["node", str(script), str(html_ruta), str(AQUI / "triptico-v2.pdf"), str(grande)], check=True)
     finally:
         script.unlink()
     from PIL import Image  # noqa: PLC0415
     im = Image.open(grande)
     im.thumbnail((1800, 1440))
-    im.save(AQUI / "triptico-v1-vista.png", optimize=True)
+    im.save(AQUI / "triptico-v2-vista.png", optimize=True)
     grande.unlink()
 
 
