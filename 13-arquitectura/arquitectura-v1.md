@@ -41,7 +41,7 @@ Diseño técnico de la estación de inspección asistida (IC-01, D-011). Respond
 | Captura | `captura.py` | Toma la foto (Picamera2, cámara USB, archivo o foto de celular), la guarda en PNG sin pérdida con nombre `T07_B_il1_<fecha>.png`, escribe sus metadatos y la agrega al manifiesto |
 | Captura por celular | `app.py` (`/capturar`), `captura.CamaraMemoria` | Recibe una foto JPEG del celular por la red local de la mesa, conserva el original y lo pasa por la misma captura (§7) |
 | Integridad | `manifiesto.py` | Huella SHA-256 de cada imagen cruda y verificación posterior |
-| Alineación | `plantilla.py` | ECC (correlación de intensidades, transformación euclidiana) sobre versiones reducidas; si no converge, puntos ORB con RANSAC |
+| Alineación | `plantilla.py` | Homografía con puntos SIFT y RANSAC (corrige escala y perspectiva de una foto a mano); si no reproduce bien la referencia, también ECC euclidiano (o ORB) y se elige la de mayor correlación con la referencia. Después, normalización de color (media y desviación por canal) contra la referencia (§8) |
 | Línea base | `linea_base.py` | Nueve características por recorte (brillo, áreas, componentes, circularidad, extensión, rugosidad) y clasificador de centroides |
 | Datos | `anotaciones.py`, `particion.py`, `datos.py` | Etiquetas por persona, kappa y consenso; partición por tarjeta con huella del conjunto de prueba |
 | Evaluación | `metricas.py` | Sensibilidad, falsas alarmas, Wilson, bootstrap por tarjeta, McNemar |
@@ -94,3 +94,11 @@ celular (navegador) ──HTTP, hotspot propio con contraseña, sin internet─�
 
 - `#inferencia` La subida por Wi-Fi agrega tiempo entre la captura y el resultado; EXP-003 tendría que medirlo aparte si se adopta la desviación propuesta en [[EXP-003-latencia-y-ubicacion]].
 - `#supuesto` Chrome en Android conserva el EXIF al subir y Safari en iPhone entrega JPEG; se verifica con teléfonos reales antes del 30 de octubre.
+
+## 8. Alineación por homografía y normalización de color (agregado el 2026-10-29)
+
+- `#hecho` (prueba de software del 29 oct con fotos simuladas) La alineación original (ECC euclidiano) supone un soporte fijo: corrige giro y desplazamiento, pero no escala ni perspectiva. Con una foto tomada a mano, los recortes caían fuera de las uniones.
+- `#hecho` La red de EXP-006 tolera desenfoque, JPEG y cambios multiplicativos de brillo, pero no un corrimiento del nivel de negro de ±20: en el mosaico bajó de 26 a 6 y 10 aciertos de 30. Igualar media y desviación de cada canal a las de la referencia lo recupera (23 a 27 de 30 según el caso).
+- Con ambos cambios, una foto simulada de 12 MP de la tarjeta-mosaico impresa, subida por `/capturar`, dio 26 de 30 clases correctas, igual que la imagen digital. Es una prueba de software, no un experimento: falta probar con fotos reales del celular.
+- La normalización también se aplica al construir ejemplos de entrenamiento (`datos.py`), para que entrenar e inspeccionar usen el mismo preprocesamiento. Los modelos de línea base entrenados antes del 29 oct deben reentrenarse (`make demo` lo hace).
+- Costo: unos 0.5 s de alineación por foto de 12 MP en el contenedor de desarrollo; en la Raspberry Pi 4 será mayor y se mide en EXP-003.

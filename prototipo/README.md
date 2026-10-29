@@ -70,7 +70,7 @@ uv run tht servir --datos datos-demo
 |---|---|
 | `captura.py` | Cámara (Picamera2, USB, archivo o foto de celular en memoria), nombre de archivo, metadatos, EXIF y huella |
 | `manifiesto.py` | Huellas SHA-256 de los datos crudos y su verificación |
-| `plantilla.py` | Uniones por diseño de tarjeta y alineación de la captura (ECC, con ORB como respaldo) |
+| `plantilla.py` | Uniones por diseño de tarjeta, alineación de la captura (homografía con SIFT para fotos a mano; ECC u ORB para soporte fijo) y normalización de color contra la referencia |
 | `linea_base.py` | Características por umbral y morfología, y clasificador de centroides |
 | `anotaciones.py` | Etiquetas por persona, acuerdo (kappa de Cohen) y consenso |
 | `particion.py` | Partición por tarjeta y congelamiento del conjunto de prueba |
@@ -85,6 +85,7 @@ uv run tht servir --datos datos-demo
 | `wsgi.py` | Arranque de la demostración en la nube |
 | `Makefile`, `MESA.md` | Operación de la mesa: servir a la red local, URL del celular, latencia y contenedor en modo local |
 | `externos.py` | Descarga y lectura de PCBSPDefect (EXP-006) |
+| `mosaico.py` | Tarjeta-mosaico con fotos reales públicas para la demostración (`tht mosaico`, `make mosaico`) |
 | `sintetico.py` | Tarjetas sintéticas para pruebas (con variabilidad de tamaño, brillo, reflejos y desenfoque) |
 
 ## Clasificador ligero

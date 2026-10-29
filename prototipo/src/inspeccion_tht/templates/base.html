@@ -29,6 +29,11 @@
     <p><b>Datos sintéticos.</b> {% if en_linea %}Estas tarjetas se generaron por computadora para mostrar el funcionamiento del software.{% else %}Esta carpeta se generó con <code>tht demo</code> para probar el software.{% endif %} Nada de lo que se vea aquí es un resultado del proyecto.</p>
   </div>
   {% endif %}
+  {% if mosaico and not ocultar_aviso %}
+  <div class="aviso-sintetico" role="note">
+    <p><b>Tarjeta-mosaico de demostración.</b> Fotos reales de uniones del conjunto público PCBSPDefect (Tsang et al., 2023; CC BY 4.0), acomodadas como una tarjeta. No es una tarjeta física ni datos propios del proyecto.</p>
+  </div>
+  {% endif %}
   <main>
     {% block contenido %}{% endblock %}
   </main>

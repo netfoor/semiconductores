@@ -266,6 +266,16 @@ Ninguna de estas fotos trae marca ni modelo de cámara en el EXIF: la página mo
     print(f"Fotos de prueba en {salida}")
 
 
+def cmd_mosaico(a):
+    """Tarjeta-mosaico con fotos reales públicas para la demostración (no es DS-01)."""
+    from . import mosaico
+    try:
+        c = mosaico.crear(Path(a.salida), a.semilla)
+    except FileExistsError as e:
+        sys.exit(str(e))
+    print(f"Mosaico en {c.raiz}. Imprima {c.raiz / 'mosaico-imprimir.png'} y lea {c.raiz / 'LEEME_MOSAICO.txt'}")
+
+
 def cmd_externo(a):
     """EXP-006: entrena y evalúa ambos modelos con datos públicos reales."""
     from collections import Counter
@@ -508,6 +518,11 @@ def construir_parser() -> argparse.ArgumentParser:
     x.add_argument("--tarjetas", type=int, default=4)
     x.add_argument("--semilla", type=int, default=11)
     x.set_defaults(f=cmd_fotos_prueba)
+
+    x = s.add_parser("mosaico", help="Tarjeta-mosaico con fotos reales públicas (PCBSPDefect) para la demostración")
+    x.add_argument("--salida", default="datos-mosaico")
+    x.add_argument("--semilla", type=int, default=20261030)
+    x.set_defaults(f=cmd_mosaico)
 
     x = s.add_parser("externo", help="EXP-006: datos públicos reales (PCBSPDefect)")
     x.add_argument("accion", choices=["descargar", "evaluar"])

@@ -98,6 +98,8 @@ Cómo citar y qué registrar: [[convenciones]] §3. Tipos: **primaria oficial** 
 | F-078 | *Continuation/Research Progression Projects Form (7)*, versión 2022–2023 (copia publicada por una feria regional) | Society for Science | Primaria oficial (formulario; referencia) | 2022 | 2026-10-01 | Automatizada |
 | F-079 | Ross, G. (2006). *First Article Inspection Strategies*. IPC Printed Circuits Expo, APEX and the Designers Summit | Cluso Vision Systems (proveedor), vía IPC | Proveedor (ponencia técnica) | 2006 | 2026-10-02 | Automatizada |
 | F-080 | Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T. y Lun, D. P.-K. (2023). PCB soldering defect inspection using multitask learning under low data regimes. *Advanced Intelligent Systems*, 5, 2300364; conjunto PCBSPDefect (Zenodo 23307359, CC BY 4.0) | Académica (artículo y conjunto de datos) | Académica | 2023-09-21 | 2026-10-26 | Directa (metadatos de Zenodo y descarga del conjunto) |
+| F-081 | SolderNet: Towards trustworthy visual inspection of solder joints in electronics manufacturing using explainable artificial intelligence (arXiv:2211.10274) | Académica (preimpresión) | Académica | 2022 | 2026-10-29 | Automatizada (solo resultado de búsqueda) |
+| F-082 | x707. *PCB-Solder-Joint-Defect-Detection-Dataset* [Conjunto de datos]. Hugging Face | Comunidad | Dataset | s. f. | 2026-10-29 | Automatizada (solo resultado de búsqueda) |
 
 ## F-001
 
@@ -431,3 +433,9 @@ Proveedor y año 2006: sirve para ilustrar el tipo de problema, no como dato act
 
 ### F-080
 https://zenodo.org/records/23307359 (artículo: https://doi.org/10.1002/aisy.202300364) · Conjunto PCBSPDefect: fotos reales de 280 x 280 px de uniones de componentes DIP del lado de soldadura (b_dip), del lado de componentes (f_dip) y de cables planos (f_ffc); clases de b_dip: bridge, excess, good, insuff, no; tres iluminaciones por unión; particiones de entrenamiento (10 a 20 %), validación y prueba. Licencia CC BY 4.0: permite uso y redistribución citando el artículo. Descargado el 2026-10-26, SHA-256 del ZIP 1e135795835f04deccb0bc5fc1dd071c7fc944963e2cd5b76c6deff399c0de98 · Datos públicos reales de uniones through-hole para EXP-006; también es antecedente del estado del arte (aprendizaje multitarea con pocos datos).
+
+### F-081
+https://arxiv.org/pdf/2211.10274 · Según el resultado de búsqueda del 29 oct: 2690 imágenes de uniones through-hole y de montaje superficial, tomadas con cámara de microscopio (uniones individuales, no tarjetas completas). Licencia de los datos no verificada. · Búsqueda de fotos reales para la demostración; no se usó.
+
+### F-082
+https://huggingface.co/datasets/x707/PCB-Solder-Joint-Defect-Detection-Dataset · Defectos tras soldadura por ola y por reflujo; licencia declarada CC BY-NC-SA 4.0 (no comercial, compartir igual). No se verificó si trae tarjetas completas ni uniones through-hole. · Búsqueda de fotos reales para la demostración; no se usó.

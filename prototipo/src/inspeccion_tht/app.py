@@ -39,6 +39,9 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
     def es_sintetico() -> bool:
         return (c.raiz / "LEEME_SINTETICO.txt").exists()
 
+    def es_mosaico() -> bool:
+        return (c.raiz / "LEEME_MOSAICO.txt").exists()
+
     if modelo_nombre not in clasificador.MODELOS:
         raise ValueError(f"Modelo desconocido: {modelo_nombre}")
 
@@ -71,7 +74,7 @@ def crear_app(raiz: Path, operador: str = "", modelo_nombre: str = "linea_base",
     @app.context_processor
     def comunes():
         return {"version": __version__, "sintetico": es_sintetico(), "clases": CLASES,
-                "nombres": NOMBRES, "operador": operador, "modelo_nombre": modelo_nombre, "en_linea": en_linea}
+                "nombres": NOMBRES, "mosaico": es_mosaico(), "operador": operador, "modelo_nombre": modelo_nombre, "en_linea": en_linea}
 
     @app.get("/salud")
     def salud():

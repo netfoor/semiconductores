@@ -75,6 +75,22 @@ make docker-mesa DATOS=datos
 
 Con `MODELO=red` se usa el clasificador ONNX en lugar de la línea base.
 
+### Tarjeta-mosaico (uniones reales sin tarjeta física)
+
+Sin tarjetas soldadas propias, la demostración usa una **tarjeta-mosaico**: 30 fotos reales de uniones del conjunto de prueba de PCBSPDefect (CC BY 4.0), acomodadas como una tarjeta e impresas en papel. La red de EXP-006 no vio esas fotos al entrenar.
+
+```bash
+make mosaico                               # crea datos-mosaico/ (diseño, una captura, la red y las respuestas)
+make mesa DATOS=datos-mosaico MODELO=red
+```
+
+1. Imprima `datos-mosaico/mosaico-imprimir.png` **en color**, hoja carta horizontal, «ajustar a la página». Llévela pegada a un cartón para que no se doble.
+2. En `/capturar`: tarjeta `T90`, diseño `mosaico-01`. Fotografíe la hoja completa (las cuatro marcas blancas de las esquinas deben salir en la foto), sin reflejos de lámparas.
+3. La inspección marca las sospechosas; compare con `datos-mosaico/LEEME_MOSAICO.txt`, que trae la clase real de cada unión.
+4. Dígalo así: «son fotos reales de uniones de un conjunto público, acomodadas como tarjeta; no es una tarjeta física ni datos propios». La propia hoja y la interfaz lo dicen.
+
+Prueba de software del 29 oct (simulación, no experimento): con una foto simulada de 12 MP de la hoja (perspectiva, tinte y desenfoque), el sistema acertó la clase de 26 de 30 uniones. Con una foto real de la hoja impresa puede ser distinto: pruébelo antes de abrir la mesa.
+
 ## 5. Lista de verificación antes de abrir la mesa
 
 - [ ] `make probar` pasa.
@@ -82,6 +98,7 @@ Con `MODELO=red` se usa el clasificador ONNX en lugar de la línea base.
 - [ ] La página Estación indica la partición congelada y el modelo entrenado.
 - [ ] La laptop **no** tiene internet: `ping -c1 -W2 1.1.1.1` falla. El celular tiene los datos móviles apagados.
 - [ ] El hotspot es propio y tiene contraseña (no el Wi-Fi del recinto).
+- [ ] La hoja del mosaico está impresa en color y una foto suya desde el celular se inspecciona bien.
 - [ ] Una captura de prueba desde el celular llega, y se inspecciona. Practique en `datos-demo` con las fotos de `make fotos-prueba`, no en la carpeta real.
 - [ ] La ubicación de la cámara está desactivada. En iPhone: Ajustes > Cámara > Formatos > «Más compatible» (JPEG).
 - [ ] La fecha y la hora de la laptop son correctas: entran en el nombre de cada foto.

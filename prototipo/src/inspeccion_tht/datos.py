@@ -21,7 +21,7 @@ from .anotaciones import todas
 from .clasificador import LADO_RED
 from .flujo import leer
 from .linea_base import caracteristicas
-from .plantilla import Plantilla, al_marco_de_referencia, alinear, recortes
+from .plantilla import Plantilla, al_marco_de_referencia, alinear, normalizar_color, recortes
 
 
 @dataclass(frozen=True)
@@ -87,7 +87,7 @@ def ejemplos(c: Carpetas, etiquetador: str = "consenso") -> list[Ejemplo]:
             cache[an.diseno] = c.plantilla(an.diseno)
         plantilla, ref = cache[an.diseno]
         img = leer(c.imagen(an.imagen))
-        alineada = al_marco_de_referencia(img, alinear(img, ref), plantilla)
+        alineada = normalizar_color(al_marco_de_referencia(img, alinear(img, ref), plantilla), ref)
         rec = recortes(alineada, plantilla)
         for uid, clase in sorted(an.etiquetas.items()):
             r = rec[uid]
