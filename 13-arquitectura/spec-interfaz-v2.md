@@ -37,6 +37,7 @@ Que la demostración muestre **el sistema como lo usaría un inspector en una pl
 | 3 | **Nueva inspección** (antes «Capturar desde el celular»): sesión de inspector (se elige una vez de una lista, con turno y estación), número de tarjeta automático, lado e iluminación por omisión, modelo de tarjeta automático si solo hay uno, **un solo botón «Tomar foto»** que envía en cuanto se toma, sin textos de ayuda | Hecho en v2-1 |
 | 4 | **Inspección:** encabezado con tarjeta, inspector y cifras (por revisar, sin observaciones, tiempo de análisis); sin campo de operador ni nombre de archivo; «¿Cómo está esta unión?»; cierre «Inspección terminada» con botón «Nueva inspección» | Hecho en v2-2 |
 | 5 | **Textos** de Proyecto, Fotos reales, Reto y Estación con tono de presentación (Reto: «¿Puedes ver lo que ve la red?»); sección «Hacia dónde va» (D-016); datos internos de la Estación en «Detalles técnicos» | Hecho en v2-2 |
+| 4b | **Inspección una por una** (pedido de María José, 29 oct): en lugar de la lista de uniones sospechosas, se revisa una unión a la vez como en el Reto: acercamiento a la unión, «Unión n de N», barra de avance, sugerencia del sistema, las clases y «Siguiente unión» (o Enter); «Unión anterior» para volver. La tarjeta completa queda debajo como contexto y tocar una unión marcada lleva a ella. En el teléfono el acercamiento va primero | Hecho en v2-3 |
 
 ### P2, si hay tiempo
 

@@ -136,5 +136,5 @@
     el.classList.toggle("error", Boolean(esError));
   }
 
-  window.Estacion = { Lienzo, enviar, estado };
+  window.Estacion = { Lienzo, enviar, estado, estilos: ESTILOS };
 })();

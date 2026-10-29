@@ -14,21 +14,33 @@
 {% if not hay_modelo %}
 <div class="aviso-sintetico" role="alert"><p>No hay un modelo entrenado en esta carpeta. Para la línea base ejecute <code>uv run tht entrenar --datos {{ raiz }}</code>; para la red, <code>uv run --group cnn tht entrenar-red --datos {{ raiz }}</code>. Si aún no hay partición, antes ejecute <code>uv run tht particion --datos {{ raiz }}</code>. Luego recargue la página.</p></div>
 {% else %}
-<div class="trabajo">
-  <div class="lienzo"><canvas id="lienzo" aria-label="Tarjeta alineada con las uniones sospechosas"></canvas></div>
+<div class="trabajo trabajo-una-a-una">
+  <div class="tarjeta-completa">
+    <p class="nota rotulo-tarjeta">Tarjeta completa. Toque una unión marcada para ir a ella.</p>
+    <div class="lienzo"><canvas id="lienzo" aria-label="Tarjeta alineada con las uniones sospechosas"></canvas></div>
+    <div class="acciones"><button class="enlace" id="todas">Ver todas las uniones</button></div>
+  </div>
   <aside class="panel">
     <input type="hidden" id="persona" value="{{ request.args.get('etiquetador', operador) }}">
     <p id="resumen" class="resumen-inspeccion">Analizando la tarjeta…</p>
-    <div class="lista-sospechas" id="lista"></div>
-    <div id="revision">
-    <h3 id="titulo-union">Elija una unión marcada</h3>
-    <p id="detalle"></p>
-    <p class="pregunta-union">¿Cómo está esta unión?</p>
-    <div class="clases" role="group" aria-label="Condición de la unión elegida">
-      {% for c in clases %}
-      <button type="button" data-clase="{{ c }}"><span class="muestra {{ c }}" aria-hidden="true"></span><span>{{ nombres[c] }}</span><kbd>{{ loop.index }}</kbd></button>
-      {% endfor %}
-    </div>
+    <div id="revision" hidden>
+      <div class="progreso" id="progreso" aria-hidden="true"></div>
+      <div class="union-foto">
+        <canvas id="acercamiento" width="320" height="320" aria-label="Acercamiento a la unión elegida"></canvas>
+        <p class="num nota" id="avance"></p>
+      </div>
+      <h3 id="titulo-union">¿Cómo está esta unión?</h3>
+      <p id="detalle"></p>
+      <div class="clases" role="group" aria-label="Condición de la unión elegida">
+        {% for c in clases %}
+        <button type="button" data-clase="{{ c }}"><span class="muestra {{ c }}" aria-hidden="true"></span><span>{{ nombres[c] }}</span><kbd>{{ loop.index }}</kbd></button>
+        {% endfor %}
+      </div>
+      <p id="respuesta" class="veredicto" aria-live="polite"></p>
+      <div class="acciones">
+        <button class="boton" id="siguiente" hidden>Siguiente unión</button>
+        <button class="enlace" id="anterior" hidden>Unión anterior</button>
+      </div>
     </div>
     <div class="terminada" id="terminada" hidden>
       <b>Inspección terminada</b>
@@ -36,7 +48,6 @@
       <a class="boton" href="{{ url_for('pagina_capturar') if not en_linea else url_for('inicio') }}">{{ "Nueva inspección" if not en_linea else "Otra tarjeta" }}</a>
     </div>
     <p class="estado" id="estado" role="status"></p>
-    <div class="acciones"><button class="enlace" id="todas">Ver todas las uniones</button></div>
   </aside>
 </div>
 {% endif %}
@@ -44,13 +55,18 @@
 {% block scripts %}
 {% if hay_modelo %}
 <script>
+  // Revisión una por una, como en el Reto: acercamiento a la unión, «Unión n de N»,
+  // la respuesta del inspector y «Siguiente unión». La tarjeta completa queda como contexto.
   const NOMBRES = {{ nombres|tojson }};
   const CLASES = {{ clases|list|tojson }};
-  const { Lienzo, enviar, estado } = window.Estacion;
-  const msg = document.getElementById("estado"), lista = document.getElementById("lista");
-  const titulo = document.getElementById("titulo-union"), detalle = document.getElementById("detalle");
+  const { Lienzo, enviar, estado, estilos } = window.Estacion;
+  const msg = document.getElementById("estado");
+  const detalle = document.getElementById("detalle"), respuesta = document.getElementById("respuesta");
+  const siguiente = document.getElementById("siguiente"), anterior = document.getElementById("anterior");
+  const acerca = document.getElementById("acercamiento");
   const decididas = {};
-  let lz, resultados = [], verTodas = false, marcaTiempo = performance.now(), inicio = performance.now();
+  let lz, resultados = [], cola = [], pos = 0, verTodas = false, enviando = false;
+  let marcaTiempo = performance.now(), inicio = performance.now();
   // Inspector: el de la sesión del teléfono, si no vino en la dirección.
   try {
     const ins = JSON.parse(localStorage.getItem("inspector") || "null");
@@ -58,6 +74,8 @@
     if (!campo.value && ins) campo.value = ins.nombre;
     document.getElementById("quien").textContent = campo.value ? `Inspecciona ${campo.value}` : "";
   } catch (e) {}
+
+  const actual = () => cola[pos];
 
   function dibujarUniones() {
     lz.uniones = resultados
@@ -70,64 +88,109 @@
       });
     lz.dibujar();
   }
-  function pintarLista() {
-    const sosp = resultados.filter((r) => r.sospechosa).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto);
-    lista.innerHTML = "";
-    for (const r of sosp) {
-      const b = document.createElement("button");
-      b.type = "button";
-      const dec = decididas[r.union_id];
-      b.innerHTML = `<span><b>${r.union_id}</b> ${NOMBRES[dec || r.sugerencia]}</span><span>${dec ? "✓" : ""}</span>`;
-      b.classList.toggle("elegida", lz.elegida === r.union_id);
-      b.classList.toggle("resuelta", Boolean(decididas[r.union_id]));
-      b.addEventListener("click", () => { lz.elegir(r.union_id); elegida(); });
-      lista.appendChild(b);
-    }
-    const pendientes = sosp.filter((r) => !decididas[r.union_id]).length;
+
+  // Recorte cuadrado alrededor de la unión, con margen, dibujado desde la imagen alineada.
+  function dibujarAcercamiento(r) {
+    const c = acerca.getContext("2d"), img = lz.img;
+    const sx = img.naturalWidth / lz.canvas.width, sy = img.naturalHeight / lz.canvas.height;
+    const lado = Math.max(r.w, r.h) * 2.2;
+    const x0 = r.x + r.w / 2 - lado / 2, y0 = r.y + r.h / 2 - lado / 2;
+    const k = acerca.width / lado;
+    c.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--banda").trim() || "#f7f3f7";
+    c.fillRect(0, 0, acerca.width, acerca.height);
+    c.drawImage(img, x0 * sx, y0 * sy, lado * sx, lado * sy, 0, 0, acerca.width, acerca.height);
+    const e = estilos[decididas[r.union_id] || r.sugerencia] || estilos.pendiente;
+    c.save();
+    c.strokeStyle = e.color; c.lineWidth = e.ancho; c.setLineDash(e.guion);
+    c.strokeRect((r.x - x0) * k, (r.y - y0) * k, r.w * k, r.h * k);
+    c.restore();
+  }
+
+  function pintarCifras() {
+    const pendientes = cola.filter((r) => !decididas[r.union_id]).length;
     document.getElementById("n-revisar").textContent = pendientes;
-    document.getElementById("n-ok").textContent = resultados.length - sosp.length;
-    document.getElementById("resumen").textContent = sosp.length
-      ? `${sosp.length} de ${resultados.length} uniones por revisar.`
-      : `Las ${resultados.length} uniones se ven bien.`;
-    const fin = sosp.length > 0 && pendientes === 0;
-    document.getElementById("revision").hidden = fin || sosp.length === 0;
-    document.getElementById("terminada").hidden = !(fin || sosp.length === 0);
-    if (fin || sosp.length === 0) {
-      const corregidas = sosp.filter((r) => decididas[r.union_id] && decididas[r.union_id] !== r.sugerencia).length;
-      const seg = Math.round((performance.now() - inicio) / 1000);
-      document.getElementById("terminada-texto").textContent = sosp.length
-        ? `${sosp.length} uniones revisadas en ${seg} s` + (corregidas ? `, ${corregidas} ${corregidas === 1 ? "corregida" : "corregidas"}.` : ", todas coincidieron con la sugerencia.")
-        : "No hubo uniones por revisar.";
-    }
+    document.getElementById("n-ok").textContent = resultados.length - cola.length;
+    document.getElementById("progreso").innerHTML = cola
+      .map((r, i) => `<i class="${decididas[r.union_id] ? "hecho" : ""}${i === pos ? " actual" : ""}"></i>`).join("");
   }
-  function elegida() {
-    const r = resultados.find((x) => x.union_id === lz.elegida);
+
+  function mostrar() {
+    const r = actual();
     if (!r) return;
-    titulo.textContent = `Unión ${r.union_id}`;
-    detalle.innerHTML = `El sistema sugiere <b>${NOMBRES[r.sugerencia]}</b>.` +
-      (decididas[r.union_id] ? ` Revisión: <b>${NOMBRES[decididas[r.union_id]]}</b>.` : "");
-    document.querySelectorAll(".clases button").forEach((b) => b.classList.toggle("activa", decididas[r.union_id] === b.dataset.clase));
-    pintarLista(); dibujarUniones();
+    lz.elegir(r.union_id);
+    const dec = decididas[r.union_id];
+    document.getElementById("avance").textContent = `Unión ${pos + 1} de ${cola.length} (${r.union_id})`;
+    detalle.innerHTML = `El sistema sugiere <b>${NOMBRES[r.sugerencia]}</b>.`;
+    document.querySelectorAll(".clases button").forEach((b) => {
+      b.disabled = Boolean(dec);
+      b.classList.toggle("activa", dec === b.dataset.clase);
+    });
+    respuesta.innerHTML = dec ? veredicto(r, dec) : "";
+    const ultima = cola.every((x) => decididas[x.union_id]);
+    siguiente.textContent = ultima ? "Terminar inspección" : "Siguiente unión";
+    siguiente.hidden = !dec;
+    anterior.hidden = pos === 0;
+    dibujarAcercamiento(r); pintarCifras(); dibujarUniones();
   }
+
+  function veredicto(r, dec) {
+    return `<b>Revisión:</b> ${NOMBRES[dec]} ` + (dec === r.sugerencia
+      ? '<span class="marca-ok">coincide</span>'
+      : '<span class="marca-error">corregida</span>');
+  }
+
   async function decidir(clase) {
-    const r = resultados.find((x) => x.union_id === lz.elegida);
-    if (!r) { estado(msg, "Elija una unión marcada.", true); return; }
+    const r = actual();
+    if (!r || decididas[r.union_id] || enviando) return;
     const persona = document.getElementById("persona").value.trim() || "Inspector";
     const ahora = performance.now();
+    enviando = true;
     try {
       await enviar("{{ url_for('api_decision') }}", { operador: persona, imagen: "{{ imagen }}", union_id: r.union_id,
         sugerencia: r.sugerencia, puntaje: r.puntaje_defecto, decision: clase, segundos: (ahora - marcaTiempo) / 1000 });
       marcaTiempo = ahora;
       decididas[r.union_id] = clase;
       estado(msg, "");
-      const sig = resultados.filter((x) => x.sospechosa && !decididas[x.union_id]).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto)[0];
-      if (sig) lz.elegir(sig.union_id);
-      elegida();
+      mostrar();
+      siguiente.focus({ preventScroll: true });
     } catch (e) { estado(msg, `No se registró: ${e.message}`, true); }
+    finally { enviando = false; }
   }
+
+  function avanzar() {
+    const r = actual();
+    if (!r || !decididas[r.union_id]) return;
+    // La siguiente sin revisar, después de la actual; si no hay, la primera pendiente.
+    let sig = cola.findIndex((x, i) => i > pos && !decididas[x.union_id]);
+    if (sig < 0) sig = cola.findIndex((x) => !decididas[x.union_id]);
+    if (sig < 0) { terminar(); return; }
+    pos = sig; mostrar(); alInicio();
+  }
+
+  // En el teléfono, cada unión nueva empieza con el acercamiento a la vista.
+  function alInicio() {
+    const caja = document.getElementById("revision").getBoundingClientRect();
+    if (caja.top < 0) window.scrollBy({ top: caja.top - 72 });
+  }
+
+  function terminar() {
+    document.getElementById("revision").hidden = true;
+    document.getElementById("terminada").hidden = false;
+    const corregidas = cola.filter((r) => decididas[r.union_id] !== r.sugerencia).length;
+    const seg = Math.round((performance.now() - inicio) / 1000);
+    document.getElementById("terminada-texto").textContent = cola.length
+      ? `${cola.length} uniones revisadas en ${seg} s` + (corregidas ? `, ${corregidas} ${corregidas === 1 ? "corregida" : "corregidas"}.` : ", todas coincidieron con la sugerencia.")
+      : "No hubo uniones por revisar.";
+    lz.elegir(null); pintarCifras(); dibujarUniones();
+    document.getElementById("terminada").scrollIntoView({ block: "nearest" });
+  }
+
   document.querySelectorAll(".clases button").forEach((b) => b.addEventListener("click", () => decidir(b.dataset.clase)));
+  siguiente.addEventListener("click", avanzar);
+  anterior.addEventListener("click", () => { if (pos > 0) { pos -= 1; mostrar(); alInicio(); } });
   document.addEventListener("keydown", (e) => {
-    if (e.target.tagName === "INPUT") return;
+    if (e.target.tagName === "INPUT" || document.getElementById("revision").hidden) return;
+    if (e.key === "Enter" && !siguiente.hidden) { e.preventDefault(); avanzar(); return; }
     const i = Number(e.key);
     if (i >= 1 && i <= CLASES.length) decidir(CLASES[i - 1]);
   });
@@ -141,16 +204,20 @@
     .then(async (r) => { const j = await r.json(); if (!r.ok) throw new Error(j.error); return j; })
     .then((d) => {
       resultados = d.resultados;
+      cola = resultados.filter((r) => r.sospechosa).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto);
       lz = new Lienzo(document.getElementById("lienzo"), "{{ url_for('img_alineada', imagen=imagen, diseno=diseno) }}", d.ancho, d.alto);
-      lz.alElegir = () => elegida();
+      // Tocar una unión marcada en la tarjeta completa lleva a esa unión.
+      lz.alElegir = (u) => { const i = cola.findIndex((x) => x.union_id === u.id); if (i >= 0) { pos = i; mostrar(); } else mostrar(); };
       document.getElementById("t-analisis").textContent = `${d.tiempos.total_s.toFixed(1)} s`;
       return lz.listo;
     })
     .then(() => {
       marcaTiempo = inicio = performance.now();
-      const primera = resultados.filter((x) => x.sospechosa).sort((a, b) => b.puntaje_defecto - a.puntaje_defecto)[0];
-      if (primera) lz.elegir(primera.union_id);
-      pintarLista(); elegida(); dibujarUniones();
+      document.getElementById("resumen").textContent = cola.length
+        ? `${cola.length} de ${resultados.length} uniones por revisar.`
+        : `Las ${resultados.length} uniones se ven bien.`;
+      if (cola.length) { document.getElementById("revision").hidden = false; mostrar(); }
+      else terminar();
     })
     .catch((e) => { document.getElementById("resumen").textContent = ""; estado(msg, e.message, true); });
 </script>
