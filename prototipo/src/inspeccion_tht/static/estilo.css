@@ -92,6 +92,7 @@ tr.elegida td { background: var(--seleccion); box-shadow: inset 3px 0 0 var(--ma
 .boton.secundario { background: transparent; color: var(--marca-profunda); }
 .boton.secundario:hover { background: var(--seleccion); }
 .boton:disabled { opacity: 0.45; cursor: not-allowed; }
+.boton[hidden] { display: none; } /* el display de .boton anulaba el atributo hidden (Reto, inspección) */
 .acciones { display: flex; flex-wrap: wrap; gap: var(--e2); }
 input[type=text], select { font: inherit; font-size: 16px; min-height: 44px; padding: 0 var(--e3); border: 1px solid var(--linea); border-radius: 2px; background: var(--blanco); color: var(--tinta); }
 label { font-weight: 600; font-size: 15px; display: block; margin-bottom: var(--e1); }
@@ -497,4 +498,18 @@ body.con-cajon { overflow: hidden; }
 @media (max-width: 860px) {
   .uso { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: var(--e6); padding: 0 var(--e2) var(--e3); scroll-padding-left: var(--e2); }
   .uso li { flex: 0 0 64%; scroll-snap-align: start; }
+}
+
+/* Inspección una por una (como el Reto) */
+.union-foto canvas { display: block; width: 100%; max-width: 320px; height: auto; aspect-ratio: 1; border: 1px solid var(--linea); background: var(--banda); }
+.union-foto .nota { margin: var(--e1) 0 0; }
+.trabajo-una-a-una .panel h3 { margin-top: var(--e4); }
+.progreso i.actual { outline: 2px solid var(--marca); outline-offset: 1px; }
+.rotulo-tarjeta { margin: 0 0 var(--e2); }
+.tarjeta-completa .acciones { margin-top: var(--e2); }
+#revision[hidden], .trabajo-una-a-una .enlace[hidden] { display: none; }
+@media (max-width: 860px) {
+  .trabajo-una-a-una .panel { order: -1; border-top: 0; padding-top: 0; }
+  .trabajo-una-a-una .tarjeta-completa { border-top: 1px solid var(--linea); padding-top: var(--e4); }
+  .union-foto canvas { max-width: none; }
 }
