@@ -125,14 +125,14 @@ def _alinear_ecc(imagen: np.ndarray, referencia: np.ndarray, lado_max: int) -> n
     return warp.astype(np.float32)
 
 
-def _alinear_homografia(imagen: np.ndarray, referencia: np.ndarray, lado_max: int = 1400,
+def _alinear_homografia(imagen: np.ndarray, referencia: np.ndarray, lado_max: int = 1000,
                         min_inliers: int = 25) -> np.ndarray | None:
     """Homografía imagen -> referencia con SIFT y RANSAC, o None si no es confiable."""
     g_img, g_ref = _gris(imagen), _gris(referencia)
     fi, fr = min(1.0, lado_max / max(g_img.shape)), min(1.0, lado_max / max(g_ref.shape))
     a = cv2.resize(g_img, None, fx=fi, fy=fi, interpolation=cv2.INTER_AREA)
     r = cv2.resize(g_ref, None, fx=fr, fy=fr, interpolation=cv2.INTER_AREA)
-    sift = cv2.SIFT_create(4000)
+    sift = cv2.SIFT_create(2000)
     k1, d1 = sift.detectAndCompute(a, None)
     k2, d2 = sift.detectAndCompute(r, None)
     if d1 is None or d2 is None or len(k1) < min_inliers or len(k2) < min_inliers:
@@ -190,12 +190,12 @@ def normalizar_color(alineada: np.ndarray, referencia: np.ndarray) -> np.ndarray
     clasificador no tolera bien (un corrimiento de ±20 niveles bajó la exactitud de la red de
     EXP-006 en una tarjeta de prueba). Ambas imágenes están en el mismo marco.
     """
-    a = alineada.astype(np.float32)
-    r = cv2.resize(referencia, (a.shape[1], a.shape[0])).astype(np.float32) if referencia.shape != alineada.shape \
-        else referencia.astype(np.float32)
-    mu_a, sd_a = a.reshape(-1, 3).mean(0), a.reshape(-1, 3).std(0) + 1e-6
-    mu_r, sd_r = r.reshape(-1, 3).mean(0), r.reshape(-1, 3).std(0)
-    return np.clip((a - mu_a) / sd_a * sd_r + mu_r, 0, 255).astype(np.uint8)
+    mu_a, sd_a = (v.ravel() for v in cv2.meanStdDev(alineada))
+    mu_r, sd_r = (v.ravel() for v in cv2.meanStdDev(referencia))
+    escala = sd_r / np.maximum(sd_a, 1e-6)
+    niveles = np.arange(256, dtype=np.float32)[:, None]
+    tabla = np.clip((niveles - mu_a) * escala + mu_r, 0, 255).astype(np.uint8)  # 256 x 3, una columna por canal
+    return cv2.LUT(alineada, tabla.reshape(1, 256, 3))
 
 
 def recortes(alineada: np.ndarray, plantilla: Plantilla, margen: float = 0.15) -> dict[str, np.ndarray]:

@@ -93,6 +93,8 @@ Prueba de software del 29 oct (simulación, no experimento): con una foto simula
 
 ### En la Raspberry Pi 4 Model B
 
+**Sin internet en el lugar (recomendado):** la noche anterior, en la laptop, ejecute `make paquete-pi` y copie la carpeta `paquete-pi/` a una memoria USB. En la Pi: `bash instalar.sh` y `bash probar.sh` desde esa carpeta. La guía paso a paso está en `16-documentacion-final/jornada/guia-raspberry-pi.pdf`. Con internet, también sirven los pasos siguientes.
+
 El código corre igual que en la laptop; solo cambia la instalación. Hágala **antes** del día, con internet, porque `uv sync` descarga paquetes.
 
 1. Sistema: **Raspberry Pi OS de 64 bits** (Raspberry Pi Imager, «Raspberry Pi OS (64-bit)»). En 32 bits no hay paquetes de onnxruntime y no funciona. Compruebe con `uname -m`: debe decir `aarch64`.
@@ -100,7 +102,7 @@ El código corre igual que en la laptop; solo cambia la instalación. Hágala **
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh     # luego cierre y abra la terminal
    git clone https://github.com/netfoor/semiconductores.git && cd semiconductores/prototipo
-   uv sync                    # si el sistema trae Python 3.11, uv descarga 3.12 por su cuenta
+   uv sync                    # funciona con el Python 3.11 de Raspberry Pi OS Bookworm
    make probar
    make mosaico
    ```
