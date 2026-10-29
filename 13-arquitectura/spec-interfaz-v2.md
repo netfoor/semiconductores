@@ -35,8 +35,8 @@ Que la demostración muestre **el sistema como lo usaría un inspector en una pl
 | 1 | **Menú:** la barra de enlaces se vuelve un botón de menú (hamburguesa) con panel lateral | Hecho en v2-1 |
 | 2 | **Avisos:** el banner naranja «Datos sintéticos» / «Tarjeta-mosaico» se sustituye por la etiqueta «Demostración» y la página **Acerca de la demostración** (`/acerca`) con: origen de los datos, crédito de PCBSPDefect, uso de IA, detalles técnicos y enlace a experimentos | Hecho en v2-1 |
 | 3 | **Nueva inspección** (antes «Capturar desde el celular»): sesión de inspector (se elige una vez de una lista, con turno y estación), número de tarjeta automático, lado e iluminación por omisión, modelo de tarjeta automático si solo hay uno, **un solo botón «Tomar foto»** que envía en cuanto se toma, sin textos de ayuda | Hecho en v2-1 |
-| 4 | **Inspección:** encabezado con tarjeta, inspector y resumen («3 uniones por revisar»); textos de operador; quitar el nombre de archivo de la vista principal | Pendiente |
-| 5 | **Textos** de Proyecto, Fotos reales, Reto y Experimentos con tono de presentación (por ejemplo, el Reto: «¿Puedes ver lo que ve la red?») | Pendiente |
+| 4 | **Inspección:** encabezado con tarjeta, inspector y cifras (por revisar, sin observaciones, tiempo de análisis); sin campo de operador ni nombre de archivo; «¿Cómo está esta unión?»; cierre «Inspección terminada» con botón «Nueva inspección» | Hecho en v2-2 |
+| 5 | **Textos** de Proyecto, Fotos reales, Reto y Estación con tono de presentación (Reto: «¿Puedes ver lo que ve la red?»); sección «Hacia dónde va» (D-016); datos internos de la Estación en «Detalles técnicos» | Hecho en v2-2 |
 
 ### P2, si hay tiempo
 

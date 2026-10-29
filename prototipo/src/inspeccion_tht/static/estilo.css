@@ -352,3 +352,20 @@ body.con-cajon { overflow: hidden; }
 .anexo { max-width: 760px; }
 .anexo h2 { margin-top: var(--e6); }
 @media (max-width: 420px) { .etiqueta-demo { font-size: 12px; padding: 2px 8px; } }
+.cabeza-inspeccion { padding-bottom: var(--e4); }
+.antetitulo { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--acento); margin: 0 0 var(--e1); }
+.cifras-inspeccion { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e3); margin-top: var(--e4); max-width: 560px; }
+.cifras-inspeccion div { border-top: 3px solid var(--linea); padding-top: var(--e2); display: flex; flex-direction: column; }
+.cifras-inspeccion div:first-child { border-color: var(--marca); }
+.cifras-inspeccion b { font-size: 28px; line-height: 1.1; }
+.cifras-inspeccion span { font-size: 13.5px; color: var(--gris); }
+.resumen-inspeccion { font-weight: 600; }
+.pregunta-union { font-weight: 700; margin: var(--e3) 0 var(--e2); }
+.terminada { border: 1px solid var(--linea); border-left: 4px solid var(--verde); padding: var(--e4); margin: var(--e3) 0; }
+.terminada[hidden] { display: none; }
+.terminada b { font-size: 19px; }
+.terminada .boton { margin-top: var(--e2); }
+.detalles-tecnicos { margin-top: var(--e3); }
+.detalles-tecnicos summary { cursor: pointer; color: var(--tinta-2); font-size: 14.5px; }
+.lista-sospechas button.resuelta { text-decoration: none; color: var(--gris); }
+.lista-sospechas button.resuelta span:last-child { color: var(--verde); font-weight: 700; }

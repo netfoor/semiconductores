@@ -2,29 +2,28 @@
 {% block titulo %}Inicio{% endblock %}
 {% block contenido %}
 <section class="seccion">
-  <h1>Inspección asistida de uniones through-hole</h1>
+  <h1>Estación de revisión</h1>
   {% if en_linea %}
-  <p class="entrada">El sistema marca las uniones sospechosas y la persona decide. Esta es una demostración en línea con tarjetas sintéticas; en la estación real todo se procesa en la Raspberry Pi, sin internet, y las imágenes no salen del equipo.</p>
+  <p class="entrada">Abra una tarjeta para ver cómo el sistema señala las uniones sospechosas y cómo el inspector las revisa.</p>
   {% else %}
-  <p class="entrada">El sistema marca las uniones sospechosas y la persona decide. Todo se procesa en este equipo, sin internet.</p>
-  <p class="nota">Carpeta de datos: <code>{{ raiz }}</code></p>
+  <p class="entrada">Tarjetas inspeccionadas en esta estación.</p>
+  <p><a class="boton" href="{{ url_for('pagina_capturar') }}">Nueva inspección</a></p>
   {% endif %}
   <div class="cifras">
-    <div><b class="num">{{ imagenes|length }}</b><span>imágenes en crudos</span></div>
-    <div><b class="num">{{ disenos|length }}</b><span>diseños de tarjeta</span></div>
-    <div><b class="num">{{ por_etiquetador.values()|sum }}</b><span>anotaciones guardadas</span></div>
-    <div><b class="num">{{ n_decisiones }}</b><span>decisiones del operador</span></div>
+    <div><b class="num">{{ imagenes|length }}</b><span>fotos de tarjetas</span></div>
+    <div><b class="num">{{ disenos|length }}</b><span>modelos de tarjeta</span></div>
+    <div><b class="num">{{ n_decisiones }}</b><span>decisiones registradas</span></div>
   </div>
-  <p class="nota">
-    Partición por tarjeta: {{ "congelada" if hay_particion else "pendiente (tht particion)" }}.
+  <details class="detalles-tecnicos"><summary>Detalles técnicos</summary><p class="nota">
+    {% if not en_linea %}Carpeta de datos: <code>{{ raiz }}</code>. {% endif %}Partición por tarjeta: {{ "congelada" if hay_particion else "pendiente (tht particion)" }}.
     Modelo en uso: {{ "red convolucional (ONNX)" if modelo_nombre == "red" else "línea base clásica" }}, {{ "entrenado" if hay_modelo else "pendiente de entrenar" }}.
     {% if por_etiquetador %}Anotaciones por etiquetador:
       {% for k, v in por_etiquetador.items() %}{{ k }} ({{ v }}){% if not loop.last %}, {% endif %}{% endfor %}.{% endif %}
-  </p>
+  </p></details>
 </section>
 
 <section class="seccion">
-  <h2>Imágenes</h2>
+  <h2>Tarjetas</h2>
   {% if imagenes %}
   <div class="campo campo-corto">
     <label for="etiquetador">Quien etiqueta o inspecciona</label>
@@ -46,13 +45,13 @@
     </tbody>
   </table></div>
   {% else %}
-  <p>Aún no hay imágenes. Capture una con <code>uv run tht capturar --tarjeta T01 --lado B --responsable fortino</code>.</p>
+  <p>Aún no hay tarjetas. {% if not en_linea %}Empiece con <a href="{{ url_for('pagina_capturar') }}">Nueva inspección</a>.{% endif %}</p>
   {% endif %}
 </section>
 
 <section class="seccion">
-  <h2>Diseños de tarjeta</h2>
-  <p>Cada diseño guarda una imagen de referencia y el rectángulo de cada unión. Las capturas se alinean contra esa referencia.</p>
+  <h2>Modelos de tarjeta</h2>
+  <p>Cada modelo guarda una foto de referencia con la posición de cada unión; las fotos nuevas se ajustan a ella.</p>
   {% if disenos %}
   <ul>{% for d in disenos %}<li><a href="{{ url_for('pagina_plantilla', diseno=d) }}">{{ d }}</a></li>{% endfor %}</ul>
   {% endif %}
