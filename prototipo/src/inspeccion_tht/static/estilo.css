@@ -92,6 +92,7 @@ tr.elegida td { background: var(--seleccion); box-shadow: inset 3px 0 0 var(--ma
 .boton.secundario { background: transparent; color: var(--marca-profunda); }
 .boton.secundario:hover { background: var(--seleccion); }
 .boton:disabled { opacity: 0.45; cursor: not-allowed; }
+.boton[hidden] { display: none; } /* el display de .boton anulaba el atributo hidden (Reto, inspección) */
 .acciones { display: flex; flex-wrap: wrap; gap: var(--e2); }
 input[type=text], select { font: inherit; font-size: 16px; min-height: 44px; padding: 0 var(--e3); border: 1px solid var(--linea); border-radius: 2px; background: var(--blanco); color: var(--tinta); }
 label { font-weight: 600; font-size: 15px; display: block; margin-bottom: var(--e1); }
@@ -506,7 +507,7 @@ body.con-cajon { overflow: hidden; }
 .progreso i.actual { outline: 2px solid var(--marca); outline-offset: 1px; }
 .rotulo-tarjeta { margin: 0 0 var(--e2); }
 .tarjeta-completa .acciones { margin-top: var(--e2); }
-#revision[hidden], .trabajo-una-a-una .boton[hidden], .trabajo-una-a-una .enlace[hidden] { display: none; }
+#revision[hidden], .trabajo-una-a-una .enlace[hidden] { display: none; }
 @media (max-width: 860px) {
   .trabajo-una-a-una .panel { order: -1; border-top: 0; padding-top: 0; }
   .trabajo-una-a-una .tarjeta-completa { border-top: 1px solid var(--linea); padding-top: var(--e4); }
