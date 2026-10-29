@@ -308,3 +308,47 @@ label { font-weight: 600; font-size: 15px; display: block; margin-bottom: var(--
   .captura .acciones .boton { width: 100%; }
   .tabla-captura th { width: 40%; }
 }
+
+/* Interfaz v2 (D-015): menú lateral, etiqueta de demostración y nueva inspección */
+.encabezado .fila { height: 64px; flex-wrap: nowrap; padding-top: 0; }
+.encabezado-derecha { margin-left: auto; display: flex; align-items: center; gap: var(--e3); }
+.etiqueta-demo { font-size: 13px; font-weight: 700; color: var(--acento); border: 1px solid var(--acento); border-radius: 999px;
+  padding: 3px 10px; text-decoration: none; white-space: nowrap; }
+.etiqueta-demo:hover { background: var(--seleccion); }
+.menu-boton { width: 44px; height: 44px; display: inline-flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; border: 0; background: transparent; cursor: pointer; padding: 0; }
+.menu-boton span { width: 22px; height: 2px; background: var(--tinta); border-radius: 2px; }
+.cajon-fondo { position: fixed; inset: 0; background: rgba(43, 29, 48, 0.35); z-index: 20; }
+.cajon { position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 86vw); background: var(--blanco); z-index: 21;
+  display: flex; flex-direction: column; padding: var(--e4) 0; box-shadow: -8px 0 24px rgba(43, 29, 48, 0.12); }
+.cajon[hidden], .cajon-fondo[hidden] { display: none; }
+.cajon-cabeza { display: flex; align-items: center; justify-content: space-between; padding: 0 var(--e5) var(--e3); }
+.cajon-cerrar { font-size: 28px; line-height: 1; border: 0; background: transparent; cursor: pointer; color: var(--tinta-2); width: 44px; height: 44px; }
+.cajon a { padding: 14px var(--e5); text-decoration: none; color: var(--tinta); font-weight: 600; font-size: 17px; }
+.cajon a:hover { background: var(--banda); }
+.cajon a[aria-current="page"] { color: var(--marca); box-shadow: inset 3px 0 0 var(--marca); }
+.cajon .cajon-secundario { margin-top: auto; font-weight: 400; font-size: 15px; color: var(--tinta-2); border-top: 1px solid var(--linea); }
+body.con-cajon { overflow: hidden; }
+
+.inspeccion-nueva { max-width: 560px; }
+.sesion { display: flex; align-items: center; gap: var(--e3); padding: var(--e3) 0 var(--e4); border-bottom: 1px solid var(--linea); margin-bottom: var(--e5); }
+.sesion[hidden] { display: none; }
+.sesion div { display: flex; flex-direction: column; line-height: 1.3; flex: 1; }
+.sesion small, .perfil small { color: var(--gris); font-size: 14px; }
+.avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--seleccion); color: var(--marca-profunda); font-weight: 800;
+  display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 15px; }
+.enlace { border: 0; background: transparent; color: var(--marca-profunda); font: inherit; font-weight: 600; cursor: pointer; padding: var(--e2); }
+.perfiles { list-style: none; margin: var(--e4) 0 0; padding: 0; display: grid; gap: var(--e2); }
+.perfil { width: 100%; display: flex; align-items: center; gap: var(--e3); text-align: left; padding: var(--e3) var(--e4);
+  border: 1px solid var(--linea); background: var(--blanco); font: inherit; color: var(--tinta); cursor: pointer; border-radius: 2px; }
+.perfil:hover { border-color: var(--marca); background: var(--seleccion); }
+.perfil span:last-child { display: flex; flex-direction: column; line-height: 1.3; }
+.modelo-tarjeta { color: var(--tinta-2); margin: var(--e2) 0 var(--e5); }
+.boton-foto { width: 100%; min-height: 64px; font-size: 19px; margin-top: var(--e3); }
+.analizando { display: flex; flex-direction: column; align-items: center; gap: var(--e4); padding: var(--e8) 0; font-size: 18px; }
+.analizando[hidden] { display: none; }
+.giro { width: 48px; height: 48px; border-radius: 50%; border: 4px solid var(--seleccion); border-top-color: var(--marca); animation: girar 0.9s linear infinite; }
+@keyframes girar { to { transform: rotate(360deg); } }
+.anexo { max-width: 760px; }
+.anexo h2 { margin-top: var(--e6); }
+@media (max-width: 420px) { .etiqueta-demo { font-size: 12px; padding: 2px 8px; } }

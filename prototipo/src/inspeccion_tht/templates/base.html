@@ -14,29 +14,40 @@
         <small>FEMECI Capítulo Puebla 2026</small>
       </a>
       <div class="motivo" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <nav aria-label="Principal">
-        <a href="{{ url_for('proyecto') }}"{% if request.endpoint == 'proyecto' %} aria-current="page"{% endif %}>Proyecto</a>
-        <a href="{{ url_for('fotos_reales') }}"{% if request.endpoint == 'fotos_reales' %} aria-current="page"{% endif %}>Fotos reales</a>
-        <a href="{{ url_for('reto') }}"{% if request.endpoint == 'reto' %} aria-current="page"{% endif %}>Reto</a>
-        <a href="{{ url_for('experimentos') }}"{% if request.endpoint == 'experimentos' %} aria-current="page"{% endif %}>Experimentos</a>
-        <a href="{{ url_for('inicio') }}"{% if request.endpoint == 'inicio' %} aria-current="page"{% endif %}>{{ "Demostración" if en_linea else "Estación" }}</a>
-        {% if not en_linea %}<a href="{{ url_for('pagina_capturar') }}"{% if request.endpoint in ('pagina_capturar', 'captura_guardada') %} aria-current="page"{% endif %}>Capturar</a>{% endif %}
-      </nav>
+      <div class="encabezado-derecha">
+        {% if demostracion %}<a class="etiqueta-demo" href="{{ url_for('acerca') }}">Demostración</a>{% endif %}
+        <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
-  {% if sintetico and not ocultar_aviso %}
-  <div class="aviso-sintetico" role="note">
-    <p><b>Datos sintéticos.</b> {% if en_linea %}Estas tarjetas se generaron por computadora para mostrar el funcionamiento del software.{% else %}Esta carpeta se generó con <code>tht demo</code> para probar el software.{% endif %} Nada de lo que se vea aquí es un resultado del proyecto.</p>
-  </div>
-  {% endif %}
-  {% if mosaico and not ocultar_aviso %}
-  <div class="aviso-sintetico" role="note">
-    <p><b>Tarjeta-mosaico de demostración.</b> Fotos reales de uniones del conjunto público PCBSPDefect (Tsang et al., 2023; CC BY 4.0), acomodadas como una tarjeta. No es una tarjeta física ni datos propios del proyecto.</p>
-  </div>
-  {% endif %}
+  <div class="cajon-fondo" hidden></div>
+  <nav class="cajon" id="menu" aria-label="Principal" hidden>
+    <div class="cajon-cabeza"><b>Menú</b><button class="cajon-cerrar" type="button" aria-label="Cerrar menú">×</button></div>
+    {% if not en_linea %}<a href="{{ url_for('pagina_capturar') }}"{% if request.endpoint in ('pagina_capturar', 'captura_guardada') %} aria-current="page"{% endif %}>Nueva inspección</a>{% endif %}
+    <a href="{{ url_for('inicio') }}"{% if request.endpoint == 'inicio' %} aria-current="page"{% endif %}>{{ "Demostración" if en_linea else "Estación" }}</a>
+    <a href="{{ url_for('proyecto') }}"{% if request.endpoint == 'proyecto' %} aria-current="page"{% endif %}>El proyecto</a>
+    <a href="{{ url_for('fotos_reales') }}"{% if request.endpoint == 'fotos_reales' %} aria-current="page"{% endif %}>Fotos reales</a>
+    <a href="{{ url_for('reto') }}"{% if request.endpoint == 'reto' %} aria-current="page"{% endif %}>Reto</a>
+    <a href="{{ url_for('experimentos') }}"{% if request.endpoint == 'experimentos' %} aria-current="page"{% endif %}>Experimentos</a>
+    <a class="cajon-secundario" href="{{ url_for('acerca') }}"{% if request.endpoint == 'acerca' %} aria-current="page"{% endif %}>Acerca de la demostración</a>
+  </nav>
   <main>
     {% block contenido %}{% endblock %}
   </main>
+  <script>
+    (() => {
+      const boton = document.querySelector(".menu-boton"), cajon = document.getElementById("menu");
+      const fondo = document.querySelector(".cajon-fondo"), cerrar = document.querySelector(".cajon-cerrar");
+      const poner = (abierto) => { cajon.hidden = fondo.hidden = !abierto; boton.setAttribute("aria-expanded", abierto);
+        document.body.classList.toggle("con-cajon", abierto); if (abierto) cajon.querySelector("a").focus(); };
+      boton.addEventListener("click", () => poner(cajon.hidden));
+      cerrar.addEventListener("click", () => { poner(false); boton.focus(); });
+      fondo.addEventListener("click", () => poner(false));
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !cajon.hidden) { poner(false); boton.focus(); } });
+    })();
+  </script>
   <script src="{{ url_for('static', filename='lienzo.js') }}"></script>
   {% block scripts %}{% endblock %}
 </body>

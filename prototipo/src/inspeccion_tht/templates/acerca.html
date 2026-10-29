@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %}Acerca de la demostración{% endblock %}
+{% block contenido %}
+<section class="seccion anexo">
+  <h1>Acerca de la demostración</h1>
+  <p class="entrada">Lo que conviene saber para interpretar lo que se ve en esta estación. El detalle completo está en el protocolo y en la bitácora del proyecto.</p>
+
+  <h2>Los datos que se muestran</h2>
+  {% if mosaico %}
+  <p>La tarjeta de esta demostración es un <b>mosaico de fotos reales</b> de uniones through-hole, tomadas del conjunto de prueba de PCBSPDefect y acomodadas como una tarjeta. No es una tarjeta física ni forma parte de nuestros datos propios. La red de clasificación no vio esas fotos al entrenar.</p>
+  {% elif sintetico %}
+  <p>Las tarjetas de esta demostración se <b>generaron por computadora</b> para mostrar el funcionamiento del software. No son resultados del proyecto.</p>
+  {% else %}
+  <p>Las imágenes de esta estación son capturas propias.</p>
+  {% endif %}
+  <p>Todavía no tenemos tarjetas de producción. El siguiente paso es una colaboración con una planta de ensamble para un piloto con datos propios; con ellos se medirán las metas del protocolo.</p>
+
+  <h2>Fotos de uniones reales</h2>
+  <p>Tsang, S.-H., Suo, Z., Chan, T. T.-L., Nguyen, H.-T., &amp; Lun, D. P.-K. (2023). PCB soldering defect inspection using multitask learning under low data regimes. <i>Advanced Intelligent Systems, 5</i>, Artículo 2300364. Conjunto PCBSPDefect, licencia CC BY 4.0. Las fotos se usan sin modificar.</p>
+
+  <h2>Cómo funciona por dentro</h2>
+  <ul>
+    <li>El celular solo toma la foto y la envía a la estación por una red local propia, sin internet. Todo el análisis ocurre en la estación (Raspberry Pi o laptop).</li>
+    <li>Cada foto se guarda tal como la entrega la cámara, con una huella digital (SHA-256) que permite comprobar después que no cambió, junto con una copia sin pérdida que es la que se analiza.</li>
+    <li>La foto se alinea con la plantilla del modelo de tarjeta, se recorta cada unión y una red convolucional pequeña sugiere su condición. La decisión final la toma el inspector y queda registrada.</li>
+    <li>Se aceptan fotos JPEG. En iPhone conviene el formato «Más compatible» (Ajustes &gt; Cámara &gt; Formatos) y desactivar la ubicación de la cámara.</li>
+  </ul>
+
+  <h2>Uso de inteligencia artificial</h2>
+  <p>Usamos un asistente de IA (Claude; Anthropic, 2026) como apoyo en la búsqueda de información, la organización del repositorio y la programación. El equipo verificó cada resultado y es responsable del contenido. El protocolo y la bitácora detallan qué se hizo con IA.</p>
+
+  <h2>Cómo se evalúa</h2>
+  <p>Las metas, los experimentos y sus resultados están en <a href="{{ url_for('experimentos') }}">Experimentos</a>.</p>
+</section>
+{% endblock %}

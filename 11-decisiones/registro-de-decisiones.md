@@ -32,6 +32,7 @@ Cada decisión registra contexto, opciones, decisión, razones, consecuencias y 
 | D-012 | Integración de una tercera integrante: María José de la Rosa Hernández | **Adoptada** | 2026-10-26 | Equipo (comunicado por Fortino) |
 | D-013 | Autoría de los commits del prototipo | **Adoptada** | 2026-10-26 | Fortino |
 | D-014 | Usar PCBSPDefect (público, CC BY 4.0) como validación externa preliminar (EXP-006) y dejar abierta la demo en línea | **Adoptada** | 2026-10-26 | Fortino (demo abierta); Claude (IA) propone el conjunto |
+| D-015 | Interfaz centrada en el inspector: lo técnico y las declaraciones pasan a un anexo | **Adoptada** | 2026-10-29 | Fortino |
 
 ## D-001 · Estructura y convenciones de la bóveda
 
@@ -154,3 +155,9 @@ Opciones y criterios en [[analisis-estrategico-convocatoria]] §3. Considerar la
 
 - **Datos:** sin tarjetas propias todavía, se usa el subconjunto b_dip de PCBSPDefect [F-080] para una validación preliminar (EXP-006). Se descartó SolDef_AI porque es de componentes SMD y los conjuntos de Hugging Face porque no declaran licencia. Las imágenes no se suben al repositorio: se descargan de Zenodo y se verifica su huella.
 - **Demo:** femeci.foor.dev queda sin contraseña porque solo tiene datos sintéticos y solo el jurado tendrá la liga (decisión de Fortino, 26 oct). No se suben ahí datos de terceros (D-011). Actualización (26 oct, sesión 6): las páginas Fotos reales, Reto y Experimentos muestran 60 fotos públicas de PCBSPDefect (CC BY 4.0, con atribución) y el modelo de EXP-006; siguen sin subirse imágenes de empresas.
+
+## D-015 · Interfaz centrada en el inspector (adoptada)
+
+- **Decisión (2026-10-29, Fortino):** la plataforma y la demostración muestran el sistema como lo usaría un inspector. Las aclaraciones técnicas, el uso de IA y el origen de los datos dejan las pantallas principales y pasan a una página «Acerca de la demostración», a la bitácora y al protocolo. Se reducen los pasos manuales (sesión de inspector, número de tarjeta automático, un solo botón para tomar la foto) y se cambia el tono de los textos a uno de presentación. Spec: [[spec-interfaz-v2]].
+- **Razón:** en una presentación pesa más la idea y su uso que la tecnología; los avisos grandes distraen de lo que el sistema hace. Los evaluadores tienen la bitácora y el protocolo.
+- **Salvaguardas que se mantienen (D-003, D-014):** la demostración se identifica con una etiqueta «Demostración» que lleva al anexo; nunca se presenta un dato sintético o público como propio; el crédito CC BY 4.0 de PCBSPDefect queda junto a sus fotos; el uso de IA sigue declarado en el protocolo y la bitácora.

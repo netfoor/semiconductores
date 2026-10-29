@@ -142,7 +142,7 @@ def test_tamano_excedido(cliente, raiz):
     ({"tarjeta": "T7"}, "La tarjeta se nombra"),
     ({"lado": "C"}, "El lado es A"),
     ({"iluminacion": "../1"}, "La iluminación"),
-    ({"responsable": " "}, "Falta el nombre"),
+    ({"responsable": " "}, "Elija quién inspecciona"),
     ({"diseno": "no-existe"}, "No existe el diseño"),
 ])
 def test_tarjeta_o_campos_invalidos(cliente, raiz, campos, texto):
@@ -192,8 +192,23 @@ def test_captura_en_linea_no_existe(raiz):
 def test_pagina_local_tiene_formulario_y_navegacion(cliente):
     html = cliente.get("/capturar").get_data(as_text=True)
     assert 'capture="environment"' in html and 'accept="image/*"' in html
-    assert html.count('type="file"') == 2  # cámara y galería
+    assert html.count('type="file"') == 1  # solo «Tomar foto» (D-015)
+    assert "¿Quién inspecciona?" in html and "Evaluador invitado" in html
     assert 'href="/capturar"' in cliente.get("/").get_data(as_text=True)
+
+
+def test_tarjeta_automatica_y_lado_por_omision(cliente, raiz):
+    r = enviar(cliente, jpeg(), tarjeta="", lado="")
+    assert r.status_code in (200, 302)
+    t = sorted(d.name for d in (raiz / "crudos").iterdir() if d.is_dir())
+    assert t and all(x.startswith("T") for x in t)
+    meta = json.loads(sorted((raiz / "crudos" / t[-1]).glob("*.json"))[-1].read_text(encoding="utf-8"))
+    assert meta["lado"] == "B"
+
+
+def test_acerca_reune_las_declaraciones(cliente):
+    html = cliente.get("/acerca").get_data(as_text=True)
+    assert "Uso de inteligencia artificial" in html and "CC BY 4.0" in html
 
 
 @pytest.fixture(scope="module")
