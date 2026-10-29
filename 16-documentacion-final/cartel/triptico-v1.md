@@ -24,7 +24,7 @@ Sustituye al [[cartel-v1]] de 90 x 120 cm. Las recomendaciones de la SECIHTI Pue
 | Título del proyecto arriba | El título registrado en el F-01 |
 | Estructura sugerida para Ingenierías | Izquierda: introducción, antecedentes, meta de ingeniería y justificación. Centro: objetivos, metodología, y creatividad e innovación. Derecha: resultados, conclusiones y referencias |
 | Arial, Calibri, Tahoma o Times New Roman | Arial; en Linux se incrusta Liberation Sans, de métricas idénticas |
-| Legible a 2 m, fondo claro y letra oscura | Texto de unos 50 pt, títulos de unos 65 pt, fondo blanco; sin grises claros en la letra |
+| Legible a 2 m, fondo claro y letra oscura | Texto de unos 56 pt y títulos de unos 85 pt (el generador busca la escala más grande que cabe), fondo blanco; sin grises claros en la letra |
 | Imágenes numeradas con su crédito | Figuras 1 a 3, cada una con su origen |
 | Breve: síntesis con las ideas principales | Frases cortas (texto reducido a la mitad tras la revisión de Fortino) |
 | Destacar resultados con números | 0.94 y 0.12, con la gráfica y sus intervalos |
