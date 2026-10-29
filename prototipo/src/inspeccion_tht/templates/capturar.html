@@ -13,9 +13,9 @@
     <p class="entrada">Elija su perfil para empezar el turno.</p>
     <ul class="perfiles">
       {% for o in operadores %}
-      <li><button type="button" class="perfil" data-nombre="{{ o.nombre }}" data-turno="{{ o.turno }} · {{ o.estacion }}">
+      <li><button type="button" class="perfil" data-nombre="{{ o.nombre }}" data-turno="{{ o.turno }}, {{ o.estacion }}">
         <span class="avatar" aria-hidden="true">{{ (o.nombre.split()[0][0] ~ (o.nombre.split()[-1][0] if o.nombre.split()|length > 1 else ''))|upper }}</span>
-        <span><b>{{ o.nombre }}</b><small>{{ o.turno }} · {{ o.estacion }}</small></span>
+        <span><b>{{ o.nombre }}</b><small>{{ o.turno }}, {{ o.estacion }}</small></span>
       </button></li>
       {% endfor %}
     </ul>
