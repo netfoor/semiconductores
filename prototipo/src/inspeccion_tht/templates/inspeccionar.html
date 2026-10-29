@@ -96,7 +96,7 @@
       const corregidas = sosp.filter((r) => decididas[r.union_id] && decididas[r.union_id] !== r.sugerencia).length;
       const seg = Math.round((performance.now() - inicio) / 1000);
       document.getElementById("terminada-texto").textContent = sosp.length
-        ? `${sosp.length} uniones revisadas en ${seg} s` + (corregidas ? `, ${corregidas} corregidas.` : ", todas coincidieron con la sugerencia.")
+        ? `${sosp.length} uniones revisadas en ${seg} s` + (corregidas ? `, ${corregidas} ${corregidas === 1 ? "corregida" : "corregidas"}.` : ", todas coincidieron con la sugerencia.")
         : "No hubo uniones por revisar.";
     }
   }

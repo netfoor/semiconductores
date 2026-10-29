@@ -62,15 +62,24 @@
 </section>
 
 <section class="bloque banda" id="propuesta">
-  <h2>La propuesta</h2>
-  <p class="entrada">No reemplaza al inspector: le señala dónde mirar. Cada decisión queda registrada.</p>
-  <ol class="pasos">
-    <li><b>Capturar</b><span>Cámara de al menos 12 MP en un soporte fijo con luz difusa.</span></li>
-    <li><b>Alinear</b><span>La foto se ajusta a una plantilla del diseño de tarjeta, aunque la tarjeta quede unos milímetros movida.</span></li>
-    <li><b>Recortar</b><span>Cada unión se recorta según la plantilla, sin necesidad de un detector.</span></li>
-    <li><b>Clasificar</b><span>Una red convolucional pequeña (ONNX) sugiere la clase: aceptable, insuficiente, puente, sin soldar, exceso o fría.</span></li>
-    <li><b>Decide la persona</b><span>El inspector revisa solo las marcadas. Cada decisión queda registrada y servirá para mejorar el modelo de su planta.</span></li>
+  <h2>La estación en uso</h2>
+  <p class="entrada">No reemplaza al inspector: le señala dónde mirar. Así se ve una inspección completa desde el celular.</p>
+  <ol class="uso">
+    {% for n, titulo, texto in [
+      (1, "Elige su perfil", "Una sola vez por turno; el teléfono lo recuerda."),
+      (2, "Toma la foto", "Un botón. La tarjeta, el modelo y el número se llenan solos."),
+      (3, "La estación analiza", "Alinea la foto con la plantilla y clasifica cada unión, sin internet."),
+      (4, "Ve qué revisar", "Las uniones sospechosas quedan marcadas en la foto, con un resumen arriba."),
+      (5, "Revisa solo las marcadas", "Confirma la sugerencia o la corrige con un toque."),
+      (6, "Cierra y sigue", "Resumen de la tarjeta y a la siguiente. Cada decisión queda registrada.")] %}
+    <li>
+      <figure class="telefono"><img src="{{ url_for('static', filename='capturas/uso-%d.jpg' % n) }}" alt="Paso {{ n }}: {{ titulo }}" loading="lazy" width="420" height="715"></figure>
+      <b>{{ n }}. {{ titulo }}</b>
+      <span>{{ texto }}</span>
+    </li>
+    {% endfor %}
   </ol>
+  <p class="nota">Capturas de la demostración, con la tarjeta-mosaico de fotos públicas. <a href="{{ url_for('acerca') }}">Acerca de la demostración</a>.</p>
 </section>
 
 <section class="bloque" id="metodo">

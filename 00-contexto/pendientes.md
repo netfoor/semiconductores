@@ -34,6 +34,7 @@ Lista viva: se actualiza en cada sesión. Lo terminado se marca con la fecha y s
 | 10 | Perfil del inspector: inspecciones de hoy, uniones revisadas, tiempo promedio | P2 | Pendiente |
 | 11 | Historial de inspecciones de la estación | P2 | Pendiente |
 | 12 | Pantalla de la laptop como tablero de la estación mientras el celular captura | P2 | Pendiente |
+| 24 | Actualizar la skill ui-minimal en claude.ai con el archivo enviado (la copia local ya está actualizada) | P2 | Fortino |
 | 13 | Revisar textos de Experimentos con el mismo tono (la página es para evaluadores; se deja técnica por ahora) | P2 | Pendiente |
 | 14 | Fusionar a main y comprobar femeci.foor.dev | P1 | Fusionado 29 oct; falta comprobar el despliegue |
 
@@ -41,9 +42,9 @@ Lista viva: se actualiza en cada sesión. Lo terminado se marca con la fecha y s
 
 | # | Pendiente | Prioridad | Estado |
 |---|---|---|---|
-| 18 | L2: recorrido «Del diseño a la tarjeta revisada» con la tarjeta en capas 3D y la barra de proceso | P1 | Hecho 29 oct (rama; falta tu revisión) |
-| 19 | L2: corte transversal THT frente a SMD | P1 | Hecho 29 oct (rama) |
-| 20 | L4: «La estación en uso» con capturas reales del celular | P1 | Pendiente |
+| 18 | L2: recorrido «Del diseño a la tarjeta revisada» con la tarjeta en capas 3D y la barra de proceso | P1 | Hecho 29 oct (PR #14) |
+| 19 | L2: corte transversal THT frente a SMD | P1 | Hecho 29 oct (PR #14) |
+| 20 | L4: «La estación en uso» con capturas reales del celular | P1 | Hecho 29 oct (rama; falta tu revisión) |
 | 21 | L1: portada con captura del celular | P2 | Pendiente |
 | 22 | L5: mejor presentación de resultados (en qué se equivoca cada modelo) | P2 | Pendiente |
 | 23 | L3: acortar «El problema» | P2 | Pendiente |
