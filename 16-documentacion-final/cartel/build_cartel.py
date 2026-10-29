@@ -46,7 +46,7 @@ def datos_uri(ruta: Path, tipo: str) -> str:
 
 
 def grafica(filas: list[dict], metas: dict, fuente: str = "InterCartel, sans-serif",
-            etiqueta_w: int = 175, panel_w: int = 300, hueco: int = 45) -> str:
+            etiqueta_w: int = 175, panel_w: int = 300, hueco: int = 45, nota: bool = True) -> str:
     """Dos paneles de puntos con IC (sensibilidad y falsas alarmas). Unidades del SVG: mm."""
     fila_h, cab = 34, 30
     orden = [("oficial", "linea_base"), ("oficial", "red"), ("tarjeta", "linea_base"), ("tarjeta", "red")]
@@ -104,8 +104,9 @@ def grafica(filas: list[dict], metas: dict, fuente: str = "InterCartel, sans-ser
             # Valor a la derecha del intervalo (cabe aun con el límite en 1.0, en el hueco entre paneles)
             s.append(f'<text x="{esc(hi) + 4}" y="{y + 3}" font-size="8.5" font-weight="700" fill="{TINTA}" stroke="#fff" stroke-width="2.2" paint-order="stroke">'
                      f'{f2(v)}</text>')
-    s.append(f'<text x="{etiqueta_w}" y="{alto - 2}" font-size="7.5" fill="{GRIS}">Punto: valor medido. '
-             'Línea: intervalo de confianza de 95 % (bootstrap agrupado por tarjeta, 2000 repeticiones).</text>')
+    if nota:
+        s.append(f'<text x="{etiqueta_w}" y="{alto - 2}" font-size="7.5" fill="{GRIS}">Punto: valor medido. '
+                 'Línea: intervalo de confianza de 95 % (bootstrap agrupado por tarjeta, 2000 repeticiones).</text>')
     s.append("</svg>")
     return "".join(s)
 

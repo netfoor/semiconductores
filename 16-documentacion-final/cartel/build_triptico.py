@@ -26,10 +26,8 @@ TINTA, TINTA2, GRIS, LINEA = "#1f1623", "#3b2f3f", "#3b2f3f", "#d9cfda"  # sin g
 def construir() -> str:
     build_cartel.GRIS = TINTA2  # la gráfica toma sus grises de build_cartel
     r = json.loads((PUBLICO / "resultados.json").read_text(encoding="utf-8"))
-    fotos = json.loads((PUBLICO / "fotos.json").read_text(encoding="utf-8"))
     por = {(f["particion"], f["modelo"]): f for f in r["filas"]}
     lb, red = por[("oficial", "linea_base")], por[("oficial", "red")]
-    lb_t, red_t = por[("tarjeta", "linea_base")], por[("tarjeta", "red")]
     clases = r["clases"]
     m_lb = r["matrices"]["oficial"]["linea_base"]["matriz"]
     m_red = r["matrices"]["oficial"]["red"]["matriz"]
@@ -51,7 +49,7 @@ def construir() -> str:
   --marca:#c10066; --acento:#5f2470; --cian:#0098d4; --amarillo:#f1b400; }}
 * {{ box-sizing: border-box; }}
 html, body {{ margin: 0; background: #fff; }}
-body {{ width: 1500mm; height: 1200mm; font-family: {FUENTE}; color: var(--tinta); font-size: 13.6mm;
+body {{ width: 1500mm; height: 1200mm; font-family: {FUENTE}; color: var(--tinta); font-size: 17.5mm;
   line-height: 1.3; display: flex; flex-direction: column; overflow: hidden; }}
 .motivo {{ display: flex; height: 8mm; flex: none; }}
 .motivo i {{ flex: 1; }}
@@ -62,41 +60,41 @@ body {{ width: 1500mm; height: 1200mm; font-family: {FUENTE}; color: var(--tinta
 .titulo h1 span {{ color: var(--marca); }}
 .titulo p {{ margin: 5mm auto 0; font-size: 12.5mm; color: var(--tinta-2); max-width: 1250mm; }}
 .paneles {{ flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; min-height: 0; }}
-.panel {{ padding: 13mm 20mm 12mm; display: flex; flex-direction: column; gap: 10mm; min-height: 0; overflow: hidden; }}
+.panel {{ padding: 18mm 28mm 16mm; display: flex; flex-direction: column; gap: 24mm; min-height: 0; overflow: hidden; }}
 .panel + .panel {{ border-left: 0.6mm dashed var(--linea); }}
-h2 {{ font-size: 18mm; margin: 0 0 3mm; color: var(--acento); line-height: 1.1; }}
+h2 {{ font-size: 23mm; margin: 0 0 3mm; color: var(--acento); line-height: 1.1; }}
 p {{ margin: 0 0 3mm; }}
-ul {{ margin: 0; padding-left: 9mm; }} li {{ margin-bottom: 2mm; }}
-.meta {{ background: var(--banda); border-left: 3mm solid var(--marca); padding: 8mm 10mm; }}
+ul {{ margin: 0; padding-left: 9mm; }} li {{ margin-bottom: 3.5mm; }}
+.meta {{ background: var(--banda); border-left: 3mm solid var(--marca); padding: 10mm 12mm; }}
 .meta h2 {{ color: var(--marca); }}
-.meta .pregunta {{ font-weight: 700; font-size: 13.6mm; line-height: 1.3; margin-bottom: 4mm; }}
-table {{ width: 100%; border-collapse: collapse; font-size: 12.4mm; }}
+.meta .pregunta {{ font-weight: 700; font-size: 17.5mm; line-height: 1.3; margin-bottom: 4mm; }}
+table {{ width: 100%; border-collapse: collapse; font-size: 16mm; }}
 td {{ padding: 2mm 0; border-top: 0.5mm solid var(--linea); vertical-align: top; }}
-td:first-child {{ font-weight: 700; width: 22mm; color: var(--acento); }}
+td:first-child {{ font-weight: 700; width: 28mm; color: var(--acento); }}
 td:last-child {{ text-align: right; white-space: nowrap; font-weight: 700; padding-left: 4mm; }}
 figure {{ margin: 0; }}
-figcaption, .credito {{ font-size: 8.6mm; color: var(--gris); line-height: 1.3; margin-top: 2mm; }}
+figcaption, .credito {{ font-size: 10.5mm; color: var(--gris); line-height: 1.3; margin-top: 2mm; }}
 figcaption b {{ color: var(--tinta-2); }}
-.pasos {{ list-style: none; margin: 0; padding: 0; counter-reset: p; display: grid; gap: 2.5mm; }}
-.pasos li {{ counter-increment: p; display: grid; grid-template-columns: 13mm 1fr; align-items: baseline; margin: 0; }}
-.pasos li::before {{ content: counter(p); font-weight: 700; font-size: 11mm; color: var(--marca); }}
+.pasos {{ list-style: none; margin: 0; padding: 0; counter-reset: p; display: grid; gap: 4mm; }}
+.pasos li {{ counter-increment: p; display: grid; grid-template-columns: 17mm 1fr; align-items: baseline; margin: 0; }}
+.pasos li::before {{ content: counter(p); font-weight: 700; font-size: 17.5mm; color: var(--marca); }}
 .pasos b {{ color: var(--tinta); }}
 .ejemplos {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 3.5mm; }}
 .ejemplos img {{ width: 100%; aspect-ratio: 1; display: block; }}
-.ejemplos figcaption {{ font-size: 8.4mm; font-weight: 700; color: var(--tinta); text-align: center; margin-top: 1.5mm; }}
-.inspeccion img {{ width: 88%; margin: 0 auto; display: block; border: 0.4mm solid var(--linea); }}
+.ejemplos figcaption {{ font-size: 10.5mm; font-weight: 700; color: var(--tinta); text-align: center; margin-top: 1.5mm; }}
+.inspeccion img {{ width: 100%; display: block; border: 0.4mm solid var(--linea); }}
 .cifras {{ display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }}
-.cifra {{ font-size: 30mm; font-weight: 700; line-height: 1; color: var(--marca); }}
-.cifra-pie {{ font-size: 11mm; color: var(--tinta-2); margin-top: 1.5mm; line-height: 1.25; }}
-.leyenda {{ display: flex; gap: 9mm; font-size: 10mm; color: var(--tinta-2); }}
+.cifra {{ font-size: 52mm; font-weight: 700; line-height: 1; color: var(--marca); }}
+.cifra-pie {{ font-size: 14mm; color: var(--tinta-2); margin-top: 1.5mm; line-height: 1.25; }}
+.leyenda {{ display: flex; gap: 12mm; font-size: 13mm; color: var(--tinta-2); }}
 .leyenda span {{ display: inline-flex; align-items: center; gap: 2.5mm; }}
 .leyenda .cuadro {{ width: 5.5mm; height: 5.5mm; background: {AZUL}; border-radius: 0.6mm; }}
 .leyenda .circulo {{ width: 6.5mm; height: 6.5mm; background: {MAGENTA}; border-radius: 50%; }}
 .grafica svg {{ width: 100%; height: auto; display: block; }}
 .aviso {{ font-weight: 700; }}
-.refs {{ font-size: 9.6mm; line-height: 1.3; color: var(--tinta-2); }}
+.refs {{ font-size: 10.6mm; line-height: 1.3; color: var(--tinta-2); }}
 .refs p {{ margin: 0 0 2mm; padding-left: 6mm; text-indent: -6mm; }}
-.nota-ia {{ font-size: 9.6mm; color: var(--tinta-2); margin-top: auto; line-height: 1.3; }}
+.nota-ia {{ font-size: 11mm; color: var(--tinta-2); margin-top: auto; line-height: 1.3; }}
 </style></head>
 <body>
 <div class="motivo" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -109,120 +107,99 @@ figcaption b {{ color: var(--tinta-2); }}
 <section class="panel">
   <div>
     <h2>Introducción</h2>
-    <p>Puebla y México buscan crecer en ensamble electrónico y semiconductores (CANIETI, 2024; OECD, 2026). Cuando una línea de ensamble crece, la calidad depende de qué tan bien se detectan los defectos, y no solo de qué tan rápido se produce.</p>
-    <p>En los componentes through-hole, las patillas atraviesan la tarjeta y se sueldan por el lado inferior. Esas uniones todavía se revisan en buena medida a ojo.</p>
+    <p>En el ensamble electrónico, muchas uniones through-hole todavía se revisan a ojo. Puebla busca crecer en esta industria (CANIETI, 2024; OECD, 2026).</p>
   </div>
   <figure>
     <div class="ejemplos">{ejemplos}</div>
-    <figcaption><b>Figura 1.</b> Defectos que busca el sistema, además de la unión aceptable. Fotografías tomadas de PCBSPDefect (Tsang et al., 2023), CC BY 4.0, sin modificar.</figcaption>
+    <figcaption><b>Figura 1.</b> Defectos que busca el sistema. Fotografías tomadas de PCBSPDefect (Tsang et al., 2023), CC BY 4.0.</figcaption>
   </figure>
   <div>
     <h2>Antecedentes</h2>
     <ul>
-      <li>La inspección visual humana deja pasar entre 20&nbsp;% y 30&nbsp;% de los defectos en la mayoría de las tareas (See, 2015).</li>
-      <li>Las uniones through-hole son difíciles de inspeccionar con máquinas: hay componentes altos que tapan zonas y la unión está del lado inferior (GÖPEL electronic, s.&nbsp;f.).</li>
-      <li>Personal técnico de una empresa de ensamble de Puebla nos dijo que la validación de piezas conserva pasos manuales y que, cuando algo falla, se revisa con más resolución a ojo (comunicación personal, octubre de 2026).</li>
-      <li>Ya existen redes ligeras para detectar defectos; lo que falta es evaluarlas con datos propios y criterios fijados antes de medir.</li>
+      <li>La inspección visual humana deja pasar del 20&nbsp;% al 30&nbsp;% de los defectos (See, 2015).</li>
+      <li>En una empresa de ensamble poblana, las fallas se revisan a ojo con más resolución (comunicación personal, 2026).</li>
     </ul>
   </div>
   <div class="meta">
     <h2>Meta de ingeniería</h2>
-    <p class="pregunta">Construir una estación de bajo costo que, sin internet, señale las uniones sospechosas con una sensibilidad y una tasa de falsas alarmas medidas y aceptables.</p>
+    <p class="pregunta">Una estación de bajo costo que, sin internet, señale las uniones sospechosas.</p>
     <table>
-      <tr><td>M1</td><td>Sensibilidad para cualquier defecto</td><td>≥ 0.90</td></tr>
-      <tr><td>M2</td><td>Falsas alarmas (uniones buenas señaladas)</td><td>≤ 0.15</td></tr>
-      <tr><td>M3</td><td>Inspección con apoyo frente a sin apoyo</td><td>con ≥ sin</td></tr>
-      <tr><td>M4</td><td>Tiempo por tarjeta en la computadora de placa única</td><td>≤ 5 s</td></tr>
-      <tr><td>M5</td><td>Funciona con la red desconectada</td><td>100 %</td></tr>
-      <tr><td>M6</td><td>Pérdida de sensibilidad con otra luz o posición</td><td>≤ 0.05</td></tr>
+      <tr><td>M1</td><td>Sensibilidad</td><td>≥ 0.90</td></tr>
+      <tr><td>M2</td><td>Falsas alarmas</td><td>≤ 0.15</td></tr>
+      <tr><td>M4</td><td>Tiempo por tarjeta</td><td>≤ 5 s</td></tr>
+      <tr><td>M5</td><td>Funciona sin internet</td><td>100 %</td></tr>
     </table>
   </div>
   <div>
     <h2>Justificación</h2>
     <ul>
-      <li><b>Para el inspector:</b> menos carga visual y menos omisiones; la decisión sigue siendo suya.</li>
-      <li><b>Confidencialidad:</b> las fotos de una planta no salen del equipo, porque todo se procesa en local.</li>
-      <li><b>Bajo costo:</b> una computadora de placa única y una cámara, o un celular sin instalar nada.</li>
-      <li><b>Resultado útil siempre:</b> si las metas no se cumplen, el análisis de errores dice qué condiciones lo impiden.</li>
+      <li>Menos omisiones; la persona decide.</li>
+      <li>Las fotos no salen del equipo.</li>
+      <li>Bajo costo: Raspberry Pi y un celular.</li>
     </ul>
   </div>
 </section>
 
 <section class="panel">
   <div>
-    <h2>Objetivos</h2>
-    <p><b>General.</b> Diseñar, construir y evaluar una estación de inspección visual asistida de uniones through-hole con procesamiento local.</p>
-    <ul>
-      <li>Definir cinco clases de defecto y una de unión aceptable, con la norma IPC-A-610 como referencia.</li>
-      <li>Construir un conjunto de datos propio, etiquetado por dos personas y partido por tarjeta.</li>
-      <li>Comparar una línea base de visión clásica, una red ligera y la inspección humana sin apoyo.</li>
-    </ul>
+    <h2>Objetivo</h2>
+    <p>Diseñar, construir y evaluar la estación con datos propios, frente a la inspección humana y a una línea base clásica.</p>
   </div>
   <div>
     <h2>Metodología</h2>
     <ol class="pasos">
-      <li><span><b>Capturar:</b> cámara en un soporte o el celular desde una página de la estación, por una red local sin internet.</span></li>
-      <li><span><b>Alinear:</b> la foto se ajusta a la plantilla del diseño de la tarjeta, aunque esté girada o en perspectiva.</span></li>
-      <li><span><b>Recortar</b> cada unión según la plantilla, sin necesidad de un detector.</span></li>
-      <li><span><b>Clasificar</b> con una red convolucional pequeña (52 mil parámetros), en el mismo equipo.</span></li>
-      <li><span><b>Decide la persona:</b> confirma o corrige cada unión marcada, y la decisión queda registrada.</span></li>
+      <li><span><b>Capturar</b> con el celular, sin internet</span></li>
+      <li><span><b>Alinear</b> con la plantilla de la tarjeta</span></li>
+      <li><span><b>Recortar</b> cada unión</span></li>
+      <li><span><b>Clasificar</b> con una red pequeña, en local</span></li>
+      <li><span><b>La persona</b> confirma o corrige</span></li>
     </ol>
   </div>
   <figure class="inspeccion">
     <img src="{inspeccion}" alt="Interfaz del prototipo con las uniones sospechosas marcadas por clase">
-    <figcaption><b>Figura 2.</b> El prototipo marca las uniones sospechosas por clase en una tarjeta-mosaico de fotos reales. Captura de pantalla de elaboración propia, con una foto simulada de la hoja impresa; fotos de PCBSPDefect (Tsang et al., 2023), CC BY 4.0.</figcaption>
+    <figcaption><b>Figura 2.</b> El prototipo marca las uniones sospechosas. Captura de elaboración propia (foto simulada); fotos de PCBSPDefect, CC BY 4.0.</figcaption>
   </figure>
-  <div>
-    <p><b>Datos y pruebas.</b> Al menos 30 tarjetas propias con defectos sembrados, partición por tarjeta y criterios fijados antes de medir. Mientras llegan, validamos el método con fotos reales públicas (PCBSPDefect; experimento EXP-006).</p>
-  </div>
   <div>
     <h2>Creatividad e innovación</h2>
     <ul>
-      <li><b>Humano en el ciclo:</b> el sistema no rechaza piezas, señala dónde mirar.</li>
-      <li><b>Plantilla por diseño:</b> se marcan las uniones una vez y se inspecciona cualquier foto, con muchas menos etiquetas que un detector.</li>
-      <li><b>Celular como cámara</b> sin instalar ninguna app y sin internet; cada foto queda con su huella digital (SHA-256).</li>
-      <li><b>Evaluación honesta:</b> metas y conjunto de prueba fijados antes de medir, intervalos de confianza y comparación con la inspección humana.</li>
+      <li>Señala, no rechaza: humano en el ciclo.</li>
+      <li>El celular es la cámara, sin app ni internet.</li>
+      <li>Metas fijadas antes de medir.</li>
     </ul>
   </div>
 </section>
 
 <section class="panel">
   <div>
-    <h2>Resultados preliminares (EXP-006)</h2>
-    <p>Con 622 uniones reales de 121 tarjetas del conjunto PCBSPDefect, tres iluminaciones cada una. El conjunto de prueba se usó una sola vez.</p>
+    <h2>Resultados preliminares</h2>
+    <p>622 uniones reales de un conjunto público (Tsang et al., 2023).</p>
   </div>
   <div class="cifras">
-    <div><div class="cifra">{f2(red["sensibilidad"])}</div><div class="cifra-pie">sensibilidad de la red, contra {f2(lb["sensibilidad"])} de la línea base clásica</div></div>
-    <div><div class="cifra">{f2(red["falsas_alarmas"])}</div><div class="cifra-pie">falsas alarmas de la red, contra {f2(lb["falsas_alarmas"])} de la línea base</div></div>
+    <div><div class="cifra">{f2(red["sensibilidad"])}</div><div class="cifra-pie">sensibilidad (línea base: {f2(lb["sensibilidad"])})</div></div>
+    <div><div class="cifra">{f2(red["falsas_alarmas"])}</div><div class="cifra-pie">falsas alarmas (línea base: {f2(lb["falsas_alarmas"])})</div></div>
   </div>
   <figure class="grafica">
     <div class="leyenda"><span><i class="cuadro"></i>Línea base clásica</span><span><i class="circulo"></i>Red convolucional</span></div>
-    {grafica(r["filas"], r["metas"], FUENTE, etiqueta_w=108, panel_w=165, hueco=32)}
-    <figcaption><b>Figura 3.</b> Sensibilidad y falsas alarmas con intervalo de confianza de 95 % (bootstrap agrupado por tarjeta), en la partición oficial y en una partición por tarjeta. Gráfica de elaboración propia.</figcaption>
+    {grafica(r["filas"], r["metas"], FUENTE, etiqueta_w=92, panel_w=125, hueco=24, nota=False)}
+    <figcaption><b>Figura 3.</b> Punto: valor medido; línea: intervalo de confianza de 95 %. Gráfica de elaboración propia.</figcaption>
   </figure>
-  <ul>
-    <li>La línea base tomó como aceptables {conf["exceso"][0]} fotos con exceso de soldadura y {conf["puente"][0]} con puente; la red, {conf["exceso"][1]} y {conf["puente"][1]}.</li>
-    <li>Partición por tarjeta: red {f2(red_t["sensibilidad"])} y {f2(red_t["falsas_alarmas"])}; línea base {f2(lb_t["sensibilidad"])} y {f2(lb_t["falsas_alarmas"])}.</li>
-  </ul>
   <div>
     <h2>Conclusiones</h2>
     <ul>
-      <li>Con fotos reales, la red cumple M1. Su falsa alarma cumple M2 en el valor medido, pero el intervalo llega a {f2(red["falsas_alarmas_ic"][1])}: <span class="aviso">todavía no podemos afirmar M2.</span></li>
-      <li>La línea base clásica no cumple ninguna de las dos: hace falta aprendizaje.</li>
-      <li>Con una tarjeta de otra cámara y otra luz, la red falló (prueba exploratoria): el desempeño en nuestra estación solo lo dirán nuestros datos.</li>
-      <li><b>Sigue:</b> visita técnica a una planta de ensamble (5 de noviembre), tarjetas propias, inspección humana sin apoyo y tiempo en la Raspberry Pi 4 (EXP-001 a EXP-005).</li>
+      <li>La red cumple M1; M2 aún no se puede afirmar (intervalo hasta {f2(red["falsas_alarmas_ic"][1])}).</li>
+      <li>La visión clásica no basta.</li>
+      <li>Falta medir con tarjetas propias y en la Raspberry Pi 4.</li>
     </ul>
   </div>
   <div class="refs">
     <h2>Referencias</h2>
     <p>Anthropic. (2026). <i>Claude</i> [Modelo de lenguaje de gran tamaño]. https://claude.ai</p>
     <p>Cámara Nacional de la Industria Electrónica, de Telecomunicaciones y Tecnologías de la Información. (2024). <i>Plan maestro para el desarrollo de la industria de semiconductores 2024–2030</i>. CANIETI.</p>
-    <p>GÖPEL electronic. (s.&nbsp;f.). <i>Optimal inspection of THT assemblies</i> [Documento técnico].</p>
     <p>Organisation for Economic Co-operation and Development. (2026). <i>Promoting the development of the semiconductor ecosystem in Mexico: Assessment and recommendations</i>. OECD Publishing.</p>
     <p>See, J. E. (2015). Visual inspection reliability for precision manufactured parts. <i>Human Factors, 57</i>(8), 1427–1442. https://doi.org/10.1177/0018720815602389</p>
-    <p>{cita_tsang}. Datos: {html.escape(fotos["url"])}, CC BY 4.0.</p>
+    <p>{cita_tsang}</p>
   </div>
-  <p class="nota-ia">Uso de inteligencia artificial: un asistente (Claude; Anthropic, 2026) apoyó la búsqueda de información, la organización del repositorio y la programación; el equipo verificó cada resultado.</p>
+  <p class="nota-ia">Apoyo de IA (Claude; Anthropic, 2026) en búsqueda y programación, verificado por el equipo.</p>
 </section>
 </main>
 </body></html>"""
