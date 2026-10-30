@@ -27,6 +27,8 @@ Actualiza el [[triptico-v1]] con lo hecho el 29 de octubre. Mismo tamaño (1500 
 | Resultados | Sin cambios (EXP-006). Las figuras se renumeran (1 a 5) | — |
 | Conclusiones | «Ya corre en una Raspberry Pi 4, en local y sin internet» sustituye a «falta medir en la Raspberry Pi 4» | Instalación del 29 oct |
 | Hacia dónde va | Nueva: apoyo, piloto por planta y automatización gradual | D-016 |
+| Creatividad e innovación | Enfocada en el proyecto, no en la demo: plantilla por diseño, confidencialidad y el inspector que enseña al modelo (D-016). «Metas fijadas antes de medir» pasa a Metodología | Indicación de Fortino |
+| Justificación | Enfocada en el proyecto: menos defectos que pasan, apoyo y no sustitución, bajo costo frente a una máquina de inspección automática. Se quita la repetición de la confidencialidad | Indicación de Fortino |
 | Referencias y nota final | Se quitan la referencia a Anthropic (Claude) y la nota de apoyo de IA; la declaración de uso de IA queda en la bitácora y el protocolo | Indicación de Fortino |
 
 ## No incluido, a propósito

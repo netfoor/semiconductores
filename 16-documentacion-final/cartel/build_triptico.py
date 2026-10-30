@@ -84,7 +84,7 @@ figcaption b {{ color: var(--tinta-2); }}
 .ejemplos {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 3.5mm; }}
 .ejemplos img {{ width: 100%; aspect-ratio: 1; display: block; }}
 .ejemplos figcaption {{ font-size: 10.5mm; font-weight: 700; color: var(--tinta); text-align: center; margin-top: 1.5mm; }}
-.inspeccion img {{ width: 80%; margin: 0 auto; display: block; border: 0.4mm solid var(--linea); }}
+.inspeccion img {{ width: 62%; margin: 0 auto; display: block; border: 0.4mm solid var(--linea); }}
 .cifras {{ display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }}
 .cifra {{ font-size: 52mm; font-weight: 700; line-height: 1; color: var(--marca); }}
 .cifra-pie {{ font-size: 14mm; color: var(--tinta-2); margin-top: 1.5mm; line-height: 1.25; }}
@@ -170,9 +170,9 @@ figcaption b {{ color: var(--tinta-2); }}
   <div>
     <h2>Justificación</h2>
     <ul>
-      <li>Menos omisiones; la persona decide.</li>
-      <li>Las fotos no salen del equipo.</li>
-      <li>Bajo costo: Raspberry Pi y un celular.</li>
+      <li><b>Menos defectos que pasan:</b> la atención del inspector va primero a las uniones sospechosas.</li>
+      <li><b>Apoyo, no sustitución:</b> la persona sigue decidiendo.</li>
+      <li><b>Bajo costo:</b> una computadora pequeña y una cámara, en lugar de una máquina de inspección automática.</li>
     </ul>
   </div>
 </section>
@@ -195,6 +195,7 @@ figcaption b {{ color: var(--tinta-2); }}
     <figure><img src="{celular}" alt="Pantalla del celular: acercamiento a una unión, sugerencia del sistema y las clases para confirmar o corregir">
     <figcaption><b>Figura 3.</b> Revisión en el celular, una unión a la vez. Captura de elaboración propia; foto de PCBSPDefect, CC&nbsp;BY&nbsp;4.0.</figcaption></figure>
     </div>
+    <p><b>Metas y conjunto de prueba fijados antes de medir.</b></p>
   </div>
   <figure class="inspeccion">
     <img src="{inspeccion}" alt="Interfaz del prototipo con las uniones sospechosas marcadas por clase">
@@ -203,9 +204,9 @@ figcaption b {{ color: var(--tinta-2); }}
   <div>
     <h2>Creatividad e innovación</h2>
     <ul>
-      <li>Señala, no rechaza: humano en el ciclo.</li>
-      <li>El celular es la cámara, sin app ni internet.</li>
-      <li>Metas fijadas antes de medir.</li>
+      <li><b>Plantilla por diseño:</b> las uniones de cada tarjeta se marcan una sola vez, sin entrenar un detector.</li>
+      <li><b>Confidencialidad:</b> las fotos de la planta se procesan en el mismo equipo y nunca salen de él.</li>
+      <li><b>Señala, no rechaza:</b> cada decisión del inspector se vuelve un ejemplo para el modelo de su planta.</li>
     </ul>
   </div>
 </section>
