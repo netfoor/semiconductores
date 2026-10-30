@@ -53,7 +53,7 @@ Lista viva: se actualiza en cada sesión. Lo terminado se marca con la fecha y s
 
 | # | Pendiente | Responsable | Estado |
 |---|---|---|---|
-| 15 | Guion de 8 a 10 minutos para los tres, con la respuesta de D-016 (por qué sigue el inspector) | Equipo + Claude (IA) | Pendiente |
+| 15 | Guion de 8 a 10 minutos para los tres, con la respuesta de D-016 (por qué sigue el inspector) | Equipo + Claude (IA) | Hecho 29 oct: `16-documentacion-final/jornada/guion-exposicion.pdf` (tres y dos personas) |
 | 16 | Banco de preguntas probables | Equipo + Claude (IA) | Pendiente |
 | 17 | Video de respaldo de la demostración | Equipo | Pendiente |
 
