@@ -22,7 +22,7 @@ Actualiza el [[triptico-v1]] con lo hecho el 29 de octubre. Mismo tamaño (1500 
 | Sección | Cambio | Origen |
 |---|---|---|
 | Título | Nombres de los tres integrantes, porque cupieron | Indicación de Fortino |
-| Introducción | Figura 1: corte SMD frente a THT (ilustración de elaboración propia) | Página del proyecto v2, diseño de María José |
+| Introducción | Figura 1: corte SMD frente a THT (ilustración de elaboración propia) | Página del proyecto v2 (PR #14) |
 | Metodología | Paso 5: revisión de una unión a la vez; Figura 3 con la pantalla del celular | PR #17; captura de elaboración propia con la tarjeta-mosaico |
 | Resultados | Sin cambios (EXP-006). Las figuras se renumeran (1 a 5) | — |
 | Conclusiones | «Ya corre en una Raspberry Pi 4, en local y sin internet» sustituye a «falta medir en la Raspberry Pi 4» | Instalación del 29 oct |

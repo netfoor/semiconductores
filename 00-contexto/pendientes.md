@@ -18,12 +18,12 @@ Lista viva: se actualiza en cada sesión. Lo terminado se marca con la fecha y s
 | # | Pendiente | Responsable | Estado |
 |---|---|---|---|
 | 1 | Revisar en local la interfaz v2 y fusionar a main | Fortino | Hecho 29 oct (PR #13) |
-| 2 | Recibir la Raspberry Pi (14:20): revisar `uname -m` = `aarch64` y Python 3.11–3.13 (guía §2) | Fortino | Pendiente |
-| 3 | `make paquete-pi` en la laptop y copiar `paquete-pi/` a la USB | Fortino | Pendiente |
-| 4 | Instalar y probar en la Pi: `bash instalar.sh` y `bash probar.sh`; anotar el tiempo medido | Fortino, Israel | Pendiente |
+| 2 | Recibir la Raspberry Pi (14:20): revisar `uname -m` = `aarch64` y Python 3.11–3.13 (guía §2) | Fortino | Hecho 29 oct (bitácora, sesión 7) |
+| 3 | `make paquete-pi` en la laptop y copiar `paquete-pi/` a la USB | Fortino | Hecho 29 oct |
+| 4 | Instalar y probar en la Pi: `bash instalar.sh` y `bash probar.sh`; anotar el tiempo medido | Fortino, Israel | Hecho 29 oct: mediana 1.27 s con la imagen digital |
 | 5 | Imprimir la hoja del mosaico en color, carta horizontal, y pegarla en cartón | Equipo | Pendiente |
 | 6 | Tríptico: reescribir textos con sus palabras, decidir nombres, imprimir 150 x 120 cm en material rígido | María José | En curso |
-| 7 | Protocolo y bitácora finales (la fuente de verdad es el repositorio): interfaz v2, D-015, D-016, Pi 4, paquete sin internet, mosaico | Equipo + Claude (IA), en la noche | Pendiente |
+| 7 | Protocolo y bitácora finales (la fuente de verdad es el repositorio): interfaz v2, D-015, D-016, Pi 4, paquete sin internet, mosaico | Equipo + Claude (IA), en la noche | Hecho 29 oct: bitácora regenerada (sesiones 7 y 8) y adenda al protocolo aparte; el protocolo entregado no cambia |
 | 8 | Fecha de la conversación sobre soldadura de metales | María José | Pendiente |
 | 9 | FE-03: confirmar si se usa alcohol isopropílico para limpiar fundente | Equipo | Pendiente |
 
