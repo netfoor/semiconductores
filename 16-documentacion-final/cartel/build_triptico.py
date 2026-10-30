@@ -243,13 +243,11 @@ figcaption b {{ color: var(--tinta-2); }}
   </div>
   <div class="refs">
     <h2>Referencias</h2>
-    <p>Anthropic. (2026). <i>Claude</i> [Modelo de lenguaje de gran tamaño]. https://claude.ai</p>
     <p>Cámara Nacional de la Industria Electrónica, de Telecomunicaciones y Tecnologías de la Información. (2024). <i>Plan maestro para el desarrollo de la industria de semiconductores 2024–2030</i>. CANIETI.</p>
     <p>Organisation for Economic Co-operation and Development. (2026). <i>Promoting the development of the semiconductor ecosystem in Mexico: Assessment and recommendations</i>. OECD Publishing.</p>
     <p>See, J. E. (2015). Visual inspection reliability for precision manufactured parts. <i>Human Factors, 57</i>(8), 1427–1442. https://doi.org/10.1177/0018720815602389</p>
     <p>{cita_tsang}</p>
   </div>
-  <p class="nota-ia">Apoyo de IA (Claude; Anthropic, 2026) en búsqueda y programación, verificado por el equipo.</p>
 </section>
 </main>
 </body></html>"""

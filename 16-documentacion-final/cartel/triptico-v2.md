@@ -27,6 +27,7 @@ Actualiza el [[triptico-v1]] con lo hecho el 29 de octubre. Mismo tamaño (1500 
 | Resultados | Sin cambios (EXP-006). Las figuras se renumeran (1 a 5) | — |
 | Conclusiones | «Ya corre en una Raspberry Pi 4, en local y sin internet» sustituye a «falta medir en la Raspberry Pi 4» | Instalación del 29 oct |
 | Hacia dónde va | Nueva: apoyo, piloto por planta y automatización gradual | D-016 |
+| Referencias y nota final | Se quitan la referencia a Anthropic (Claude) y la nota de apoyo de IA; la declaración de uso de IA queda en la bitácora y el protocolo | Indicación de Fortino |
 
 ## No incluido, a propósito
 
