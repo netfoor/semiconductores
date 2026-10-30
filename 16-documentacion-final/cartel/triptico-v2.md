@@ -1,11 +1,11 @@
 ---
 titulo: "Tríptico v2 para la jornada (150 x 120 cm)"
 tipo: entregable
-estado: borrador
+estado: listo para imprimir
 creado: 2026-10-29
 actualizado: 2026-10-29
 autor: "Claude (IA)"
-revisado_por: []
+revisado_por: ["Equipo (comunicado por Fortino, 2026-10-29)"]
 fuentes: [F-001, F-080]
 tags: [femeci, cartel, triptico, jornada]
 ---
@@ -37,8 +37,9 @@ Actualiza el [[triptico-v1]] con lo hecho el 29 de octubre. Mismo tamaño (1500 
 - `#pregunta` El tiempo en la Pi 4 no se reporta: la mediana con la imagen digital fue de 1.27 s, pero la primera foto del iPhone marcó 47.5 s. Falta aclarar la diferencia.
 - La tarjeta en capas 3D de la página: compite con la gráfica de resultados en un cartel fijo.
 
-## Pendiente del equipo antes de imprimir
+## Antes de imprimir
 
-1. Revisar ortografía y reescribir con sus palabras lo que haga falta (punto 6 de la carta).
-2. Confirmar con la imprenta el tamaño y el material rígido.
+1. `#hecho` El equipo revisó los textos (comunicado por Fortino, 29 oct).
+2. `#hecho` Fortino probó la estación en la Raspberry Pi 4 sin internet, con la red propia de la Pi (29 oct).
+3. Imprenta: PDF a tamaño real (100 %), material rígido o con soporte.
 3. La Figura 4 sigue con «foto simulada»; sustituirla si la foto real de la hoja impresa alinea bien.
